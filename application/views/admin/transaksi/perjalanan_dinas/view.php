@@ -89,7 +89,7 @@ function format_date($string) {
         
     </div>
     <div class="widget-content" style="padding: 10px;">        
-        <?php $this->load->view('transaksi/detail_perjalanan_dinas/list')?>
+        <?php $this->load->view('admin/transaksi/detail_perjalanan_dinas/list')?>
     </div>
 </div>
 <!-- /widget-header --> 
