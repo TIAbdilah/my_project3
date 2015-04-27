@@ -13,11 +13,11 @@
                 <div class="modal-body">
                     <?php
                     if ($data->jumlah_tujuan == 1) {
-                        $this->load->view('transaksi/detail_perjalanan_dinas/add');
+                        $this->load->view('admin/transaksi/detail_perjalanan_dinas/add');
                     } else if ($data->jumlah_tujuan == 2) {
-                        $this->load->view('transaksi/detail_perjalanan_dinas/add_2');
+                        $this->load->view('admin/transaksi/detail_perjalanan_dinas/add_2');
                     } else {
-                        $this->load->view('transaksi/detail_perjalanan_dinas/add_3');
+                        $this->load->view('admin/transaksi/detail_perjalanan_dinas/add_3');
                     }
                     ?>
                 </div>
