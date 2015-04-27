@@ -1,0 +1,78 @@
+<?php
+
+//Programer     : Taufik Ismail A, S.Kom
+//Created Date  : 20 Apr 2015
+//Projet        : E-SATKER
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
+class Role extends CI_Controller {
+
+    var $akun = array(); 
+    
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('role_model');
+        $this->akun = array(
+            'username' => $this->session->userdata('username'),
+            'role' => $this->session->userdata('role')
+        );
+    }
+
+    public function index() {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Role";
+        $data['page'] = 'admin/role/list';
+        $data['list_data'] = $this->role_model->select_all()->result();
+        $this->load->view('admin/index', $data);
+        $this->akun = array(
+            'username' => $this->session->userdata('username'),
+            'role' => $this->session->userdata('role')
+        );
+    }
+
+    public function view($id) {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Role";
+        $data['page'] = 'admin/role/view';
+        $data['row'] = $this->role_model->select_by_id($id)->row();
+        $this->load->view('admin/index', $data);
+    }
+
+    public function add() {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Role";
+        $data['page'] = 'admin/role/add';
+        $this->load->view('admin/index', $data);
+    }
+
+    public function edit($id) {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Role";
+        $data['page'] = 'admin/role/edit';
+        $data['row'] = $this->role_model->select_by_id($id)->row();
+        $this->load->view('admin/index', $data);
+    }
+
+    public function process($action, $id = null) {
+        
+        $data['nama_role'] = $this->input->post('inpNamaRole');
+
+        if ($action == 'add') {
+            $this->role_model->add($data);
+        } else {
+            $this->role_model->edit($id, $data);
+        }
+
+        redirect('master/role');
+    }
+
+    public function delete($id) {
+        $this->role_model->delete($id);
+        redirect('master/role');
+    }
+
+}
+
+?>

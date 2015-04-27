@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.php.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/php-project/1">
+            <name>esatker</name>
+        </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>Balai</word>
+            <word>Berangkat</word>
+            <word>Kembali</word>
+            <word>Kerja</word>
+            <word>Komitmen</word>
+            <word>Menyetujui</word>
+            <word>PENGEMBANGAN</word>
+            <word>Perihal</word>
+            <word>Tujuan</word>
+            <word>yyyy</word>
+        </spellchecker-wordlist>
+    </configuration>
+</project>

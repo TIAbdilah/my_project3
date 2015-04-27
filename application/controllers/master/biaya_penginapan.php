@@ -1,0 +1,82 @@
+<?php
+
+//Programer     : Taufik Ismail A, S.Kom
+//Created Date  : 9 Apr 2015
+//Projet        : E-SATKER
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
+class Biaya_penginapan extends CI_Controller {
+
+    var $akun = array(); 
+    
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('biaya_penginapan_model');
+        $this->load->model('kota_tujuan_model');
+        $this->load->model('listcode_model');
+        $this->akun = array(
+            'username' => $this->session->userdata('username'),
+            'role' => $this->session->userdata('role')
+        );
+    }
+
+    public function index() {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Biaya Penginapan";
+        $data['page'] = 'admin/biaya_penginapan/list';
+        $data['list_data'] = $this->biaya_penginapan_model->select_all()->result();
+        $this->load->view('admin/index', $data);
+    }
+
+    public function view($id) {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Biaya Penginapan";
+        $data['page'] = 'admin/biaya_penginapan/view';
+        $data['row'] = $this->biaya_penginapan_model->select_by_id($id)->row();
+        $this->load->view('admin/index', $data);
+    }
+
+    public function add() {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Biaya Penginapan";
+        $data['page'] = 'admin/biaya_penginapan/add';
+        $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
+        $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $this->load->view('admin/index', $data);
+    }
+
+    public function edit($id) {
+        $data['akun'] = $this->akun;
+        $data['title'] = "e-satker | Biaya Penginapan";
+        $data['page'] = 'admin/biaya_penginapan/edit';
+        $data['row'] = $this->biaya_penginapan_model->select_by_id($id)->row();
+        $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
+        $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $this->load->view('admin/index', $data);
+    }
+
+    public function process($action, $id = null) {
+
+        $data['nama_kota'] = $this->input->post('inpNamaKota');
+        $data['golongan'] = $this->input->post('inpGolongan');
+        $data['biaya'] = $this->input->post('inpBiaya');
+
+        if ($action == 'add') {
+            $this->biaya_penginapan_model->add($data);
+        } else {
+            $this->biaya_penginapan_model->edit($id, $data);
+        }
+
+        redirect('master/biaya_penginapan');
+    }
+
+    public function delete($id) {
+        $this->biaya_penginapan_model->delete($id);
+        redirect('master/biaya_penginapan');
+    }
+
+}
+
+?>
