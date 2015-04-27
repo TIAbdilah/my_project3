@@ -57,7 +57,17 @@
                 <td><label>Penginapan</label></td>
                 <td></td>
                 <td><input type="text" placeholder="Di" id="inPenginapan1" name="inPenginapan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
-                <td><input type="text" placeholder="Jenis Penginapan" id="inJenisPenginapan1" name="inJenisPenginapan1"/></td>
+                <td>
+                        <select class="input" name="inJenisPenginapan1">
+                            <option>Pilih</option>
+                            <?php
+                            foreach ($SIList_jenisPenginapan as $row) {
+                                echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
+                            }
+                            ?>
+                        </select>
+                    
+                </td>
 
                 <td></td>
                 <td><input type="text" placeholder="Subtotal"/></td>
