@@ -26,7 +26,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
 
     public function index() {
         $data['title'] = $this->title_page;
-        $data['page'] = 'transaksi/detail_perjalanan_dinas/list';
+        $data['page'] = 'admin/transaksi/detail_perjalanan_dinas/list';
         $data['list_data'] = $this->perjalanan_dinas_model->select_all()->result();
         $data['status'] = $this->status;
         $this->load->view('admin/index', $data);
@@ -34,14 +34,14 @@ class Detail_perjalanan_dinas extends CI_Controller {
 
     public function view($id) {
         $data['title'] = $this->title_page;
-        $data['page'] = 'transaksi/detail_perjalanan_dinas/view';        
+        $data['page'] = 'admin/transaksi/detail_perjalanan_dinas/view';        
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
     public function add() {
         $data['title'] = $this->title_page;
-        $data['page'] = 'transaksi/detail_perjalanan_dinas/add';
+        $data['page'] = 'admin/transaksi/detail_perjalanan_dinas/add';
         $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $this->load->view('admin/index', $data);
@@ -49,7 +49,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
 
     public function edit($id) {
         $data['title'] = $this->title_page;
-        $data['page'] = 'transaksi/detail_perjalanan_dinas/edit';
+        $data['page'] = 'admin/transaksi/detail_perjalanan_dinas/edit';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
         $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
@@ -120,7 +120,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
         $data['akun'] = $this->akun;
         $data['jumlahtujuan'] = $jumlahtujuan;
         $data['title'] = $this->title_page;
-        $data['page'] = 'transaksi/perjalanandinas/add';
+        $data['page'] = 'admin/transaksi/perjalanandinas/add';
         $data['SIList_akun'] = $this->akun_model->select_all()->result();
         $data['SIList_kegiatan'] = $this->kegiatan_model->select_all()->result();
         $data['perjalanan_detail'] = $this->transaksiperjalanandinasdetail_model->select_all()->result();
