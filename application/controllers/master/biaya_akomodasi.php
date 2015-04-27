@@ -8,8 +8,6 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Biaya_akomodasi extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
@@ -22,35 +20,31 @@ class Biaya_akomodasi extends CI_Controller {
         );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Biaya Akomodasi";
-        $data['page'] = 'admin/biaya_akomodasi/list';
+        $data['page'] = 'admin/master/biaya_akomodasi/list';
         $data['list_data'] = $this->biaya_akomodasi_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Biaya Akomodasi";
-        $data['page'] = 'admin/biaya_akomodasi/view';
+        $data['page'] = 'admin/master/biaya_akomodasi/view';
         $data['row'] = $this->biaya_akomodasi_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Biaya Akomodasi";
-        $data['page'] = 'admin/biaya_akomodasi/add';
+        $data['page'] = 'admin/master/biaya_akomodasi/add';
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Biaya Akomodasi";
-        $data['page'] = 'admin/biaya_akomodasi/edit';
+        $data['page'] = 'admin/master/biaya_akomodasi/edit';
         $data['row'] = $this->biaya_akomodasi_model->select_by_id($id)->row();
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();

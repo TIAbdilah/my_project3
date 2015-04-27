@@ -8,49 +8,39 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Kegiatan extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
         $this->load->model('kegiatan_model');
         $this->load->model('unit_model');
         $this->load->model('pegawai_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Kegiatan";
-        $data['page'] = 'admin/kegiatan/list';
+        $data['page'] = 'admin/master/kegiatan/list';
         $data['list_data'] = $this->kegiatan_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Kegiatan";
-        $data['page'] = 'admin/kegiatan/view';
+        $data['page'] = 'admin/master/kegiatan/view';
         $data['row'] = $this->kegiatan_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Kegiatan";
-        $data['page'] = 'admin/kegiatan/add';
+        $data['page'] = 'admin/master/kegiatan/add';
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Kegiatan";
-        $data['page'] = 'admin/kegiatan/edit';
+        $data['page'] = 'admin/master/kegiatan/edit';
         $data['row'] = $this->kegiatan_model->select_by_id($id)->row();
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();

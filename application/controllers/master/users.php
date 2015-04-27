@@ -8,47 +8,37 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Users extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
         $this->load->model('users_model');
         $this->load->model('role_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | User";
-        $data['page'] = 'admin/users/list';
+        $data['page'] = 'admin/master/users/list';
         $data['list_data'] = $this->users_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | User";
-        $data['page'] = 'admin/users/view';
+        $data['page'] = 'admin/master/users/view';
         $data['row'] = $this->users_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | User";
-        $data['page'] = 'admin/users/add';
+        $data['page'] = 'admin/master/users/add';
         $data['SIList_role'] = $this->role_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | User";
-        $data['page'] = 'admin/users/edit';
+        $data['page'] = 'admin/master/users/edit';
         $data['row'] = $this->users_model->select_by_id($id)->row();
         $data['SIList_role'] = $this->role_model->select_all()->result();
         $this->load->view('admin/index', $data);

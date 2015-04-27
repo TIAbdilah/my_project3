@@ -9,49 +9,39 @@ if (!defined('BASEPATH'))
 
 class Pegawai extends CI_Controller {
 
-    var $akun = array(); 
-    
     public function __construct() {
         parent::__construct();
         $this->load->model('pegawai_model');
         $this->load->model('listcode_model');
         $this->load->model('unit_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {       
-        $data['akun'] = $this->akun;
+    public function index() {               
         $data['title'] = "e-satker | Pegawai";
-        $data['page'] = 'admin/pegawai/list';
+        $data['page'] = 'admin/master/pegawai/list';
         $data['list_data'] = $this->pegawai_model->select_all()->result();        
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Pegawai";        
-        $data['page'] = 'admin/pegawai/view';
+        $data['page'] = 'admin/master/pegawai/view';
         $data['row'] = $this->pegawai_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
     
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Pegawai";
-        $data['page'] = 'admin/pegawai/add';
+        $data['page'] = 'admin/master/pegawai/add';
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Pegawai";        
-        $data['page'] = 'admin/pegawai/edit';
+        $data['page'] = 'admin/master/pegawai/edit';
         $data['row'] = $this->pegawai_model->select_by_id($id)->row();  
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();

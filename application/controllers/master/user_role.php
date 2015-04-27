@@ -8,49 +8,39 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class User_role extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
         $this->load->model('user_role_model');
         $this->load->model('role_model');
         $this->load->model('users_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | User Role";
-        $data['page'] = 'admin/user_role/list';
+        $data['page'] = 'admin/master/user_role/list';
         $data['list_data'] = $this->user_role_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | User Role";
-        $data['page'] = 'admin/user_role/view';
+        $data['page'] = 'admin/master/user_role/view';
         $data['row'] = $this->user_role_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | User Role";
-        $data['page'] = 'admin/user_role/add';
+        $data['page'] = 'admin/master/user_role/add';
         $data['SIList_user'] = $this->users_model->select_all()->result();
         $data['SIList_role'] = $this->role_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | User Role";
-        $data['page'] = 'admin/user_role/edit';
+        $data['page'] = 'admin/master/user_role/edit';
         $data['row'] = $this->user_role_model->select_by_id($id)->row();
         $data['SIList_user'] = $this->users_model->select_all()->result();
         $data['SIList_role'] = $this->role_model->select_all()->result();

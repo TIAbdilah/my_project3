@@ -8,8 +8,6 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Kota_tujuan extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
@@ -20,33 +18,29 @@ class Kota_tujuan extends CI_Controller {
         );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Kota Tujuan";
-        $data['page'] = 'admin/kota_tujuan/list';
+        $data['page'] = 'admin/master/kota_tujuan/list';
         $data['list_data'] = $this->kota_tujuan_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Kota Tujuan";
-        $data['page'] = 'admin/kota_tujuan/view';
+        $data['page'] = 'admin/master/kota_tujuan/view';
         $data['row'] = $this->kota_tujuan_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Kota Tujuan";
-        $data['page'] = 'admin/kota_tujuan/add';
+        $data['page'] = 'admin/master/kota_tujuan/add';
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Kota Tujuan";
-        $data['page'] = 'admin/kota_tujuan/edit';
+        $data['page'] = 'admin/master/kota_tujuan/edit';
         $data['row'] = $this->kota_tujuan_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }

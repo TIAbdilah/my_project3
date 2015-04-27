@@ -9,44 +9,34 @@ if (!defined('BASEPATH'))
 
 class Akun extends CI_Controller {
 
-    var $akun = array(); 
-    
     public function __construct() {
         parent::__construct();
         $this->load->model('akun_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Akun";
-        $data['page'] = 'admin/akun/list';
+        $data['page'] = 'admin/master/akun/list';
         $data['list_data'] = $this->akun_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {  
-        $data['akun'] = $this->akun;
+    public function view($id) {          
         $data['title'] = "e-satker | Akun";
-        $data['page'] = 'admin/akun/view';
+        $data['page'] = 'admin/master/akun/view';
         $data['row'] = $this->akun_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Akun";
-        $data['page'] = 'admin/akun/add';
+        $data['page'] = 'admin/master/akun/add';
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Akun";
-        $data['page'] = 'admin/akun/edit';
+        $data['page'] = 'admin/master/akun/edit';
         $data['row'] = $this->akun_model->select_by_id($id)->row();      
         $this->load->view('admin/index', $data);
     }

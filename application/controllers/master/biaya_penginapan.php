@@ -8,49 +8,39 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Biaya_penginapan extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
         $this->load->model('biaya_penginapan_model');
         $this->load->model('kota_tujuan_model');
         $this->load->model('listcode_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Biaya Penginapan";
-        $data['page'] = 'admin/biaya_penginapan/list';
+        $data['page'] = 'admin/master/biaya_penginapan/list';
         $data['list_data'] = $this->biaya_penginapan_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Biaya Penginapan";
-        $data['page'] = 'admin/biaya_penginapan/view';
+        $data['page'] = 'admin/master/biaya_penginapan/view';
         $data['row'] = $this->biaya_penginapan_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Biaya Penginapan";
-        $data['page'] = 'admin/biaya_penginapan/add';
+        $data['page'] = 'admin/master/biaya_penginapan/add';
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Biaya Penginapan";
-        $data['page'] = 'admin/biaya_penginapan/edit';
+        $data['page'] = 'admin/master/biaya_penginapan/edit';
         $data['row'] = $this->biaya_penginapan_model->select_by_id($id)->row();
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();

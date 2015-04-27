@@ -9,47 +9,37 @@ if (!defined('BASEPATH'))
 
 class Barang extends CI_Controller {
 
-    var $akun = array(); 
-    
     public function __construct() {
         parent::__construct();
         $this->load->model('barang_model');
         $this->load->model('listcode_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {        
-        $data['akun'] = $this->akun;
+    public function index() {                
         $data['title'] = "e-satker | Barang";
-        $data['page'] = 'admin/barang/list';
+        $data['page'] = 'admin/master/barang/list';
         $data['list_data'] = $this->barang_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {        
-        $data['akun'] = $this->akun;
+    public function view($id) {              
         $data['title'] = "e-satker | Barang";
-        $data['page'] = 'admin/barang/view';
+        $data['page'] = 'admin/master/barang/view';
         $data['row'] = $this->barang_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {      
         $data['title'] = "e-satker | Barang";
-        $data['page'] = 'admin/barang/add';
+        $data['page'] = 'admin/master/barang/add';
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
         $data['SIList_satuanBarang'] = $this->listcode_model->select_by_field('list_name', 'Satuan Barang')->result();        
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {        
-        $data['akun'] = $this->akun;
+    public function edit($id) {                
         $data['title'] = "e-satker | Barang";
-        $data['page'] = 'admin/barang/edit';
+        $data['page'] = 'admin/master/barang/edit';
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
         $data['SIList_satuanBarang'] = $this->listcode_model->select_by_field('list_name', 'Satuan Barang')->result();
         $data['row'] = $this->barang_model->select_by_id($id)->row();

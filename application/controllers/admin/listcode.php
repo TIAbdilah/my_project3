@@ -9,43 +9,33 @@ if (!defined('BASEPATH'))
 
 class Listcode extends CI_Controller {
 
-    var $akun = array(); 
-    
     public function __construct() {
         parent::__construct();
         $this->load->model('listcode_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
     public function index() {
-        $data['akun'] = $this->akun;
         $data['title'] = "e-satker | Listcode";
         $data['page'] = 'admin/listcode/list';        
         $data['list_data'] = $this->listcode_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Listcode";
         $data['page'] = 'admin/listcode/view';
         $data['row'] = $this->listcode_model->select_by_id($id)->row();        
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Listcode";
         $data['page'] = 'admin/listcode/add';
         $data['SIList_listcode'] = $this->listcode_model->select_by_field('list_name','')->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Listcode";
         $data['page'] = 'admin/listcode/edit';
         $data['SIList_listcode'] = $this->listcode_model->select_by_field('list_name','')->result();

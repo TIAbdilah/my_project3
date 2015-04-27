@@ -9,21 +9,14 @@ if (!defined('BASEPATH'))
 
 class Role extends CI_Controller {
 
-    var $akun = array(); 
-    
     public function __construct() {
         parent::__construct();
         $this->load->model('role_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Role";
-        $data['page'] = 'admin/role/list';
+        $data['page'] = 'admin/master/role/list';
         $data['list_data'] = $this->role_model->select_all()->result();
         $this->load->view('admin/index', $data);
         $this->akun = array(
@@ -32,25 +25,22 @@ class Role extends CI_Controller {
         );
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Role";
-        $data['page'] = 'admin/role/view';
+        $data['page'] = 'admin/master/role/view';
         $data['row'] = $this->role_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Role";
-        $data['page'] = 'admin/role/add';
+        $data['page'] = 'admin/master/role/add';
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Role";
-        $data['page'] = 'admin/role/edit';
+        $data['page'] = 'admin/master/role/edit';
         $data['row'] = $this->role_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }

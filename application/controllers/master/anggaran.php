@@ -8,49 +8,39 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Anggaran extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
         $this->load->model('anggaran_model');
         $this->load->model('akun_model');
         $this->load->model('kegiatan_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {        
-        $data['akun'] = $this->akun;
+    public function index() {   
         $data['title'] = "e-satker | Anggaran";
-        $data['page'] = 'admin/anggaran/list';
+        $data['page'] = 'admin/master/anggaran/list';
         $data['list_data'] = $this->anggaran_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {        
-        $data['akun'] = $this->akun;
+    public function view($id) { 
         $data['title'] = "e-satker | Anggaran";
-        $data['page'] = 'admin/anggaran/view';
+        $data['page'] = 'admin/master/anggaran/view';
         $data['row'] = $this->anggaran_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Anggaran";
-        $data['page'] = 'admin/anggaran/add';
+        $data['page'] = 'admin/master/anggaran/add';
         $data['SIList_akun'] = $this->akun_model->select_all()->result();
         $data['SIList_kegiatan'] = $this->kegiatan_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Anggaran";
-        $data['page'] = 'admin/anggaran/edit';
+        $data['page'] = 'admin/master/anggaran/edit';
         $data['row'] = $this->anggaran_model->select_by_id($id)->row(); 
         $data['SIList_akun'] = $this->akun_model->select_all()->result();
         $data['SIList_kegiatan'] = $this->kegiatan_model->select_all()->result();

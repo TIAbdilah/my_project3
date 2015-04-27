@@ -9,47 +9,37 @@ if (!defined('BASEPATH'))
 
 class Biaya_transport_dlm_kota extends CI_Controller {
 
-    var $akun = array(); 
-    
     public function __construct() {
         parent::__construct();
         $this->load->model('biaya_transport_dlm_kota_model');
         $this->load->model('kota_tujuan_model');
         $this->load->model('listcode_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Biaya Transportasi Dalam Kota";
-        $data['page'] = 'admin/biaya_transport_dlm_kota/list';
+        $data['page'] = 'admin/master/biaya_transport_dlm_kota/list';
         $data['list_data'] = $this->biaya_transport_dlm_kota_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Biaya Transportasi Dalam Kota";
-        $data['page'] = 'admin/biaya_transport_dlm_kota/view';
+        $data['page'] = 'admin/master/biaya_transport_dlm_kota/view';
         $data['row'] = $this->biaya_transport_dlm_kota_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Biaya Transportasi Dalam Kota";
-        $data['page'] = 'admin/biaya_transport_dlm_kota/add';
+        $data['page'] = 'admin/master/biaya_transport_dlm_kota/add';
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Biaya Transportasi Dalam Kota";
-        $data['page'] = 'admin/biaya_transport_dlm_kota/edit';
+        $data['page'] = 'admin/master/biaya_transport_dlm_kota/edit';
         $data['row'] = $this->biaya_transport_dlm_kota_model->select_by_id($id)->row();
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
         $this->load->view('admin/index', $data);

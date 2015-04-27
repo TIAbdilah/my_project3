@@ -13,14 +13,6 @@ class Perjalanan_dinas_model extends CI_Model {
         parent::__construct();
     }
 
-    public function select_all_by_role($inRole) {
-        $query = 'select th.*, a1.nama_kegiatan, a1.jenis_belanja '
-                . 'from perjalanan_dinas th,'
-                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja from anggaran a, kegiatan k, akun ak where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 , role rl '
-                . 'where th.id_anggaran = a1.id and th.status_approval=rl.id_role and rl.nama_role="' . $inRole . '"';
-        return $this->db->query($query);
-    }
-
     public function select_all() {
         $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
                 . 'from perjalanan_dinas pd, '
@@ -55,7 +47,14 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        return $this->db->get_where('unit', $param);
+        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
+                . 'from perjalanan_dinas pd, '
+                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
+                . 'from anggaran a, kegiatan k, akun ak '
+                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
+                . 'where pd.id_anggaran = a1.id '
+                . 'and pd.status = '.$param['status'];
+        return $this->db->query($query);
     }
 
     public function add($data) {

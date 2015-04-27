@@ -21,34 +21,30 @@ class Unit extends CI_Controller {
         );
     }
 
-    public function index() {
-        $data['akun'] = $this->akun;
+    public function index() {        
         $data['title'] = "e-satker | Unit";
-        $data['page'] = 'admin/unit/list';
+        $data['page'] = 'admin/master/unit/list';
         $data['list_data'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
-        $data['akun'] = $this->akun;
+    public function view($id) {        
         $data['title'] = "e-satker | Unit";
-        $data['page'] = 'admin/unit/view';
+        $data['page'] = 'admin/master/unit/view';
         $data['row'] = $this->unit_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {
-        $data['akun'] = $this->akun;
+    public function add() {        
         $data['title'] = "e-satker | Unit";
-        $data['page'] = 'admin/unit/add';
+        $data['page'] = 'admin/master/unit/add';
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-        $data['akun'] = $this->akun;
+    public function edit($id) {        
         $data['title'] = "e-satker | Unit";
-        $data['page'] = 'admin/unit/edit';
+        $data['page'] = 'admin/master/unit/edit';
         $data['row'] = $this->unit_model->select_by_id($id)->row();
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $this->load->view('admin/index', $data);
