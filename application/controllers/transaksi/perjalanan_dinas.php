@@ -43,13 +43,14 @@ class Perjalanan_dinas extends CI_Controller {
 
     public function view($id) {
         $data['title'] = $this->title_page;
-        $data['page'] = 'admin/transaksi/perjalanan_dinas/view';        
+        $data['page'] = 'admin/transaksi/perjalanan_dinas/view';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
-        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($id)->row();
+//        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($id)->row();
         $param = array(
             'id_header' => $id
         );
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->row();
+        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -150,6 +151,21 @@ class Perjalanan_dinas extends CI_Controller {
             $this->komentar_model->add($data);
         }
         redirect('transaksi/perjalanan_dinas');
+    }
+
+    //tambahan untuk ajax
+    public function getDetailPegawai() {
+        $id = $this->input->post('id', TRUE);
+        $data['golAndStat'] = $this->pegawai_model->getDetailPegawai($id);
+        $output1 = null;
+        $output2 = null;
+        foreach ($data['golAndStat'] as $row) {
+            $output1 .=$row->golongan;
+            $arr[0] = $output1;
+            $output2 .=$row->status;
+            $arr[1] = $output2;
+        }
+        echo json_encode($arr);
     }
 
 }

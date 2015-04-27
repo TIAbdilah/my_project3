@@ -15,13 +15,7 @@ class Pegawai_model extends CI_Model {
     }
 
     public function select_all() {
-        //return $this->db->get('pegawai');
-        //SELECT `word`, (
-        //SELECT `number` 
-        //FROM (`numbers`) 
-        //WHERE `numberID` = 2
-        //) AS number 
-        //FROM (`words`) WHERE `wordID` = 3
+       
         $this->db->select('*');
         $sub = $this->subquery->start_subquery('select');
         $sub->select('nama_unit')->from('unit');
@@ -77,8 +71,8 @@ class Pegawai_model extends CI_Model {
         $this->db->delete('pegawai', array('id' => $id));
     }
 
-    public function getNipDanGolongan($id_pegawai = string) {
-        $this->db->select('nip,golongan');
+    public function getDetailPegawai($id_pegawai = string) {
+        $this->db->select('golongan,status');
         $this->db->from('pegawai');
         $this->db->where('id', $id_pegawai);
         $query = $this->db->get();
