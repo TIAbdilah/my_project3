@@ -52,7 +52,18 @@ class Biaya_penginapan_model extends CI_Model {
         $this->db->from('biaya_penginapan');
         $this->db->where('id', $id_kota);
         $query = $this->db->get();
-        
+
         return $query->result();
     }
+
+    public function getBiayaPenginapan($nama_kota = string, $golongan = string) {
+        $sql = "select ba.* "
+                . "from biaya_penginapan ba "
+                . "where ba.nama_kota = ("
+                . "select kt.nama_provinsi "
+                . "from kota_tujuan kt where kt.nama_kota = '" . $nama_kota . "') and ba.golongan = '" . $golongan . "'";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
 }

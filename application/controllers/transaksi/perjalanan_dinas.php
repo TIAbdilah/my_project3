@@ -53,7 +53,7 @@ class Perjalanan_dinas extends CI_Controller {
         );
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->row();
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
-        $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name','Jenis Penginapan')->result();
+        $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -169,6 +169,88 @@ class Perjalanan_dinas extends CI_Controller {
             $arr[1] = $output2;
         }
         echo json_encode($arr);
+    }
+
+    public function getSubtotalBiaya() {
+        $nama_kota = $this->input->post('nama_kota', TRUE);
+        $statuspeg = $this->input->post('statuspeg', TRUE);
+
+        $data['uangharian'] = $this->biaya_akomodasi_model->getBiayaHarian($nama_kota, $statuspeg);
+        $output1 = null;
+
+        foreach ($data['uangharian'] as $row) {
+            $output1 .=$row->biaya;
+            $arr[0] = $output1;
+        }
+        echo json_encode($arr);
+    }
+
+    public function getSubtotalPenginapan() {
+        $nama_kota = $this->input->post('nama_kota', TRUE);
+        $golongan = $this->input->post('golongan', TRUE);
+
+        $pieces = explode("/", $golongan);
+
+        $data['penginapan'] = $this->biaya_penginapan_model->getBiayaPenginapan($nama_kota, $pieces[0]);
+        $output1 = null;
+
+        foreach ($data['penginapan'] as $row) {
+            $output1 .=$row->biaya;
+            $arr[0] = $output1;
+        }
+        echo json_encode($arr);
+    }
+
+    public function getBiayaHotelNonHotel() {
+        $id = $this->input->post('id', TRUE);
+        $nama_kota = $this->input->post('nama_kota', TRUE);
+        $golongan = $this->input->post('golongan', TRUE);
+
+        $pieces = explode("/", $golongan);
+
+        $data['penginapan'] = $this->biaya_penginapan_model->getBiayaPenginapan($nama_kota, $pieces[0]);
+        $output1 = null;
+
+        foreach ($data['penginapan'] as $row) {
+            $output1 .=$row->biaya;
+            if ($id === 'Non Hotel') {
+                $arr[0] = ($output1 * 30) / 100;
+            } else {
+                $arr[0] = $output1;
+            }
+        }
+        echo json_encode($arr);
+    }
+
+    public function populateTransport() {
+//        $param = $this->input->post('kota_asal', TRUE);
+//        $param2 = $this->input->post('kota_tujuan', TRUE);
+        $param = 'Bandung';
+        $param2 = 'Lampung';
+        $data['transport'] = $this->biaya_tiket_model->populateTransport($param, $param2);
+        $output = null;
+        $output = "<option value=''>Pilih</option>";
+        if ($data['transport']) {
+            foreach ($data['transport'] as $row) {
+                $output .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            echo $output;
+        } else {
+            $output .= "<option value=''>-Data Master Belum Diisi-</option>";
+            echo $output;
+        }
+    }
+
+    public function calculateTransport() {
+        $param = $this->input->post('id', TRUE);
+        $param2 = $this->input->post('kota_asal', TRUE);
+        $param3 = $this->input->post('kota_tujuan', TRUE);
+        $data['transport'] = $this->biaya_tiket_model->calculateTransport($param, $param2, $param3);
+        $output = null;
+        foreach ($data['transport'] as $row) {
+            $output .=$row->biaya;
+        }
+        echo $output;
     }
 
 }

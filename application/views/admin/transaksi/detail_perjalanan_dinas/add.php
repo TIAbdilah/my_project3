@@ -27,11 +27,18 @@
             </tr>
             <tr>
                 <td><label>Golongan</label></td>
-                <td><label id="inGolongan" name="inGolongan"></label></td>
+                <td>
+                    <label id="inGolongan" name="inGolongan"></label>
+                   
+                </td>
+
             </tr>
             <tr>
                 <td><label>Status Pegawai</label></td>
-                <td><label id="inStatusPeg" name="inStatusPeg"></label></td>
+                <td>
+                    <label id="inStatusPeg" name="inStatusPeg"></label>
+                    
+                </td>
             </tr>
             <tr>
                 <td colspan="6"><hr></td>
@@ -47,7 +54,7 @@
             <tr>
                 <td><label>Uang Harian</label></td>
                 <td></td>
-                <td><input type="text" placeholder="Di" id="inUangHarian1" name="inUangHarian1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
+                <td><input type="text" placeholder="Di" id="inKotaUangHarian1" name="inKotaUangHarian1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
 
                 <td></td>
                 <td></td>
@@ -58,27 +65,30 @@
                 <td></td>
                 <td><input type="text" placeholder="Di" id="inPenginapan1" name="inPenginapan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
                 <td>
-                        <select class="input" name="inJenisPenginapan1">
-                            <option>Pilih</option>
-                            <?php
-                            foreach ($SIList_jenisPenginapan as $row) {
-                                echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
-                            }
-                            ?>
-                        </select>
-                    
+                    <select class="input" name="inJenisPenginapan1" id="inJenisPenginapan1">
+                        <?php
+                        foreach ($SIList_jenisPenginapan as $row) {
+                            echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
+                        }
+                        ?>
+                    </select>
+
                 </td>
 
                 <td></td>
-                <td><input type="text" placeholder="Subtotal"/></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalUangPenginapan1" name="inSubtotalUangPenginapan1"/></td>
             </tr>
             <tr>
                 <td><label>Transport Utama</label></td>
                 <td><input type="text" placeholder="Dari" id="inKotaAsal1" name="inKotaAsal1" value="Bandung"/></td>
                 <td><input type="text" placeholder="Ke" id="inKotaTujuan1" name="inKotaTujuan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
-                <td><input type="text" placeholder="Jenis Kendaraan"/></td>
+                <td>
+                    <select name="idJenisTransportUtama1" id="idJenisTransportUtama1">
+                        
+                    </select>
+                </td>
                 <td></td>
-                <td><input type="text" placeholder="Subtotal"/></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportUtama1" name="inSubtotalTransportUtama1"/></td>
             </tr>
             <tr>
                 <td><label>Transport Pendukung</label></td>
@@ -86,7 +96,7 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" placeholder="Subtotal"/></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung"/></td>
             </tr>
             <tr>
                 <td><label>Pengeluaran Riil</label></td>
@@ -94,11 +104,11 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><input type="text" placeholder="Subtotal"/></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil"/></td>
             </tr>
             <tr>
                 <td colspan="5" align="center"><label>TOTAL</label></td>
-                <td><input type="text" placeholder="Total"/></td>
+                <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
             </tr>
         </tbody>
     </table>
