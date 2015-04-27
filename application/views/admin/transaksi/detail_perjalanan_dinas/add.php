@@ -110,6 +110,10 @@
                 <td colspan="5" align="center"><label>TOTAL</label></td>
                 <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
             </tr>
+             <tr>
+                <td colspan="5" align="center"><label>TOTAL</label></td>
+                <td><input type="submit" value="Simpan"/></td>
+            </tr>
         </tbody>
     </table>
 </form>
