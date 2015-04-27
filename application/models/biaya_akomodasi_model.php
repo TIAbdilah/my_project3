@@ -47,13 +47,16 @@ class Biaya_akomodasi_model extends CI_Model {
         $this->db->delete('biaya_akomodasi', array('id' => $id));
     }
     
-    public function calculateAkomodasi($id_kota = string) {
-        $this->db->select('biaya');
-        $this->db->from('biaya_akomodasi');
-        $this->db->where('id', $id_kota);
-        $query = $this->db->get();
-        
+    public function getBiayaHarian($nama_kota = string, $statuspeg = string) {
+        $sql="select ba.* "
+                . "from biaya_akomodasi ba "
+                . "where ba.nama_kota = ("
+                . "select kt.nama_provinsi "
+                . "from kota_tujuan kt where kt.nama_kota = '".$nama_kota."') and ba.status_pegawai = '".$statuspeg."'";
+        $query = $this->db->query($sql);
         return $query->result();
     }
+    
+        
 
 }

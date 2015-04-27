@@ -49,19 +49,23 @@ class Biaya_tiket_model extends CI_Model {
         $this->db->delete('biaya_tiket', array('id' => $id));
     }
 
-    public function populateTransport($param = string) {
-        $this->db->select('id,jenis_kendaraan');
+    public function populateTransport($param = string, $param2 = string) {
+        $this->db->select('biaya,jenis_kendaraan');
         $this->db->from('biaya_tiket');
-        $this->db->where('kota_tujuan', $param);
+//        $this->db->where(array('kota_asal' => $param, 'kota_tujuan' => $param2));
+        $this->db->where('kota_asal', $param);
+        $this->db->where('kota_tujuan', $param2);
         $query = $this->db->get();
 
         return $query->result();
     }
 
-    public function calculateTransport($param = string) {
-        $this->db->select('id,biaya');
+    public function calculateTransport($param = string, $param2 = string, $param3 = string) {
+        $this->db->select('biaya');
         $this->db->from('biaya_tiket');
-        $this->db->where('id', $param);
+        $this->db->where('jenis_kendaraan', $param);
+        $this->db->where('kota_asal', $param2);
+        $this->db->where('kota_tujuan', $param3);
         $query = $this->db->get();
 
         return $query->result();

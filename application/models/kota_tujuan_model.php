@@ -47,8 +47,8 @@ class Kota_tujuan_model extends CI_Model {
         $this->db->delete('kota_tujuan', array('id' => $id));
     }
     
-    //select ba.* 
-//from biaya_akomodasi ba
-//where ba.nama_kota = (select kt.nama_provinsi from kota_tujuan kt where kt.nama_kota = 'Banda Aceh');
+   
+    
+
 
 }
