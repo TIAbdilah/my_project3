@@ -158,7 +158,7 @@ class Perjalanan_dinas extends CI_Controller {
                 $this->counter = new Counter();
                 $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
                 $counter = $this->counter->generateId($pattern);
-                $data['no_spt'] = $counter."/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
+                $data['no_spt'] = $counter . "/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
                 $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
             }
         } else {
@@ -192,6 +192,8 @@ class Perjalanan_dinas extends CI_Controller {
         $this->counter = new Counter();
         $kode = $this->bulan_romawi[date('m')] . "-" . date('Y');
         echo $this->counter->generateId($kode);
+    }
+
     public function getSubtotalBiaya() {
         $nama_kota = $this->input->post('nama_kota', TRUE);
         $statuspeg = $this->input->post('statuspeg', TRUE);
