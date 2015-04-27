@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2015 at 10:12 PM
+-- Generation Time: Apr 28, 2015 at 04:14 AM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -519,6 +519,26 @@ CREATE TABLE IF NOT EXISTS `biaya_transport_dlm_kota` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `counter`
+--
+
+CREATE TABLE IF NOT EXISTS `counter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pattern` varchar(20) NOT NULL,
+  `counter` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `counter`
+--
+
+INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
+(1, 'IV-2015', 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `detail_perjalanan_dinas`
 --
 
@@ -526,6 +546,8 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pegawai` int(11) NOT NULL,
   `id_header` int(11) NOT NULL,
+  `tgl_berangkat` date DEFAULT NULL,
+  `tgl_pulang` date DEFAULT NULL,
   `jenis_biaya` varchar(25) NOT NULL,
   `kota_asal` int(11) DEFAULT NULL,
   `kota_tujuan` int(11) DEFAULT NULL,
@@ -533,12 +555,23 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `jenis_jendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `detail_perjalanan_dinas`
 --
 
+INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_berangkat`, `tgl_pulang`, `jenis_biaya`, `kota_asal`, `kota_tujuan`, `jenis_penginapan`, `jenis_jendaraan`, `biaya`) VALUES
+(1, 2, 2, '2015-04-27', '2015-04-27', 'harian', NULL, 7, NULL, NULL, 100000),
+(2, 2, 2, '2015-04-27', '2015-04-27', 'penginapan', NULL, 7, NULL, NULL, 100000),
+(3, 2, 2, '2015-04-27', '2015-04-27', 'transport_utama', 10, 7, NULL, NULL, 100000),
+(4, 2, 2, '2015-04-27', '2015-04-27', 'transport_pendukung', NULL, 7, NULL, NULL, 100000),
+(5, 2, 2, '2015-04-27', '2015-04-27', 'riil', NULL, 7, NULL, NULL, 100000),
+(6, 3, 2, '2015-04-27', '2015-04-27', 'harian', NULL, 7, NULL, NULL, 200000),
+(7, 3, 2, '2015-04-27', '2015-04-27', 'penginapan', NULL, 7, NULL, NULL, 200000),
+(8, 3, 2, '2015-04-27', '2015-04-27', 'transport_utama', 10, 7, NULL, NULL, 200000),
+(9, 3, 2, '2015-04-27', '2015-04-27', 'transport_pendukung', NULL, 7, NULL, NULL, 200000),
+(10, 3, 2, '2015-04-27', '2015-04-27', 'riil', NULL, 7, NULL, NULL, 200000);
 
 -- --------------------------------------------------------
 
@@ -691,7 +724,7 @@ CREATE TABLE IF NOT EXISTS `komentar` (
   `username` varchar(50) NOT NULL,
   `komentar` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `komentar`
@@ -700,7 +733,9 @@ CREATE TABLE IF NOT EXISTS `komentar` (
 INSERT INTO `komentar` (`id`, `id_header`, `username`, `komentar`) VALUES
 (1, '1', 'admin', 'balik yu'),
 (2, '1', 'admin', 'duh jelek'),
-(3, '1', 'admin', 'butut');
+(3, '1', 'admin', 'butut'),
+(4, '2', 'esselon 4', '0'),
+(5, '2', 'esselon 4', 'xxxxxxxxxxxxxxxxxxxxxxxxxxx');
 
 -- --------------------------------------------------------
 
@@ -743,7 +778,7 @@ CREATE TABLE IF NOT EXISTS `kota_tujuan` (
 INSERT INTO `kota_tujuan` (`id`, `kode_wilayah`, `nama_provinsi`, `nama_kota`) VALUES
 (1, 11, 'ACEH', 'Banda Aceh'),
 (2, 51, 'B A L I', 'Denpasar'),
-(3, 19, 'BANGKA BELITUNG', 'Pangkal Pinang '),
+(3, 19, 'BANGKA BELITUNG', 'Pangkal Pinang'),
 (4, 36, 'BANTEN', 'Tangerang'),
 (5, 17, 'BENGKULU', 'Bengkulu'),
 (6, 34, 'D.I.  YOGYAKARTA', 'Yogyakarta'),
@@ -1100,7 +1135,7 @@ INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `nama`, `nip`, `alam
 (6, 2, 'tes', '222', 'tes', 'tes@tes.com', 'tes', '0cc175b9c0f1b6a831c399e269772661', '222'),
 (7, 1, 'Admin123', '1234', 'Cimahi', 'admin@admin.com', 'admin123', '21232f297a57a5a743894a0e4a801fc3', '123456'),
 (8, 1, 'Admin123456', '1234', 'Cimahi', 'admin@admin.com', 'admin123456', '21232f297a57a5a743894a0e4a801fc3', '123456'),
-(9, 2, 'taufik', '0009999', 'baleendah', 'ti.abdilah@gmail.com', 'opik123', 'a96697c9ced48372369b18fb47c003c0', '098234'),
+(9, 1, 'taufik', '0009999', 'baleendah', 'ti.abdilah@gmail.com', 'opik123', 'a96697c9ced48372369b18fb47c003c0', '098234'),
 (10, 1, 'operator', '', '', '', 'operator', '0cc175b9c0f1b6a831c399e269772661', ''),
 (11, 2, '', '', '', '', 'eselon4', '0cc175b9c0f1b6a831c399e269772661', '');
 
@@ -1134,10 +1169,10 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
 --
 
 INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `status`, `id_anggaran`, `jumlah_tujuan`, `maksud_perjalanan`, `jadwal_berangkat_1`, `jadwal_berangkat_2`, `jadwal_berangkat_3`, `jadwal_pulang_1`, `jadwal_pulang_2`, `jadwal_pulang_3`, `kota_tujuan_1`, `kota_tujuan_2`, `kota_tujuan_3`) VALUES
-(1, 'Auto Generated', '4', '2', 3, 'maksud satu', '2015-04-20', '2015-04-21', '2015-04-22', '2015-04-21', '2015-04-22', '2015-04-23', '1', '2', '1'),
-(2, '-', '2', '2', 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', NULL, NULL, '0000-00-00', NULL, NULL, '1', NULL, NULL),
+(1, '002/SPPD/SATKER/LP/IV/2015', '5', '2', 3, 'maksud satu', '2015-04-20', '2015-04-21', '2015-04-22', '2015-04-21', '2015-04-22', '2015-04-23', '1', '2', '1'),
+(2, '003/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', NULL, NULL, '0000-00-00', NULL, NULL, '1', NULL, NULL),
 (3, '-', '1', '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
-(4, '-', '0', '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19');
+(4, '-', '5', '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19');
 
 -- --------------------------------------------------------
 
