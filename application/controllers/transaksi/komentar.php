@@ -9,10 +9,15 @@ if (!defined('BASEPATH'))
 
 class Komentar extends CI_Controller {
 
-    var $akun = array();
-
     public function __construct() {
         parent::__construct();
+        $this->load->model('transaksi/komentar_model');
+    }
+    
+    public function index() {        
+        $data['page'] = 'admin/transaksi/komentar/list';
+        $data['list_data'] = $this->komentar_model->select_all()->result();
+        $this->load->view('admin/index', $data);
     }
 
     public function process($action, $id = null) {

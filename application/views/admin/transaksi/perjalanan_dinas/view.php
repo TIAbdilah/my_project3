@@ -17,11 +17,11 @@ function format_date($string) {
                 <td valign="top" width="50%">:&nbsp;<?php echo $data->nama_kegiatan ?></td>
                 <td valign="top" width="40%" rowspan="6">
                     <form action="<?php echo site_url('transaksi/perjalanan_dinas/update_status/' . $data->id) ?>" method="POST">            
-                        <input type="hidden" name="inpIdHeader" value="<?php echo $data->id?>" />
-                        <input type="hidden" name="inpStatus" value="<?php echo $data->status?>" />
+                        <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
+                        <input type="hidden" name="inpStatus" value="<?php echo $data->status ?>" />
                         <?php if ($this->session->userdata('role') != 'operator') { ?>
                             <strong>Verifikasi</strong><br>
-                            <textarea style="width: 95%" rows="2" placeholder="Alasan Penolakan"></textarea><br>
+                            <textarea style="width: 95%" rows="2" name="inpKomentar" placeholder="Alasan Penolakan"></textarea><br>
                             <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Setuju"/>
                             <input type="submit" class="btn btn-danger" id="btnKomentar" name="inpAksi" value="Tolak"/>
                             <br>
@@ -33,7 +33,21 @@ function format_date($string) {
                             </a>                        
                         <?php } ?>
                     </form>
-                    <span class="pull-right"><a href="#">alasan penolakan</a></span>
+                    <span class="pull-right">
+                        <a href="#viewKomentar" role="button" data-toggle="modal">alasan penolakan</a>
+
+                        <div id="viewKomentar" class="modal hide fade modal-admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3 id="myModalLabel">Alasan Penolakan Pengajuan</h3>
+                            </div>
+                            <div class="modal-body">
+                                <?php
+                                $this->load->view('admin/transaksi/komentar/list');
+                                ?>
+                            </div>
+                        </div>
+                    </span>
                 </td>
             </tr>
             <tr>

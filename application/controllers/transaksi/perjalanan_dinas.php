@@ -7,7 +7,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-//require_once('./common/counter.php');
+require_once('counter.php');
 
 class Perjalanan_dinas extends CI_Controller {
 
@@ -18,6 +18,20 @@ class Perjalanan_dinas extends CI_Controller {
         '3' => 'menunggu verivikasi asisten satker',
         '4' => 'menunggu verivikasi PPK',
         '5' => 'lima'
+    );
+    var $bulan_romawi = array(
+        '01' => 'I',
+        '02' => 'II',
+        '03' => 'III',
+        '04' => 'IV',
+        '05' => 'V',
+        '06' => 'VI',
+        '07' => 'VII',
+        '08' => 'VIII',
+        '09' => 'IX',
+        '10' => 'X',
+        '11' => 'XI',
+        '12' => 'XII'
     );
     var $title_page = "e-satker | Perjalanan Dinas";
 
@@ -47,11 +61,11 @@ class Perjalanan_dinas extends CI_Controller {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/perjalanan_dinas/view';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
-//        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($id)->row();
         $param = array(
             'id_header' => $id
         );
-        $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->row();
+        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
+        $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
         $this->load->view('admin/index', $data);
@@ -137,23 +151,26 @@ class Perjalanan_dinas extends CI_Controller {
     public function update_status($id_header) {
         $aksi = $this->input->post('inpAksi');
         $status = $this->input->post('inpStatus');
-        if ($aksi == 'ya') {
-            $data['status_approval'] = $status + 1;
+        if ($aksi == 'Setuju' || $aksi == 'Ajukan') {
+            $data['status'] = $status + 1;
             $this->perjalanan_dinas_model->update_status($id_header, $data);
             if ($this->session->userdata('role') == 'ppk') {
-                $data['no_spt'] = 'SPT/001/2015/001';
+                $this->counter = new Counter();
+                $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
+                $counter = $this->counter->generateId($pattern);
+                $data['no_spt'] = $counter."/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
                 $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
             }
         } else {
-            $data['status_approval'] = $status - 1;
+            $data['status'] = $status - 1;
             $this->perjalanan_dinas_model->update_status($id_header, $data);
 
-//            $data['id_header'] = $id_header;
-//            $data['username'] = $this->akun['username'];
-//            $data['komentar'] = $this->input->post('inComment');
-//            $this->komentar_model->add($data);
+            $data['id_header'] = $id_header;
+            $data['username'] = $this->session->userdata('role');
+            $data['komentar'] = $this->input->post('inpKomentar');
+            $this->komentar_model->add($data);
         }
-//        redirect('transaksi/perjalanan_dinas');
+        redirect('transaksi/perjalanan_dinas');
     }
 
     //tambahan untuk ajax
@@ -171,6 +188,10 @@ class Perjalanan_dinas extends CI_Controller {
         echo json_encode($arr);
     }
 
+    public function cek_counter() {
+        $this->counter = new Counter();
+        $kode = $this->bulan_romawi[date('m')] . "-" . date('Y');
+        echo $this->counter->generateId($kode);
     public function getSubtotalBiaya() {
         $nama_kota = $this->input->post('nama_kota', TRUE);
         $statuspeg = $this->input->post('statuspeg', TRUE);

@@ -8,17 +8,11 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Unit extends CI_Controller {
-
-    var $akun = array(); 
     
     public function __construct() {
         parent::__construct();
         $this->load->model('unit_model');
         $this->load->model('pegawai_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
     public function index() {        

@@ -15,7 +15,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpNamaProvinsi">Kode Provinsi</label>
                 <div class="controls">
-                    <input type="text" id="inpNamaProvinsi" name="inpNamaProvinsi" value="<?php echo $row->kode_provinsi ?>">
+                    <input type="text" id="inpNamaProvinsi" name="inpNamaProvinsi" value="<?php echo $row->nama_provinsi ?>">
                 </div>
             </div>
             <div class="control-group">
