@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 27, 2015 at 07:42 PM
+-- Generation Time: Apr 27, 2015 at 10:12 PM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -734,46 +734,47 @@ CREATE TABLE IF NOT EXISTS `kota_tujuan` (
   `nama_provinsi` varchar(25) DEFAULT NULL,
   `nama_kota` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `kota_tujuan`
 --
 
 INSERT INTO `kota_tujuan` (`id`, `kode_wilayah`, `nama_provinsi`, `nama_kota`) VALUES
-(1, 11, 'Nanggroe Aceh Darussalam', 'Banda Aceh'),
-(2, 12, 'Sumatera Utara', 'Medan'),
-(3, 13, 'Sumatera Barat', 'Padang'),
-(4, 14, ' Riau', 'Pekanbaru'),
-(5, 15, ' Jambi', 'Jambi'),
-(6, 16, ' Sumatera Selatan', 'Palembang '),
-(7, 17, ' Bengkulu', 'Bengkulu '),
-(8, 18, ' Lampung', ' Lampung'),
-(9, 19, ' Kepulauan Bangka Belitun', 'Pangkal Pinang  '),
-(10, 21, ' Kepulauan Riau', 'Tanjung Pinang  '),
-(11, 31, ' Dki Jakarta', 'Jakarta '),
-(12, 32, ' Jawa Barat', 'Bandung '),
-(13, 33, ' Jawa Tengah', 'Semarang'),
-(14, 34, ' D I Yogyakarta', 'Yogyakarta '),
-(15, 35, ' Jawa Timur', 'Surabaya'),
-(16, 36, ' Banten', 'Tangerang'),
-(17, 51, ' Bali', 'Denpasar'),
-(18, 52, ' Nusa Tenggara Barat', 'Mataram '),
-(19, 53, ' Nusa Tenggara Timur', 'Kupang '),
-(20, 61, ' Kalimantan Barat', 'Pontianak '),
-(21, 62, ' Kalimantan Tengah', ' Palangkaraya'),
-(22, 63, ' Kalimantan Selatan', 'Banjarmasin '),
-(23, 64, ' Kalimantan Timur', 'Samarinda '),
-(24, 71, ' Sulawesi Utara', 'Manado '),
-(25, 72, ' Sulawesi Tengah', 'Palu '),
-(26, 73, ' Sulawesi Selatan', 'Ujungpandang '),
-(27, 74, ' Sulawesi Tenggara', 'Kendari '),
-(28, 75, ' Gorontalo', 'Gorontalo '),
-(29, 76, ' Sulawesi Barat', ' Mamuju'),
-(30, 81, ' M A L U K U', 'Ambon '),
-(31, 82, ' Maluku Utara', 'Ternate '),
-(32, 91, ' Papua Barat', 'Manokwari '),
-(33, 94, ' Papua', 'Jayapura ');
+(1, 11, 'ACEH', 'Banda Aceh'),
+(2, 51, 'B A L I', 'Denpasar'),
+(3, 19, 'BANGKA BELITUNG', 'Pangkal Pinang '),
+(4, 36, 'BANTEN', 'Tangerang'),
+(5, 17, 'BENGKULU', 'Bengkulu'),
+(6, 34, 'D.I.  YOGYAKARTA', 'Yogyakarta'),
+(7, 31, 'D.K.I   JAKARTA', 'Jakarta'),
+(8, 75, 'GORONTALO', 'Gorontalo'),
+(9, 15, 'JAMBI', 'Jambi'),
+(10, 32, 'JAWA BARAT', 'Bandung'),
+(11, 33, 'JAWA TENGAH', 'Semarang'),
+(12, 35, 'JAWA TIMUR', 'Surabaya'),
+(13, 61, 'KALIMANTAN BARAT', 'Pontianak'),
+(14, 63, 'KALIMANTAN SELATAN', 'Banjarmasin'),
+(15, 62, 'KALIMANTAN TENGAH', 'Palangkaraya'),
+(16, 64, 'KALIMANTAN TIMUR', 'Samarinda'),
+(17, NULL, 'KALIMANTAN UTARA ', 'Tanjung Selor'),
+(18, 21, 'KEPULAUAN RIAU', 'Tanjung Pinang '),
+(19, 18, 'LAMPUNG', 'Lampung'),
+(20, 81, 'MALUKU', 'Ambon'),
+(21, 82, 'MALUKU UTARA', 'Ternate'),
+(22, 52, 'NUSA TENGGARA BARAT', 'Mataram'),
+(23, 53, 'NUSA TENGGARA TIMUR', 'Kupang'),
+(24, 94, 'PAPUA', 'Jayapura'),
+(25, 91, 'PAPUA BARAT', 'Manokwari'),
+(26, 14, 'RIAU', 'Pekanbaru'),
+(27, 76, 'SULAWESI BARAT', 'Mamuju'),
+(28, 73, 'SULAWESI SELATAN', 'Ujungpandang'),
+(29, 72, 'SULAWESI TENGAH', 'Palu'),
+(30, 74, 'SULAWESI TENGGARA', 'Kendari'),
+(31, 71, 'SULAWESI UTARA', 'Manado'),
+(32, 13, 'SUMATERA BARAT', 'Padang'),
+(33, 16, 'SUMATERA SELATAN', 'Palembang'),
+(34, 12, 'SUMATERA UTARA', 'Medan');
 
 -- --------------------------------------------------------
 
