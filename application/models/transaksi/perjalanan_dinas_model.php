@@ -64,12 +64,12 @@ class Perjalanan_dinas_model extends CI_Model {
             'id_anggaran' => $data['id_anggaran'],
             'jumlah_tujuan' => $data['jumlah_tujuan'],
             'maksud_perjalanan' => $data['maksud_perjalanan'],
-            'jadwal_berangkat_1' => substr($data['jadwal_berangkat_1'], 6, 4).'-'.substr($data['jadwal_berangkat_1'], 3, 2).'-'.substr($data['jadwal_berangkat_1'], 0, 2),
-            'jadwal_berangkat_2' => substr($data['jadwal_berangkat_2'], 6, 4).'-'.substr($data['jadwal_berangkat_2'], 3, 2).'-'.substr($data['jadwal_berangkat_2'], 0, 2),
-            'jadwal_berangkat_3' => substr($data['jadwal_berangkat_3'], 6, 4).'-'.substr($data['jadwal_berangkat_3'], 3, 2).'-'.substr($data['jadwal_berangkat_3'], 0, 2),
-            'jadwal_pulang_1' => substr($data['jadwal_pulang_1'], 6, 4).'-'.substr($data['jadwal_pulang_1'], 3, 2).'-'.substr($data['jadwal_pulang_1'], 0, 2),
-            'jadwal_pulang_2' => substr($data['jadwal_pulang_2'], 6, 4).'-'.substr($data['jadwal_pulang_2'], 3, 2).'-'.substr($data['jadwal_pulang_2'], 0, 2),
-            'jadwal_pulang_3' => substr($data['jadwal_pulang_3'], 6, 4).'-'.substr($data['jadwal_pulang_3'], 3, 2).'-'.substr($data['jadwal_pulang_3'], 0, 2),
+            'jadwal_berangkat_1' => $this->format_date_to_sql($data['jadwal_berangkat_1']),
+            'jadwal_berangkat_2' => $this->format_date_to_sql($data['jadwal_berangkat_2']),
+            'jadwal_berangkat_3' => $this->format_date_to_sql($data['jadwal_berangkat_3']),
+            'jadwal_pulang_1' => $this->format_date_to_sql($data['jadwal_pulang_1']),
+            'jadwal_pulang_2' => $this->format_date_to_sql($data['jadwal_pulang_2']),
+            'jadwal_pulang_3' => $this->format_date_to_sql($data['jadwal_pulang_3']),
             'kota_tujuan_1' => $data['kota_tujuan_1'],
             'kota_tujuan_2' => $data['kota_tujuan_2'],
             'kota_tujuan_3' => $data['kota_tujuan_3']
@@ -84,12 +84,11 @@ class Perjalanan_dinas_model extends CI_Model {
             'id_anggaran' => $data['id_anggaran'],
             'jumlah_tujuan' => $data['jumlah_tujuan'],
             'maksud_perjalanan' => $data['maksud_perjalanan'],
-            'jadwal_berangkat_1' => substr($data['jadwal_berangkat_1'], 6, 4).'-'.substr($data['jadwal_berangkat_1'], 3, 2).'-'.substr($data['jadwal_berangkat_1'], 0, 2),
-            'jadwal_berangkat_2' => substr($data['jadwal_berangkat_2'], 6, 4).'-'.substr($data['jadwal_berangkat_2'], 3, 2).'-'.substr($data['jadwal_berangkat_2'], 0, 2),
-            'jadwal_berangkat_3' => substr($data['jadwal_berangkat_3'], 6, 4).'-'.substr($data['jadwal_berangkat_3'], 3, 2).'-'.substr($data['jadwal_berangkat_3'], 0, 2),
-            'jadwal_pulang_1' => substr($data['jadwal_pulang_1'], 6, 4).'-'.substr($data['jadwal_pulang_1'], 3, 2).'-'.substr($data['jadwal_pulang_1'], 0, 2),
-            'jadwal_pulang_2' => substr($data['jadwal_pulang_2'], 6, 4).'-'.substr($data['jadwal_pulang_2'], 3, 2).'-'.substr($data['jadwal_pulang_2'], 0, 2),
-            
+            'jadwal_berangkat_1' => $this->format_date_to_sql($data['jadwal_berangkat_1']),
+            'jadwal_berangkat_2' => $this->format_date_to_sql($data['jadwal_berangkat_2']),
+            'jadwal_berangkat_3' => $this->format_date_to_sql($data['jadwal_berangkat_3']),
+            'jadwal_pulang_1' => $this->format_date_to_sql($data['jadwal_pulang_1']),
+            'jadwal_pulang_2' => $this->format_date_to_sql($data['jadwal_pulang_2']),            
             'jadwal_pulang_3' => $this->format_date_to_sql($data['jadwal_pulang_3']),
             'kota_tujuan_1' => $data['kota_tujuan_1'],
             'kota_tujuan_2' => $data['kota_tujuan_2'],
@@ -105,28 +104,22 @@ class Perjalanan_dinas_model extends CI_Model {
 
     //tambahan
 
-
     public function updateStatus($id, $data) {
-
         $data = array(
             'status_approval' => $data['status_approval']
         );
-
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }
 
     public function updateSPT($id, $data) {
-
         $data = array(
             'no_spt' => $data['no_spt']
         );
-
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }
 
     
     public function get_jumlah_tujuan($id) {
-
         $sql = "select jumlah_tujuan from perjalanan_dinas where id=" . $id;
         $query = $this->db->query($sql);
         return $query->row_array();

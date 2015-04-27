@@ -22,7 +22,8 @@ class Perjalanan_dinas extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/perjalanan_dinas_model');
-        $this->load->model('transaksiperjalanandinasdetail_model');
+        $this->load->model('transaksi/detail_perjalanan_dinas_model');
+        $this->load->model('transaksi/komentar_model');
         $this->load->model('anggaran_model');
         $this->load->model('pegawai_model');
         $this->load->model('kota_tujuan_model');
@@ -30,7 +31,6 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->model('biaya_akomodasi_model');
         $this->load->model('biaya_penginapan_model');
         $this->load->model('biaya_tiket_model');
-        $this->load->model('komentar_model');
     }
 
     public function index() {
@@ -45,6 +45,11 @@ class Perjalanan_dinas extends CI_Controller {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/perjalanan_dinas/view';        
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
+        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($id)->row();
+        $param = array(
+            'id_header' => $id
+        );
+        $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->row();
         $this->load->view('admin/index', $data);
     }
 
@@ -119,49 +124,32 @@ class Perjalanan_dinas extends CI_Controller {
     }
 
     public function delete($id) {
-        $this->transaksiperjalanandinasheader_model->delete($id);
-        redirect('transaksi/perjalanandinas');
+        $this->perjalanan_dinas_model->delete($id);
+        redirect('transaksi/perjalanan_dinas');
     }
 
     // tambahan
 
-    public function jumlahtujuan($jumlahtujuan) {
-        $data['akun'] = $this->akun;
-        $data['jumlahtujuan'] = $jumlahtujuan;
-        $data['title'] = $this->title_page;
-        $data['page'] = 'admin/transaksi/perjalanandinas/add';
-        $data['SIList_akun'] = $this->akun_model->select_all()->result();
-        $data['SIList_kegiatan'] = $this->kegiatan_model->select_all()->result();
-        $data['perjalanan_detail'] = $this->transaksiperjalanandinasdetail_model->select_all()->result();
-        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
-        $data['SIList_kota_tujuan'] = $this->biaya_akomodasi_model->select_all()->result();
-        $data['SIList_jenis_penginapan'] = $this->biaya_penginapan_model->select_all()->result();
-        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
-        $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
-        $data['SIList_jenisKendaraanPendukung'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan Pendukung')->result();
-        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
-        $this->load->view('admin/index', $data);
-    }
-
-    public function updateStatus($aksi, $status) {
-        $id_header = $this->input->post('inIdHeader');
+    public function updateStatus($aksi) {
+        $id_header = $this->input->post('inpIdHeader');
+        $status = $this->input->post('inpStatus');
         if ($aksi == 'ya') {
             $data['status_approval'] = $status + 1;
-            $this->transaksiperjalanandinasheader_model->updateStatus($id_header, $data);
-            if ($this->akun['role'] == 'kepala satker') {
+            $this->perjalanan_dinas_model->updateStatus($id_header, $data);
+            if ($this->session->userdata('role') == 'ppk') {
                 $data['no_spt'] = 'SPT/001/2015/001';
-                $this->transaksiperjalanandinasheader_model->updateSPT($id_header, $data);
+                $this->perjalanan_dinas_model->updateSPT($id_header, $data);
             }
         } else {
             $data['status_approval'] = $status - 1;
-            $this->transaksiperjalanandinasheader_model->updateStatus($id_header, $data);
+            $this->perjalanan_dinas_model->updateStatus($id_header, $data);
 
             $data['id_header'] = $id_header;
             $data['username'] = $this->akun['username'];
             $data['komentar'] = $this->input->post('inComment');
             $this->komentar_model->add($data);
         }
-        redirect('transaksi/perjalanandinas');
+        redirect('transaksi/perjalanan_dinas');
     }
 
 }
