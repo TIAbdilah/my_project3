@@ -25,8 +25,8 @@ class Komentar_model extends CI_Model {
         return $this->db->get_where('komentar', array('id_header' => $id_header));
     }
 
-    public function select_by_field($field, $keyword) {
-        return $this->db->get_where('komentar', array($field => $keyword));
+    public function select_by_field($param = array()) {
+        return $this->db->get_where('komentar', $param);
     }
 
     public function add($data) {
