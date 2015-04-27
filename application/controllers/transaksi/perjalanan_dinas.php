@@ -7,6 +7,8 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+//require_once('./common/counter.php');
+
 class Perjalanan_dinas extends CI_Controller {
 
     var $status = array(
@@ -131,26 +133,26 @@ class Perjalanan_dinas extends CI_Controller {
 
     // tambahan
 
-    public function updateStatus($aksi) {
-        $id_header = $this->input->post('inpIdHeader');
+    public function update_status($id_header) {
+        $aksi = $this->input->post('inpAksi');
         $status = $this->input->post('inpStatus');
         if ($aksi == 'ya') {
             $data['status_approval'] = $status + 1;
-            $this->perjalanan_dinas_model->updateStatus($id_header, $data);
+            $this->perjalanan_dinas_model->update_status($id_header, $data);
             if ($this->session->userdata('role') == 'ppk') {
                 $data['no_spt'] = 'SPT/001/2015/001';
-                $this->perjalanan_dinas_model->updateSPT($id_header, $data);
+                $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
             }
         } else {
             $data['status_approval'] = $status - 1;
-            $this->perjalanan_dinas_model->updateStatus($id_header, $data);
+            $this->perjalanan_dinas_model->update_status($id_header, $data);
 
-            $data['id_header'] = $id_header;
-            $data['username'] = $this->akun['username'];
-            $data['komentar'] = $this->input->post('inComment');
-            $this->komentar_model->add($data);
+//            $data['id_header'] = $id_header;
+//            $data['username'] = $this->akun['username'];
+//            $data['komentar'] = $this->input->post('inComment');
+//            $this->komentar_model->add($data);
         }
-        redirect('transaksi/perjalanan_dinas');
+//        redirect('transaksi/perjalanan_dinas');
     }
 
     //tambahan untuk ajax

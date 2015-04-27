@@ -24,26 +24,17 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_id($id) {
-        $this->db->select('*');
-        
-        $sub = $this->subquery->start_subquery('select');
-        $sub->select('nama_kota')->from('kota_tujuan');
-        $sub->where('perjalanan_dinas.kota_tujuan_1 = kota_tujuan.id');
-        $this->subquery->end_subquery('nama_kota_tujuan_1');
-        
-        $sub = $this->subquery->start_subquery('select');
-        $sub->select('nama_kota')->from('kota_tujuan');
-        $sub->where('perjalanan_dinas.kota_tujuan_2 = kota_tujuan.id');
-        $this->subquery->end_subquery('nama_kota_tujuan_2');
-        
-        $sub = $this->subquery->start_subquery('select');
-        $sub->select('nama_kota')->from('kota_tujuan');
-        $sub->where('perjalanan_dinas.kota_tujuan_3 = kota_tujuan.id');
-        $this->subquery->end_subquery('nama_kota_tujuan_3');
-        
-        $this->db->from('perjalanan_dinas');
-        $this->db->where(array('id' => $id));
-        return $this->db->get();
+        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja, '
+                . '(select k1.nama_kota from kota_tujuan k1 where k1.id = pd.kota_tujuan_1) as nama_kota_tujuan_1, '
+                . '(select k2.nama_kota from kota_tujuan k2 where k2.id = pd.kota_tujuan_2) as nama_kota_tujuan_2, '
+                . '(select k3.nama_kota from kota_tujuan k3 where k3.id = pd.kota_tujuan_3) as nama_kota_tujuan_3 '
+                . 'from perjalanan_dinas pd, '
+                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
+                . 'from anggaran a, kegiatan k, akun ak '
+                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
+                . 'where pd.id_anggaran = a1.id '
+                . 'and pd.id = '.$id;
+        return $this->db->query($query);
     }
 
     public function select_by_field($param = array()) {
@@ -104,14 +95,14 @@ class Perjalanan_dinas_model extends CI_Model {
 
     //tambahan
 
-    public function updateStatus($id, $data) {
+    public function update_status($id, $data) {
         $data = array(
             'status_approval' => $data['status_approval']
         );
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }
 
-    public function updateSPT($id, $data) {
+    public function update_no_spt($id, $data) {
         $data = array(
             'no_spt' => $data['no_spt']
         );
