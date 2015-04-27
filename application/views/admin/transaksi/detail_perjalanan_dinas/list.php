@@ -11,7 +11,15 @@
                     <h3 id="myModalLabel">Alasan Penolakan Pengajuan</h3>
                 </div>
                 <div class="modal-body">
-                   <?php $this->load->view('transaksi/detail_perjalanan_dinas/add')?>
+                    <?php
+                    if ($data->jumlah_tujuan == 1) {
+                        $this->load->view('transaksi/detail_perjalanan_dinas/add');
+                    } else if ($data->jumlah_tujuan == 2) {
+                        $this->load->view('transaksi/detail_perjalanan_dinas/add_2');
+                    } else {
+                        $this->load->view('transaksi/detail_perjalanan_dinas/add_3');
+                    }
+                    ?>
                 </div>
             </div>
         </span>

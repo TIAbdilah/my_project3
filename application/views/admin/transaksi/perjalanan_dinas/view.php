@@ -16,14 +16,22 @@ function format_date($string) {
                 <td width="10%"><strong>Anggaran</strong></td>
                 <td valign="top" width="50%">:&nbsp;<?php echo $data->id_anggaran ?></td>
                 <td valign="top" width="40%" rowspan="6">
-                    <strong>Verifikasi</strong><br>
-                    <textarea style="width: 95%" rows="2" placeholder="Alasan Penolakan"></textarea><br>
-                    <a href="#" class="btn btn-mini btn-success">
-                        <i class="btn-icon-only icon-ok"></i>Setujui
-                    </a>
-                    <a href="#" class="btn btn-danger btn-mini">
-                        <i class="btn-icon-only icon-remove"></i>Tolak
-                    </a><br>
+                    <?php if ($this->session->userdata('role') != 'operator') { ?>
+                        <strong>Verifikasi</strong><br>
+                        <textarea style="width: 95%" rows="2" placeholder="Alasan Penolakan"></textarea><br>
+                        <a href="#" class="btn btn-mini btn-success">
+                            <i class="btn-icon-only icon-ok"></i>Setujui
+                        </a>
+                        <a href="#" class="btn btn-danger btn-mini">
+                            <i class="btn-icon-only icon-remove"></i>Tolak
+                        </a><br>
+                    <?php } else { ?>
+                        <strong>Ajukan</strong><br>
+
+                        <a href="#" class="btn btn-block btn-success">
+                            <i class="icon-ok "></i>&nbsp; Ya
+                        </a>                        
+                    <?php } ?>
                     <span class="pull-right"><a href="#">alasan penolakan</a></span>
                 </td>
             </tr>

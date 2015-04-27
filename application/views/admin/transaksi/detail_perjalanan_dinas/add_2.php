@@ -36,6 +36,14 @@
                 <td><input type="text" placeholder="Subtotal"/></td>
             </tr>
             <tr>
+                <td><label></label></td>
+                <td><input type="text" placeholder="Di"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal"/></td>
+            </tr>
+            <tr>
                 <td><label>Penginapan</label></td>
                 <td><input type="text" placeholder="Di"/></td>
                 <td></td>
@@ -44,7 +52,23 @@
                 <td><input type="text" placeholder="Subtotal"/></td>
             </tr>
             <tr>
+                <td><label></label></td>
+                <td><input type="text" placeholder="Di"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal"/></td>
+            </tr>
+            <tr>
                 <td><label>Transport Utama</label></td>
+                <td><input type="text" placeholder="Dari"/></td>
+                <td><input type="text" placeholder="Ke"/></td>
+                <td><input type="text" placeholder="Jenis Kendaraan"/></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal"/></td>
+            </tr>
+            <tr>
+                <td><label></label></td>
                 <td><input type="text" placeholder="Dari"/></td>
                 <td><input type="text" placeholder="Ke"/></td>
                 <td><input type="text" placeholder="Jenis Kendaraan"/></td>
