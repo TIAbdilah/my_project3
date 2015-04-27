@@ -35,7 +35,7 @@
                     <th rowspan="2" width="15%">Jabatan</th>
                     <th rowspan="2" width="8%">Tujuan</th>
                     <th colspan="2">Tanggal</th>
-                    <th colspan="5">Rincian Kebutuhan Dana (Rp)</th>
+                    <th colspan="6">Rincian Kebutuhan Dana (Rp)</th>
                     <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
                 </tr>
                 <tr>
@@ -45,36 +45,47 @@
                     <th width="6%">Uang Ref</th>
                     <th width="6%">Trans</th>
                     <th width="6%">Penginapan</th>
+                    <th width="6%">Riil</th>
                     <th width="6%">Jumlah</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                for ($index = 0; $index < 10; $index++) {
-                    ?>
-                    <tr>
-                        <td>10</td>
-                        <td>Taufik Ismail A</td>
-                        <td>III/A</td>
-                        <td>Juru Ketik</td>
-                        <td>Jakarta</td>
-                        <td>22-04-2015</td>
-                        <td>23-04-2015</td>
-                        <td><?php echo number_format(2000000) ?></td>
-                        <td>-</td>
-                        <td><?php echo number_format(2000000) ?></td>
-                        <td><?php echo number_format(2000000) ?></td>
-                        <td><?php echo number_format(6000000) ?></td>
-                        <td>
-                            <?php
-                            echo "<a href=\"" . site_url('transaksi/perjalanan_dinas/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a><br>";
-                            echo "<a href=\"" . site_url('transaksi/perjalanan_dinas/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>";
-                            ?> 
-                        </td>
-                    </tr>
-                    <?php
+                $no = 1;
+                $subtotal_transport = 0;
+                $subtotal = 0;
+                $total = 0;
+                foreach ($list_data_detail as $data) {
+                    $subtotal_transport = $data->transport_utama + $data->transport_pendukung;
+                    $subtotal = $data->harian + $data->representatif + $subtotal_transport + $data->penginapan + $data->riil;
+                    echo "<tr>"
+                    . "<td>" . $no . "</td>"
+                    . "<td>" . $data->nama_pegawai . " </td>"
+                    . "<td>" . $data->golongan . "</td>"
+                    . "<td>" . $data->jabatan . "</td>"
+                    . "<td>" . $data->nama_kota . "</td>"
+                    . "<td>" . $data->tgl_berangkat . "</td>"
+                    . "<td>" . $data->tgl_pulang . "</td>"
+                    . "<td>" . number_format($data->harian) . "</td>"
+                    . "<td>" . number_format($data->representatif) . "</td>"
+                    . "<td>" . number_format($subtotal_transport) . "</td>"
+                    . "<td>" . number_format($data->penginapan) . "</td>"
+                    . "<td>" . number_format($data->riil) . "</td>"
+                    . "<td>" . number_format($subtotal) . "</td>"
+                    . "<td class=\"td-actions\">"
+                    . "<a href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
+                    . "<a href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
+                    . "</td>"
+                    . "</tr>";
+                    $no++;
+                    $total += $subtotal;
                 }
                 ?>
+                <tr>
+                    <th colspan="12">Total</th>
+                    <th><?php echo number_format($total)?></th>
+                    <th>&nbsp;</th>
+                </tr>
             </tbody>
         </table>
     </div>

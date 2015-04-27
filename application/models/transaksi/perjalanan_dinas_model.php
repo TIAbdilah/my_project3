@@ -97,7 +97,7 @@ class Perjalanan_dinas_model extends CI_Model {
 
     public function update_status($id, $data) {
         $data = array(
-            'status_approval' => $data['status_approval']
+            'status' => $data['status']
         );
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }

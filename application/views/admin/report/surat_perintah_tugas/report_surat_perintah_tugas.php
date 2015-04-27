@@ -1,3 +1,9 @@
+<?php
+
+function format_date($string) {
+    return substr($string, 8, 2) . '-' . substr($string, 5, 2) . '-' . substr($string, 0, 4);
+}
+?>
 <html>
     <body>
     <center>
@@ -26,9 +32,9 @@
         <?php
         $nama_pegawai = '';
         foreach ($list_data as $record) {
-            if ($nama_pegawai != $record->nama)
-                echo '<li>' . $record->nama . '</li>';
-            $nama_pegawai = $record->nama;
+            if ($nama_pegawai != $record->nama_pegawai)
+                echo '<li>' . $record->nama_pegawai . '</li>';
+            $nama_pegawai = $record->nama_pegawai;
         }
         ?>    
     </ol> 
@@ -39,15 +45,35 @@
         </tr>
         <tr>
             <td valign="top">Maksud Perjalanan Dinas</td>
-            <td valign="top">: <?php echo $data->maksud_perjalanan_1 ?></td>
+            <td valign="top">: <?php echo $data->maksud_perjalanan ?></td>
         </tr>
         <tr>
             <td valign="top">Tanggal Berangkat</td>
-            <td>: <?php echo $data->jadwal_berangkat_1 ?></td>
+            <td>:&nbsp;
+                <?php
+                if ($data->jumlah_tujuan == 1) {
+                    echo format_date($data->jadwal_berangkat_1);
+                } else if ($data->jumlah_tujuan == 2) {
+                    echo format_date($data->jadwal_berangkat_1) . ' / ' . format_date($data->jadwal_berangkat_2);
+                } else if ($data->jumlah_tujuan == 3) {
+                    echo format_date($data->jadwal_berangkat_1) . ' / ' . format_date($data->jadwal_berangkat_2) . ' / ' . format_date($data->jadwal_berangkat_3);
+                }
+                ?>
+            </td>
         </tr>
         <tr>
             <td valign="top">Tanggal Kembali</td>
-            <td>: <?php echo $data->jadwal_pulang_1 ?></td>
+            <td>:&nbsp;
+                <?php
+                if ($data->jumlah_tujuan == 1) {
+                    echo format_date($data->jadwal_pulang_1);
+                } else if ($data->jumlah_tujuan == 2) {
+                    echo format_date($data->jadwal_pulang_1) . ' / ' . format_date($data->jadwal_pulang_2);
+                } else if ($data->jumlah_tujuan == 3) {
+                    echo format_date($data->jadwal_pulang_1) . ' / ' . format_date($data->jadwal_pulang_2) . ' / ' . format_date($data->jadwal_pulang_3);
+                }
+                ?>
+            </td>
         </tr>
         <tr>
             <td valign="top">Kendaraan</td>

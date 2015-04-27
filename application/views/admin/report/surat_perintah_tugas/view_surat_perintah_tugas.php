@@ -13,13 +13,12 @@
                 $nm_unit = '';
                 foreach ($SIList_unit as $row_1) {
                     if($nm_unit != $row_1->nama_unit)
-                    echo "<option value=\"" . $row_1->id_unit . "\">" . $row_1->nama_unit . "</option>";
+                    echo "<option value=\"" . $row_1->kode_unit . "\">" . $row_1->nama_unit . "</option>";
                     $nm_unit = $row_1->nama_unit;
                 }
                 ?>
             </select>
             <button type="submit" class="btn">Simpan</button>
-
         </form>
         <?php 
             if(!empty($data_unit)){
@@ -33,7 +32,7 @@
     </div>
     <div class="widget-content" style="padding: 10px;"><br>
         <?php $this->load->view($report_page) ?>
-    </div>>
+    </div>
 
     <!-- /widget-content --> 
 </div>
