@@ -76,7 +76,7 @@
         <script src="<?php echo base_url() . '/assets/' ?>js/bootstrap-datepicker.min.js"></script>
         <script src="<?php echo base_url() . '/assets/' ?>js/perhitungan.js"></script>
         <script type="text/javascript" language="javascript" class="init">
-           
+
             $(function () {
                 var $divs1 = $('#divs1 > div');
                 var $divs2 = $('#divs2 > div');
@@ -187,12 +187,91 @@
                     var total = $('#inTransPendukung').val();
                     $('#inSubtotalTransportPendukung').val(total);
                 });
+                $("#inTransPendukung").keyup(function () {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
+                        data: {a: $('#inSubtotalUangHarian1').val(),
+                            b: $('#inSubtotalUangPenginapan1').val(),
+                            c: $('#inSubtotalTransportUtama1').val(),
+                            d: $('#inSubtotalTransportPendukung').val(),
+                            e: $('#inSubtotalPengeluaranRiil').val()},
+                        type: "POST",
+                        success: function (data) {
+                            $("#inTotalBiaya").val(data);
+                        }
+
+                    });
+                });
                 $("#inPengeluaranRiil").keyup(function () {
 
                     var total = $('#inPengeluaranRiil').val();
                     $('#inSubtotalPengeluaranRiil').val(total);
                 });
-                
+                $("#inPengeluaranRiil").keyup(function () {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
+                        data: {a: $('#inSubtotalUangHarian1').val(),
+                            b: $('#inSubtotalUangPenginapan1').val(),
+                            c: $('#inSubtotalTransportUtama1').val(),
+                            d: $('#inSubtotalTransportPendukung').val(),
+                            e: $('#inSubtotalPengeluaranRiil').val()},
+                        type: "POST",
+                        success: function (data) {
+                            $("#inTotalBiaya").val(data);
+                        }
+
+                    });
+                });
+                $("#inNamaPegawai").change(function () {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
+                        data: {a: $('#inSubtotalUangHarian1').val(),
+                            b: $('#inSubtotalUangPenginapan1').val(),
+                            c: $('#inSubtotalTransportUtama1').val(),
+                            d: $('#inSubtotalTransportPendukung').val(),
+                            e: $('#inSubtotalPengeluaranRiil').val()},
+                        type: "POST",
+                        success: function (data) {
+                            $("#inTotalBiaya").val(data);
+                        }
+
+                    });
+                });
+                $("#idJenisTransportUtama1").change(function () {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
+                        data: {a: $('#inSubtotalUangHarian1').val(),
+                            b: $('#inSubtotalUangPenginapan1').val(),
+                            c: $('#inSubtotalTransportUtama1').val(),
+                            d: $('#inSubtotalTransportPendukung').val(),
+                            e: $('#inSubtotalPengeluaranRiil').val()},
+                        type: "POST",
+                        success: function (data) {
+                            $("#inTotalBiaya").val(data);
+                        }
+
+                    });
+                });
+                $("#inJenisPenginapan1").change(function () {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
+                        data: {a: $('#inSubtotalUangHarian1').val(),
+                            b: $('#inSubtotalUangPenginapan1').val(),
+                            c: $('#inSubtotalTransportUtama1').val(),
+                            d: $('#inSubtotalTransportPendukung').val(),
+                            e: $('#inSubtotalPengeluaranRiil').val()},
+                        type: "POST",
+                        success: function (data) {
+                            $("#inTotalBiaya").val(data);
+                        }
+
+                    });
+                });
 //    $("#inNamaPegawai").change(function () {
 //
 //        $.ajax({

@@ -274,6 +274,15 @@ class Perjalanan_dinas extends CI_Controller {
         }
         echo $output;
     }
+    
+    public function hitungTotal() {
+        $param = $this->input->post('a', TRUE);
+        $param2 = $this->input->post('b', TRUE);
+        $param3 = $this->input->post('c', TRUE);
+        $param4 = $this->input->post('d', TRUE);
+        $param5 = $this->input->post('e', TRUE);
+        echo $param + $param2 + $param3 + $param4 + $param5;
+    }
 
 }
 
