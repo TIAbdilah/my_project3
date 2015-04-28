@@ -68,6 +68,7 @@ class Perjalanan_dinas extends CI_Controller {
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
+        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -246,10 +247,8 @@ class Perjalanan_dinas extends CI_Controller {
     }
 
     public function populateTransport() {
-//        $param = $this->input->post('kota_asal', TRUE);
-//        $param2 = $this->input->post('kota_tujuan', TRUE);
-        $param = 'Bandung';
-        $param2 = 'Lampung';
+        $param = $this->input->post('kota_asal', TRUE);
+        $param2 = $this->input->post('kota_tujuan', TRUE);
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param, $param2);
         $output = null;
         $output = "<option value=''>Pilih</option>";
