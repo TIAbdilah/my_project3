@@ -246,10 +246,8 @@ class Perjalanan_dinas extends CI_Controller {
     }
 
     public function populateTransport() {
-//        $param = $this->input->post('kota_asal', TRUE);
-//        $param2 = $this->input->post('kota_tujuan', TRUE);
-        $param = 'Bandung';
-        $param2 = 'Lampung';
+        $param = $this->input->post('kota_asal', TRUE);
+        $param2 = $this->input->post('kota_tujuan', TRUE);
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param, $param2);
         $output = null;
         $output = "<option value=''>Pilih</option>";
@@ -274,6 +272,15 @@ class Perjalanan_dinas extends CI_Controller {
             $output .=$row->biaya;
         }
         echo $output;
+    }
+    
+    public function hitungTotal() {
+        $param = $this->input->post('a', TRUE);
+        $param2 = $this->input->post('b', TRUE);
+        $param3 = $this->input->post('c', TRUE);
+        $param4 = $this->input->post('d', TRUE);
+        $param5 = $this->input->post('e', TRUE);
+        echo $param + $param2 + $param3 + $param4 + $param5;
     }
 
 }

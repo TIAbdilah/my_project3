@@ -1,16 +1,7 @@
 
-<form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/perjalanan_dinas/process/add') ?>" method="POST">
+<form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_perjalanan_dinas/process/add') ?>" method="POST">
     <table border="0" style="width: 100%">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
+       
         <tbody>
             <tr>
                 <td><label>Nama Pegawai</label></td>
@@ -111,8 +102,8 @@
                 <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
             </tr>
              <tr>
-                <td colspan="5" align="center"><label>TOTAL</label></td>
-                <td><input type="submit" value="Simpan"/></td>
+              
+                <td colspan="6"><input type="submit" value="Simpan"/></td>
             </tr>
         </tbody>
     </table>
