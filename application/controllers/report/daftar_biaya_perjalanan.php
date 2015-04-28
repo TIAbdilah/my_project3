@@ -36,7 +36,7 @@ class Daftar_biaya_perjalanan extends CI_Controller {
         );
         $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
         $html = $this->load->view('admin/report/daftar_biaya_perjalanan/report_daftar_biaya_perjalanan', $data, TRUE);
-        pdf_create($html, "landscape", date('mdy'), true, "folio");
+        pdf_create($html, "landscape", "Daftar Biaya Perjalanan".date('mdy'), true, "folio");
     }
 
 }
