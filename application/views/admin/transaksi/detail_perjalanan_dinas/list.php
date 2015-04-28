@@ -3,7 +3,7 @@
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Anggaran</h3>
         <span class="pull-right" style="margin-right: 10px;">
-            <a href="#addDetail" role="button" class="btn" data-toggle="modal">Tambah Pengajuan Perjalanan Dinas</a>
+            <a href="#addDetail" role="button" class="btn" data-toggle="modal" id="btnTambahPengajuan" name="btnTambahPengajuan">Tambah Pengajuan Perjalanan Dinas</a>
 
             <div id="addDetail" class="modal hide fade modal-admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">

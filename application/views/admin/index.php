@@ -125,7 +125,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function (data) {
-                            $("#inSubtotalUangHarian1").attr("value", data[0]);
+                            $("#inSubtotalUangHarian1").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
@@ -138,7 +138,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function (data) {
-                            $("#inSubtotalUangPenginapan1").attr("value", data[0]);
+                            $("#inSubtotalUangPenginapan1").attr("value", data[0] * ($('#inLamaHari').val() - 1));
                         }
                     });
                 });
@@ -152,7 +152,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function (data) {
-                            $("#inSubtotalUangPenginapan1").attr("value", data[0]);
+                            $("#inSubtotalUangPenginapan1").attr("value", data[0] * ($('#inLamaHari').val() - 1));
                         }
                     });
                 });
@@ -178,7 +178,7 @@
                             kota_tujuan: $('#inKotaTujuan1').val()},
                         type: "POST",
                         success: function (data) {
-                            $("#inSubtotalTransportUtama1").val(data);
+                            $("#inSubtotalTransportUtama1").val(data*2);
                         }
                     });
                 });
@@ -270,6 +270,17 @@
                             $("#inTotalBiaya").val(data);
                         }
 
+                    });
+                });
+                $("#btnTambahPengajuan").click(function () {
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/dayBetweenTwoDates",
+                        data: {par1: $('#inTglPulang').val(),
+                            par2: $('#inTglBerangkat').val()},
+                        type: "POST",
+                        success: function (data) {
+                            $("#inLamaHari").attr("value", data);
+                        }
                     });
                 });
 //    $("#inNamaPegawai").change(function () {

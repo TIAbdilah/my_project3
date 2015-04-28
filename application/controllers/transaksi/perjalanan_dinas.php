@@ -274,7 +274,7 @@ class Perjalanan_dinas extends CI_Controller {
         }
         echo $output;
     }
-    
+
     public function hitungTotal() {
         $param = $this->input->post('a', TRUE);
         $param2 = $this->input->post('b', TRUE);
@@ -282,6 +282,14 @@ class Perjalanan_dinas extends CI_Controller {
         $param4 = $this->input->post('d', TRUE);
         $param5 = $this->input->post('e', TRUE);
         echo $param + $param2 + $param3 + $param4 + $param5;
+    }
+
+    public function dayBetweenTwoDates() {
+        $par1 = $this->input->post('par1', TRUE);
+        $par2 = $this->input->post('par2', TRUE);
+        $datediff = (strtotime($par1) - strtotime($par2));
+        $floor = floor($datediff / (60 * 60 * 24));
+        echo $floor + 1;
     }
 
 }
