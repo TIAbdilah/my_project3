@@ -2,8 +2,8 @@
 <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_perjalanan_dinas/process/add') ?>" method="POST">
     <input type="hidden" name="inIdHeader" value="<?php echo $data->id?>" />
     <input type="hidden" name="inJmlTujuan" value="<?php echo $data->jumlah_tujuan?>" />
-    <input type="hidden" name="inTglBerangkat" value="<?php echo $data->tanggal_berangkat_1?>" />
-    <input type="hidden" name="inTglPulang" value="<?php echo $data->tanggal_pulang_1?>" />
+    <input type="hidden" name="inTglBerangkat" value="<?php echo $data->jadwal_berangkat_1?>" />
+    <input type="hidden" name="inTglPulang" value="<?php echo $data->jadwal_pulang_1?>" />
     <table border="0" style="width: 100%">        
        
         <tbody>
