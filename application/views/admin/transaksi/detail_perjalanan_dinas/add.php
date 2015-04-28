@@ -2,8 +2,9 @@
 <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_perjalanan_dinas/process/add') ?>" method="POST">
     <input type="hidden" name="inIdHeader" value="<?php echo $data->id?>" />
     <input type="hidden" name="inJmlTujuan" value="<?php echo $data->jumlah_tujuan?>" />
-    <input type="hidden" name="inTglBerangkat" value="<?php echo $data->jadwal_berangkat_1?>" />
-    <input type="hidden" name="inTglPulang" value="<?php echo $data->jadwal_pulang_1?>" />
+    <input type="hidden" name="inTglBerangkat" id="inTglBerangkat" value="<?php echo $data->jadwal_berangkat_1?>" />
+    <input type="hidden" name="inTglPulang" id="inTglPulang" value="<?php echo $data->jadwal_pulang_1?>" />
+    <input type="hidden" name="inLamaHari" id="inLamaHari"/>
     <table border="0" style="width: 100%">        
        
         <tbody>
@@ -102,7 +103,7 @@
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil"/></td>
             </tr>
             <tr>
-                <td colspan="5" align="center"><label>TOTAL</label></td>
+                <td colspan="5" align="center"><label><b>TOTAL</b></label></td>
                 <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
             </tr>
             <tr>
