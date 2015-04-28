@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 28, 2015 at 04:14 AM
+-- Generation Time: Apr 28, 2015 at 10:05 AM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -534,7 +534,7 @@ CREATE TABLE IF NOT EXISTS `counter` (
 --
 
 INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
-(1, 'IV-2015', 3);
+(1, 'IV-2015', 4);
 
 -- --------------------------------------------------------
 
@@ -552,26 +552,22 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `kota_asal` int(11) DEFAULT NULL,
   `kota_tujuan` int(11) DEFAULT NULL,
   `jenis_penginapan` varchar(25) DEFAULT NULL,
-  `jenis_jendaraan` varchar(25) DEFAULT NULL,
+  `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `detail_perjalanan_dinas`
 --
 
-INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_berangkat`, `tgl_pulang`, `jenis_biaya`, `kota_asal`, `kota_tujuan`, `jenis_penginapan`, `jenis_jendaraan`, `biaya`) VALUES
-(1, 2, 2, '2015-04-27', '2015-04-27', 'harian', NULL, 7, NULL, NULL, 100000),
-(2, 2, 2, '2015-04-27', '2015-04-27', 'penginapan', NULL, 7, NULL, NULL, 100000),
-(3, 2, 2, '2015-04-27', '2015-04-27', 'transport_utama', 10, 7, NULL, NULL, 100000),
-(4, 2, 2, '2015-04-27', '2015-04-27', 'transport_pendukung', NULL, 7, NULL, NULL, 100000),
-(5, 2, 2, '2015-04-27', '2015-04-27', 'riil', NULL, 7, NULL, NULL, 100000),
-(6, 3, 2, '2015-04-27', '2015-04-27', 'harian', NULL, 7, NULL, NULL, 200000),
-(7, 3, 2, '2015-04-27', '2015-04-27', 'penginapan', NULL, 7, NULL, NULL, 200000),
-(8, 3, 2, '2015-04-27', '2015-04-27', 'transport_utama', 10, 7, NULL, NULL, 200000),
-(9, 3, 2, '2015-04-27', '2015-04-27', 'transport_pendukung', NULL, 7, NULL, NULL, 200000),
-(10, 3, 2, '2015-04-27', '2015-04-27', 'riil', NULL, 7, NULL, NULL, 200000);
+INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_berangkat`, `tgl_pulang`, `jenis_biaya`, `kota_asal`, `kota_tujuan`, `jenis_penginapan`, `jenis_kendaraan`, `biaya`) VALUES
+(1, 112, 3, '2015-04-27', '2015-04-27', 'harian', NULL, 0, NULL, NULL, 380000),
+(2, 112, 3, '2015-04-27', '2015-04-27', 'penginapan', NULL, 0, 'Hotel', NULL, 356000),
+(3, 112, 3, '2015-04-27', '2015-04-27', 'transport_utama', 0, 0, NULL, '', 0),
+(4, 112, 3, '2015-04-27', '2015-04-27', 'transport_pendukung', NULL, NULL, NULL, NULL, 120000),
+(5, 112, 3, '2015-04-27', '2015-04-27', 'representatif', NULL, NULL, NULL, NULL, 0),
+(6, 112, 3, '2015-04-27', '2015-04-27', 'riil', NULL, NULL, NULL, NULL, 100000);
 
 -- --------------------------------------------------------
 
@@ -1122,22 +1118,19 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
   `password` varchar(50) NOT NULL,
   `telp` varchar(15) NOT NULL,
   PRIMARY KEY (`id_pengguna`,`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `pengguna`
 --
 
 INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `nama`, `nip`, `alamat`, `email`, `username`, `password`, `telp`) VALUES
-(1, 1, 'Admin', '1234', 'Cimahi', 'admin@admin.com', 'admin', '0cc175b9c0f1b6a831c399e269772661', '123456'),
-(4, 1, 'Ratih', '222', 'cimahi', 'riza.fauzi.rahman@gmail.com', 'ratih', 'a5bd72a3d2c4d1686415f93a46fc7a0a', '222'),
-(5, 1, 'riza', '123456', 'cimahi', 'riza.fauzi.rahman@gmail.com', 'riza', 'd5f275885bd96778f7f01c814e405e7c', '1111'),
-(6, 2, 'tes', '222', 'tes', 'tes@tes.com', 'tes', '0cc175b9c0f1b6a831c399e269772661', '222'),
-(7, 1, 'Admin123', '1234', 'Cimahi', 'admin@admin.com', 'admin123', '21232f297a57a5a743894a0e4a801fc3', '123456'),
-(8, 1, 'Admin123456', '1234', 'Cimahi', 'admin@admin.com', 'admin123456', '21232f297a57a5a743894a0e4a801fc3', '123456'),
 (9, 1, 'taufik', '0009999', 'baleendah', 'ti.abdilah@gmail.com', 'opik123', 'a96697c9ced48372369b18fb47c003c0', '098234'),
 (10, 1, 'operator', '', '', '', 'operator', '0cc175b9c0f1b6a831c399e269772661', ''),
-(11, 2, '', '', '', '', 'eselon4', '0cc175b9c0f1b6a831c399e269772661', '');
+(12, 3, 'esselon 3', '', '', '', 'esselon 3', '0cc175b9c0f1b6a831c399e269772661', ''),
+(13, 2, 'esselon 4', '', '', '', 'esselon 4', '0cc175b9c0f1b6a831c399e269772661', ''),
+(14, 4, 'asisten satker', '', '', '', 'asisten satker', '0cc175b9c0f1b6a831c399e269772661', ''),
+(15, 5, 'ppk', '', '', '', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '');
 
 -- --------------------------------------------------------
 
@@ -1162,7 +1155,7 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `kota_tujuan_2` varchar(25) DEFAULT NULL,
   `kota_tujuan_3` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `perjalanan_dinas`
@@ -1171,8 +1164,9 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
 INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `status`, `id_anggaran`, `jumlah_tujuan`, `maksud_perjalanan`, `jadwal_berangkat_1`, `jadwal_berangkat_2`, `jadwal_berangkat_3`, `jadwal_pulang_1`, `jadwal_pulang_2`, `jadwal_pulang_3`, `kota_tujuan_1`, `kota_tujuan_2`, `kota_tujuan_3`) VALUES
 (1, '002/SPPD/SATKER/LP/IV/2015', '5', '2', 3, 'maksud satu', '2015-04-20', '2015-04-21', '2015-04-22', '2015-04-21', '2015-04-22', '2015-04-23', '1', '2', '1'),
 (2, '003/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', NULL, NULL, '0000-00-00', NULL, NULL, '1', NULL, NULL),
-(3, '-', '1', '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
-(4, '-', '5', '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19');
+(3, '004/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
+(4, '-', '5', '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19'),
+(5, '-', '0', '2', 1, 'studi banding ke kota jakarta', '2015-05-05', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '7', NULL, NULL);
 
 -- --------------------------------------------------------
 
