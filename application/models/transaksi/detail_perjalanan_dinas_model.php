@@ -40,7 +40,7 @@ class Detail_perjalanan_dinas_model extends CI_Model {
                 . ", (select d6.biaya from detail_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai) as representatif "
                 . "from detail_perjalanan_dinas d "
                 . "where d.id_header = " . $param['id_header'] . " "
-                . "group by d.id_pegawai, d.kota_tujuan";
+                . "group by nama_pegawai, nama_kota";
         return $this->db->query($sql);
     }
 

@@ -9,6 +9,8 @@ if (!defined('BASEPATH'))
 
 class Surat_perintah_tugas extends CI_Controller {
 
+    var $title_page = "e-satker | Surat Perintah Tugas";
+    
     function __construct() {
         parent::__construct();
         $this->load->model('report/surat_perintah_tugas_model');
@@ -18,6 +20,7 @@ class Surat_perintah_tugas extends CI_Controller {
     }
 
     public function view($id) {
+        $data['title'] = $this->title_page;
         $id_unit = $this->input->post('inpIdUnit');
         $aksi = $this->input->post('inpButton');
         

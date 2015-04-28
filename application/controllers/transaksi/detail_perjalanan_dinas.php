@@ -13,14 +13,14 @@ class Detail_perjalanan_dinas extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('transaksi/detail_detail_perjalanan_dinas_model');
+        $this->load->model('transaksi/detail_perjalanan_dinas_model');
         $this->load->model('pegawai_model');
         $this->load->model('kota_tujuan_model');
         $this->load->model('listcode_model');
         $this->load->model('biaya_akomodasi_model');
         $this->load->model('biaya_penginapan_model');
         $this->load->model('biaya_tiket_model');
-        $this->load->model('komentar_model');
+        $this->load->model('transaksi/komentar_model');
     }
 
     public function index() {
@@ -83,7 +83,8 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalUangHarian1');
-            print_r($data);echo '<br>';
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
             
             //insert biaya penginapan
             $data['jenis_biaya'] = 'penginapan';
@@ -92,7 +93,8 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = $this->input->post('inJenisPenginapan1');
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalUangPenginapan1');
-            print_r($data);echo '<br>';
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
             
             //insert biaya transport utama
             $data['jenis_biaya'] = 'transport_utama';
@@ -101,7 +103,8 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama1');
             $data['biaya'] = $this->input->post('inSubtotalTransportUtama1');
-            print_r($data);echo '<br>';
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
             
             //insert biaya transport pendukung
             $data['jenis_biaya'] = 'transport_pendukung';
@@ -110,8 +113,9 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalTransportPendukung');
-            print_r($data);echo '<br>';
-            
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
+
             //insert biaya representatif
             $data['jenis_biaya'] = 'representatif';
             $data['kota_asal'] = NULL;
@@ -119,7 +123,8 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif');
-            print_r($data);echo '<br>';
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
             
             //insert biaya riil
             $data['jenis_biaya'] = 'riil';
@@ -128,17 +133,11 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil');
-            print_r($data);echo '<br>';
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
         }
 
-
-//        if ($action == 'add') {
-//            $this->detail_perjalanan_dinas_model->add($data);
-//        } else {
-//            $this->detail_perjalanan_dinas_model->edit($id, $data);
-//        }
-//
-//        redirect('transaksi/detail_perjalanan_dinas');
+        redirect('transaksi/detail_perjalanan_dinas');
     }
 
     public function delete($id) {

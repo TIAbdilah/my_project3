@@ -72,10 +72,12 @@
                     . "<td>" . number_format($data->penginapan) . "</td>"
                     . "<td>" . number_format($data->riil) . "</td>"
                     . "<td>" . number_format($subtotal) . "</td>"
-                    . "<td class=\"td-actions\">"
-                    . "<a href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
-                    . "<a href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
-                    . "</td>"
+                    . "<td class=\"td-actions\">";
+                    if ($this->session->userdata('role') == 'operator') {
+                        echo "<a href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
+                        . "<a href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>";
+                    }
+                    echo "</td>"
                     . "</tr>";
                     $no++;
                     $total += $subtotal;
@@ -83,7 +85,7 @@
                 ?>
                 <tr>
                     <th colspan="12">Total</th>
-                    <th><?php echo number_format($total)?></th>
+                    <th><?php echo number_format($total) ?></th>
                     <th>&nbsp;</th>
                 </tr>
             </tbody>

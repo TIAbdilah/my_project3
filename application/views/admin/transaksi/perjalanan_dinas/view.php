@@ -19,18 +19,15 @@ function format_date($string) {
                     <form action="<?php echo site_url('transaksi/perjalanan_dinas/update_status/' . $data->id) ?>" method="POST">            
                         <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
                         <input type="hidden" name="inpStatus" value="<?php echo $data->status ?>" />
-                        <?php if ($this->session->userdata('role') != 'operator') { ?>
+                        <?php if ($this->session->userdata('role') != 'operator' && $data->status != 5) { ?>
                             <strong>Verifikasi</strong><br>
                             <textarea style="width: 95%" rows="2" name="inpKomentar" placeholder="Alasan Penolakan"></textarea><br>
                             <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Setuju"/>
                             <input type="submit" class="btn btn-danger" id="btnKomentar" name="inpAksi" value="Tolak"/>
                             <br>
-                        <?php } else { ?>
+                        <?php } if ($this->session->userdata('role') == 'operator' && $data->status == 0){ ?>
                             <strong>Ajukan</strong><br>
-
-                            <a href="#" class="btn btn-block btn-success">
-                                <i class="icon-ok "></i>&nbsp; Ya
-                            </a>                        
+                            <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Ajukan"/>
                         <?php } ?>
                     </form>
                     <span class="pull-right">

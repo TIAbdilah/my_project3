@@ -41,7 +41,17 @@ function format_date($string) {
     <table style="width: 100%">
         <tr>
             <td valign="top" width="35%">Tujuan Perjalanan Dinas ke</td>
-            <td>: <?php echo $data->kota_tujuan_1 ?></td>
+            <td>:&nbsp;
+                    <?php
+                    if ($data->jumlah_tujuan == 1) {
+                        echo $data->nama_kota_tujuan_1;
+                    } else if ($data->jumlah_tujuan == 2) {
+                        echo $data->nama_kota_tujuan_1 . ' / ' . $data->nama_kota_tujuan_2;
+                    } else if ($data->jumlah_tujuan == 3) {
+                        echo $data->nama_kota_tujuan_1 . ' / ' . $data->nama_kota_tujuan_2 . ' / ' . $data->nama_kota_tujuan_3;
+                    }
+                    ?>
+            </td>
         </tr>
         <tr>
             <td valign="top">Maksud Perjalanan Dinas</td>
