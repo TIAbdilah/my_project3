@@ -5,7 +5,6 @@
     <input type="hidden" name="inTglBerangkat" value="<?php echo $data->tanggal_berangkat_1?>" />
     <input type="hidden" name="inTglPulang" value="<?php echo $data->tanggal_pulang_1?>" />
     <table border="0" style="width: 100%">        
-    <table border="0" style="width: 100%">
        
         <tbody>
             <tr>
