@@ -1,5 +1,10 @@
 
 <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_perjalanan_dinas/process/add') ?>" method="POST">
+    <input type="hidden" name="inIdHeader" value="<?php echo $data->id?>" />
+    <input type="hidden" name="inJmlTujuan" value="<?php echo $data->jumlah_tujuan?>" />
+    <input type="hidden" name="inTglBerangkat" value="<?php echo $data->tanggal_berangkat_1?>" />
+    <input type="hidden" name="inTglPulang" value="<?php echo $data->tanggal_pulang_1?>" />
+    <table border="0" style="width: 100%">        
     <table border="0" style="width: 100%">
        
         <tbody>
@@ -20,7 +25,7 @@
                 <td><label>Golongan</label></td>
                 <td>
                     <label id="inGolongan" name="inGolongan"></label>
-                   
+
                 </td>
 
             </tr>
@@ -28,7 +33,7 @@
                 <td><label>Status Pegawai</label></td>
                 <td>
                     <label id="inStatusPeg" name="inStatusPeg"></label>
-                    
+
                 </td>
             </tr>
             <tr>
@@ -101,8 +106,7 @@
                 <td colspan="5" align="center"><label>TOTAL</label></td>
                 <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
             </tr>
-             <tr>
-              
+            <tr>
                 <td colspan="6"><input type="submit" value="Simpan"/></td>
             </tr>
         </tbody>
