@@ -14,51 +14,31 @@ class Daftar_biaya_perjalanan extends CI_Controller {
         $this->load->model('report/daftar_biaya_perjalanan_model');
         $this->load->model('transaksiperjalanandinasheader_model');
         $this->load->model('transaksiperjalanandinasdetail_model');
-    }    
-    
+        $this->load->model('transaksi/detail_perjalanan_dinas_model');
+        $this->load->model('transaksi/perjalanan_dinas_model');
+    }
+
     public function view($id) {
-        $id_unit = $this->input->post('inpIdUnit');
-
-        if ($aksi != 'Cetak') {
-
-            $data['data'] = $this->transaksiperjalanandinasheader_model->select_by_id($id)->row();
-            $data['SIList_unit'] = $this->transaksiperjalanandinasdetail_model->select_unit_from_detail($id)->result();
-
-            if (!empty($id_unit)) {
-
-                $data['data_unit'] = $this->unit_model->select_by_id($id_unit)->row();
-                $param = array(
-                    'id_unit' => $id_unit,
-                    'id_transaksi_perjalanandinas_header' => $id
-                );
-                $data['list_data'] = $this->transaksiperjalanandinasdetail_model->select_by_field($param)->result();
-                $data['page'] = 'report/view_daftar_biaya_perjalnan';
-                $data['report_page'] = 'report/report_daftar_biaya_perjalnan';
-                $this->load->view('admin/index', $data);
-            } else {
-                $data['page'] = 'report/view_daftar_biaya_perjalnan';
-                $data['report_page'] = 'report/blank';
-                $this->load->view('admin/index', $data);
-            }
-        } else {
-            $this->print_report($id, $id_unit);
-        }
+        $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
+        $param = array(
+            'id_header' => $id
+        );
+        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
+        $data['page'] = 'admin/report/daftar_biaya_perjalanan/view_daftar_biaya_perjalanan';
+        $data['report_page'] = 'admin/report/daftar_biaya_perjalanan/report_daftar_biaya_perjalanan';
+        $this->load->view('admin/index', $data);
     }
 
-    public function print_report($id_header, $id_unit) {
+    public function print_report($id) {
         $this->load->helper('to_pdf');
-        if (!empty($id_unit)) {
-            $data['data'] = $this->transaksiperjalanandinasheader_model->select_by_id($id_header)->row();
-            $data['data_unit'] = $this->unit_model->select_by_id($id_unit)->row();
-            $param = array(
-                'id_unit' => $id_unit,
-                'id_transaksi_perjalanandinas_header' => $id_header
-            );
-            $data['list_data'] = $this->transaksiperjalanandinasdetail_model->select_by_field($param)->result();
-            $html = $this->load->view('report/report_surat_perintah_tugas', $data, TRUE);
-        }
-        pdf_create($html, "potrait", $data['data_unit']->kode_unit . date('mdy'), true);
+        $param = array(
+            'id_header' => $id
+        );
+        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
+        $html = $this->load->view('admin/report/daftar_biaya_perjalanan/report_daftar_biaya_perjalanan', $data, TRUE);
+        pdf_create($html, "landscape", date('mdy'), true, "folio");
     }
+
 }
 
 ?>

@@ -27,7 +27,6 @@ class Detail_perjalanan_dinas extends CI_Controller {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/detail_perjalanan_dinas/list';
         $data['list_data'] = $this->detail_perjalanan_dinas_model->select_all()->result();
-        $data['status'] = $this->status;
         $this->load->view('admin/index', $data);
     }
 
@@ -56,18 +55,6 @@ class Detail_perjalanan_dinas extends CI_Controller {
     }
 
     public function process($action, $id = null) {
-
-//        'id_pegawai' => $data['id_pegawai'],
-//            'id_header' => $data['id_header'],
-//            'jenis_biaya' => $data['jenis_biaya'],
-//            'tgl_berangkat' => $data['tgl_berangkat'],
-//            'tgl_pulang' => $data['tgl_pulang'],
-//            'kota_asal' => $data['kota_asal'],
-//            'kota_tujuan' => $data['kota_tujuan'],
-//            'jenis_penginapan' => $data['jenis_penginapan'],
-//            'jenis_kendaraan' => $data['jenis_kendaraan'],
-//            'biaya' => $data['biaya']
-                
         $jml_tujuan = $this->input->post('inJmlTujuan');
         if ($jml_tujuan == 1) {
             $data['id_header'] = $this->input->post('inIdHeader');
@@ -137,7 +124,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $this->detail_perjalanan_dinas_model->add($data);
         }
 
-        redirect('transaksi/detail_perjalanan_dinas');
+        redirect('transaksi/perjalanan_dinas');
     }
 
     public function delete($id) {

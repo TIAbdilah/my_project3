@@ -73,7 +73,7 @@
                     . "<td>" . number_format($data->riil) . "</td>"
                     . "<td>" . number_format($subtotal) . "</td>"
                     . "<td class=\"td-actions\">";
-                    if ($this->session->userdata('role') == 'operator') {
+                    if ($this->session->userdata('role') == 'operator' && $this->status == 0) {
                         echo "<a href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
                         . "<a href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>";
                     }

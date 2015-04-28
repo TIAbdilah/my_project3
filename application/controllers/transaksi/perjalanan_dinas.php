@@ -13,11 +13,11 @@ class Perjalanan_dinas extends CI_Controller {
 
     var $status = array(
         '0' => 'baru dibuat',
-        '1' => 'menunggu verivikasi esselon 4',
-        '2' => 'menunggu verivikasi esselon 3',
-        '3' => 'menunggu verivikasi asisten satker',
-        '4' => 'menunggu verivikasi PPK',
-        '5' => 'lima'
+        '1' => 'menunggu verifikasi esselon 4',
+        '2' => 'menunggu verifikasi esselon 3',
+        '3' => 'menunggu verifikasi asisten satker',
+        '4' => 'menunggu verifikasi PPK',
+        '5' => 'lengkap'
     );
     var $bulan_romawi = array(
         '01' => 'I',

@@ -13,9 +13,10 @@
                 <tr>
                     <th width="5%"> No</th>
                     <th width="15%"> No SPT</th>
-                    <th width="45%"> Anggaran</th>
-                    <th width="20%"> Status</th>
-                    <th class="td-actions">&nbsp;</th>
+                    <th width="20%"> Anggaran</th>
+                    <th width="15%"> Maksud</th>
+                    <th width="10%"> Status</th>
+                    <th width="30%" class="td-actions">&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,10 +27,13 @@
                     . "<td>" . $no . "</td>"
                     . "<td>" . $row->no_spt . " </td>"
                     . "<td>" . $row->nama_kegiatan . "</td>"
+                    . "<td>" . $row->maksud_perjalanan . "</td>"
                     . "<td>" . $status[$row->status] . "</td>"
                     . "<td class=\"td-actions\">";
+                    
                     if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
                         echo "<a href=\"" . site_url('report/surat_perintah_tugas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                        echo "<a href=\"" . site_url('report/daftar_biaya_perjalanan/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
                     }
                     echo "<a href=\"" . site_url('transaksi/perjalanan_dinas/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
                     if ($row->status == 0 && $this->session->userdata('role') == 'operator') {
