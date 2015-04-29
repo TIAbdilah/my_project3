@@ -1,12 +1,12 @@
 
 <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_perjalanan_dinas/process/add') ?>" method="POST">
-    <input type="hidden" name="inIdHeader" value="<?php echo $data->id?>" />
-    <input type="hidden" name="inJmlTujuan" value="<?php echo $data->jumlah_tujuan?>" />
-    <input type="hidden" name="inTglBerangkat" id="inTglBerangkat" value="<?php echo $data->jadwal_berangkat_1?>" />
-    <input type="hidden" name="inTglPulang" id="inTglPulang" value="<?php echo $data->jadwal_pulang_1?>" />
+    <input type="hidden" name="inIdHeader" value="<?php echo $data->id ?>" />
+    <input type="hidden" name="inJmlTujuan" value="<?php echo $data->jumlah_tujuan ?>" />
+    <input type="hidden" name="inTglBerangkat" id="inTglBerangkat" value="<?php echo $data->jadwal_berangkat_1 ?>" />
+    <input type="hidden" name="inTglPulang" id="inTglPulang" value="<?php echo $data->jadwal_pulang_1 ?>" />
     <input type="hidden" name="inLamaHari" id="inLamaHari"/>
     <table border="0" style="width: 100%">        
-       
+
         <tbody>
             <tr>
                 <td><label>Nama Pegawai</label></td>
@@ -62,6 +62,7 @@
                 <td><input type="text" placeholder="Di" id="inPenginapan1" name="inPenginapan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
                 <td>
                     <select class="input" name="inJenisPenginapan1" id="inJenisPenginapan1">
+                        <option value="">Pilih</option>
                         <?php
                         foreach ($SIList_jenisPenginapan as $row) {
                             echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
@@ -80,7 +81,7 @@
                 <td><input type="text" placeholder="Ke" id="inKotaTujuan1" name="inKotaTujuan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
                 <td>
                     <select name="idJenisTransportUtama1" id="idJenisTransportUtama1">
-                        
+
                     </select>
                 </td>
                 <td></td>

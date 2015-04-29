@@ -18,7 +18,7 @@
                 }
                 ?>
             </select>
-            <button type="submit" class="btn">Simpan</button>
+            <button type="submit" class="btn">Tampilkan</button>
         </form>
         <?php 
             if(!empty($data_unit)){

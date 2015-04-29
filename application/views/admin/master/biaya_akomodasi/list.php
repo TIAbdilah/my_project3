@@ -1,7 +1,7 @@
 
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>List Data Biaya Tiket</h3>
+        <h3>List Data Uang Harian</h3>
         <span class="pull-right" style="margin-right: 10px;">
             <a href="<?php echo site_url('master/biaya_akomodasi/add') ?>"><button class="btn">Tambah Data</button></a>
         </span>
@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th width="5%"> No </th>
-                    <th> Nama Kota</th>
+                    <th> Nama Provinsi</th>
                     <th> Status Pegawai</th>
                     <th> Biaya</th>
                     <th class="td-actions"> </th>

@@ -283,6 +283,19 @@
                         }
                     });
                 });
+                $("#inNamaBarang").change(function () {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/getDetailBarang",
+                        data: {id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function (data) {
+                            $("#inSatuanBarang").val(data[0]);
+                            $("#inHargaBarang").val(data[1]);
+                        }
+                    });
+                });
 //    $("#inNamaPegawai").change(function () {
 //
 //        $.ajax({

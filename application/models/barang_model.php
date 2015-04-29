@@ -51,4 +51,11 @@ class Barang_model extends CI_Model {
         $this->db->delete('barang', array('id' => $id));
     }
 
+     public function getDetailBarang($id_barang = string) {
+        $this->db->select('satuan,pagu_harga');
+        $this->db->from('barang');
+        $this->db->where('id', $id_barang);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

@@ -44,7 +44,7 @@
                         <li><a href="<?php echo site_url('master/anggaran') ?>">Anggaran</a></li>                        
                         <li><a href="<?php echo site_url('master/akun') ?>">Akun</a></li>
                         <li><a href="<?php echo site_url('master/kegiatan') ?>">Kegiatan</a></li>
-                        <li><a href="<?php echo site_url('master/biaya_akomodasi') ?>">Biaya Akomodasi</a></li>
+                        <li><a href="<?php echo site_url('master/biaya_akomodasi') ?>">Uang Harian</a></li>
                         <li><a href="<?php echo site_url('master/biaya_penginapan') ?>">Biaya Penginapan</a></li>
                         <li><a href="<?php echo site_url('master/biaya_sewa') ?>">Biaya Sewa</a></li>
                         <li><a href="<?php echo site_url('master/biaya_tiket') ?>">Biaya Tiket</a></li>
@@ -60,7 +60,7 @@
                         <li><a href="<?php echo base_url() ?>transaksi/panjar">Uang Muka Perjalanan Dinas</a></li>                        
                         <li><a href="<?php echo base_url() ?>transaksi/bukti_perjalanan_dinas">Bukti Perjalanan Dinas</a></li>
                         <li><a href="<?php echo base_url() ?>transaksi/pengeluaran_riil">Pengeluaran Riil</a></li>
-                        <li><a href="">Barang</a></li>
+                        <li><a href="<?php echo base_url() ?>transaksi/pengajuan_barang">Barang/Jasa</a></li>
                     </ul>
                 </li>
                 <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-list-alt"></i><span>Verifikasi</span> <b class="caret"></b></a>
