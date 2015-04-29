@@ -28,8 +28,8 @@
                     . "<td>" . $row->status_pegawai . " </td>"
                     . "<td>" . number_format($row->biaya) . " </td>"
                     . "<td class=\"td-actions\">"
-                    . "<a href=\"" . site_url('master/biaya_akomodasi/edit/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
-                    . "<a href=\"" . site_url('master/biaya_akomodasi/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/biaya_akomodasi/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"></i></a>"
+                    . "<a title=\"Delete\" href=\"" . site_url('master/biaya_akomodasi/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                     . "</td>"
                     . "</tr>";
                     $no++;

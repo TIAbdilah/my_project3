@@ -24,9 +24,9 @@
                     . "<td>" . $row->list_name . " </td>"
                     . "<td>" . $row->list_item . "</td>"
                     . "<td>"
-                    . "<a href=\"" . site_url('admin/listcode/edit/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a>&nbsp;"
-                    . "<a href=\"" . site_url('admin/listcode/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>
-                                                </td>"
+                    . "<a title=\"Edit\" href=\"" . site_url('admin/listcode/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"></i></a>&nbsp;"
+                    . "<a title=\"Delete\" href=\"" . site_url('admin/listcode/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
+                    . "</td>"
                     . "</tr>";
                     $no++;
                 }

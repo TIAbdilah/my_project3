@@ -36,9 +36,9 @@
                     . "<td>" . $row->status . "</td>"
                     . "<td>" . $row->nama_unit . "</td>"
                     . "<td class=\"td-actions\">"
-                    . "<a href=\"" . site_url('master/pegawai/edit/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
-                    . "<a href=\"" . site_url('master/pegawai/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>
-                                                </td>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/pegawai/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"></i></a>"
+                    . "<a title=\"Delete\" href=\"" . site_url('master/pegawai/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
+                    . "</td>"
                     . "</tr>";
                     $no++;
                 }

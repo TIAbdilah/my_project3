@@ -25,16 +25,16 @@
                 $no = 1;
                 foreach ($list_data as $row) {
                     echo "<tr>"
-                    . "<td>" . $no . "</td>"                            
+                    . "<td>" . $no . "</td>"
                     . "<td>" . $row->kode_jenis_barang . "</td>"
                     . "<td>" . $row->kode_barang . " </td>"
                     . "<td>" . $row->nama_barang . "</td>"
                     . "<td>" . $row->satuan . "</td>"
                     . "<td>" . $row->pagu_harga . "</td>"
                     . "<td class=\"td-actions\">"
-                    . "<a href=\"" . site_url('master/barang/edit/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
-                    . "<a href=\"" . site_url('master/barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>
-                                                </td>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/barang/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
+                    . "<a title=\"Delete\" href=\"" . site_url('master/barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
+                    . "</td>"
                     . "</tr>";
                     $no++;
                 }
