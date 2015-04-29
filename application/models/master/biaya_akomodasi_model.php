@@ -14,7 +14,10 @@ class Biaya_akomodasi_model extends CI_Model {
     }
 
     public function select_all() {
-        return $this->db->get('biaya_akomodasi');
+        $this->db->select('*');
+        $this->db->from('biaya_akomodasi');
+        $this->db->order_by('nama_kota, status_pegawai');
+        return $this->db->get();
     }
 
     public function select_by_id($id) {

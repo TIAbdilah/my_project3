@@ -75,6 +75,8 @@
         <script src="<?php echo base_url() . '/assets/' ?>js/jquery.dataTables.js"></script>
         <script src="<?php echo base_url() . '/assets/' ?>js/bootstrap-datepicker.min.js"></script>
         <script src="<?php echo base_url() . '/assets/' ?>js/perhitungan.js"></script>
+        <script src="<?php echo base_url() . '/assets/' ?>js/fnFakeRowspan.js"></script>
+        
         <script type="text/javascript" language="javascript" class="init">
 
             $(function () {
@@ -96,13 +98,15 @@
 
             $(document).ready(function () {
 
-                $('#example').DataTable({
+                $('#example').dataTable({
                     info: false
                 });
+                
                 $('.inpTanggal').datepicker({
                     format: "dd-mm-yyyy",
                     todayHighlight: true
                 });
+                
                 $("#inNamaPegawai").change(function () {
 
                     $.ajax({
