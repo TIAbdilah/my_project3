@@ -23,6 +23,7 @@ class Pengeluaran_riil extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -75,6 +76,12 @@ class Pengeluaran_riil extends CI_Controller {
     public function delete($id) {
         $this->biaya_sewa_model->delete($id);
         redirect('master/biaya_sewa');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

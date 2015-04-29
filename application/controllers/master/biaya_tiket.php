@@ -11,9 +11,10 @@ class Biaya_tiket extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('biaya_tiket_model');
-        $this->load->model('kota_tujuan_model');
-        $this->load->model('listcode_model');
+        $this->load->model('master/biaya_tiket_model');
+        $this->load->model('master/kota_tujuan_model');
+        $this->load->model('master/listcode_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -66,6 +67,12 @@ class Biaya_tiket extends CI_Controller {
     public function delete($id) {
         $this->biaya_tiket_model->delete($id);
         redirect('master/biaya_tiket');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

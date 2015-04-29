@@ -40,13 +40,14 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
         $this->load->model('transaksi/komentar_model');
-        $this->load->model('anggaran_model');
-        $this->load->model('pegawai_model');
-        $this->load->model('kota_tujuan_model');
-        $this->load->model('listcode_model');
-        $this->load->model('biaya_akomodasi_model');
-        $this->load->model('biaya_penginapan_model');
-        $this->load->model('biaya_tiket_model');
+        $this->load->model('master/anggaran_model');
+        $this->load->model('master/pegawai_model');
+        $this->load->model('master/kota_tujuan_model');
+        $this->load->model('master/listcode_model');
+        $this->load->model('master/biaya_akomodasi_model');
+        $this->load->model('master/biaya_penginapan_model');
+        $this->load->model('master/biaya_tiket_model');
+        $this->is_logged_in();
     }
 
     public function index() {
@@ -189,12 +190,6 @@ class Perjalanan_dinas extends CI_Controller {
         echo json_encode($arr);
     }
 
-    public function cek_counter() {
-        $this->counter = new Counter();
-        $kode = $this->bulan_romawi[date('m')] . "-" . date('Y');
-        echo $this->counter->generateId($kode);
-    }
-
     public function getSubtotalBiaya() {
         $nama_kota = $this->input->post('nama_kota', TRUE);
         $statuspeg = $this->input->post('statuspeg', TRUE);
@@ -290,6 +285,12 @@ class Perjalanan_dinas extends CI_Controller {
         $datediff = (strtotime($par1) - strtotime($par2));
         $floor = floor($datediff / (60 * 60 * 24));
         echo $floor + 1;
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

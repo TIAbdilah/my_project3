@@ -40,14 +40,14 @@ class Pengajuan_barang extends CI_Controller {
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
         $this->load->model('transaksi/komentar_model');
-        $this->load->model('anggaran_model');
-        $this->load->model('pegawai_model');
-        $this->load->model('kota_tujuan_model');
-        $this->load->model('listcode_model');
-        $this->load->model('biaya_akomodasi_model');
-        $this->load->model('biaya_penginapan_model');
-        $this->load->model('biaya_tiket_model');
-        $this->load->model('barang_model');
+        $this->load->model('master/anggaran_model');
+        $this->load->model('master/pegawai_model');
+        $this->load->model('master/kota_tujuan_model');
+        $this->load->model('master/listcode_model');
+        $this->load->model('master/biaya_akomodasi_model');
+        $this->load->model('master/biaya_penginapan_model');
+        $this->load->model('master/biaya_tiket_model');
+        $this->load->model('master/barang_model');
         }
 
     public function index() {

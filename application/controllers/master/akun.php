@@ -11,7 +11,8 @@ class Akun extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('akun_model');
+        $this->load->model('master/akun_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -58,6 +59,12 @@ class Akun extends CI_Controller {
     public function delete($id) {
         $this->akun_model->delete($id);
         redirect('master/akun');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
     
 }

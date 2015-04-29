@@ -16,7 +16,8 @@ class Surat_perintah_tugas extends CI_Controller {
         $this->load->model('report/surat_perintah_tugas_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
-        $this->load->model('unit_model');
+        $this->load->model('master/unit_model');
+        $this->is_logged_in();
     }
 
     public function view($id) {
@@ -65,6 +66,12 @@ class Surat_perintah_tugas extends CI_Controller {
         pdf_create($html, "potrait", $data['data_unit']->kode_unit . date('mdy'), true);
     }
 
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
+    }
+    
 }
 
 ?>

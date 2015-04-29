@@ -11,9 +11,10 @@ class Anggaran extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('anggaran_model');
-        $this->load->model('akun_model');
-        $this->load->model('kegiatan_model');
+        $this->load->model('master/anggaran_model');
+        $this->load->model('master/akun_model');
+        $this->load->model('master/kegiatan_model');
+        $this->is_logged_in();
     }
 
     public function index() {   
@@ -66,6 +67,12 @@ class Anggaran extends CI_Controller {
     public function delete($id) {
         $this->anggaran_model->delete($id);
         redirect('master/anggaran');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
     
 }

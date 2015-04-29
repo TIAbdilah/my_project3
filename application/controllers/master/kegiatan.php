@@ -11,9 +11,10 @@ class Kegiatan extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('kegiatan_model');
-        $this->load->model('unit_model');
-        $this->load->model('pegawai_model');
+        $this->load->model('master/kegiatan_model');
+        $this->load->model('master/unit_model');
+        $this->load->model('master/pegawai_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -67,6 +68,12 @@ class Kegiatan extends CI_Controller {
     public function delete($id) {
         $this->kegiatan_model->delete($id);
         redirect('master/kegiatan');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

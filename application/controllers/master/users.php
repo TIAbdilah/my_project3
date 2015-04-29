@@ -11,8 +11,9 @@ class Users extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('users_model');
-        $this->load->model('role_model');
+        $this->load->model('master/users_model');
+        $this->load->model('master/role_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -67,6 +68,12 @@ class Users extends CI_Controller {
     public function delete($id) {
         $this->users_model->delete($id);
         redirect('master/users');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

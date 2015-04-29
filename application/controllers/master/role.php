@@ -11,7 +11,8 @@ class Role extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('role_model');
+        $this->load->model('master/role_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -19,10 +20,6 @@ class Role extends CI_Controller {
         $data['page'] = 'admin/master/role/list';
         $data['list_data'] = $this->role_model->select_all()->result();
         $this->load->view('admin/index', $data);
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
     }
 
     public function view($id) {        
@@ -61,6 +58,12 @@ class Role extends CI_Controller {
     public function delete($id) {
         $this->role_model->delete($id);
         redirect('master/role');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

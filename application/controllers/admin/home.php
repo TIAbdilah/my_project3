@@ -16,8 +16,9 @@ class Home extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('users_model');
+        $this->load->model('master/users_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->is_logged_in();
     }
 
     public function index() {
@@ -39,6 +40,11 @@ class Home extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
+    }
 }
 
 ?>

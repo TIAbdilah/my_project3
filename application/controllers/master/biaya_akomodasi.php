@@ -11,13 +11,10 @@ class Biaya_akomodasi extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('biaya_akomodasi_model');
-        $this->load->model('kota_tujuan_model');
-        $this->load->model('listcode_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
+        $this->load->model('master/biaya_akomodasi_model');
+        $this->load->model('master/kota_tujuan_model');
+        $this->load->model('master/listcode_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -71,6 +68,11 @@ class Biaya_akomodasi extends CI_Controller {
         redirect('master/biaya_akomodasi');
     }
 
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
+    }
 }
 
 ?>

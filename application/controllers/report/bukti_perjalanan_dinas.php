@@ -15,6 +15,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         parent::__construct();
         $this->load->model('report/daftar_biaya_perjalanan_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->is_logged_in();
     }
 
     public function view($id) {
@@ -29,6 +30,12 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data = null;
         $html = $this->load->view('admin/report/bukti_perjalanan_dinas/report_perincian_biaya_perjalanan_dinas', $data, TRUE);
         pdf_create($html, "potrait", "Bukti Perjalanan Dinas ".date('mdy'), true);
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

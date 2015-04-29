@@ -13,6 +13,7 @@ class Panjar extends CI_Controller {
         parent::__construct();
         $this->load->model('report/daftar_biaya_perjalanan_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->is_logged_in();
     }
 
     public function view($id) {
@@ -26,6 +27,12 @@ class Panjar extends CI_Controller {
         $data = null;
         $html = $this->load->view('admin/report/panjar/report_uang_muka_kerja', $data, TRUE);
         pdf_create($html, "potrait", "Uang Muka Perjalnan ".date('mdy'), true);
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

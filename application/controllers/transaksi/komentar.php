@@ -12,6 +12,7 @@ class Komentar extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/komentar_model');
+        $this->is_logged_in();
     }
     
     public function index() {        
@@ -32,6 +33,12 @@ class Komentar extends CI_Controller {
         }
 
         redirect('transaksi/perjalanandinas');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

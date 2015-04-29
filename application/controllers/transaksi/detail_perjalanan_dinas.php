@@ -14,13 +14,14 @@ class Detail_perjalanan_dinas extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
-        $this->load->model('pegawai_model');
-        $this->load->model('kota_tujuan_model');
-        $this->load->model('listcode_model');
-        $this->load->model('biaya_akomodasi_model');
-        $this->load->model('biaya_penginapan_model');
-        $this->load->model('biaya_tiket_model');
-        $this->load->model('transaksi/komentar_model');
+        $this->load->model('master/pegawai_model');
+        $this->load->model('master/kota_tujuan_model');
+        $this->load->model('master/listcode_model');
+        $this->load->model('master/biaya_akomodasi_model');
+        $this->load->model('master/biaya_penginapan_model');
+        $this->load->model('master/biaya_tiket_model');
+        $this->load->model('master/transaksi/komentar_model');
+        $this->is_logged_in();
     }
 
     public function index() {
@@ -131,8 +132,13 @@ class Detail_perjalanan_dinas extends CI_Controller {
         $this->detail_perjalanan_dinas_model->delete($id);
         redirect('transaksi/detail_perjalanan_dinas');
     }
-
-    // tambahan
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
+    }
+    
 }
 
 ?>

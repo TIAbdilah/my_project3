@@ -14,6 +14,7 @@ class Counter extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/counter_model');
+        $this->is_logged_in();
     }
 
     public function view() {
@@ -46,6 +47,12 @@ class Counter extends CI_Controller {
         }
 
         return $ctr;
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

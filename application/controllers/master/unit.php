@@ -11,8 +11,9 @@ class Unit extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('unit_model');
-        $this->load->model('pegawai_model');
+        $this->load->model('master/unit_model');
+        $this->load->model('master/pegawai_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -62,6 +63,12 @@ class Unit extends CI_Controller {
     public function delete($id) {
         $this->unit_model->delete($id);
         redirect('master/unit');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

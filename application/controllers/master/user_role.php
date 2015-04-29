@@ -11,9 +11,10 @@ class User_role extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('user_role_model');
-        $this->load->model('role_model');
-        $this->load->model('users_model');
+        $this->load->model('master/user_role_model');
+        $this->load->model('master/role_model');
+        $this->load->model('master/users_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -64,6 +65,12 @@ class User_role extends CI_Controller {
     public function delete($id) {
         $this->user_role_model->delete($id);
         redirect('master/user_role');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

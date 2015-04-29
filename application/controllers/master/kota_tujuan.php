@@ -11,11 +11,8 @@ class Kota_tujuan extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('kota_tujuan_model');
-        $this->akun = array(
-            'username' => $this->session->userdata('username'),
-            'role' => $this->session->userdata('role')
-        );
+        $this->load->model('master/kota_tujuan_model');
+        $this->is_logged_in();
     }
 
     public function index() {        
@@ -63,6 +60,12 @@ class Kota_tujuan extends CI_Controller {
     public function delete($id) {
         $this->kota_tujuan_model->delete($id);
         redirect('master/kota_tujuan');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

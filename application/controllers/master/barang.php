@@ -11,8 +11,9 @@ class Barang extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('barang_model');
-        $this->load->model('listcode_model');
+        $this->load->model('master/barang_model');
+        $this->load->model('master/listcode_model');
+        $this->is_logged_in();
     }
 
     public function index() {                
@@ -66,6 +67,12 @@ class Barang extends CI_Controller {
     public function delete($id) {
         $this->barang_model->delete($id);
         redirect('master/barang');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

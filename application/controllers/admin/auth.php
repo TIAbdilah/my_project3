@@ -10,7 +10,8 @@ class Auth extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('users_model');
+        $this->load->model('master/users_model');
+        $this->is_logged_in();
     }
 
     public function index() {
@@ -44,6 +45,12 @@ class Auth extends CI_Controller {
     function logout() {
         $this->session->sess_destroy();
         redirect('auth');
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }

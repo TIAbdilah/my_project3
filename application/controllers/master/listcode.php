@@ -11,7 +11,7 @@ class Listcode extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('listcode_model');
+        $this->load->model('master/listcode_model');
     }
 
     public function index() {
@@ -54,12 +54,12 @@ class Listcode extends CI_Controller {
             $this->listcode_model->edit($id, $data);
         }
 
-        redirect('admin/listcode');
+        redirect('master/listcode');
     }
 
     public function delete($id) {
         $this->listcode_model->delete($id);
-        redirect('admin/listcode');
+        redirect('master/listcode');
     }
     
 }

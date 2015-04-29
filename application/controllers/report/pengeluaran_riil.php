@@ -15,6 +15,7 @@ class Pengeluaran_riil extends CI_Controller {
         parent::__construct();
         $this->load->model('report/daftar_biaya_perjalanan_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->is_logged_in();
     }
 
     public function view($id) {
@@ -29,6 +30,12 @@ class Pengeluaran_riil extends CI_Controller {
         $data = null;
         $html = $this->load->view('admin/report/bukti_perjalanan_dinas/report_daftar_pengeluaran_riil', $data, TRUE);
         pdf_create($html, "potrait", "Pengeluaran Riil ".date('mdy'), true);
+    }
+    
+    public function is_logged_in() {
+        if ($this->session->userdata('role') == '') {
+            redirect('login');
+        }
     }
 
 }
