@@ -28,7 +28,7 @@
                     . "<td>" . $row->nama_unit . "</td>"
                     . "<td>" . $row->nama_pegawai . "</td>"
                     . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"" . site_url('master/unit/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"></i></a>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/unit/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
                     . "<a htitle=\"Delete\" ref=\"" . site_url('master/unit/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                     . "</td>"
                     . "</tr>";

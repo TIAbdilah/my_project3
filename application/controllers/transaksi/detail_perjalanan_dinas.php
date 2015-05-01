@@ -20,7 +20,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
         $this->load->model('master/biaya_akomodasi_model');
         $this->load->model('master/biaya_penginapan_model');
         $this->load->model('master/biaya_tiket_model');
-        $this->load->model('master/transaksi/komentar_model');
+        $this->load->model('transaksi/komentar_model');
         $this->is_logged_in();
     }
 
@@ -97,7 +97,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             //insert biaya transport pendukung
             $data['jenis_biaya'] = 'transport_pendukung';
             $data['kota_asal'] = NULL;
-            $data['kota_tujuan'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');;
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalTransportPendukung');
@@ -107,7 +107,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             //insert biaya representatif
             $data['jenis_biaya'] = 'representatif';
             $data['kota_asal'] = NULL;
-            $data['kota_tujuan'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');;
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif');
@@ -117,7 +117,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             //insert biaya riil
             $data['jenis_biaya'] = 'riil';
             $data['kota_asal'] = NULL;
-            $data['kota_tujuan'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');;
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil');

@@ -28,7 +28,7 @@
                     . "<td>" . $row->golongan . " </td>"
                     . "<td>" . number_format($row->biaya) . " </td>"
                     . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"" . site_url('master/biaya_penginapan/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"></i></a>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/biaya_penginapan/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
                     . "<a title=\"Delete\" href=\"" . site_url('master/biaya_penginapan/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                     . "</td>"
                     . "</tr>";

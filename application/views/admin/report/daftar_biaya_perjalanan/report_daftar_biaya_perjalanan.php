@@ -1,4 +1,7 @@
 <html>
+    <head>
+
+    </head>
     <body>
     <center>
         <h3><u>DAFTAR NOMINATIF PERJALANAN DINAS</u></h3>
@@ -31,7 +34,7 @@
         </tr>
     </table>
     <p>&nbsp;</p>
-    <table style="width:100%" border="1">
+    <table style="width:100%;border-collapse: collapse" border="1">
         <thead>
             <tr>
                 <th rowspan="2" width="3%">No</th>
@@ -72,14 +75,13 @@
                 . "<td>" . $data->nama_kota . "</td>"
                 . "<td>" . $data->tgl_berangkat . "</td>"
                 . "<td>" . $data->tgl_pulang . "</td>"
-                . "<td>" . number_format($data->harian) . "</td>"
-                . "<td>" . number_format($data->representatif) . "</td>"
-                . "<td>" . number_format($subtotal_transport) . "</td>"
-                . "<td>" . number_format($data->penginapan) . "</td>"
-                . "<td>" . number_format($data->riil) . "</td>"
-                . "<td>" . number_format($subtotal) . "</td>"
-                . "<td class=\"td-actions\">";                
-                echo "</td>"
+                . "<td></td>"
+                . "<td align=\"right\">" . number_format($data->harian) . "</td>"
+                . "<td align=\"right\">" . number_format($data->representatif) . "</td>"
+                . "<td align=\"right\">" . number_format($subtotal_transport) . "</td>"
+                . "<td align=\"right\">" . number_format($data->penginapan) . "</td>"
+                . "<td align=\"right\">" . number_format($subtotal) . "</td>"
+                . "<td></td>"
                 . "</tr>";
                 $no++;
                 $total += $subtotal;
@@ -106,10 +108,10 @@
                     <br>
                 </p>
                 <p>&nbsp;</p>
-                <p>Iwan Suprijanto, ST, MT<br>
-                    NIP: 197109301998031001 <br>
-                    <br>
-                </p></td>
+                <p><u>Iwan Suprijanto, ST, MT</u><br>
+        NIP: 197109301998031001 <br>
+        <br>
+        </p></td>
         </tr>
     </table>
 </body>

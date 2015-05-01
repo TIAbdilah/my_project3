@@ -34,7 +34,7 @@
                     . "<td>" . $row->jabatan . "</td>"
                     . "<td>" . $row->kepakaran . "</td>"
                     . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"" . site_url('master/narasumber/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"></i></a>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/narasumber/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
                     . "<a title=\"Delete\" href=\"" . site_url('master/narasumber/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                     . "</td>"
                     . "</tr>";

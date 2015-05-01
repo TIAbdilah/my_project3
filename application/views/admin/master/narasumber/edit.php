@@ -1,4 +1,9 @@
+<?php
 
+function format_date($string) {
+    return substr($string, 8, 2) . '-' . substr($string, 5, 2) . '-' . substr($string, 0, 4);
+}
+?>
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>Edit Data</h3>
@@ -40,7 +45,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpuTglLahir">Tanggal Lahir</label>
                 <div class="controls">
-                    <input type="text" id="inpuTglLahir" name="inpTglLahir" value="<?php echo $row->tgl_lahir ?>">
+                    <input type="text" class="inpTanggal" id="inpuTglLahir" name="inpTglLahir" value="<?php echo format_date($row->tgl_lahir) ?>">
                 </div>
             </div>
             <div class="control-group">
@@ -76,15 +81,27 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inpKriteriaNarasumber">Kriteria Narasumber</label>
+                <label class="control-label" for="inpKriteriaPegawai">Kriteria Narasumber</label>
                 <div class="controls">
-                    <input type="text" id="inpKriteriaNarasumber" name="inpKriteriaNarasumber" value="<?php echo $row->kriteria_narasumber ?>">
+                    <input type="text" id="inpKriteriaPegawai" name="inpKriteriaPegawai" value="<?php echo $row->kriteria_pegawai ?>">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inpStatusPendidikan">Status Pendidikan</label>
                 <div class="controls">
                     <input type="text" id="inpStatusPendidikan" name="inpStatusPendidikan" value="<?php echo $row->status_pendidikan ?>">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpInstitusi">Institusi</label>
+                <div class="controls">
+                    <input type="text" id="inpInstitusi" name="inpInstitusi" value="<?php echo $row->institusi ?>">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpKepakaran">Kepakaran / Keahlian</label>
+                <div class="controls">
+                    <input type="text" id="inpKepakaran" name="inpKepakaran" value="<?php echo $row->kepakaran ?>">
                 </div>
             </div>
             <div class="control-group">
