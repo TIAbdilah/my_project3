@@ -84,6 +84,10 @@ $status = $data->status;
                         . "<a title=\"Edit\" href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
                         . "<a title=\"Delete\" href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
                         . "</td>";
+                    } else if ($this->session->userdata('role') == 'operator' && $status == 5) {
+                        echo "<td class=\"td-actions\">"
+                        . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $id_header . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
+                        . "</td>";
                     }
                     echo "</tr>";
                     $no++;
