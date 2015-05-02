@@ -8,7 +8,7 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;">
-        <table id="example" class="table table-striped table-bordered">
+        <table id="example2" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th width="5%">No</th>
@@ -21,15 +21,10 @@
             <tbody>
                 <?php
                 $no = 1;
-                $namaKota = "";
                 foreach ($list_data as $row) {
                     echo "<tr>"
                     . "<td>" . $no . "</td>";
-                    if($namaKota != $row->nama_kota){
-                        echo  "<td >" . $row->nama_kota . " </td>";
-                    } else {
-                        echo  "<td ></td>";
-                    }                
+                    echo "<td>" . $row->nama_kota . " </td>";
                     echo "<td>" . $row->status_pegawai . " </td>"
                     . "<td>" . number_format($row->biaya) . " </td>"
                     . "<td class=\"td-actions\">"
@@ -38,7 +33,6 @@
                     . "</td>"
                     . "</tr>";
                     $no++;
-                    $namaKota = $row->nama_kota;
                 }
                 ?>
             </tbody>

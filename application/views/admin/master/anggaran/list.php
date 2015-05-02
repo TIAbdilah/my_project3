@@ -8,7 +8,7 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;">
-        <table id="example" class="table table-striped table-bordered">
+        <table id="example2" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th width="5%"> No </th>
@@ -31,7 +31,7 @@
                     . "<td>" . $row->kode_kegiatan . " </td>"
                     . "<td>" . $row->kode_akun . "</td>"
                     . "<td>" . $row->jenis_belanja . "</td>"
-                    . "<td>" . $row->pagu . "</td>"
+                    . "<td>" . number_format($row->pagu) . "</td>"
                     . "<td>" . $row->tahun_anggaran . "</td>"
                     . "<td class=\"td-actions\">"
                     . "<a title=\"Edit\" href=\"" . site_url('master/anggaran/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"

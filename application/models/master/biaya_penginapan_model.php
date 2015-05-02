@@ -14,7 +14,10 @@ class Biaya_penginapan_model extends CI_Model {
     }
 
     public function select_all() {
-        return $this->db->get('biaya_penginapan');
+        $this->db->select('*');
+        $this->db->from('biaya_penginapan');
+        $this->db->order_by('nama_kota, golongan');
+        return $this->db->get();
     }
 
     public function select_by_id($id) {
