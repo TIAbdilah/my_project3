@@ -1,8 +1,3 @@
-<?php
-//ambil id header dan status
-$id_header = $data->id;
-$status = $data->status;
-?>
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Anggaran</h3>
@@ -42,6 +37,9 @@ $status = $data->status;
                     <th colspan="2">Tanggal</th>
                     <th colspan="6">Rincian Kebutuhan Dana (Rp)</th>
                     <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
+                        <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
+                    <?php } ?>
+                    <?php if ($data->status == 5 and $this->session->userdata('role') == 'operator') { ?>
                         <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
                         <?php } ?>
                 </tr>
@@ -84,9 +82,9 @@ $status = $data->status;
                         . "<a title=\"Edit\" href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
                         . "<a title=\"Delete\" href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
                         . "</td>";
-                    } else if ($this->session->userdata('role') == 'operator' && $status == 5) {
+                    } else if ($this->session->userdata('role') == 'operator' && $data->status == 5) {
                         echo "<td class=\"td-actions\">"
-                        . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $id_header . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
+                        . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
                         . "</td>";
                     }
                     echo "</tr>";
