@@ -9,20 +9,12 @@ if (!defined('BASEPATH'))
 
 class Bukti_perjalanan_dinas extends CI_Controller {
     
-    var $status = array(
-        '0' => 'baru dibuat',
-        '1' => 'menunggu verifikasi esselon 4',
-        '2' => 'menunggu verifikasi esselon 3',
-        '3' => 'menunggu verifikasi asisten satker',
-        '4' => 'menunggu verifikasi PPK',
-        '5' => 'lengkap'
-    );
     
     var $title_page = "e-satker | Bukti Perjalanan Dinas";
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->load->model('transaksi/bukti_perjalanan_dinas_model');
         $this->is_logged_in();
     }
 
@@ -49,12 +41,10 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {        
-        $data['title'] = "e-satker | Biaya Sewa";
-        $data['page'] = 'admin/master/biaya_sewa/edit';
-        $data['row'] = $this->biaya_sewa_model->select_by_id($id)->row();
-        $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan')->result();
+    public function edit($id_header,$id_pegawai) {        
+        $data['title'] = "e-satker | Bukti Perjalanan Dinas";
+        $data['page'] = 'admin/transaksi/bukti_perjalanan_dinas/edit';
+        $data['row'] = $this->bukti_perjalanan_dinas_model->select_by_id($id_header,$id_pegawai)->row();
         $this->load->view('admin/index', $data);
     }
 

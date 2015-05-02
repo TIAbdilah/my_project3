@@ -242,20 +242,67 @@ class Perjalanan_dinas extends CI_Controller {
     }
 
     public function populateTransport() {
-        $param = $this->input->post('kota_asal', TRUE);
-        $param2 = $this->input->post('kota_tujuan', TRUE);
+        $param = $this->input->post('kota_asal1', TRUE);
+        $param2 = $this->input->post('kota_tujuan1', TRUE);
+        $param3 = $this->input->post('kota_asal2', TRUE);
+        $param4 = $this->input->post('kota_tujuan2', TRUE);
+        $param5 = $this->input->post('kota_asal3', TRUE);
+        $param6 = $this->input->post('kota_tujuan3', TRUE);
+
+
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param, $param2);
-        $output = null;
-        $output = "<option value=''>Pilih</option>";
+        $output1 = null;
+        $output1 = "<option value=''>Pilih</option>";
         if ($data['transport']) {
             foreach ($data['transport'] as $row) {
-                $output .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+                $output1 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
             }
-            echo $output;
+            $arr[0] = $output1;
         } else {
-            $output .= "<option value=''>-Data Master Belum Diisi-</option>";
-            echo $output;
+            $output1 .= "<option value=''>-Data Master Belum Diisi-</option>";
+            $arr[0] = $output1;
         }
+
+        $data['transport2'] = $this->biaya_tiket_model->populateTransport($param3, $param4);
+        $output2 = null;
+        $output2 = "<option value=''>Pilih</option>";
+        if ($data['transport2']) {
+            foreach ($data['transport2'] as $row) {
+                $output2 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[1] = $output2;
+        } else {
+            $output2 .= "<option value=''>-Data Master Belum Diisi-</option>";
+            $arr[1] = $output2;
+        }
+
+        $data['transport'] = $this->biaya_tiket_model->populateTransport($param5, $param6);
+        $output3 = null;
+        $output3 = "<option value=''>Pilih</option>";
+        if ($data['transport']) {
+            foreach ($data['transport'] as $row) {
+                $output3 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[2] = $output3;
+        } else {
+            $output3 .= "<option value=''>-Data Master Belum Diisi-</option>";
+            $arr[2] = $output3;
+        }
+        
+        $data['transport'] = $this->biaya_tiket_model->populateTransport($param5, $param6);
+        $output4 = null;
+        $output4 = "<option value=''>Pilih</option>";
+        if ($data['transport']) {
+            foreach ($data['transport'] as $row) {
+                $output4 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[3] = $output4;
+        } else {
+            $output4 .= "<option value=''>-Data Master Belum Diisi-</option>";
+            $arr[3] = $output4;
+        }
+
+        echo json_encode($arr);
     }
 
     public function calculateTransport() {
@@ -286,7 +333,7 @@ class Perjalanan_dinas extends CI_Controller {
         $floor = floor($datediff / (60 * 60 * 24));
         echo $floor + 1;
     }
-    
+
     public function is_logged_in() {
         if ($this->session->userdata('role') == '') {
             redirect('login');

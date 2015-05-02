@@ -87,6 +87,18 @@
                 <td></td>
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportUtama1" name="inSubtotalTransportUtama1"/></td>
             </tr>
+             <tr>
+                <td></td>
+                <td><input type="text" placeholder="Dari" id="inKotaAsal2" name="inKotaAsal2" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
+                <td><input type="text" placeholder="Ke" id="inKotaTujuan2" name="inKotaTujuan2" value="Bandung"/></td>
+                <td>
+                    <select name="idJenisTransportUtama2" id="idJenisTransportUtama2">
+
+                    </select>
+                </td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportUtama2" name="inSubtotalTransportUtama2"/></td>
+            </tr>
             <tr>
                 <td><label>Transport Pendukung</label></td>
                 <td><input type="text" placeholder="Jumlah" id="inTransPendukung" name="inTransPendukung"/></td>

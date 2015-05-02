@@ -1,4 +1,8 @@
-
+<?php
+//ambil id header dan status
+$id_header = $data->id;
+$status = $data->status;
+?>
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Anggaran</h3>
@@ -76,6 +80,8 @@
                     if ($this->session->userdata('role') == 'operator' && $this->status == 0) {
                         echo "<a title=\"Edit\" href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
                         . "<a title=\"Delete\" href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>";
+                    } else if ($this->session->userdata('role') == 'operator' && $status == 5) {
+                        echo "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/'.$id_header.'/'.$data->id_pegawai) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>";
                     }
                     echo "</td>"
                     . "</tr>";
