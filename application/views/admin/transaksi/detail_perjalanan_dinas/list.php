@@ -98,6 +98,9 @@
                     <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
                         <th>&nbsp;</th>
                     <?php } ?>
+                    <?php if ($data->status == 5 and $this->session->userdata('role') == 'operator') { ?>
+                        <th>&nbsp;</th>
+                    <?php } ?>
                 </tr>
             </tbody>
         </table>
