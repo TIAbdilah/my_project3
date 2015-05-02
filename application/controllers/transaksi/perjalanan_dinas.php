@@ -7,7 +7,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-require_once('counter.php');
+require_once(APPPATH.'controllers/common/counter.php');
 
 class Perjalanan_dinas extends CI_Controller {
 
@@ -34,7 +34,7 @@ class Perjalanan_dinas extends CI_Controller {
         '12' => 'XII'
     );
     var $title_page = "e-satker | Perjalanan Dinas";
-
+    
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/perjalanan_dinas_model');

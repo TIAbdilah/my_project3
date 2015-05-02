@@ -8,13 +8,13 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;">
-        <table id="example" class="table table-striped table-bordered">
+        <table id="example2" class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th width="5%"> No </th>
-                    <th> Nama Provinsi</th>
-                    <th> Status Pegawai</th>
-                    <th> Biaya</th>
+                    <th width="5%">No</th>
+                    <th>Nama Provinsi</th>
+                    <th>Status Pegawai</th>
+                    <th>Biaya</th>
                     <th class="td-actions"> </th>
                 </tr>
             </thead>
@@ -23,12 +23,12 @@
                 $no = 1;
                 foreach ($list_data as $row) {
                     echo "<tr>"
-                    . "<td>" . $no . "</td>"
-                    . "<td>" . $row->nama_kota . " </td>"
-                    . "<td>" . $row->status_pegawai . " </td>"
+                    . "<td>" . $no . "</td>";
+                    echo "<td>" . $row->nama_kota . " </td>";
+                    echo "<td>" . $row->status_pegawai . " </td>"
                     . "<td>" . number_format($row->biaya) . " </td>"
                     . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"" . site_url('master/biaya_akomodasi/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"></i></a>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/biaya_akomodasi/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
                     . "<a title=\"Delete\" href=\"" . site_url('master/biaya_akomodasi/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                     . "</td>"
                     . "</tr>";

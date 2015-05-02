@@ -24,24 +24,22 @@ class Detail_perjalanan_dinas_model extends CI_Model {
     public function select_by_field($param = array()) {
         $sql = "select "
                 . "(select p1.nama from pegawai p1 where p1.id = d.id_pegawai) as nama_pegawai "
-                . ", (select p2.golongan from pegawai p2 where p2.id = d.id_pegawai) as golongan "
+                . ", (select p2.golongan from pegawai p2 where p2.id = d.id_pegawai) as golongan " 
                 . ", (select p3.jabatan from pegawai p3 where p3.id = d.id_pegawai) as jabatan "
-                . ", (select k1.nama_kota from kota_tujuan k1 where k1.id = d.kota_tujuan) as nama_kota "
-                . ", (select p.kode_unit from pegawai p where p.id = d.id_pegawai) as id_unit"
-                . ", (select p.nama from pegawai p where p.id = d.id_pegawai) as nama_pegawai"
-                . ", d.id_header"
-                . ", d.tgl_berangkat"
-                . ", d.tgl_pulang"
-                . ", d.id_pegawai as id_pegawai" 
-                . ", (select d1.biaya from detail_perjalanan_dinas d1 where jenis_biaya = 'harian' and d1.id_pegawai = d.id_pegawai) as harian "
-                . ", (select d2.biaya from detail_perjalanan_dinas d2 where jenis_biaya = 'penginapan' and d2.id_pegawai = d.id_pegawai) as penginapan "
-                . ", (select d3.biaya from detail_perjalanan_dinas d3 where jenis_biaya = 'transport_utama' and d3.id_pegawai = d.id_pegawai) as transport_utama "
-                . ", (select d4.biaya from detail_perjalanan_dinas d4 where jenis_biaya = 'transport_pendukung' and d4.id_pegawai = d.id_pegawai) as transport_pendukung "
-                . ", (select d5.biaya from detail_perjalanan_dinas d5 where jenis_biaya = 'riil' and d5.id_pegawai = d.id_pegawai) as riil "
+                . ", d.kota_tujuan "
+                . ", (select p.kode_unit from pegawai p where p.id = d.id_pegawai) as id_unit "
+                . ", d.id_header "
+                . ", d.tgl_berangkat "
+                . ", d.tgl_pulang "
+                . ", (select d1.biaya from detail_perjalanan_dinas d1 where jenis_biaya = 'harian' and d1.id_pegawai = d.id_pegawai and d.id_header = d1.id_header) as harian "
+                . ", (select d2.biaya from detail_perjalanan_dinas d2 where jenis_biaya = 'penginapan' and d2.id_pegawai = d.id_pegawai and d.id_header = d2.id_header) as penginapan "
+                . ", (select d3.biaya from detail_perjalanan_dinas d3 where jenis_biaya = 'transport_utama' and d3.id_pegawai = d.id_pegawai and d.id_header = d3.id_header) as transport_utama "
+                . ", (select d4.biaya from detail_perjalanan_dinas d4 where jenis_biaya = 'transport_pendukung' and d4.id_pegawai = d.id_pegawai and d.id_header = d4.id_header) as transport_pendukung "
+                . ", (select d5.biaya from detail_perjalanan_dinas d5 where jenis_biaya = 'riil' and d5.id_pegawai = d.id_pegawai and d.id_header = d5.id_header) as riil "
                 . ", (select d6.biaya from detail_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai) as representatif "
                 . "from detail_perjalanan_dinas d "
-                . "where d.id_header = " . $param['id_header'] . " "
-                . "group by nama_pegawai, nama_kota";
+                . "where d.id_header = ".$param['id_header']." "
+                . "group by nama_pegawai, kota_tujuan";
         return $this->db->query($sql);
     }
 

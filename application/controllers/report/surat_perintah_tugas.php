@@ -16,6 +16,7 @@ class Surat_perintah_tugas extends CI_Controller {
         $this->load->model('report/surat_perintah_tugas_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
+        $this->load->model('report/surat_perintah_tugas_model');
         $this->load->model('master/unit_model');
         $this->is_logged_in();
     }
@@ -37,7 +38,7 @@ class Surat_perintah_tugas extends CI_Controller {
                     'id_unit' => $id_unit,
                     'id_header' => $id
                 );
-                $data['list_data'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
+                $data['list_data'] = $this->surat_perintah_tugas_model->select_by_field($param)->result();
                 $data['page'] = 'admin/report/surat_perintah_tugas/view_surat_perintah_tugas';
                 $data['report_page'] = 'admin/report/surat_perintah_tugas/report_surat_perintah_tugas';
                 $this->load->view('admin/index', $data);

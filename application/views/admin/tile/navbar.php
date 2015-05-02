@@ -40,7 +40,7 @@
                 <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-list-alt"></i><span>Master</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo site_url('master/pegawai') ?>">Pegawai</a></li>    
-                        <li><a href="">Narasumber</a></li>
+                        <li><a href="<?php echo site_url('master/narasumber') ?>">Narasumber</a></li>
                         <li><a href="<?php echo site_url('master/anggaran') ?>">Anggaran</a></li>                        
                         <li><a href="<?php echo site_url('master/akun') ?>">Akun</a></li>
                         <li><a href="<?php echo site_url('master/kegiatan') ?>">Kegiatan</a></li>

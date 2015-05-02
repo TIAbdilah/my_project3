@@ -11,7 +11,6 @@ class Pegawai_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('subquery');
     }
 
     public function select_all() {
@@ -22,13 +21,14 @@ class Pegawai_model extends CI_Model {
         $sub->where('pegawai.kode_unit = unit.id');
         $this->subquery->end_subquery('nama_unit');
         $this->db->from('pegawai');
+        $this->db->where('narasumber', 0);
         $this->db->order_by('nama');
 
         return $this->db->get();
     }
 
     public function select_by_id($id) {
-        return $this->db->get_where('pegawai', array('id' => $id));
+        return $this->db->get_where('pegawai', array('id' => $id, 'narasumber' => 0));
     }
 
     public function select_by_field($field, $keyword) {
@@ -46,7 +46,8 @@ class Pegawai_model extends CI_Model {
             'status' => $data['status'],
             'kode_unit' => $data['kode_unit'],
             'kriteria_pegawai' => $data['kriteria_pegawai'],
-            'status_pendidikan' => $data['status_pendidikan']
+            'status_pendidikan' => $data['status_pendidikan'],
+            'narasumber' => 0
         );
         $this->db->insert('pegawai', $data);
     }

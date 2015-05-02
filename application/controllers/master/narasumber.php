@@ -17,15 +17,15 @@ class Narasumber extends CI_Controller {
         $this->is_logged_in();
     }
 
-    public function index() {        
+    public function index() {               
         $data['title'] = "e-satker | Narasumber";
         $data['page'] = 'admin/master/narasumber/list';
-        $data['list_data'] = $this->narasumber_model->select_all()->result();
+        $data['list_data'] = $this->narasumber_model->select_all()->result();        
         $this->load->view('admin/index', $data);
     }
 
     public function view($id) {        
-        $data['title'] = "e-satker | Narasumber";
+        $data['title'] = "e-satker | Narasumber";        
         $data['page'] = 'admin/master/narasumber/view';
         $data['row'] = $this->narasumber_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
@@ -35,17 +35,17 @@ class Narasumber extends CI_Controller {
         $data['title'] = "e-satker | Narasumber";
         $data['page'] = 'admin/master/narasumber/add';
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
-        $data['SIList_statusNarasumber'] = $this->listcode_model->select_by_field('list_name','Status Narasumber')->result();
+        $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
     public function edit($id) {        
-        $data['title'] = "e-satker | Narasumber";
+        $data['title'] = "e-satker | Narasumber";        
         $data['page'] = 'admin/master/narasumber/edit';
         $data['row'] = $this->narasumber_model->select_by_id($id)->row();  
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
-        $data['SIList_statusNarasumber'] = $this->listcode_model->select_by_field('list_name','Status Narasumber')->result();
+        $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
@@ -60,8 +60,10 @@ class Narasumber extends CI_Controller {
         $data['kelas_jabatan'] = $this->input->post('inpKelasJabatan');
         $data['status'] = $this->input->post('inpStatus');
         $data['kode_unit'] = $this->input->post('inpKodeUnit');
-        $data['kriteria_narasumber'] = $this->input->post('inpKriteriaNarasumber');
+        $data['kriteria_pegawai'] = $this->input->post('inpKriteriaPegawai');
         $data['status_pendidikan'] = $this->input->post('inpStatusPendidikan');
+        $data['institusi'] = $this->input->post('inpInstitusi');
+        $data['kepakaran'] = $this->input->post('inpKepakaran');
         
         if ($action == 'add') {
             $this->narasumber_model->add($data);

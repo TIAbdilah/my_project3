@@ -7,8 +7,9 @@ $status = $data->status;
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Anggaran</h3>
         <span class="pull-right" style="margin-right: 10px;">
-            <a href="#addDetail" role="button" class="btn" data-toggle="modal" id="btnTambahPengajuan" name="btnTambahPengajuan">Tambah Pengajuan Perjalanan Dinas</a>
-
+            <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
+                <a href="#addDetail" role="button" class="btn" data-toggle="modal" id="btnTambahPengajuan" name="btnTambahPengajuan">Tambah Pengajuan Perjalanan Dinas</a>
+            <?php } ?>
             <div id="addDetail" class="modal hide fade modal-admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -40,7 +41,9 @@ $status = $data->status;
                     <th rowspan="2" width="8%">Tujuan</th>
                     <th colspan="2">Tanggal</th>
                     <th colspan="6">Rincian Kebutuhan Dana (Rp)</th>
-                    <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
+                    <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
+                        <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
+                        <?php } ?>
                 </tr>
                 <tr>
                     <th width="8%">Berangkat</th>
@@ -59,32 +62,30 @@ $status = $data->status;
                 $subtotal_transport = 0;
                 $subtotal = 0;
                 $total = 0;
-                foreach ($list_data_detail as $data) {
-                    $subtotal_transport = $data->transport_utama + $data->transport_pendukung;
-                    $subtotal = $data->harian + $data->representatif + $subtotal_transport + $data->penginapan + $data->riil;
+                foreach ($list_data_detail as $data_detail) {
+                    $subtotal_transport = $data_detail->transport_utama + $data_detail->transport_pendukung;
+                    $subtotal = $data_detail->harian + $data_detail->representatif + $subtotal_transport + $data_detail->penginapan + $data_detail->riil;
                     echo "<tr>"
                     . "<td>" . $no . "</td>"
-                    . "<td>" . $data->nama_pegawai . " </td>"
-                    . "<td>" . $data->golongan . "</td>"
-                    . "<td>" . $data->jabatan . "</td>"
-                    . "<td>" . $data->nama_kota . "</td>"
-                    . "<td>" . $data->tgl_berangkat . "</td>"
-                    . "<td>" . $data->tgl_pulang . "</td>"
-                    . "<td>" . number_format($data->harian) . "</td>"
-                    . "<td>" . number_format($data->representatif) . "</td>"
+                    . "<td>" . $data_detail->nama_pegawai . " </td>"
+                    . "<td>" . $data_detail->golongan . "</td>"
+                    . "<td>" . $data_detail->jabatan . "</td>"
+                    . "<td>" . $data_detail->kota_tujuan . "</td>"
+                    . "<td>" . $data_detail->tgl_berangkat . "</td>"
+                    . "<td>" . $data_detail->tgl_pulang . "</td>"
+                    . "<td>" . number_format($data_detail->harian) . "</td>"
+                    . "<td>" . number_format($data_detail->representatif) . "</td>"
                     . "<td>" . number_format($subtotal_transport) . "</td>"
-                    . "<td>" . number_format($data->penginapan) . "</td>"
-                    . "<td>" . number_format($data->riil) . "</td>"
-                    . "<td>" . number_format($subtotal) . "</td>"
-                    . "<td class=\"td-actions\">";
-                    if ($this->session->userdata('role') == 'operator' && $this->status == 0) {
-                        echo "<a title=\"Edit\" href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
-                        . "<a title=\"Delete\" href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>";
-                    } else if ($this->session->userdata('role') == 'operator' && $status == 5) {
-                        echo "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/'.$id_header.'/'.$data->id_pegawai) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>";
+                    . "<td>" . number_format($data_detail->penginapan) . "</td>"
+                    . "<td>" . number_format($data_detail->riil) . "</td>"
+                    . "<td>" . number_format($subtotal) . "</td>";
+                    if ($this->session->userdata('role') == 'operator' && $data->status == 0) {
+                        echo "<td class=\"td-actions\">"
+                        . "<a title=\"Edit\" href=\"" . site_url('master/unit/edit/') . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
+                        . "<a title=\"Delete\" href=\"" . site_url('master/unit/delete/') . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
+                        . "</td>";
                     }
-                    echo "</td>"
-                    . "</tr>";
+                    echo "</tr>";
                     $no++;
                     $total += $subtotal;
                 }
@@ -92,7 +93,9 @@ $status = $data->status;
                 <tr>
                     <th colspan="12">Total</th>
                     <th><?php echo number_format($total) ?></th>
-                    <th>&nbsp;</th>
+                    <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
+                        <th>&nbsp;</th>
+                    <?php } ?>
                 </tr>
             </tbody>
         </table>

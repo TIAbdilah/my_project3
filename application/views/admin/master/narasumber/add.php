@@ -40,7 +40,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpuTglLahir">Tanggal Lahir</label>
                 <div class="controls">
-                    <input type="text" id="inpuTglLahir" name="inpTglLahir" placeholder="1/1/1990">
+                    <input type="text" class="inpTanggal" id="inpTglLahir" name="inpTglLahir" placeholder="Tanggal Lahir">
                 </div>
             </div>
             <div class="control-group">
@@ -85,6 +85,18 @@
                 <label class="control-label" for="inpStatusPendidikan">Status Pendidikan</label>
                 <div class="controls">
                     <input type="text" id="inpStatusPendidikan" name="inpStatusPendidikan" placeholder="Status Pendidikan">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpInstitusi">Institusi</label>
+                <div class="controls">
+                    <input type="text" id="inpInstitusi" name="inpInstitusi" placeholder="Institusi">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpKepakaran">Kepakaran / Keahlian</label>
+                <div class="controls">
+                    <input type="text" id="inpKepakaran" name="inpKepakaran" placeholder="Kepakaran / Keahlian">
                 </div>
             </div>
             <div class="control-group">
