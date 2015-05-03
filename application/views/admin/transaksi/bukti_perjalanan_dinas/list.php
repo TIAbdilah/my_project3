@@ -34,6 +34,7 @@
 
                         if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
                             echo "<a title=\"Report (Bukti Perjalnan Dinas)\" href=\"" . site_url('report/bukti_perjalanan_dinas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                            echo "<a title=\"Report (Bukti Pengeluaran Riil)\" href=\"" . site_url('report/pengeluaran_riil/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
                         }
                         echo "<a title=\"View\" href=\"" . site_url('transaksi/perjalanan_dinas/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
                         if ($row->status == 0 && $this->session->userdata('role') == 'operator') {

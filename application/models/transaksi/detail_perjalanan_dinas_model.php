@@ -43,6 +43,15 @@ class Detail_perjalanan_dinas_model extends CI_Model {
                 . "group by id_header, nama_pegawai, kota_tujuan";
         return $this->db->query($sql);
     }
+    
+    public function select_data_detail($id_header, $id_pegawai){
+        $sql = "SELECT * "
+                . "FROM detail_perjalanan_dinas "
+                . "where id_header = ".$id_header." "
+                . "and id_pegawai = ".$id_pegawai." "
+                . "order by kota_tujuan";
+        return $this->db->query($sql);
+    }
 
     public function add($data) {
         $data = array(

@@ -113,8 +113,8 @@ function format_date($string) {
                 <br>
                 <br>
                 <br>
-                Iwan Suprijanto, ST, MT<br>
-                NIP: 1237162381623868
+        <u><strong>Iwan Suprijanto, ST, MT</strong></u><br>
+                NIP: 197109301998031001
             </td>
         </tr>
     </table>

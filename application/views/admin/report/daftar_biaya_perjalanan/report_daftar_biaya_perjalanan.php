@@ -5,7 +5,7 @@
     <body>
     <center>
         <h3><u>DAFTAR NOMINATIF PERJALANAN DINAS</u></h3>
-        <p>Nomor : 82492349287307347297</p>
+        <p>Nomor : <?php echo $data->no_spt?></p>
         <p>
             <label><br>
             </label>
@@ -25,12 +25,12 @@
         <tr>
             <td>3. Tanggal dan Nomor DIPA</td>
             <td><div align="center">:</div></td>
-            <td>&nbsp;</td>
+            <td><?php echo $data->no_spt.' ('.date('d F Y').')'?></td>
         </tr>
         <tr>
             <td>4. Jenis Belanja</td>
             <td><div align="center">:</div></td>
-            <td>&nbsp;</td>
+            <td><?php echo $data->jenis_belanja?></td>
         </tr>
     </table>
     <p>&nbsp;</p>
@@ -72,7 +72,7 @@
                 . "<td>" . $data->nama_pegawai . " </td>"
                 . "<td>" . $data->golongan . "</td>"
                 . "<td>" . $data->jabatan . "</td>"
-                . "<td>" . $data->nama_kota . "</td>"
+                . "<td>" . $data->kota_tujuan . "</td>"
                 . "<td>" . $data->tgl_berangkat . "</td>"
                 . "<td>" . $data->tgl_pulang . "</td>"
                 . "<td></td>"
@@ -102,8 +102,11 @@
                     ......................................<br>
                     <br>
 
-                </p></td>
-            <td align="center" width="50%"><p>Bandung, .........<br>
+                </p>
+            </td>
+            <td align="center" width="50%">
+                <p>
+                    Bandung, <?php echo date('d F Y') ?><br>
                     PEJABAT PEMBUAT KOMITMEN<br>
                     <br>
                 </p>
@@ -111,7 +114,8 @@
                 <p><u>Iwan Suprijanto, ST, MT</u><br>
         NIP: 197109301998031001 <br>
         <br>
-        </p></td>
+        </p>
+        </td>
         </tr>
     </table>
 </body>

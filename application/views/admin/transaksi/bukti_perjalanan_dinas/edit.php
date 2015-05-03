@@ -8,8 +8,16 @@ function format_date($string) {
 <!-- widget-header -->
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>Add Data </h3>
+        <h3>View Data </h3>
     </div>           
+    <div class="widget-content" style="padding: 10px;">
+        <a target="_blank" href="<?php echo site_url('report/pengeluaran_riil/view/'.$id_header.'/'.$id_pegawai) ?>">
+            <button class="btn">Cetak Bukti Riil</button>
+        </a>
+        <a target="_blank" href="<?php echo site_url('report/bukti_perjalanan_dinas/view/'.$id_header.'/'.$id_pegawai) ?>">
+            <button class="btn">Cetak Bukti Rincian Biaya Perjalanan</button>
+        </a>
+    </div>
     <div class="widget-content" style="padding: 10px;">
         <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/bukti_perjalanan_dinas/process/edit') ?>" method="POST">
 
@@ -66,7 +74,7 @@ function format_date($string) {
                     <tr>
                         <td><label>Pengeluaran Riil</label></td>
                         <td><input type="text" placeholder="Biaya" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil" value="<?php echo number_format($data_detail->riil) ?>"/></td>
-                        <td><textarea id="inNomorBuktiPengeluaranRiil" name="inNomorBuktiPengeluaranRiil" rows="10" placeholder="Deskripsi Pengeluaran Riil"  ><?php echo $data_bukti->nomor_riil ?></textarea></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil" name="inNomorBuktiPengeluaranRiil" rows="2" placeholder="Deskripsi Pengeluaran Riil"  ><?php echo $data_bukti->nomor_riil ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil" name="inJumlahPengeluaranRiil" value="<?php echo $data_bukti->jumlah_riil ?>"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil" name="inSelisihPengeluaranRiil" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil) ?>"/></td>
                     </tr>

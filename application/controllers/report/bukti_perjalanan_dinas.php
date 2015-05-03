@@ -15,19 +15,28 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         parent::__construct();
         $this->load->model('report/daftar_biaya_perjalanan_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->load->model('transaksi/detail_perjalanan_dinas_model');
+        $this->load->model('master/pegawai_model');
         $this->is_logged_in();
     }
 
-    public function view($id) {
+    public function view($id_header, $id_pegawai) {
         $data['title'] = $this->title_page;
+        $data['id_header'] = $id_header;
+        $data['id_pegawai'] = $id_pegawai;
+        $data['data_pegawai'] = $this->pegawai_model->select_by_id($id_pegawai)->row();
+        $data['data_perjalanan_dinas'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
+        $data['list_data_detail_perjalanan'] = $this->detail_perjalanan_dinas_model->select_data_detail($id_header, $id_pegawai)->result();
         $data['page'] = 'admin/report/bukti_perjalanan_dinas/view_perincian_biaya_perjalanan_dinas';
         $data['report_page'] = 'admin/report/bukti_perjalanan_dinas/report_perincian_biaya_perjalanan_dinas';
         $this->load->view('admin/index', $data);
     }
 
-    public function print_report() {
+    public function print_report($id_header, $id_pegawai) {
         $this->load->helper('to_pdf');
-        $data = null;
+        $data['data_pegawai'] = $this->pegawai_model->select_by_id($id_pegawai)->row();
+        $data['data_perjalanan_dinas'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
+        $data['list_data_detail_perjalanan'] = $this->detail_perjalanan_dinas_model->select_data_detail($id_header, $id_pegawai)->result();
         $html = $this->load->view('admin/report/bukti_perjalanan_dinas/report_perincian_biaya_perjalanan_dinas', $data, TRUE);
         pdf_create($html, "potrait", "Bukti Perjalanan Dinas ".date('mdy'), true);
     }
