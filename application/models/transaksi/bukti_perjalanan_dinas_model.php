@@ -21,8 +21,8 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
         return $this->db->get_where('detail_perjalanan_dinas', array('id' => $id));
     }
 
-    public function select_by_field($field, $keyword) {
-        return $this->db->get_where('biaya_tiket', array($field => $keyword));
+    public function select_by_field($param = array()) {
+        return $this->db->get_where('biaya_tiket', $param);
     }
 
     public function select_biaya_from_detail($id_header, $id_pegawai) {
@@ -37,7 +37,7 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
                 . ", (select d3.biaya from detail_perjalanan_dinas d3 where jenis_biaya = 'transport_utama' and d3.id_pegawai = d.id_pegawai and d.id_header = d3.id_header) as transport_utama "
                 . ", (select d4.biaya from detail_perjalanan_dinas d4 where jenis_biaya = 'transport_pendukung' and d4.id_pegawai = d.id_pegawai and d.id_header = d4.id_header) as transport_pendukung "
                 . ", (select d5.biaya from detail_perjalanan_dinas d5 where jenis_biaya = 'riil' and d5.id_pegawai = d.id_pegawai and d.id_header = d5.id_header) as riil "
-                . ", (select d6.biaya from detail_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai) as representatif "
+                . ", (select d6.biaya from detail_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai and d.id_header = d6.id_header) as representatif "
                 . "from detail_perjalanan_dinas d "
                 . "where d.id_header = " . $id_header . " "
                 . "and d.id_pegawai = " . $id_pegawai . " "
@@ -84,6 +84,15 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
                 . "where d.id_header = " . $id_header . " "
                 . "and d.id_pegawai = " . $id_pegawai . " "
                 . "";
+        return $this->db->query($sql);
+    }
+    
+    public function select_biaya_riil($id_header, $id_pegawai){
+        $sql = "SELECT * "
+                . "FROM bukti_perjalanan_dinas "
+                . "where jenis_biaya in ('riil','riil_2','riil_3','riil_4','riil_5','riil_6','riil_7','riil_8','riil_9','riil_10') "
+                . "and id_pegawai = ".$id_pegawai." "
+                . "and id_header = ".$id_header;
         return $this->db->query($sql);
     }
 

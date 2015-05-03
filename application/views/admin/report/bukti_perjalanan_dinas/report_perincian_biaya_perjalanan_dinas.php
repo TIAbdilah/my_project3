@@ -5,66 +5,102 @@
     </center>
     <center>
         <h3>PERINCIAN BIAYA PERJALANAN DINAS</h3>
-        <p>&nbsp;</p>
     </center>
-    <p>
-      <label>Lampiran SPPD Nomor</label>
-      <label><br>
-        Tanggal</label>
-    </p>
-    <p>&nbsp; </p>
-    <table style="width:100%" border="1">
+    <table style="width:100%">
+        <tr>
+            <td width="25%"><div align="left">Lampiran SPPD Nomor</div></td>
+            <td width="2%"><div align="center">:</div></td>
+            <td width="73%"><div align="left"><?php echo $data_perjalanan_dinas->no_spt?></div></td>
+        </tr>
+        <tr>
+            <td>Tanggal</td>
+            <td><div align="center">:</div></td>
+            <td><?php echo date('d F Y')?></td>
+        </tr>
+    </table>
+    <table style="width:100%;border-collapse: collapse" border="1">
         <tr>
             <td width="5%"><div align="center">NO</div></td>
-            <td width="26%"><div align="center">PERINCIAN BIAYA</div></td>
-            <td width="21%"><div align="center">JUMLAH</div></td>
-            <td width="48%"><div align="center">KETERANGAN</div></td>
+            <td width="40%"><div align="center">PERINCIAN BIAYA</div></td>
+            <td width="25%"><div align="center">JUMLAH</div></td>
+            <td width="30%"><div align="center">KETERANGAN</div></td>
         </tr>
+        <?php
+        $no = 1;
+        $total_biaya = 0;
+        foreach ($list_data_detail_perjalanan as $data) {
+            if ($data->biaya != 0) {
+                echo "<tr>"
+                . "<td align=\"center\">".$no."</td>"
+                . "<td>";
+                switch ($data->jenis_biaya) {
+                    case 'harian':
+                        echo "Biaya akomodasi di kota " . $data->kota_tujuan;
+                        break;
+                    case 'penginapan':
+                        echo "Biaya penginapan di kota " . $data->kota_tujuan;
+                        break;
+                    case 'transport_utama':
+                        echo "Biaya tiket perjalanan dari kota " . $data->kota_asal . " ke " . $data->kota_tujuan . " menggunakan " . $data->jenis_kendaraan;
+                        break;
+                    case 'transport_pendukung':
+                        echo "Biaya transport pendukung di kota" . $data->kota_tujuan;
+                        break;
+                    case 'representatif':
+                        echo "Uang representatif di kota" . $data->kota_tujuan;
+                        break;
+                    default:
+                        echo "Biaya pengeluaran riil di kota " . $data->kota_tujuan;
+                        break;
+                }
+                echo"</td>"
+                . "<td align=\"right\">" . number_format($data->biaya) . "</td>"
+                . "<td>&nbsp;</td>"
+                . "</tr>";
+                $no++;
+                $total_biaya += $data->biaya;
+            }
+        }
+        ?>
+
         <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td><div align="right">Jumlah :</div></td>
-            <td>Rp.</td>
+            <td colspan="2"><div align="right">Jumlah :</div></td>
+            <td align="right">Rp. <?php echo number_format($total_biaya) ?></td>
             <td>&nbsp;</td>
         </tr>
     </table>
-    
+
     <p>Terbilang : .........................................................................................................................................................<br>
 
     </p>
     <table style="width: 100%">
         <tr>
-          <td align="center" width="50%"> <p>Bendahara Pengeluaran,<br>
-            </p>
-            <p>&nbsp;</p>
-            <p><br>
-            Drajat Subuhri<br>
-              NIP. 1996806122007011004<br>
-              <br>
-              <br>
-          </p></td>
-          <td align="center" width="50%"> Bandung, <?php echo date('d F Y') ?><br>
-            Yang melakukan perjalanan,<br>
-            <br>
-            <br>
-            <br>
-            <br>
-            ...........................................</td>
-      </tr>
+            <td align="center" width="50%"> <p>Bendahara Pengeluaran,<br>
+                </p>
+                <p>&nbsp;</p>
+                <p><br>
+                    Drajat Subuhri<br>
+                    NIP. 1996806122007011004<br>
+                    <br>
+                    <br>
+                </p></td>
+            <td align="center" width="50%"> Bandung, <?php echo date('d F Y') ?><br>
+                Yang melakukan perjalanan,<br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <?php echo $data_pegawai->nama ?></td>
+        </tr>
     </table>
 
-<hr>
+    <hr>
     <center>PERHITUNGAN SPPD RAMPUNG</center>
     <table style="width: 100%">
         <tr>
             <td valign="top" width="35%">Ditetapkan sejumlah</td>
-            <td>: Rp.</td>
-      </tr>
+            <td>: Rp. <?php echo number_format($total_biaya) ?></td>
+        </tr>
         <tr>
             <td valign="top">Telah dibayar sebesar</td>
             <td valign="top">: Rp.</td>

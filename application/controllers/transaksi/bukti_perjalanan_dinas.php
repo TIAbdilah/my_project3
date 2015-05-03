@@ -9,11 +9,20 @@ if (!defined('BASEPATH'))
 
 class Bukti_perjalanan_dinas extends CI_Controller {
 
+    var $status = array(
+        '0' => 'baru dibuat',
+        '1' => 'menunggu verifikasi esselon 4',
+        '2' => 'menunggu verifikasi esselon 3',
+        '3' => 'menunggu verifikasi asisten satker',
+        '4' => 'menunggu verifikasi PPK',
+        '5' => 'lengkap'
+    );    
     var $title_page = "e-satker | Bukti Perjalanan Dinas";
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('transaksi/bukti_perjalanan_dinas_model');
+        $this->load->model('transaksi/bukti_perjalanan_dinas_model');        
+        $this->load->model('transaksi/perjalanan_dinas_model');
         $this->is_logged_in();
     }
 
