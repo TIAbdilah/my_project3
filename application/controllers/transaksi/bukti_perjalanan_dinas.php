@@ -8,17 +8,16 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Bukti_perjalanan_dinas extends CI_Controller {
-    
-    
+
     var $title_page = "e-satker | Bukti Perjalanan Dinas";
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/bukti_perjalanan_dinas_model');
         $this->is_logged_in();
     }
 
-    public function index() {        
+    public function index() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/bukti_perjalanan_dinas/list';
         $data['list_data'] = $this->perjalanan_dinas_model->select_all()->result();
@@ -26,41 +25,91 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {        
+    public function view($id) {
         $data['title'] = "e-satker | Biaya Sewa";
         $data['page'] = 'admin/master/biaya_sewa/view';
         $data['row'] = $this->biaya_sewa_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {        
-        $data['title'] = "e-satker | Biaya Sewa";
-        $data['page'] = 'admin/master/biaya_sewa/add';
-        $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan')->result();
+    public function add($id_header, $id_pegawai, $jumlah_tujuan) {
+        $data['title'] = "e-satker | Bukti Perjalanan Dinas";
+        $data['page'] = 'admin/transaksi/bukti_perjalanan_dinas/add';
+        $data['id_header'] = $id_header;
+        $data['id_pegawai'] = $id_pegawai;
+        $data['jumlah_tujuan'] = $jumlah_tujuan;
+        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id_header,$id_pegawai) {        
+    public function edit($id_header, $id_pegawai, $jumlah_tujuan) {
         $data['title'] = "e-satker | Bukti Perjalanan Dinas";
         $data['page'] = 'admin/transaksi/bukti_perjalanan_dinas/edit';
-        $data['row'] = $this->bukti_perjalanan_dinas_model->select_by_id($id_header,$id_pegawai)->row();
+        $data['id_header'] = $id_header;
+        $data['id_pegawai'] = $id_pegawai;
+        $data['jumlah_tujuan'] = $jumlah_tujuan;
+        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai)->row();
+        $data['data_bukti'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_bukti($id_header, $id_pegawai)->row();
         $this->load->view('admin/index', $data);
     }
 
     public function process($action, $id = null) {
 
-        $data['nama_kota'] = $this->input->post('inpNamaKota');
-        $data['jenis_kendaraan'] = $this->input->post('inpJenisKendaraan');
-        $data['biaya'] = $this->input->post('inpBiaya');
+        $jml_tujuan = $this->input->post('inJmlTujuan');
+        if ($jml_tujuan == 1) {
+            $data['id_header'] = $this->input->post('inIdHeader');
+            $data['id_pegawai'] = $this->input->post('inIdPegawai');
 
-        if ($action == 'add') {
-            $this->biaya_sewa_model->add($data);
-        } else {
-            $this->biaya_sewa_model->edit($id, $data);
+            //insert bukti akomodasi
+            $data['jenis_biaya'] = 'harian';
+            $data['biaya'] = $this->input->post('inSubtotalUangHarian1');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiUangHarian1');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahUangHarian1');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            //insert bukti penginapan
+            $data['jenis_biaya'] = 'penginapan';
+            $data['biaya'] = $this->input->post('inSubtotalUangPenginapan1');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiUangPenginapan1');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahUangPenginapan1');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            //insert biaya transport utama
+            $data['jenis_biaya'] = 'transport_utama';
+            $data['biaya'] = $this->input->post('inSubtotalTransportUtama1');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiTransportUtama1');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahTransportUtama1');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'transport_utama_2';
+            $data['biaya'] = $this->input->post('inSubtotalTransportUtama2');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiTransportUtama2');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahTransportUtama2');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            //insert biaya transport pendukung
+            $data['jenis_biaya'] = 'transport_pendukung';
+            $data['biaya'] = $this->input->post('inSubtotalTransportPendukung');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiTransportPendukung');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahTransportPendukung');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            //insert biaya representatif
+            $data['jenis_biaya'] = 'representatif';
+            $data['biaya'] = $this->input->post('inSubtotalRepresentatif');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiRepresentatif');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahUangRepresentatif');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            //insert biaya riil
+            $data['jenis_biaya'] = 'riil';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil');
+            $this->bukti_perjalanan_dinas_model->add($data);
         }
 
-        redirect('master/biaya_sewa');
+        redirect('transaksi/perjalanan_dinas');
     }
 
     public function delete($id) {
@@ -73,7 +122,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
             redirect('login');
         }
     }
-    
+
 }
 
 ?>

@@ -84,7 +84,8 @@
                         . "</td>";
                     } else if ($this->session->userdata('role') == 'operator' && $data->status == 5) {
                         echo "<td class=\"td-actions\">"
-                        . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
+                        . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/add/' . $data->id . '/' . $data_detail->id_pegawai. '/' . $data->jumlah_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
+                        . "<a title=\"View Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/edit/' . $data->id . '/' . $data_detail->id_pegawai. '/' . $data->jumlah_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-edit\"> </i></a>"
                         . "</td>";
                     }
                     echo "</tr>";
