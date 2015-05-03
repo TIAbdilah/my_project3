@@ -404,6 +404,112 @@
                         }
                     });
                 });
+                $("#inJumlahUangHarian1").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalUangHarian1').val());
+                    var jumlah = parseInt($('#inJumlahUangHarian1').val());
+                    var selisih = biaya-jumlah;
+                    $('#inSelisihUangHarian1').val(selisih);
+                });
+                $("#inJumlahUangPenginapan1").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalUangPenginapan1').val());
+                    var jumlah = parseInt($('#inJumlahUangPenginapan1').val());
+                    var selisih = biaya-jumlah;
+                    $('#inSelisihUangPenginapan1').val(selisih);
+                });
+                $("#inJumlahTransportUtama1").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalTransportUtama1').val());
+                    var jumlah = parseInt($('#inJumlahTransportUtama1').val());
+                    var selisih = biaya-jumlah;
+                    $('#inSelisihTransportUtama1').val(selisih);
+                });
+                $("#inJumlahTransportUtama2").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalTransportUtama2').val());
+                    var jumlah = parseInt($('#inJumlahTransportUtama2').val());
+                    var selisih = biaya-jumlah;
+                    $('#inSelisihTransportUtama2').val(selisih);
+                });
+                $("#inJumlahTransportPendukung").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalTransportPendukung').val());
+                    var jumlah = parseInt($('#inJumlahTransportPendukung').val());
+                    var selisih = biaya-jumlah;
+                    $('#inSelisihTransportPendukung').val(selisih);
+                });
+                $("#inJumlahPengeluaranRiil").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalPengeluaranRiil').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil').val());
+                    var selisih = biaya-jumlah;
+                    $('#inSelisihPengeluaranRiil').val(selisih);
+                });
+                 $("#inJumlahPengeluaranRiil2").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil2').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil2').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil3").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil2').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil3').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil3').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil4").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil3').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil4').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil4').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil5").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil4').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil5').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil5').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil6").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil5').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil6').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil6').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil7").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil6').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil7').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil7').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil8").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil7').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil8').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil8').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil9").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil8').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil9').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil9').val(selisih2);
+                });
+                $("#inJumlahPengeluaranRiil10").keyup(function () {
+
+                    var selisih1 = parseInt($('#inSelisihPengeluaranRiil9').val());
+                    var jumlah = parseInt($('#inJumlahPengeluaranRiil10').val());
+                    var selisih2 = selisih1-jumlah;
+                    $('#inSelisihPengeluaranRiil10').val(selisih2);
+                });
+                
 //    $("#inNamaPegawai").change(function () {
 //
 //        $.ajax({

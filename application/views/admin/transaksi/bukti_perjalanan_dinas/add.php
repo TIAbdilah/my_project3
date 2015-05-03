@@ -30,21 +30,21 @@ function format_date($string) {
                     </tr>
                     <tr>
                         <td><label>Uang Harian</label></td>
-                        <td><input type="text" placeholder="Biaya" id="inSubtotalUangHarian1" name="inSubtotalUangHarian1" value="<?php echo number_format($data_detail->harian) ?>"/></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalUangHarian1" name="inSubtotalUangHarian1" value="<?php echo $data_detail->harian ?>"/></td>
                         <td><input type="text" placeholder="Nomor" id="inNomorBuktiUangHarian1" name="inNomorBuktiUangHarian1" /></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahUangHarian1" name="inJumlahUangHarian1"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihUangHarian1" name="inSelisihUangHarian1"/></td>
                     </tr>
                     <tr>
                         <td><label>Penginapan</label></td>
-                        <td><input type="text" placeholder="Biaya" id="inSubtotalUangPenginapan1" name="inSubtotalUangPenginapan1" value="<?php echo number_format($data_detail->penginapan) ?>"/></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalUangPenginapan1" name="inSubtotalUangPenginapan1" value="<?php echo $data_detail->penginapan ?>"/></td>
                         <td><input type="text" placeholder="Nomor" id="inNomorBuktiUangPenginapan1" name="inNomorBuktiUangPenginapan1"/></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahUangPenginapan1" name="inJumlahUangPenginapan1"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihUangPenginapan1" name="inSelisihUangPenginapan1"/></td>
                     </tr>
                     <tr>
                         <td><label>Transport Utama</label></td>
-                        <td><input type="text" placeholder="Biaya" id="inSubtotalTransportUtama1" name="inSubtotalTransportUtama1" value="<?php echo number_format($data_detail->transport_utama) ?>"/></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalTransportUtama1" name="inSubtotalTransportUtama1" value="<?php echo $data_detail->transport_utama ?>"/></td>
                         <td><input type="text" placeholder="Nomor" id="inNomorBuktiTransportUtama1" name="inNomorBuktiTransportUtama1"/></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahTransportUtama1" name="inJumlahTransportUtama1"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihTransportUtama1" name="inSelisihTransportUtama1"/></td>
@@ -58,14 +58,14 @@ function format_date($string) {
                     </tr>
                     <tr>
                         <td><label>Transport Pendukung</label></td>
-                        <td><input type="text" placeholder="Biaya" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung" value="<?php echo number_format($data_detail->transport_pendukung) ?>"/></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung" value="<?php echo $data_detail->transport_pendukung ?>"/></td>
                         <td><input type="text" placeholder="Nomor" id="inNomorBuktiTransportPendukung" name="inNomorBuktiTransportPendukung"/></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahTransportPendukung" name="inJumlahTransportPendukung"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihTransportPendukung" name="inSelisihTransportPendukung"/></td>
                     </tr>
                     <tr>
                         <td><label>Pengeluaran Riil</label></td>
-                        <td><input type="text" placeholder="Biaya" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil" value="<?php echo number_format($data_detail->riil) ?>"/></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil" value="<?php echo $data_detail->riil ?>"/></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil" name="inNomorBuktiPengeluaranRiil" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil" name="inJumlahPengeluaranRiil"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil" name="inSelisihPengeluaranRiil"/></td>
@@ -134,10 +134,10 @@ function format_date($string) {
                         <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil10" name="inSelisihPengeluaranRiil10"/></td>
                     </tr>
                    
-                    <tr>
+<!--                    <tr>
                         <td colspan="3" align="center"><label><b>TOTAL</b></label></td>
                         <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td colspan="5" align="center"><input type="submit" value="Simpan"/></td>
                     </tr>

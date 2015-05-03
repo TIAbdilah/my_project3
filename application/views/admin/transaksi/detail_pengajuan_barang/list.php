@@ -3,19 +3,7 @@
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Barang</h3>
         <span class="pull-right" style="margin-right: 10px;">
-            <a href="#addDetail" role="button" class="btn" data-toggle="modal" id="btnTambahPengajuan" name="btnTambahPengajuan">Tambah Pengajuan Perjalanan Dinas</a>
 
-            <div id="addDetail" class="modal hide fade modal-admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">Alasan Penolakan Pengajuan</h3>
-                </div>
-                <div class="modal-body">
-                   
-                    <?php    $this->load->view('admin/transaksi/detail_pengajuan_barang/add'); ?>
-                   
-                </div>
-            </div>
         </span>
     </div>
     <!-- /widget-header -->
@@ -24,6 +12,7 @@
             <thead>
                 
                 <tr>
+                    <th width="2%">No</th>
                     <th width="8%">Jenis Barang</th>
                     <th width="8%">Nama Barang</th>
                     <th width="6%">Harga</th>
@@ -31,6 +20,22 @@
                     <th width="6%">Total</th>
                 </tr>
             </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                foreach ($list_data as $row) {
+                    echo "<tr>"
+                    . "<td>" . $no . "</td>"
+                    . "<td>" . $row->id_jenis_barang . " </td>"
+                    . "<td>" . $row->nama_barang . "</td>"
+                    . "<td>" . $row->pagu_harga . "</td>"
+                    . "<td>" . $row->jumlah . "</td>"
+                    . "<td>" . $row->jumlah*$row->pagu_harga . "</td>"                    
+                    . "</tr>";
+                    $no++;
+                }
+                ?>
+            </tbody>
         </table>
     </div>
     <!-- /widget-content --> 

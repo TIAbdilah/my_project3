@@ -14,11 +14,24 @@ class Pengajuan_barang_model extends CI_Model {
     }
 
     public function select_all() {
-        return $this->db->get('pengajuan_barang');
+        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
+                . 'from pengajuan_barang pd, '
+                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
+                . 'from anggaran a, kegiatan k, akun ak '
+                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
+                . 'where pd.id_anggaran = a1.id';
+        return $this->db->query($query);
     }
 
     public function select_by_id($id) {
-        return $this->db->get_where('biaya_sewa', array('id' => $id));
+         $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
+                . 'from pengajuan_barang pd, '
+                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
+                . 'from anggaran a, kegiatan k, akun ak '
+                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
+                . 'where pd.id_anggaran = a1.id '
+                . 'and pd.id = '.$id;
+        return $this->db->query($query);
     }
 
     public function select_by_field($field, $keyword) {
@@ -38,15 +51,17 @@ class Pengajuan_barang_model extends CI_Model {
 
     public function edit($id, $data) {
         $data = array(
-            'nama_kota' => $data['nama_kota'],
-            'jenis_kendaraan' => $data['jenis_kendaraan'],
-            'biaya' => $data['biaya']
+             'id_anggaran' => $data['id_anggaran'],
+            'maksud_kegiatan' => $data['maksud_kegiatan'],
+            'nomor_pengajuan' => $data['nomor_pengajuan'],
+            'status_approval' => $data['status_approval'],
+            'tanggal_pengajuan' => $this->format_date_to_sql($data['tanggal_pengajuan'])
         );
         $this->db->update('biaya_sewa', $data, "id = " . $id);
     }
 
     public function delete($id) {
-        $this->db->delete('biaya_sewa', array('id' => $id));
+        $this->db->delete('pengajuan_barang', array('id' => $id));
     }
     
     public function format_date_to_sql($str){        

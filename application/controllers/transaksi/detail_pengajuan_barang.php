@@ -9,7 +9,7 @@ if (!defined('BASEPATH'))
 
 require_once(APPPATH . 'controllers/common/counter.php');
 
-class Pengajuan_barang extends CI_Controller {
+class Detail_pengajuan_barang extends CI_Controller {
 
     var $status_approval = array(
         '0' => 'baru dibuat',
@@ -67,22 +67,11 @@ class Pengajuan_barang extends CI_Controller {
         $param = array(
             'id_header' => $id
         );
-        $data['list_data'] = $this->detail_pengajuan_barang_model->select_all()->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
         $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
-
-//    public function add() {
-//        $data['title'] = $this->title_page;
-//        $data['page'] = 'admin/transaksi/pengajuan_barang/add';
-//        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
-//        $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
-//        $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
-//        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
-//        $this->load->view('admin/index', $data);
-//    }
 
     public function add() {
         $data['title'] = $this->title_page;
@@ -104,17 +93,16 @@ class Pengajuan_barang extends CI_Controller {
     }
 
     public function process($action, $id = null) {
+        $data['id_pengajuan_barang'] = $this->input->post('inIdHeader');
+        $data['id_jenis_barang'] = $this->input->post('inKodeJenisBarang');
+        $data['id_barang'] = $this->input->post('inNamaBarang');
+        $data['jumlah'] = $this->input->post('inJumlah');
 
-        $data['id_anggaran'] = $this->input->post('inIdAnggaran');
-        $data['maksud_kegiatan'] = $this->input->post('inMaksudKegiatan');
-        $data['tanggal_pengajuan'] = $this->input->post('inTanggalPengajuan');
 
-        $data['nomor_pengajuan'] = '-';
-        $data['status_approval'] = '0';
         if ($action == 'add') {
-            $this->pengajuan_barang_model->add($data);
+            $this->detail_pengajuan_barang_model->add($data);
         } else {
-            $this->pengajuan_barang_model->edit($id, $data);
+            $this->detail_pengajuan_barang_model->edit($id, $data);
         }
 
         redirect('transaksi/pengajuan_barang');

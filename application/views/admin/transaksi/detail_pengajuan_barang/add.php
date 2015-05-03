@@ -1,14 +1,14 @@
 
-<form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_perjalanan_dinas/process/add') ?>" method="POST">
-   
-    <table border="0" style="width: 100%">        
+<form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengajuan_barang/process/add') ?>" method="POST">
+    <input type="hidden" id="inIdHeader" name="inIdHeader" value="<?php echo $data->id ?>"/>
+    <table border="0" style="width: 50%">        
        
         <tbody>
            
             <tr>
                 <td><label>Jenis Barang</label></td>
                 <td>
-                   <select class="input-xlarge" name="inpKodeJenisBarang">
+                   <select class="input-xlarge" name="inKodeJenisBarang">
                         <option>Jenis Barang</option>
                         <?php
                         foreach ($SIList_jenisBarang as $row) {
@@ -46,7 +46,7 @@
             <tr>
                 <td><label>Jumlah</label></td>
                 <td>
-                    <input type="text"/>
+                    <input type="text" id="inJumlah" name="inJumlah"/>
                 </td>
             </tr>
            
