@@ -14,7 +14,7 @@ function format_date($string) {
         <table style="width: 100%">
             <tr>
                 <td width="12%"><strong>Anggaran</strong></td>
-                <td valign="top" width="50%">:&nbsp;<?php echo $data->nama_kegiatan ?></td>
+                <td valign="top" width="50%">:&nbsp;<?php echo $data->nama_kegiatan ?> - <?php echo $data->jenis_belanja ?></td>
                 <td valign="top" width="40%" rowspan="6">
                     <form action="<?php echo site_url('transaksi/perjalanan_dinas/update_status/' . $data->id) ?>" method="POST">            
                         <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />

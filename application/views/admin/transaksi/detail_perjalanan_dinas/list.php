@@ -8,7 +8,7 @@
             <div id="addDetail" class="modal hide fade modal-admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">Alasan Penolakan Pengajuan</h3>
+                    <h3 id="myModalLabel">Tambah Data Peserta Perjalanan Dinas</h3>
                 </div>
                 <div class="modal-body">
                     <?php

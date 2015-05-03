@@ -13,7 +13,7 @@
                         <option>--Anggaran--</option>
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
-                            echo "<option value=\"" . $row_1->id . "\">" . $row_1->kode_kegiatan . " - " . $row_1->nama_kegiatan . "</option>";
+                            echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama_kegiatan ." - ".$row_1->jenis_belanja. "</option>";
                         }
                         ?>
                     </select>
