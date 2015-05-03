@@ -40,7 +40,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpuTglLahir">Tanggal Lahir</label>
                 <div class="controls">
-                    <input type="text" id="inpuTglLahir" name="inpTglLahir" placeholder="1/1/1990">
+                    <input type="text" class="inpTanggal" id="inpuTglLahir" name="inpTglLahir" placeholder="1/1/1990">
                 </div>
             </div>
             <div class="control-group">
