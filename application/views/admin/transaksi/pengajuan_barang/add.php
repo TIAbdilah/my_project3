@@ -46,8 +46,6 @@
             </div>
         </form>
     </div>
-     <div class="widget-content" style="padding: 10px;">        
-        <?php $this->load->view('admin/transaksi/detail_pengajuan_barang/list') ?>
-    </div>
+    
 </div>
 <!-- /widget-header --> 

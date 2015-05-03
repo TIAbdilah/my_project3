@@ -20,7 +20,7 @@ class Detail_perjalanan_dinas_model extends CI_Model {
     public function select_by_id($id) {
         return $this->db->get_where('detail_perjalanan_dinas', array('id' => $id));
     }
-
+    
     public function select_by_field($param = array()) {
         $sql = "select "
                 . "(select p1.nama from pegawai p1 where p1.id = d.id_pegawai) as nama_pegawai "

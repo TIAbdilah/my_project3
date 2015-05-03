@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 01, 2015 at 06:14 PM
--- Server version: 5.1.37
--- PHP Version: 5.3.0
+-- Host: 127.0.0.1
+-- Generation Time: May 03, 2015 at 01:11 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -41,11 +42,6 @@ CREATE TABLE IF NOT EXISTS `akomodasi_perjalanan` (
   `biaya_taksi` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `akomodasi_perjalanan`
---
-
 
 -- --------------------------------------------------------
 
@@ -110,11 +106,6 @@ CREATE TABLE IF NOT EXISTS `approval` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `approval`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -153,11 +144,6 @@ CREATE TABLE IF NOT EXISTS `biaya` (
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `biaya`
---
-
 
 -- --------------------------------------------------------
 
@@ -485,11 +471,6 @@ CREATE TABLE IF NOT EXISTS `biaya_sewa` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `biaya_sewa`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -533,10 +514,35 @@ CREATE TABLE IF NOT EXISTS `biaya_transport_dlm_kota` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `biaya_transport_dlm_kota`
+-- Table structure for table `bukti_perjalanan_dinas`
 --
 
+CREATE TABLE IF NOT EXISTS `bukti_perjalanan_dinas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pegawai` int(11) NOT NULL,
+  `id_header` int(11) NOT NULL,
+  `jenis_biaya` varchar(25) NOT NULL,
+  `biaya` int(11) DEFAULT NULL,
+  `nomor_bukti` text,
+  `jumlah_bukti` int(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+
+--
+-- Dumping data for table `bukti_perjalanan_dinas`
+--
+
+INSERT INTO `bukti_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `jenis_biaya`, `biaya`, `nomor_bukti`, `jumlah_bukti`) VALUES
+(20, 112, 3, 'harian', 380, '1', 135000),
+(21, 112, 3, 'penginapan', 356, '2', 135000),
+(22, 112, 3, 'transport_utama', 0, '3', 135000),
+(23, 112, 3, 'transport_utama_2', 0, '4', 135000),
+(24, 112, 3, 'transport_pendukung', 120, '5', 135000),
+(25, 112, 3, 'representatif', 0, '0', 0),
+(26, 112, 3, 'riil', 100, '6', 135000);
 
 -- --------------------------------------------------------
 
@@ -578,7 +584,7 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `detail_perjalanan_dinas`
@@ -602,7 +608,13 @@ INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_ber
 (15, 10, 6, '2015-04-30', '2015-05-02', 'transport_utama', 'Bandung', 'Jakarta', NULL, 'Pesawat', 1400000),
 (16, 10, 6, '2015-04-30', '2015-05-02', 'transport_pendukung', NULL, 'Jakarta', NULL, NULL, 300000),
 (17, 10, 6, '2015-04-30', '2015-05-02', 'representatif', NULL, 'Jakarta', NULL, NULL, 0),
-(18, 10, 6, '2015-04-30', '2015-05-02', 'riil', NULL, 'Jakarta', NULL, NULL, 200000);
+(18, 10, 6, '2015-04-30', '2015-05-02', 'riil', NULL, 'Jakarta', NULL, NULL, 200000),
+(19, 10, 5, '2015-05-05', '2015-05-08', 'harian', NULL, 'Jakarta', NULL, NULL, 2120000),
+(20, 10, 5, '2015-05-05', '2015-05-08', 'penginapan', NULL, 'Jakarta', 'Hotel', NULL, 1830000),
+(21, 10, 5, '2015-05-05', '2015-05-08', 'transport_utama', 'Bandung', 'Jakarta', NULL, 'Kereta Api', 1500000),
+(22, 10, 5, '2015-05-05', '2015-05-08', 'transport_pendukung', NULL, 'Jakarta', NULL, NULL, 130000),
+(23, 10, 5, '2015-05-05', '2015-05-08', 'representatif', NULL, 'Jakarta', NULL, NULL, 0),
+(24, 10, 5, '2015-05-05', '2015-05-08', 'riil', NULL, 'Jakarta', NULL, NULL, 140000);
 
 -- --------------------------------------------------------
 
@@ -617,11 +629,6 @@ CREATE TABLE IF NOT EXISTS `golongan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `golongan`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -634,11 +641,6 @@ CREATE TABLE IF NOT EXISTS `jenis_barang` (
   `nama_barang` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `jenis_barang`
---
-
 
 -- --------------------------------------------------------
 
@@ -782,11 +784,6 @@ CREATE TABLE IF NOT EXISTS `koordinator` (
   `penanggung_jawab` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `koordinator`
---
-
 
 -- --------------------------------------------------------
 
@@ -1132,11 +1129,6 @@ CREATE TABLE IF NOT EXISTS `pajak` (
   `persentase_pajak` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `pajak`
---
-
 
 -- --------------------------------------------------------
 
@@ -1537,11 +1529,6 @@ CREATE TABLE IF NOT EXISTS `transportasi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `transportasi`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -1584,11 +1571,6 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `id_role` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_user_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `user_role`
---
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
