@@ -58,7 +58,7 @@ class Pegawai_model extends CI_Model {
             'nama' => $data['nama'],
             'golongan' => $data['golongan'],
             'jabatan' => $data['jabatan'],
-            'tgl_lahir' => $data['tgl_lahir'],
+            'tgl_lahir' => $this->format_date_to_sql($data['tgl_lahir']),
             'kelas_jabatan' => $data['kelas_jabatan'],
             'status' => $data['status'],
             'kode_unit' => $data['kode_unit'],
@@ -78,6 +78,10 @@ class Pegawai_model extends CI_Model {
         $this->db->where('id', $id_pegawai);
         $query = $this->db->get();
         return $query->result();
+    }
+        
+     public function format_date_to_sql($str){        
+        return substr($str, 6, 4).'-'.substr($str, 3, 2).'-'.substr($str, 0, 2);
     }
 
 }
