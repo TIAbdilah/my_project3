@@ -107,6 +107,60 @@ class Bukti_perjalanan_dinas extends CI_Controller {
             $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil');
             $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil');
             $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_2';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil2');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil2');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil2');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_3';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil3');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil3');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil3');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_4';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil4');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil4');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil4');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_5';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil5');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil5');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil5');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_6';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil6');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil6');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil6');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_7';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil7');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil7');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil7');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_8';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil8');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil8');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil8');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_9';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil9');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil9');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil9');
+            $this->bukti_perjalanan_dinas_model->add($data);
+
+            $data['jenis_biaya'] = 'riil_10';
+            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil10');
+            $data['nomor_bukti'] = $this->input->post('inNomorBuktiPengeluaranRiil10');
+            $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil10');
+            $this->bukti_perjalanan_dinas_model->add($data);
         }
 
         redirect('transaksi/perjalanan_dinas');

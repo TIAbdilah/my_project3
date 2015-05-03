@@ -8,7 +8,7 @@ function format_date($string) {
 <!-- widget-header -->
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>Add Data </h3>
+        <h3>Add Bukti Perjalanan Dinas</h3>
     </div>           
     <div class="widget-content" style="padding: 10px;">
         <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/bukti_perjalanan_dinas/process/add') ?>" method="POST">
@@ -66,10 +66,74 @@ function format_date($string) {
                     <tr>
                         <td><label>Pengeluaran Riil</label></td>
                         <td><input type="text" placeholder="Biaya" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil" value="<?php echo number_format($data_detail->riil) ?>"/></td>
-                        <td><textarea id="inNomorBuktiPengeluaranRiil" name="inNomorBuktiPengeluaranRiil" rows="10" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil" name="inNomorBuktiPengeluaranRiil" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil" name="inJumlahPengeluaranRiil"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil" name="inSelisihPengeluaranRiil"/></td>
                     </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil2" name="inNomorBuktiPengeluaranRiil2" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil2" name="inJumlahPengeluaranRiil2"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil2" name="inSelisihPengeluaranRiil2"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil3" name="inNomorBuktiPengeluaranRiil3" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil3" name="inJumlahPengeluaranRiil3"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil3" name="inSelisihPengeluaranRiil3"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil4" name="inNomorBuktiPengeluaranRiil4" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil4" name="inJumlahPengeluaranRiil4"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil4" name="inSelisihPengeluaranRiil4"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil5" name="inNomorBuktiPengeluaranRiil5" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil5" name="inJumlahPengeluaranRiil5"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil5" name="inSelisihPengeluaranRiil5"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil6" name="inNomorBuktiPengeluaranRiil6" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil6" name="inJumlahPengeluaranRiil6"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil6" name="inSelisihPengeluaranRiil6"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil7" name="inNomorBuktiPengeluaranRiil7" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil7" name="inJumlahPengeluaranRiil7"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil7" name="inSelisihPengeluaranRiil7"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil8" name="inNomorBuktiPengeluaranRiil8" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil8" name="inJumlahPengeluaranRiil8"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil8" name="inSelisihPengeluaranRiil8"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil9" name="inNomorBuktiPengeluaranRiil9" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil9" name="inJumlahPengeluaranRiil9"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil9" name="inSelisihPengeluaranRiil9"/></td>
+                    </tr>
+                    <tr>
+                        <td><label></label></td>
+                        <td></td>
+                        <td><textarea id="inNomorBuktiPengeluaranRiil10" name="inNomorBuktiPengeluaranRiil10" rows="2" placeholder="Deskripsi Pengeluaran Riil"></textarea></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil10" name="inJumlahPengeluaranRiil10"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil10" name="inSelisihPengeluaranRiil10"/></td>
+                    </tr>
+                   
                     <tr>
                         <td colspan="3" align="center"><label><b>TOTAL</b></label></td>
                         <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
