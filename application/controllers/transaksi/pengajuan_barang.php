@@ -40,6 +40,7 @@ class Pengajuan_barang extends CI_Controller {
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
         $this->load->model('transaksi/komentar_model');
+        $this->load->model('transaksi/pengajuan_barang_model');
         $this->load->model('master/anggaran_model');
         $this->load->model('master/pegawai_model');
         $this->load->model('master/kota_tujuan_model');
@@ -73,6 +74,16 @@ class Pengajuan_barang extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
+//    public function add() {
+//        $data['title'] = $this->title_page;
+//        $data['page'] = 'admin/transaksi/pengajuan_barang/add';
+//        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
+//        $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
+//        $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
+//        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
+//        $this->load->view('admin/index', $data);
+//    }
+    
     public function add() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/pengajuan_barang/add';
@@ -94,55 +105,19 @@ class Pengajuan_barang extends CI_Controller {
 
     public function process($action, $id = null) {
 
-        $data['id_anggaran'] = $this->input->post('inpIdAnggaran');
-        $data['jumlah_tujuan'] = $this->input->post('inpJumlahTujuan');
-        $data['maksud_perjalanan'] = $this->input->post('inpMaksudPerjalanan');
+        $data['id_anggaran'] = $this->input->post('inIdAnggaran');
+        $data['maksud_kegiatan'] = $this->input->post('inMaksudKegiatan');
+        $data['tanggal_pengajuan'] = $this->input->post('inTanggalPengajuan');
 
-        switch ($data['jumlah_tujuan']) {
-            case 1 :
-                $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat1');
-                $data['jadwal_berangkat_2'] = NULL;
-                $data['jadwal_berangkat_3'] = NULL;
-                $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang1');
-                $data['jadwal_pulang_2'] = NULL;
-                $data['jadwal_pulang_3'] = NULL;
-                $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan1');
-                $data['kota_tujuan_2'] = NULL;
-                $data['kota_tujuan_3'] = NULL;
-                break;
-            case 2 :
-                $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat21');
-                $data['jadwal_berangkat_2'] = $this->input->post('inpJadwalBerangkat22');
-                $data['jadwal_berangkat_3'] = NULL;
-                $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang21');
-                $data['jadwal_pulang_2'] = $this->input->post('inpJadwalPulang22');
-                $data['jadwal_pulang_3'] = NULL;
-                $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan21');
-                $data['kota_tujuan_2'] = $this->input->post('inpKotaTujuan22');
-                $data['kota_tujuan_3'] = NULL;
-                break;
-            case 3 :
-                $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat31');
-                $data['jadwal_berangkat_2'] = $this->input->post('inpJadwalBerangkat32');
-                $data['jadwal_berangkat_3'] = $this->input->post('inpJadwalBerangkat33');
-                $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang31');
-                $data['jadwal_pulang_2'] = $this->input->post('inpJadwalPulang32');
-                $data['jadwal_pulang_3'] = $this->input->post('inpJadwalPulang33');
-                $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan31');
-                $data['kota_tujuan_2'] = $this->input->post('inpKotaTujuan32');
-                $data['kota_tujuan_3'] = $this->input->post('inpKotaTujuan33');
-                break;
-            default : break;
-        }
-        $data['no_spt'] = '-';
+        $data['nomor_pengajuan'] = '-';
         $data['status_approval'] = '0';
         if ($action == 'add') {
-            $this->perjalanan_dinas_model->add($data);
+            $this->pengajuan_barang_model->add($data);
         } else {
-            $this->perjalanan_dinas_model->edit($id, $data);
+            $this->pengajuan_barang_model->edit($id, $data);
         }
 
-        redirect('transaksi/perjalanan_dinas');
+        redirect('transaksi/pengajuan_barang');
     }
 
     public function delete($id) {
