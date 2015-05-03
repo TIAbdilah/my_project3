@@ -39,6 +39,7 @@ class Anggaran_model extends CI_Model {
         $this->subquery->end_subquery('kode_akun');
         //
         $this->db->from('anggaran');
+        $this->db->order_by('nama_kegiatan, jenis_belanja');
 
         return $this->db->get();
     }
