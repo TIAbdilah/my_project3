@@ -49,13 +49,13 @@ function format_date($string) {
                         <td><input type="text" placeholder="Jumlah" id="inJumlahTransportUtama1" name="inJumlahTransportUtama1"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihTransportUtama1" name="inSelisihTransportUtama1"/></td>
                     </tr>
-                    <tr>
+<!--                    <tr>
                         <td></td>
                         <td><input type="text" placeholder="Biaya" id="inSubtotalTransportUtama2" name="inSubtotalTransportUtama2"/></td>
                         <td><input type="text" placeholder="Nomor" id="inNomorBuktiTransportUtama2" name="inNomorBuktiTransportUtama2"/></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahTransportUtama2" name="inJumlahTransportUtama2"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihTransportUtama2" name="inSelisihTransportUtama2"/></td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td><label>Transport Pendukung</label></td>
                         <td><input type="text" placeholder="Biaya" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung" value="<?php echo $data_detail->transport_pendukung ?>"/></td>

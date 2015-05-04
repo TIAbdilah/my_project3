@@ -58,14 +58,18 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {
+    public function view($id,$jumlah_tujuan) {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/perjalanan_dinas/view';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
         $param = array(
             'id_header' => $id
         );
-        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
+        if($jumlah_tujuan==3){
+        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field_1($param)->result();
+        } else {
+            $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field_1($param)->result();
+        }
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();

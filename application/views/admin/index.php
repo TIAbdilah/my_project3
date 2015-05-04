@@ -226,8 +226,8 @@
                             kota_tujuan2: $('#inKotaTujuan2').val(),
                             kota_asal3: $('#inKotaAsal3').val(),
                             kota_tujuan3: $('#inKotaTujuan3').val(),
-                            kota_asal4: $('#inKotaAsal3').val(),
-                            kota_tujuan4: $('#inKotaTujuan3').val()},
+                            kota_asal4: $('#inKotaAsal4').val(),
+                            kota_tujuan4: $('#inKotaTujuan4').val()},
                         type: "POST",
                         dataType: "json",
                         success: function (data) {

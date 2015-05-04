@@ -16,12 +16,12 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         '3' => 'menunggu verifikasi asisten satker',
         '4' => 'menunggu verifikasi PPK',
         '5' => 'lengkap'
-    );    
+    );
     var $title_page = "e-satker | Bukti Perjalanan Dinas";
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('transaksi/bukti_perjalanan_dinas_model');        
+        $this->load->model('transaksi/bukti_perjalanan_dinas_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->is_logged_in();
     }
@@ -41,24 +41,25 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function add($id_header, $id_pegawai, $jumlah_tujuan) {
+    public function add($id_header, $id_pegawai, $jumlah_tujuan, $kota_tujuan) {
         $data['title'] = "e-satker | Bukti Perjalanan Dinas";
         $data['page'] = 'admin/transaksi/bukti_perjalanan_dinas/add';
         $data['id_header'] = $id_header;
         $data['id_pegawai'] = $id_pegawai;
         $data['jumlah_tujuan'] = $jumlah_tujuan;
-        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai)->row();
+        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id_header, $id_pegawai, $jumlah_tujuan) {
+    public function edit($id_header, $id_pegawai, $jumlah_tujuan, $kota_tujuan) {
         $data['title'] = "e-satker | Bukti Perjalanan Dinas";
         $data['page'] = 'admin/transaksi/bukti_perjalanan_dinas/edit';
         $data['id_header'] = $id_header;
         $data['id_pegawai'] = $id_pegawai;
         $data['jumlah_tujuan'] = $jumlah_tujuan;
-        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai)->row();
-        $data['data_bukti'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_bukti($id_header, $id_pegawai)->row();
+//          $data['kota_tujuan'] = $kota_tujuan;
+        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan)->row();
+        $data['data_bukti'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_bukti($id_header, $id_pegawai, $kota_tujuan)->row();
         $this->load->view('admin/index', $data);
     }
 
