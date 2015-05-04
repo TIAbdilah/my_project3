@@ -6,7 +6,7 @@
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;"><br>
         <form class="bs-docs-example form-inline" action="<?php echo site_url('report/surat_perintah_tugas/view/'.$data->id) ?>" method="POST">
-            <strong>List Name</strong>
+            <strong>Tampilkan berdasarkan unit : </strong>
             <select name="inpIdUnit">                                                
                 <option></option>
                 <?php
