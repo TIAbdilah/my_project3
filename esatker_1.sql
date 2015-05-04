@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2015 at 07:09 PM
+-- Generation Time: May 04, 2015 at 06:41 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -484,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `biaya_tiket` (
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `biaya_tiket`
@@ -499,7 +499,10 @@ INSERT INTO `biaya_tiket` (`id`, `kota_asal`, `kota_tujuan`, `jenis_kendaraan`, 
 (8, 'Bandung', 'Surabaya', 'Pesawat', 1500000),
 (9, 'Bandung', 'Banjarmasin', 'Pesawat', 700000),
 (10, 'Bandung', 'Padang', 'Pesawat', 1500000),
-(11, 'Bandung', 'Manokwari', 'Pesawat', 700000);
+(11, 'Bandung', 'Manokwari', 'Pesawat', 700000),
+(12, 'Bandung', 'Pangkal Pinang', 'Pesawat', 175000),
+(13, 'Pangkal Pinang', 'Jambi', 'Pesawat', 185000),
+(14, 'Jambi', 'Bandung', 'Pesawat', 195000);
 
 -- --------------------------------------------------------
 
@@ -568,6 +571,30 @@ INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_pengajuan_barang`
+--
+
+CREATE TABLE IF NOT EXISTS `detail_pengajuan_barang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pengajuan_barang` int(11) NOT NULL,
+  `id_jenis_barang` varchar(50) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `jumlah` int(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `detail_pengajuan_barang`
+--
+
+INSERT INTO `detail_pengajuan_barang` (`id`, `id_pengajuan_barang`, `id_jenis_barang`, `id_barang`, `jumlah`) VALUES
+(1, 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 1, 20000),
+(2, 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 1, 30000),
+(3, 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 1, 34);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `detail_perjalanan_dinas`
 --
 
@@ -584,7 +611,7 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
 
 --
 -- Dumping data for table `detail_perjalanan_dinas`
@@ -614,7 +641,17 @@ INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_ber
 (21, 10, 5, '2015-05-05', '2015-05-08', 'transport_utama', 'Bandung', 'Jakarta', NULL, 'Kereta Api', 1500000),
 (22, 10, 5, '2015-05-05', '2015-05-08', 'transport_pendukung', NULL, 'Jakarta', NULL, NULL, 130000),
 (23, 10, 5, '2015-05-05', '2015-05-08', 'representatif', NULL, 'Jakarta', NULL, NULL, 0),
-(24, 10, 5, '2015-05-05', '2015-05-08', 'riil', NULL, 'Jakarta', NULL, NULL, 140000);
+(24, 10, 5, '2015-05-05', '2015-05-08', 'riil', NULL, 'Jakarta', NULL, NULL, 140000),
+(61, 10, 7, '2015-05-05', '2015-05-06', 'transport_utama', 'Pangkal Pinang', 'Jambi', NULL, 'Pesawat', 185000),
+(60, 10, 7, '2015-05-05', '2015-05-06', 'penginapan', NULL, 'Jambi', 'Hotel', NULL, 382000),
+(59, 10, 7, '2015-05-05', '2015-05-06', 'harian', NULL, 'Jambi', NULL, NULL, 740000),
+(58, 10, 7, '2015-05-04', '2015-05-05', 'riil', NULL, 'Pangkal Pinang', NULL, NULL, 0),
+(56, 10, 7, '2015-05-04', '2015-05-05', 'transport_pendukung', NULL, 'Pangkal Pinang', NULL, NULL, 10000),
+(57, 10, 7, '2015-05-04', '2015-05-05', 'representatif', NULL, 'Pangkal Pinang', NULL, NULL, 0),
+(54, 10, 7, '2015-05-04', '2015-05-05', 'penginapan', NULL, 'Pangkal Pinang', 'Hotel', NULL, 533000),
+(55, 10, 7, '2015-05-04', '2015-05-05', 'transport_utama', 'Bandung', 'Pangkal Pinang', NULL, 'Pesawat', 175000),
+(53, 10, 7, '2015-05-04', '2015-05-05', 'harian', NULL, 'Pangkal Pinang', NULL, NULL, 820000),
+(62, 10, 7, '2015-05-05', '2015-05-06', 'transport_utama', 'Jambi', 'Bandung', NULL, 'Pesawat', 195000);
 
 -- --------------------------------------------------------
 
@@ -1432,7 +1469,7 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `kota_tujuan_2` varchar(25) DEFAULT NULL,
   `kota_tujuan_3` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `perjalanan_dinas`
@@ -1444,7 +1481,8 @@ INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `status`, `id_anggaran`, `jumlah
 (3, '004/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
 (4, '-', '5', '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19'),
 (5, '-', '0', '2', 1, 'studi banding ke kota jakarta', '2015-05-05', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '7', NULL, NULL),
-(6, '005/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'studi banding jakarta 2 unit', '2015-04-30', '0000-00-00', '0000-00-00', '2015-05-02', '0000-00-00', '0000-00-00', '7', NULL, NULL);
+(6, '005/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'studi banding jakarta 2 unit', '2015-04-30', '0000-00-00', '0000-00-00', '2015-05-02', '0000-00-00', '0000-00-00', '7', NULL, NULL),
+(7, '-', '0', '2', 2, 'dua tujuan', '2015-05-04', '2015-05-05', '0000-00-00', '2015-05-05', '2015-05-06', '0000-00-00', '3', '9', NULL);
 
 -- --------------------------------------------------------
 
