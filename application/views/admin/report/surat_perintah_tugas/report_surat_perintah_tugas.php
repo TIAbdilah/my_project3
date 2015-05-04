@@ -87,7 +87,7 @@ function format_date($string) {
         </tr>
         <tr>
             <td valign="top">Kendaraan</td>
-            <td>: Kereta/Pesawat/dll</td>
+            <td>: Pesawat</td>
         </tr>
         <tr>
             <td valign="top">Pembebanan Biaya</td>

@@ -101,7 +101,7 @@ function format_date($string) {
             <div class="control-group">
                 <label class="control-label" for="inpKepakaran">Kepakaran / Keahlian</label>
                 <div class="controls">
-                    <input type="text" id="inpKepakaran" name="inpKepakaran" value="<?php echo $row->kepakaran ?>">
+                    <textarea id="inpKepakaran" name="inpKepakaran" class="input-large" rows="2" placeholder="Kepakaran / Keahlian"><?php echo $row->kepakaran ?></textarea>
                 </div>
             </div>
             <div class="control-group">

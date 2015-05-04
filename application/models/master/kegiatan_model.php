@@ -34,6 +34,7 @@ class Kegiatan_model extends CI_Model {
         $this->subquery->end_subquery('nama_penanggung_jawab');
         
         $this->db->from('kegiatan');
+        $this->db->order_by('kode_kegiatan');
         
         return $this->db->get();
     }

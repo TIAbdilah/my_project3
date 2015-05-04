@@ -32,6 +32,18 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="inpPaguHarga">Tipe Barang</label>
+                <div class="controls">
+                    <input type="text" id="inpTipeBarang" name="inpTipeBarang" placeholder="Tipe">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpPaguHarga">Merek</label>
+                <div class="controls">
+                    <input type="text" id="inpMerekBarang" name="inpMerekBarang" placeholder="Merek">
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="inpSatuan">Satuan</label>
                 <div class="controls">
                     <select class="input-medium" name="inpSatuan">

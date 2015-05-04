@@ -96,7 +96,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpKepakaran">Kepakaran / Keahlian</label>
                 <div class="controls">
-                    <input type="text" id="inpKepakaran" name="inpKepakaran" placeholder="Kepakaran / Keahlian">
+                    <textarea id="inpKepakaran" name="inpKepakaran" class="input-large" rows="2" placeholder="Kepakaran / Keahlian"></textarea>
                 </div>
             </div>
             <div class="control-group">

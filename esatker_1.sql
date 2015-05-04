@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 04, 2015 at 11:11 AM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: May 04, 2015 at 03:42 PM
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -42,6 +41,11 @@ CREATE TABLE IF NOT EXISTS `akomodasi_perjalanan` (
   `biaya_taksi` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `akomodasi_perjalanan`
+--
+
 
 -- --------------------------------------------------------
 
@@ -106,6 +110,11 @@ CREATE TABLE IF NOT EXISTS `approval` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `approval`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -119,15 +128,18 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `satuan` varchar(10) NOT NULL,
   `pagu_harga` varchar(20) NOT NULL,
   `kode_jenis_barang` varchar(25) NOT NULL,
+  `tipe_barang` varchar(25) DEFAULT NULL,
+  `merek_barang` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `satuan`, `pagu_harga`, `kode_jenis_barang`) VALUES
-(1, 'KOM001', 'Monitor LCD (Toshiba)', 'pcs', '1500000', 'Bahan Komputer');
+INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `satuan`, `pagu_harga`, `kode_jenis_barang`, `tipe_barang`, `merek_barang`) VALUES
+(1, 'KOM001', 'Monitor LCD (Toshiba)', 'pcs', '1500000', 'Bahan Komputer', NULL, NULL),
+(2, 'BB001', 'Semen', 'pcs', '50000', 'Bahan Bangunan', '-', 'Tiga Roda');
 
 -- --------------------------------------------------------
 
@@ -144,6 +156,11 @@ CREATE TABLE IF NOT EXISTS `biaya` (
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `biaya`
+--
+
 
 -- --------------------------------------------------------
 
@@ -471,6 +488,11 @@ CREATE TABLE IF NOT EXISTS `biaya_sewa` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `biaya_sewa`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -523,6 +545,11 @@ CREATE TABLE IF NOT EXISTS `biaya_transport_dlm_kota` (
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `biaya_transport_dlm_kota`
+--
+
 
 -- --------------------------------------------------------
 
@@ -749,6 +776,11 @@ CREATE TABLE IF NOT EXISTS `golongan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `golongan`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -761,6 +793,11 @@ CREATE TABLE IF NOT EXISTS `jenis_barang` (
   `nama_barang` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis_barang`
+--
+
 
 -- --------------------------------------------------------
 
@@ -905,6 +942,11 @@ CREATE TABLE IF NOT EXISTS `koordinator` (
   `penanggung_jawab` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `koordinator`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1250,6 +1292,11 @@ CREATE TABLE IF NOT EXISTS `pajak` (
   `persentase_pajak` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `pajak`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1682,6 +1729,11 @@ CREATE TABLE IF NOT EXISTS `transportasi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `transportasi`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1724,6 +1776,11 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `id_role` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_user_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `user_role`
+--
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -16,29 +16,29 @@ class Barang extends CI_Controller {
         $this->is_logged_in();
     }
 
-    public function index() {                
+    public function index() {
         $data['title'] = "e-satker | Barang";
         $data['page'] = 'admin/master/barang/list';
         $data['list_data'] = $this->barang_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {              
+    public function view($id) {
         $data['title'] = "e-satker | Barang";
         $data['page'] = 'admin/master/barang/view';
         $data['row'] = $this->barang_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {      
+    public function add() {
         $data['title'] = "e-satker | Barang";
         $data['page'] = 'admin/master/barang/add';
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
-        $data['SIList_satuanBarang'] = $this->listcode_model->select_by_field('list_name', 'Satuan Barang')->result();        
+        $data['SIList_satuanBarang'] = $this->listcode_model->select_by_field('list_name', 'Satuan Barang')->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {                
+    public function edit($id) {
         $data['title'] = "e-satker | Barang";
         $data['page'] = 'admin/master/barang/edit';
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
@@ -54,7 +54,9 @@ class Barang extends CI_Controller {
         $data['satuan'] = $this->input->post('inpSatuan');
         $data['pagu_harga'] = $this->input->post('inpPaguHarga');
         $data['kode_jenis_barang'] = $this->input->post('inpKodeJenisBarang');
-        
+        $data['tipe_barang'] = $this->input->post('inpTipeBarang');
+        $data['merek_barang'] = $this->input->post('inpMerekBarang');
+
         if ($action == 'add') {
             $this->barang_model->add($data);
         } else {
@@ -68,7 +70,7 @@ class Barang extends CI_Controller {
         $this->barang_model->delete($id);
         redirect('master/barang');
     }
-    
+
     public function is_logged_in() {
         if ($this->session->userdata('role') == '') {
             redirect('login');

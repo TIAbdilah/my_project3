@@ -30,6 +30,18 @@
                 <div class="controls">
                     <input type="text" id="inpNamaBarang" name="inpNamaBarang" value="<?php echo $row->nama_barang ?>">
                 </div>
+            </div>            
+            <div class="control-group">
+                <label class="control-label" for="inpPaguHarga">Tipe Barang</label>
+                <div class="controls">
+                    <input type="text" id="inpTipeBarang" name="inpTipeBarang" value="<?php echo $row->tipe_barang ?>">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpPaguHarga">Merek</label>
+                <div class="controls">
+                    <input type="text" id="inpMerekBarang" name="inpMerekBarang" value="<?php echo $row->merek_barang ?>">
+                </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inpSatuan">Satuan</label>
