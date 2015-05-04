@@ -13,7 +13,11 @@ class Home extends CI_Controller {
         '4' => 'menunggu verivikasi PPK',
         '5' => 'lima'
     );
-    
+    var $status_penolakan = array(
+        '0' => '-',
+        '1' => '<button class="btn btn-danger"><strong>DITOLAK</strong></button>'
+    );
+
     public function __construct() {
         parent::__construct();
         $this->load->model('master/users_model');
@@ -30,13 +34,14 @@ class Home extends CI_Controller {
             'esselon 3' => 2,
             'asisten satker' => 3,
             'ppk' => 4
-        );        
+        );
         $param = array(
             'status' => $int_role[$role]
         );
         $data['list_data'] = $this->perjalanan_dinas_model->select_by_field($param)->result();
         $data['page'] = 'admin/master/tasklist/list';
         $data['status'] = $this->status;
+        $data['status_penolakan'] = $this->status_penolakan;
         $this->load->view('admin/index', $data);
     }
 
@@ -45,6 +50,7 @@ class Home extends CI_Controller {
             redirect('login');
         }
     }
+
 }
 
 ?>

@@ -7,7 +7,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-require_once(APPPATH.'controllers/common/counter.php');
+require_once(APPPATH . 'controllers/common/counter.php');
 
 class Perjalanan_dinas extends CI_Controller {
 
@@ -19,6 +19,7 @@ class Perjalanan_dinas extends CI_Controller {
         '4' => 'menunggu verifikasi PPK',
         '5' => 'lengkap'
     );
+
     var $bulan_romawi = array(
         '01' => 'I',
         '02' => 'II',
@@ -34,7 +35,7 @@ class Perjalanan_dinas extends CI_Controller {
         '12' => 'XII'
     );
     var $title_page = "e-satker | Perjalanan Dinas";
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/perjalanan_dinas_model');
@@ -58,15 +59,15 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id,$jumlah_tujuan) {
+    public function view($id, $jumlah_tujuan) {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/perjalanan_dinas/view';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
         $param = array(
             'id_header' => $id
         );
-        if($jumlah_tujuan==3){
-        $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field_1($param)->result();
+        if ($jumlah_tujuan == 3) {
+            $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field_1($param)->result();
         } else {
             $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field_1($param)->result();
         }
@@ -165,10 +166,16 @@ class Perjalanan_dinas extends CI_Controller {
                 $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
                 $counter = $this->counter->generateId($pattern);
                 $data['no_spt'] = $counter . "/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
+                $data['tanggal_approval'] = date('yyyy-mm-dd');
                 $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
+                $data['status_penolakan'] = 0;
+                $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
             }
         } else {
             $data['status'] = $status - 1;
+            $data['status_penolakan'] = 1;
+            $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
+
             $this->perjalanan_dinas_model->update_status($id_header, $data);
 
             $data['id_header'] = $id_header;
@@ -292,7 +299,7 @@ class Perjalanan_dinas extends CI_Controller {
             $output3 .= "<option value=''>-Data Master Belum Diisi-</option>";
             $arr[2] = $output3;
         }
-        
+
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param5, $param6);
         $output4 = null;
         $output4 = "<option value=''>Pilih</option>";

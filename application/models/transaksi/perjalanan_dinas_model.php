@@ -101,10 +101,18 @@ class Perjalanan_dinas_model extends CI_Model {
         );
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }
+    
+    public function update_status_penolakan($id, $data) {
+        $data = array(
+            'status_penolakan' => $data['status_penolakan']
+        );
+        $this->db->update('perjalanan_dinas', $data, "id = " . $id);
+    }
 
     public function update_no_spt($id, $data) {
         $data = array(
-            'no_spt' => $data['no_spt']
+            'no_spt' => $data['no_spt'],
+            'tanggal_approval' => $data['tanggal_approval']
         );
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }

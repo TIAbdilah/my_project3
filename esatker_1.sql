@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2015 at 06:41 AM
+-- Generation Time: May 04, 2015 at 11:11 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -484,7 +484,7 @@ CREATE TABLE IF NOT EXISTS `biaya_tiket` (
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `biaya_tiket`
@@ -502,7 +502,14 @@ INSERT INTO `biaya_tiket` (`id`, `kota_asal`, `kota_tujuan`, `jenis_kendaraan`, 
 (11, 'Bandung', 'Manokwari', 'Pesawat', 700000),
 (12, 'Bandung', 'Pangkal Pinang', 'Pesawat', 175000),
 (13, 'Pangkal Pinang', 'Jambi', 'Pesawat', 185000),
-(14, 'Jambi', 'Bandung', 'Pesawat', 195000);
+(14, 'Jambi', 'Bandung', 'Pesawat', 195000),
+(15, 'Banda Aceh', 'Bandung', 'Pesawat', 175000),
+(16, 'Banda Aceh', 'Denpasar', 'Pesawat', 300000),
+(17, 'Denpasar', 'Banda Aceh', 'Pesawat', 300000),
+(19, 'Bandung', 'Denpasar', 'Pesawat', 300000),
+(20, 'Denpasar', 'Bandung', 'Pesawat', 300000),
+(21, 'Denpasar', 'Pangkal Pinang', 'Pesawat', 1500000),
+(22, 'Pangkal Pinang', 'Bandung', 'Pesawat', 300000);
 
 -- --------------------------------------------------------
 
@@ -532,7 +539,7 @@ CREATE TABLE IF NOT EXISTS `bukti_perjalanan_dinas` (
   `nomor_bukti` text,
   `jumlah_bukti` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
 
 --
 -- Dumping data for table `bukti_perjalanan_dinas`
@@ -545,7 +552,23 @@ INSERT INTO `bukti_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `jenis_bi
 (23, 112, 3, 'transport_utama_2', 0, '4', 135000),
 (24, 112, 3, 'transport_pendukung', 120, '5', 135000),
 (25, 112, 3, 'representatif', 0, '0', 0),
-(26, 112, 3, 'riil', 100, '6', 135000);
+(26, 112, 3, 'riil', 100, '6', 135000),
+(50, 10, 10, 'riil_2', 0, 'sdfsdfd', 7500),
+(49, 10, 10, 'riil', 15000, 'adsadasdasdasd', 7500),
+(48, 10, 10, 'representatif', 0, '0', 0),
+(47, 10, 10, 'transport_pendukung', 10000, 'ddd', 10000),
+(46, 10, 10, 'transport_utama_2', 0, '0', 0),
+(45, 10, 10, 'transport_utama', 300000, 'cccc', 300000),
+(44, 10, 10, 'penginapan', 1808000, 'bbb', 1808000),
+(43, 10, 10, 'harian', 1440000, 'aaa', 1440000),
+(51, 10, 10, 'riil_3', 0, '', 0),
+(52, 10, 10, 'riil_4', 0, '', 0),
+(53, 10, 10, 'riil_5', 0, '', 0),
+(54, 10, 10, 'riil_6', 0, '', 0),
+(55, 10, 10, 'riil_7', 0, '', 0),
+(56, 10, 10, 'riil_8', 0, '', 0),
+(57, 10, 10, 'riil_9', 0, '', 0),
+(58, 10, 10, 'riil_10', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -558,7 +581,7 @@ CREATE TABLE IF NOT EXISTS `counter` (
   `pattern` varchar(20) NOT NULL,
   `counter` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `counter`
@@ -566,7 +589,8 @@ CREATE TABLE IF NOT EXISTS `counter` (
 
 INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
 (1, 'IV-2015', 5),
-(2, 'asdf12', 4);
+(2, 'asdf12', 4),
+(3, 'V-2015', 3);
 
 -- --------------------------------------------------------
 
@@ -611,7 +635,7 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=63 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=187 ;
 
 --
 -- Dumping data for table `detail_perjalanan_dinas`
@@ -651,7 +675,66 @@ INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_ber
 (54, 10, 7, '2015-05-04', '2015-05-05', 'penginapan', NULL, 'Pangkal Pinang', 'Hotel', NULL, 533000),
 (55, 10, 7, '2015-05-04', '2015-05-05', 'transport_utama', 'Bandung', 'Pangkal Pinang', NULL, 'Pesawat', 175000),
 (53, 10, 7, '2015-05-04', '2015-05-05', 'harian', NULL, 'Pangkal Pinang', NULL, NULL, 820000),
-(62, 10, 7, '2015-05-05', '2015-05-06', 'transport_utama', 'Jambi', 'Bandung', NULL, 'Pesawat', 195000);
+(62, 10, 7, '2015-05-05', '2015-05-06', 'transport_utama', 'Jambi', 'Bandung', NULL, 'Pesawat', 195000),
+(63, 180, 8, '2015-05-04', '2015-05-06', 'harian', NULL, 'Banda Aceh', NULL, NULL, 1080000),
+(64, 180, 8, '2015-05-04', '2015-05-06', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 820000),
+(65, 180, 8, '2015-05-04', '2015-05-06', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
+(66, 180, 8, '2015-05-04', '2015-05-06', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 20000),
+(67, 180, 8, '2015-05-04', '2015-05-06', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
+(68, 180, 8, '2015-05-04', '2015-05-06', 'riil', NULL, 'Banda Aceh', NULL, NULL, 30000),
+(69, 10, 8, '2015-05-04', '2015-05-06', 'harian', NULL, 'Banda Aceh', NULL, NULL, 1080000),
+(70, 10, 8, '2015-05-04', '2015-05-06', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 820000),
+(71, 10, 8, '2015-05-04', '2015-05-06', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
+(72, 10, 8, '2015-05-04', '2015-05-06', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 250000),
+(73, 10, 8, '2015-05-04', '2015-05-06', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
+(74, 10, 8, '2015-05-04', '2015-05-06', 'riil', NULL, 'Banda Aceh', NULL, NULL, 230000),
+(121, 10, 10, '2015-05-04', '2015-05-06', 'penginapan', NULL, 'Denpasar', 'Hotel', NULL, 1808000),
+(119, 10, 9, '2015-05-06', '2015-05-07', 'transport_utama', 'Banda Aceh', 'Bandung', NULL, 'Pesawat', 175000),
+(120, 10, 10, '2015-05-04', '2015-05-06', 'harian', NULL, 'Denpasar', NULL, NULL, 1440000),
+(118, 10, 9, '2015-05-06', '2015-05-07', 'transport_utama', 'Denpasar', 'Banda Aceh', NULL, 'Pesawat', 300000),
+(117, 10, 9, '2015-05-06', '2015-05-07', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 410000),
+(115, 10, 9, '2015-05-05', '2015-05-06', 'transport_utama', 'Banda Aceh', 'Denpasar', NULL, 'Pesawat', 300000),
+(116, 10, 9, '2015-05-06', '2015-05-07', 'harian', NULL, 'Banda Aceh', NULL, NULL, 720000),
+(113, 10, 9, '2015-05-05', '2015-05-06', 'harian', NULL, 'Denpasar', NULL, NULL, 960000),
+(114, 10, 9, '2015-05-05', '2015-05-06', 'penginapan', NULL, 'Denpasar', 'Hotel', NULL, 904000),
+(112, 10, 9, '2015-05-04', '2015-05-05', 'riil', NULL, 'Banda Aceh', NULL, NULL, 13000),
+(111, 10, 9, '2015-05-04', '2015-05-05', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
+(110, 10, 9, '2015-05-04', '2015-05-05', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 12000),
+(109, 10, 9, '2015-05-04', '2015-05-05', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
+(108, 10, 9, '2015-05-04', '2015-05-05', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 410000),
+(107, 10, 9, '2015-05-04', '2015-05-05', 'harian', NULL, 'Banda Aceh', NULL, NULL, 720000),
+(122, 10, 10, '2015-05-04', '2015-05-06', 'transport_utama', 'Bandung', 'Denpasar', NULL, 'Pesawat', 300000),
+(123, 10, 10, '2015-05-04', '2015-05-06', 'transport_utama', 'Denpasar', 'Bandung', NULL, 'Pesawat', 300000),
+(124, 10, 10, '2015-05-04', '2015-05-06', 'transport_pendukung', NULL, 'Denpasar', NULL, NULL, 10000),
+(125, 10, 10, '2015-05-04', '2015-05-06', 'representatif', NULL, 'Denpasar', NULL, NULL, 0),
+(126, 10, 10, '2015-05-04', '2015-05-06', 'riil', NULL, 'Denpasar', NULL, NULL, 15000),
+(186, 122, 12, '2015-05-04', '2015-05-07', 'riil', NULL, 'Banda Aceh', NULL, NULL, 400000),
+(185, 122, 12, '2015-05-04', '2015-05-07', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
+(184, 122, 12, '2015-05-04', '2015-05-07', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 300000),
+(183, 122, 12, '2015-05-07', '2015-05-07', 'transport_utama', 'Banda Aceh', 'Bandung', NULL, 'Pesawat', 175000),
+(182, 122, 12, '2015-05-04', '2015-05-07', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
+(181, 122, 12, '2015-05-04', '2015-05-07', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 1230000),
+(180, 122, 12, '2015-05-04', '2015-05-07', 'harian', NULL, 'Banda Aceh', NULL, NULL, 1440000),
+(178, 10, 12, '2015-05-04', '2015-05-07', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
+(179, 10, 12, '2015-05-04', '2015-05-07', 'riil', NULL, 'Banda Aceh', NULL, NULL, 400000),
+(177, 10, 12, '2015-05-04', '2015-05-07', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 300000),
+(176, 10, 12, '2015-05-07', '2015-05-07', 'transport_utama', 'Banda Aceh', 'Bandung', NULL, 'Pesawat', 175000),
+(175, 10, 12, '2015-05-04', '2015-05-07', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
+(174, 10, 12, '2015-05-04', '2015-05-07', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 1230000),
+(173, 10, 12, '2015-05-04', '2015-05-07', 'harian', NULL, 'Banda Aceh', NULL, NULL, 1440000),
+(153, 161, 11, '2015-05-04', '2015-05-05', 'harian', NULL, 'Banda Aceh', NULL, NULL, 720000),
+(154, 161, 11, '2015-05-04', '2015-05-05', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 410000),
+(155, 161, 11, '2015-05-04', '2015-05-05', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
+(156, 161, 11, '2015-05-04', '2015-05-05', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 130000),
+(157, 161, 11, '2015-05-04', '2015-05-05', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
+(158, 161, 11, '2015-05-04', '2015-05-05', 'riil', NULL, 'Banda Aceh', NULL, NULL, 145000),
+(159, 161, 11, '2015-05-05', '2015-05-06', 'harian', NULL, 'Denpasar', NULL, NULL, 960000),
+(160, 161, 11, '2015-05-05', '2015-05-06', 'penginapan', NULL, 'Denpasar', 'Hotel', NULL, 904000),
+(161, 161, 11, '2015-05-05', '2015-05-06', 'transport_utama', 'Banda Aceh', 'Denpasar', NULL, 'Pesawat', 300000),
+(162, 161, 11, '2015-05-06', '2015-05-08', 'harian', NULL, 'Pangkal Pinang', NULL, NULL, 820000),
+(163, 161, 11, '2015-05-06', '2015-05-08', 'penginapan', NULL, 'Pangkal Pinang', 'Hotel', NULL, 533000),
+(164, 161, 11, '2015-05-06', '2015-05-08', 'transport_utama', 'Denpasar', 'Pangkal Pinang', NULL, 'Pesawat', 1500000),
+(165, 161, 11, '2015-05-08', '2015-05-08', 'transport_utama', 'Pangkal Pinang', 'Bandung', NULL, 'Pesawat', 300000);
 
 -- --------------------------------------------------------
 
@@ -794,7 +877,7 @@ CREATE TABLE IF NOT EXISTS `komentar` (
   `username` varchar(50) NOT NULL,
   `komentar` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `komentar`
@@ -805,7 +888,8 @@ INSERT INTO `komentar` (`id`, `id_header`, `username`, `komentar`) VALUES
 (2, '1', 'admin', 'duh jelek'),
 (3, '1', 'admin', 'butut'),
 (4, '2', 'esselon 4', '0'),
-(5, '2', 'esselon 4', 'xxxxxxxxxxxxxxxxxxxxxxxxxxx');
+(5, '2', 'esselon 4', 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+(6, '5', 'esselon 4', '');
 
 -- --------------------------------------------------------
 
@@ -1189,7 +1273,7 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `kepakaran` varchar(100) DEFAULT NULL,
   `narasumber` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=195 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=196 ;
 
 --
 -- Dumping data for table `pegawai`
@@ -1389,7 +1473,8 @@ INSERT INTO `pegawai` (`id`, `nip`, `nama`, `golongan`, `jabatan`, `tgl_lahir`, 
 (191, '198411132010121003', ' Moh. Anwar Mussaddad, A.Md.', 'II/C', 'Penata O&P Laboratorium (Jenjang 2)', '0000-00-00', '6', 'PNS', '9', '', '', NULL, NULL, 0),
 (192, '197010192007011002', ' Gultom Obet Haposan ', 'II/B', 'Pengadministrasi Teknis (Jenjang 2)', '0000-00-00', '5', 'PNS', '9', '', '', NULL, NULL, 0),
 (193, ' ', 'Usup Ruswandi', ' ', ' ', '0000-00-00', '', 'PNS', '9', '', '', NULL, NULL, 0),
-(194, '008', 'Taufik Ismail Abdilah, S.Kom', 'III/A', 'Peneliti', '1989-07-24', '2a', 'Status', '1', '', 'S1', 'UPI', 'Ahli Komputer', 1);
+(194, '008', 'Taufik Ismail Abdilah, S.Kom', 'III/A', 'Peneliti', '1989-07-24', '2a', 'Status', '1', '', 'S1', 'UPI', 'Ahli Komputer', 1),
+(195, '196101131990031001', 'Budi Rahardjo', 'III/D', 'Kabid ', '2015-05-04', '-', 'Non PNS (S1)', '9', 'PNS', 'S1', 'Nowhere', 'Menghitung', 1);
 
 -- --------------------------------------------------------
 
@@ -1455,7 +1540,9 @@ INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `nama`, `nip`, `alam
 CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `no_spt` varchar(50) NOT NULL,
+  `tanggal_approval` date NOT NULL,
   `status` varchar(25) NOT NULL,
+  `status_penolakan` int(1) NOT NULL,
   `id_anggaran` varchar(25) NOT NULL,
   `jumlah_tujuan` int(2) NOT NULL,
   `maksud_perjalanan` varchar(250) NOT NULL,
@@ -1469,20 +1556,24 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `kota_tujuan_2` varchar(25) DEFAULT NULL,
   `kota_tujuan_3` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `perjalanan_dinas`
 --
 
-INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `status`, `id_anggaran`, `jumlah_tujuan`, `maksud_perjalanan`, `jadwal_berangkat_1`, `jadwal_berangkat_2`, `jadwal_berangkat_3`, `jadwal_pulang_1`, `jadwal_pulang_2`, `jadwal_pulang_3`, `kota_tujuan_1`, `kota_tujuan_2`, `kota_tujuan_3`) VALUES
-(1, '002/SPPD/SATKER/LP/IV/2015', '5', '2', 3, 'maksud satu', '2015-04-20', '2015-04-21', '2015-04-22', '2015-04-21', '2015-04-22', '2015-04-23', '1', '2', '1'),
-(2, '003/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', NULL, NULL, '0000-00-00', NULL, NULL, '1', NULL, NULL),
-(3, '004/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
-(4, '-', '5', '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19'),
-(5, '-', '0', '2', 1, 'studi banding ke kota jakarta', '2015-05-05', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '7', NULL, NULL),
-(6, '005/SPPD/SATKER/LP/IV/2015', '5', '2', 1, 'studi banding jakarta 2 unit', '2015-04-30', '0000-00-00', '0000-00-00', '2015-05-02', '0000-00-00', '0000-00-00', '7', NULL, NULL),
-(7, '-', '0', '2', 2, 'dua tujuan', '2015-05-04', '2015-05-05', '0000-00-00', '2015-05-05', '2015-05-06', '0000-00-00', '3', '9', NULL);
+INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `status`, `status_penolakan`, `id_anggaran`, `jumlah_tujuan`, `maksud_perjalanan`, `jadwal_berangkat_1`, `jadwal_berangkat_2`, `jadwal_berangkat_3`, `jadwal_pulang_1`, `jadwal_pulang_2`, `jadwal_pulang_3`, `kota_tujuan_1`, `kota_tujuan_2`, `kota_tujuan_3`) VALUES
+(1, '002/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 3, 'maksud satu', '2015-04-20', '2015-04-21', '2015-04-22', '2015-04-21', '2015-04-22', '2015-04-23', '1', '2', '1'),
+(2, '003/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', NULL, NULL, '0000-00-00', NULL, NULL, '1', NULL, NULL),
+(3, '004/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
+(4, '-', '0000-00-00', '5', 0, '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19'),
+(5, '-', '0000-00-00', '0', 1, '2', 1, 'studi banding ke kota jakarta', '2015-05-05', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '7', NULL, NULL),
+(6, '005/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 1, 'studi banding jakarta 2 unit', '2015-04-30', '0000-00-00', '0000-00-00', '2015-05-02', '0000-00-00', '0000-00-00', '7', NULL, NULL),
+(7, '-', '0000-00-00', '0', 0, '2', 2, 'dua tujuan', '2015-05-04', '2015-05-05', '0000-00-00', '2015-05-05', '2015-05-06', '0000-00-00', '3', '9', NULL),
+(8, '001/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '1', NULL, NULL),
+(10, '002/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '2', NULL, NULL),
+(11, '-', '0000-00-00', '0', 0, '2', 3, 'tiga tujuan beda kota', '2015-05-04', '2015-05-05', '2015-05-06', '2015-05-05', '2015-05-06', '2015-05-08', '1', '2', '3'),
+(12, '003/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-07', '0000-00-00', '0000-00-00', '1', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1619,7 +1710,7 @@ INSERT INTO `unit` (`id`, `kode_unit`, `nama_unit`, `kepala`) VALUES
 (7, 'BSKB', 'Balai Struktur Dan Konstruksi Bangunan', 135),
 (8, 'BAMP', 'Balai Air Minum Dan PLP. ', 155),
 (9, 'BBB', 'Balai  Bahan  Bangunan', 174),
-(10, 'SATKER', 'Satker', 0);
+(10, 'SATKER', 'Satker', 72);
 
 -- --------------------------------------------------------
 
