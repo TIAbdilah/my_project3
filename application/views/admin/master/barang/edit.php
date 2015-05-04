@@ -43,6 +43,13 @@
                     <input type="text" id="inpMerekBarang" name="inpMerekBarang" value="<?php echo $row->merek_barang ?>">
                 </div>
             </div>
+            
+            <div class="control-group">
+                <label class="control-label" for="inpSpesifikasi">Spesifikasi</label>
+                <div class="controls">
+                    <textarea name="inpSpesifikasi" id="inpSpesifikasi" placeholder="Spesifikasi"><?php echo $row->spesifikasi ?></textarea>
+                </div>
+            </div>
             <div class="control-group">
                 <label class="control-label" for="inpSatuan">Satuan</label>
                 <div class="controls">

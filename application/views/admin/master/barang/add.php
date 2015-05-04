@@ -32,15 +32,21 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inpPaguHarga">Tipe Barang</label>
+                <label class="control-label" for="inpTipeBarang">Tipe Barang</label>
                 <div class="controls">
                     <input type="text" id="inpTipeBarang" name="inpTipeBarang" placeholder="Tipe">
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inpPaguHarga">Merek</label>
+                <label class="control-label" for="inpMerekBarang">Merek</label>
                 <div class="controls">
                     <input type="text" id="inpMerekBarang" name="inpMerekBarang" placeholder="Merek">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpSpesifikasi">Spesifikasi</label>
+                <div class="controls">
+                    <textarea name="inpSpesifikasi" id="inpSpesifikasi" placeholder="Spesifikasi"></textarea>
                 </div>
             </div>
             <div class="control-group">
