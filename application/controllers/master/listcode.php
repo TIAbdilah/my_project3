@@ -18,13 +18,14 @@ class Listcode extends CI_Controller {
     public function index() {
         $data['title'] = "e-satker | Listcode";
         $data['page'] = 'admin/master/listcode/list';        
-        $data['list_data'] = $this->listcode_model->select_all()->result();
+        $data['list_data'] = $this->listcode_model->select_all()->result();          
+        $data['SIList_listcode'] = $this->listcode_model->select_by_field('list_name','')->result();
         $this->load->view('admin/index', $data);
     }
 
     public function view($id) {        
         $data['title'] = "e-satker | Listcode";
-        $data['page'] = 'admin/master/listcode/view';
+        $data['page'] = 'admin/master/listcode/view';      
         $data['row'] = $this->listcode_model->select_by_id($id)->row();        
         $this->load->view('admin/index', $data);
     }

@@ -56,6 +56,7 @@ class Barang extends CI_Controller {
         $data['kode_jenis_barang'] = $this->input->post('inpKodeJenisBarang');
         $data['tipe_barang'] = $this->input->post('inpTipeBarang');
         $data['merek_barang'] = $this->input->post('inpMerekBarang');
+        $data['spesifikasi'] = $this->input->post('inpSpesifikasi');
 
         if ($action == 'add') {
             $this->barang_model->add($data);

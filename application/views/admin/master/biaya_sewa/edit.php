@@ -7,13 +7,13 @@
     <div class="widget-content"><br>
         <form class="bs-docs-example form-horizontal" action="<?php echo site_url('master/biaya_tiket/process/edit/' . $row->id); ?>" method="POST">
             <div class="control-group">
-                <label class="control-label" for="inpNamaKota">Nama Kota</label>
+                <label class="control-label" for="inpNamaKota">Nama Provinsi</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpNamaKota">
-                        <option>Nama Kota</option>
+                        <option>Nama Provinsi</option>
                         <?php
                         foreach ($SIList_kota as $row_1) {
-                            echo "<option value=\"" . $row_1->nama_kota . "\"".set_select('inpNamaKota', $row_1->nama_kota, $row_1->nama_kota == $row->kota_asal).">" . $row_1->nama_kota . "</option>";
+                            echo "<option value=\"" . $row_1->nama_provinsi . "\"".set_select('inpNamaKota', $row_1->nama_provinsi, $row_1->nama_provinsi == $row->nama_kota).">" . $row_1->nama_provinsi . "</option>";
                         }
                         ?>
                     </select>

@@ -17,6 +17,7 @@
                     <th> Nama Barang</th>
                     <th> Tipe Barang</th>
                     <th> Merek Barang</th>
+                    <th> Spesifikasi</th>
                     <th> Satuan</th>
                     <th> Harga Satuan</th>                    
                     <th class="td-actions"> </th>
@@ -33,6 +34,7 @@
                     . "<td>" . $row->nama_barang . "</td>"
                     . "<td>" . $row->tipe_barang . "</td>"
                     . "<td>" . $row->merek_barang . "</td>"
+                    . "<td>" . $row->spesifikasi . "</td>"
                     . "<td>" . $row->satuan . "</td>"
                     . "<td>" . $row->pagu_harga . "</td>"
                     . "<td class=\"td-actions\">"

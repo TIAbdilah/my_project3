@@ -35,7 +35,7 @@ class Biaya_sewa extends CI_Controller {
         $data['title'] = "e-satker | Biaya Sewa";
         $data['page'] = 'admin/master/biaya_sewa/add';
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan')->result();
+        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan Sewa')->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -44,7 +44,7 @@ class Biaya_sewa extends CI_Controller {
         $data['page'] = 'admin/master/biaya_sewa/edit';
         $data['row'] = $this->biaya_sewa_model->select_by_id($id)->row();
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan')->result();
+        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan Sewa')->result();
         $this->load->view('admin/index', $data);
     }
 

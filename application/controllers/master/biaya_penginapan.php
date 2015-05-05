@@ -35,7 +35,7 @@ class Biaya_penginapan extends CI_Controller {
         $data['title'] = "e-satker | Biaya Penginapan";
         $data['page'] = 'admin/master/biaya_penginapan/add';
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan (Biaya Penginapan)')->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -44,7 +44,7 @@ class Biaya_penginapan extends CI_Controller {
         $data['page'] = 'admin/master/biaya_penginapan/edit';
         $data['row'] = $this->biaya_penginapan_model->select_by_id($id)->row();
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan (Biaya Penginapan)')->result();
         $this->load->view('admin/index', $data);
     }
 

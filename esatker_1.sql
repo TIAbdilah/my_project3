@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 04, 2015 at 03:42 PM
+-- Generation Time: May 06, 2015 at 04:02 AM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -130,6 +130,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `kode_jenis_barang` varchar(25) NOT NULL,
   `tipe_barang` varchar(25) DEFAULT NULL,
   `merek_barang` varchar(25) DEFAULT NULL,
+  `spesifikasi` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -137,9 +138,9 @@ CREATE TABLE IF NOT EXISTS `barang` (
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `satuan`, `pagu_harga`, `kode_jenis_barang`, `tipe_barang`, `merek_barang`) VALUES
-(1, 'KOM001', 'Monitor LCD (Toshiba)', 'pcs', '1500000', 'Bahan Komputer', NULL, NULL),
-(2, 'BB001', 'Semen', 'pcs', '50000', 'Bahan Bangunan', '-', 'Tiga Roda');
+INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `satuan`, `pagu_harga`, `kode_jenis_barang`, `tipe_barang`, `merek_barang`, `spesifikasi`) VALUES
+(1, 'KOM001', 'Monitor LCD ', 'pcs', '1500000', 'Jenis Barang', 'L00123', 'Toshiba', '21 inch, LCD'),
+(2, 'BB001', 'Semen', 'pcs', '50000', 'Bahan Bangunan', '-', 'Tiga Roda', NULL);
 
 -- --------------------------------------------------------
 
@@ -321,6 +322,26 @@ INSERT INTO `biaya_akomodasi` (`id`, `nama_kota`, `status_pegawai`, `biaya`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `biaya_diklat`
+--
+
+CREATE TABLE IF NOT EXISTS `biaya_diklat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_provinsi` varchar(25) DEFAULT NULL,
+  `biaya` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `biaya_diklat`
+--
+
+INSERT INTO `biaya_diklat` (`id`, `nama_provinsi`, `biaya`) VALUES
+(2, 'ACEH', 120000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `biaya_penginapan`
 --
 
@@ -477,6 +498,28 @@ INSERT INTO `biaya_penginapan` (`id`, `nama_kota`, `golongan`, `biaya`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `biaya_representatif`
+--
+
+CREATE TABLE IF NOT EXISTS `biaya_representatif` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_kota` varchar(25) DEFAULT NULL,
+  `tingkat` varchar(25) DEFAULT NULL,
+  `biaya` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `biaya_representatif`
+--
+
+INSERT INTO `biaya_representatif` (`id`, `nama_kota`, `tingkat`, `biaya`) VALUES
+(1, 'ACEH', 'Eselon I', 200000),
+(2, 'ACEH', 'Eselon II', 100000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `biaya_sewa`
 --
 
@@ -486,12 +529,16 @@ CREATE TABLE IF NOT EXISTS `biaya_sewa` (
   `nama_kota` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `biaya_sewa`
 --
 
+INSERT INTO `biaya_sewa` (`id`, `jenis_kendaraan`, `nama_kota`, `biaya`) VALUES
+(1, 'Roda 4', 'ACEH', 766000),
+(2, 'Roda 6 / Bus Sedang', 'ACEH', 2050000),
+(3, 'Roda 6 / Bus Besar', 'ACEH', 3670000);
 
 -- --------------------------------------------------------
 
@@ -550,6 +597,8 @@ CREATE TABLE IF NOT EXISTS `biaya_transport_dlm_kota` (
 -- Dumping data for table `biaya_transport_dlm_kota`
 --
 
+INSERT INTO `biaya_transport_dlm_kota` (`id`, `nama_kota`, `biaya`) VALUES
+(0, 'ACEH', 500000);
 
 -- --------------------------------------------------------
 
@@ -1013,7 +1062,7 @@ CREATE TABLE IF NOT EXISTS `listcode` (
   `list_name` varchar(50) DEFAULT NULL,
   `list_item` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `listcode`
@@ -1056,7 +1105,19 @@ INSERT INTO `listcode` (`id`, `list_name`, `list_item`) VALUES
 (40, 'Jenis Penginapan', 'Hotel'),
 (41, 'Jenis Penginapan', 'Non Hotel'),
 (42, 'Status Pegawai', 'Non PNS (D3)'),
-(43, 'Status Pegawai', 'Non PNS (SMU)');
+(43, 'Status Pegawai', 'Non PNS (SMU)'),
+(44, 'Jenis Kendaraan Sewa', 'Roda 4'),
+(45, '', 'Jenis Kendaraan Sewa'),
+(46, 'Jenis Kendaraan Sewa', 'Roda 6 / Bus Sedang'),
+(47, 'Jenis Kendaraan Sewa', 'Roda 6 / Bus Besar'),
+(48, '', 'Golongan (Biaya Penginapan)'),
+(49, 'Golongan (Biaya Penginapan)', 'I'),
+(50, 'Golongan (Biaya Penginapan)', 'II'),
+(51, 'Golongan (Biaya Penginapan)', 'III'),
+(52, 'Golongan (Biaya Penginapan)', 'IV'),
+(53, '', 'Tingkat'),
+(54, 'Tingkat', 'Eselon I'),
+(55, 'Tingkat', 'Eselon II');
 
 -- --------------------------------------------------------
 
@@ -1297,6 +1358,29 @@ CREATE TABLE IF NOT EXISTS `pajak` (
 -- Dumping data for table `pajak`
 --
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `panjar`
+--
+
+CREATE TABLE IF NOT EXISTS `panjar` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_header` int(11) DEFAULT NULL,
+  `id_pegawai` int(11) DEFAULT NULL,
+  `jml_panjar` int(11) DEFAULT NULL,
+  `penerima` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `panjar`
+--
+
+INSERT INTO `panjar` (`id`, `id_header`, `id_pegawai`, `jml_panjar`, `penerima`) VALUES
+(1, 12, 10, 400000, 10),
+(2, 12, 122, 200000, 122);
 
 -- --------------------------------------------------------
 

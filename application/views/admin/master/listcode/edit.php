@@ -5,7 +5,7 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;"><br>
-        <form class="bs-docs-example form-inline" action="<?php echo site_url('admin/listcode/process/edit/'.$row->id) ?>" method="POST">
+        <form class="bs-docs-example form-inline" action="<?php echo site_url('master/listcode/process/edit/'.$row->id) ?>" method="POST">
             <strong>List Name</strong>
             <select name="inpListName">                                                
                 <option></option>

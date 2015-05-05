@@ -33,7 +33,8 @@ class Barang_model extends CI_Model {
             'pagu_harga' => $data['pagu_harga'],
             'kode_jenis_barang' => $data['kode_jenis_barang'],
             'tipe_barang' => $data['tipe_barang'],
-            'merek_barang' => $data['merek_barang']
+            'merek_barang' => $data['merek_barang'],
+            'spesifikasi' => $data['spesifikasi']
         );
         $this->db->insert('barang', $data);
     }
@@ -46,7 +47,8 @@ class Barang_model extends CI_Model {
             'pagu_harga' => $data['pagu_harga'],
             'kode_jenis_barang' => $data['kode_jenis_barang'],
             'tipe_barang' => $data['tipe_barang'],
-            'merek_barang' => $data['merek_barang']
+            'merek_barang' => $data['merek_barang'],
+            'spesifikasi' => $data['spesifikasi']
         );
         $this->db->update('barang', $data, "id = " . $id);
     }

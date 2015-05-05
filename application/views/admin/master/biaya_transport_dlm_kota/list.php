@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th width="5%"> No </th>
-                    <th> Nama Kota</th>
+                    <th> Nama Provinsi</th>
                     <th> Biaya</th>
                     <th class="td-actions"> </th>
                 </tr>

@@ -36,7 +36,7 @@
     <div class="subnavbar-inner">
         <div class="container">
             <ul class="mainnav">
-                <li class="active"><a href="<?php echo base_url() ?>"><i class="icon-list-alt"></i><span>Seranai Tugas</span> </a> </li>
+                <li><a href="<?php echo base_url() ?>"><i class="icon-list-alt"></i><span>Seranai Tugas</span> </a> </li>
                 <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-list-alt"></i><span>Master</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo site_url('master/pegawai') ?>">Pegawai</a></li>    
@@ -49,6 +49,8 @@
                         <li><a href="<?php echo site_url('master/biaya_sewa') ?>">Biaya Sewa</a></li>
                         <li><a href="<?php echo site_url('master/biaya_tiket') ?>">Biaya Tiket</a></li>
                         <li><a href="<?php echo site_url('master/biaya_transport_dlm_kota') ?>">Biaya Transportasi Dalam Kota</a></li>
+                        <li><a href="<?php echo site_url('master/biaya_diklat') ?>">Biaya Diklat</a></li>
+                        <li><a href="<?php echo site_url('master/biaya_representatif') ?>">Biaya Representatif</a></li>
                         <li><a href="<?php echo site_url('master/unit') ?>">Unit</a></li>
                         <li><a href="<?php echo site_url('master/kota_tujuan') ?>">Kota Tujuan</a></li>
                         <li><a href="<?php echo site_url('master/barang') ?>">Barang</a></li>               

@@ -12,25 +12,22 @@
     </center>
     <table style="width:100%">
         <tr>
-            <td width="21%"><div align="left">Sudah terima dari</div></td>
-            <td width="2%"><div align="center">:</div></td>
-            <td width="77%"><div align="left">Kepala Satuan Kerja Pusat Penelitian dan Pengembangan Permukiman</div></td>
+            <td width="21%">Sudah terima dari</td>
+            <td width="2%">:</td>
+            <td width="77%">Kepala Satuan Kerja Pusat Penelitian dan Pengembangan Permukiman</td>
         </tr>
         <tr>
             <td>Banyaknya uang (rupiah)</td>
-            <td><div align="center">:</div></td>
+            <td>:</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td>Untuk pembayaran</td>
-            <td><div align="center">:</div></td>
-            <td><p>&nbsp;</p>
-                <p>&nbsp;</p>
-                <p>&nbsp;</p></td>
+            <td>:</td>
+            <td> Uang muka perjalanan dinas dengan nomor <?php echo $data_header->no_spt?></td>
         </tr>
     </table>
-    <p><u>Jumlah Rp.</u></p>
-<p>&nbsp;</p>
+    <p><u>Jumlah Rp.</u><?php echo number_format($data_panjar->jml_panjar)?></p>
 
 <table style="width: 100%">
     <tr>
@@ -55,11 +52,11 @@
                 <br>
             </p></td>
         <td valign="top" align="center" width="30%">
-            <p>Bandung, <br>
+            <p>Bandung, <?php echo date('d F Y')?><br>
                 Yang menerima,</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
-            <p>..........................................</p></td>
+            <p><strong><?php echo $data_panjar->nama_penerima?></strong></p></td>
     </tr>
 </table>
 <p>CATATAN :<br>

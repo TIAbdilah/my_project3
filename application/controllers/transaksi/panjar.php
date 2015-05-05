@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Panjar extends CI_Controller {
-    
+
     var $status = array(
         '0' => 'baru dibuat',
         '1' => 'menunggu verifikasi esselon 4',
@@ -17,16 +17,17 @@ class Panjar extends CI_Controller {
         '4' => 'menunggu verifikasi PPK',
         '5' => 'lengkap'
     );
-    
     var $title_page = "e-satker | Perjalanan Dinas";
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->load->model('transaksi/panjar_model');        
+        $this->load->model('master/pegawai_model');
         $this->is_logged_in();
     }
 
-    public function index() {        
+    public function index() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/panjar/list';
         $data['list_data'] = $this->perjalanan_dinas_model->select_all()->result();
@@ -34,50 +35,53 @@ class Panjar extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) {        
+    public function view($id) {
         $data['title'] = "e-satker | Biaya Sewa";
-        $data['page'] = 'admin/master/biaya_sewa/view';
-        $data['row'] = $this->biaya_sewa_model->select_by_id($id)->row();
+        $data['page'] = 'admin/transaksi/panjar/view';
+        $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
+        $data['list_data'] = $this->panjar_model->select_by_header($id)->result();
+        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {        
+    public function add() {
         $data['title'] = "e-satker | Biaya Sewa";
-        $data['page'] = 'admin/master/biaya_sewa/add';
+        $data['page'] = 'admin/master/panjar/add';
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan')->result();
+        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {        
+    public function edit($id) {
         $data['title'] = "e-satker | Biaya Sewa";
-        $data['page'] = 'admin/master/biaya_sewa/edit';
-        $data['row'] = $this->biaya_sewa_model->select_by_id($id)->row();
+        $data['page'] = 'admin/master/panjar/edit';
+        $data['row'] = $this->panjar_model->select_by_id($id)->row();
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name','Jenis Kendaraan')->result();
+        $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
         $this->load->view('admin/index', $data);
     }
 
     public function process($action, $id = null) {
 
-        $data['nama_kota'] = $this->input->post('inpNamaKota');
-        $data['jenis_kendaraan'] = $this->input->post('inpJenisKendaraan');
-        $data['biaya'] = $this->input->post('inpBiaya');
+        $data['id_header'] = $this->input->post('inpIdHeader');
+        $data['id_pegawai'] = $this->input->post('inpIdPegawai');
+        $data['jml_panjar'] = $this->input->post('inpJmlPanjar');
+        $data['penerima'] = $this->input->post('inpPenerima');
 
         if ($action == 'add') {
-            $this->biaya_sewa_model->add($data);
+            $this->panjar_model->add($data);
         } else {
-            $this->biaya_sewa_model->edit($id, $data);
+            $this->panjar_model->edit($id, $data);
         }
 
-        redirect('master/biaya_sewa');
+        redirect('transaksi/panjar/view/'.$data['id_header']);
     }
 
     public function delete($id) {
-        $this->biaya_sewa_model->delete($id);
-        redirect('master/biaya_sewa');
+        $this->panjar_model->delete($id);
+        redirect('master/panjar');
     }
-    
+
     public function is_logged_in() {
         if ($this->session->userdata('role') == '') {
             redirect('login');

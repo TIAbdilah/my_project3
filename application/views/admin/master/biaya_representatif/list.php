@@ -1,9 +1,9 @@
 
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>List Data Biaya Tiket</h3>
+        <h3>List Data Biaya Representatif</h3>
         <span class="pull-right" style="margin-right: 10px;">
-            <a href="<?php echo site_url('master/biaya_sewa/add') ?>"><button class="btn">Tambah Data</button></a>
+            <a href="<?php echo site_url('master/biaya_representatif/add') ?>"><button class="btn">Tambah Data</button></a>
         </span>
     </div>
     <!-- /widget-header -->
@@ -12,8 +12,8 @@
             <thead>
                 <tr>
                     <th width="5%"> No </th>
-                    <th> Nama Provinsi</th>                    
-                    <th> Jenis Kendaraan</th>
+                    <th> Nama Provinsi</th>
+                    <th> Tingkat</th>
                     <th> Biaya</th>
                     <th class="td-actions"> </th>
                 </tr>
@@ -25,11 +25,11 @@
                     echo "<tr>"
                     . "<td>" . $no . "</td>"
                     . "<td>" . $row->nama_kota . " </td>"
-                    . "<td>" . $row->jenis_kendaraan . " </td>"
+                    . "<td>" . $row->tingkat . " </td>"
                     . "<td>" . number_format($row->biaya) . " </td>"
                     . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"" . site_url('master/biaya_sewa/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
-                    . "<a title=\"Delete\" href=\"" . site_url('master/biaya_sewa/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
+                    . "<a title=\"Edit\" href=\"" . site_url('master/biaya_representatif/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
+                    . "<a title=\"Delete\" href=\"" . site_url('master/biaya_representatif/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                     . "</td>"
                     . "</tr>";
                     $no++;

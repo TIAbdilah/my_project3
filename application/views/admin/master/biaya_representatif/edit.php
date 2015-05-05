@@ -5,7 +5,7 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content"><br>
-        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('master/biaya_penginapan/process/edit/' . $row->id); ?>" method="POST">
+        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('master/biaya_representatif/process/edit/' . $row->id); ?>" method="POST">
             <div class="control-group">
                 <label class="control-label" for="inpNamaKota">Nama Provinsi</label>
                 <div class="controls">
@@ -20,13 +20,13 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inpGolongan">Golongan</label>
+                <label class="control-label" for="inpTingkat">Tingkat</label>
                 <div class="controls">
-                    <select class="input-xlarge" name="inpGolongan">
-                        <option>Golongan</option>
+                    <select class="input-xlarge" name="inpTingkat">
+                        <option>Tingkat</option>
                         <?php
-                        foreach ($SIList_golongan as $row_3) {
-                            echo "<option value=\"" . $row_3->list_item . "\"".set_select('inpGolongan', $row_3->list_item, $row_3->list_item == $row->golongan).">" . $row_3->list_item . "</option>";
+                        foreach ($SIList_tingkat as $row_3) {
+                            echo "<option value=\"" . $row_3->list_item . "\"".set_select('inpTingkat', $row_3->list_item, $row_3->list_item == $row->tingkat).">" . $row_3->list_item . "</option>";
                         }
                         ?>
                     </select>
