@@ -27,13 +27,11 @@ class Detail_pengajuan_barang_model extends CI_Model {
 //    }
 
     public function select_by_id($id) {
-        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
-                . 'from pengajuan_barang pd, '
-                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
-                . 'from anggaran a, kegiatan k, akun ak '
-                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
-                . 'where pd.id_anggaran = a1.id '
-                . 'and pd.id = ' . $id;
+       $query = 'select pd.*, '
+                 . '(select k1.nama_barang from barang k1 where k1.id = pd.id_barang) as nama_barang, '
+                . '(select k1.pagu_harga from barang k1 where k1.id = pd.id_barang) as pagu_harga '
+                . 'from detail_pengajuan_barang pd '
+                . 'where pd.id = ' . $id;
         return $this->db->query($query);
     }
 

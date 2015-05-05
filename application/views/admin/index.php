@@ -398,9 +398,26 @@
                         data: {id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function (data) { 
                             $("#inSatuanBarang").val(data[0]);
                             $("#inHargaBarang").val(data[1]);
+                            $("#inTipeBarang").val(data[2]);
+                            $("#inMerk").val(data[3]);
+                        }
+                    });
+                });
+                 
+                $("#inIdAnggaran").change(function () {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/getDetailAnggaran",
+                        data: {id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function (data) { 
+                            $("#inKodeKegiatan").val(data[0]);
+                            $("#inAkun").val(data[1]);
+                           
                         }
                     });
                 });
