@@ -67,7 +67,7 @@ class Pengajuan_barang extends CI_Controller {
         $param = array(
             'id_header' => $id
         );
-        $data['list_data'] = $this->detail_pengajuan_barang_model->select_all()->result();
+        $data['list_data'] = $this->detail_pengajuan_barang_model->select_by_id($id)->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
         $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
@@ -158,10 +158,30 @@ class Pengajuan_barang extends CI_Controller {
         $data['data'] = $this->barang_model->getDetailBarang($id);
         $output1 = null;
         $output2 = null;
+        $output3 = null;
+        $output4 = null;
         foreach ($data['data'] as $row) {
             $output1 .=$row->satuan;
             $arr[0] = $output1;
             $output2 .=$row->pagu_harga;
+            $arr[1] = $output2;
+            $output3 .=$row->tipe_barang;
+            $arr[2] = $output3;
+            $output4 .=$row->merek_barang;
+            $arr[3] = $output4;
+        }
+        echo json_encode($arr);
+    }
+    
+    public function getDetailAnggaran() {
+        $id = $this->input->post('id', TRUE);
+        $data['data'] = $this->anggaran_model->getDetailAnggaran($id);
+        $output1 = null;
+        $output2 = null;
+        foreach ($data['data'] as $row) {
+            $output1 .=$row->kode_kegiatan;
+            $arr[0] = $output1;
+            $output2 .=$row-> kode_akun;
             $arr[1] = $output2;
         }
         echo json_encode($arr);

@@ -56,7 +56,7 @@ class Barang_model extends CI_Model {
     }
 
      public function getDetailBarang($id_barang = string) {
-        $this->db->select('satuan,pagu_harga');
+        $this->db->select('satuan,pagu_harga,tipe_barang,merek_barang');
         $this->db->from('barang');
         $this->db->where('id', $id_barang);
         $query = $this->db->get();

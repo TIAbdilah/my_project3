@@ -32,6 +32,18 @@
                 </td>
             </tr>
             <tr>
+                <td><label>Tipe</label></td>
+                <td>
+                    <input type="text" id="inTipeBarang" name="inTipeBarang"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Merk</label></td>
+                <td>
+                    <input type="text" id="inMerk" name="inMerk"/>
+                </td>
+            </tr>
+            <tr>
                 <td><label>Satuan</label></td>
                 <td>
                     <input type="text" id="inSatuanBarang" name="inSatuanBarang"/>
