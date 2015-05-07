@@ -206,6 +206,42 @@
                         }
                     });
                 });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
+                        data: {nama_kota: $('#inKotaUangDiklat1').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalDiklat1").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
+                        data: {nama_kota: $('#inKotaUangDiklat2').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalDiklat2").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
+                        data: {nama_kota: $('#inKotaUangDiklat3').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalDiklat3").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
                 //deleted from calculating in load time
 //                $("#inNamaPegawai").change(function () {
 //

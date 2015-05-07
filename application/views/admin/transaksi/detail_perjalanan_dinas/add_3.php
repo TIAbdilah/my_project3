@@ -131,7 +131,7 @@
                 <td></td>
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalUangPenginapan3" name="inSubtotalUangPenginapan3"/></td>
             </tr>
-             <tr>
+            <tr>
                 <td><label>Biaya Representatif</label></td>
                 <td></td>
                 <td><input type="text" placeholder="Di" id="inKotaUangHarian1" name="inKotaUangHarian1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
@@ -155,6 +155,32 @@
                 <td></td>
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalRepresentatif3" name="inSubtotalRepresentatif3"/></td>
             </tr>
+            <?php if ($data->status_diklat == 1) { ?>
+                <tr>
+                    <td><label>Uang Diklat</label></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Di" id="inKotaUangDiklat1" name="inKotaUangDiklat1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Subtotal" id="inSubtotalDiklat1" name="inSubtotalDiklat1"/></td>
+                </tr>
+                <tr>
+                    <td><label></label></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Di" id="inKotaUangDiklat2" name="inKotaUangDiklat2" value="<?php echo $data->nama_kota_tujuan_2 ?>"/></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Subtotal" id="inSubtotalDiklat2" name="inSubtotalDiklat2"/></td>
+                </tr>
+                <tr>
+                    <td><label></label></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Di" id="inKotaUangDiklat3" name="inKotaUangDiklat3" value="<?php echo $data->nama_kota_tujuan_3 ?>"/></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Subtotal" id="inSubtotalDiklat3" name="inSubtotalDiklat3"/></td>
+                </tr>
+            <?php } ?>
             <tr>
                 <td><label>Transport Utama</label></td>
                 <td><input type="text" placeholder="Dari" id="inKotaAsal1" name="inKotaAsal1" value="Bandung"/></td>

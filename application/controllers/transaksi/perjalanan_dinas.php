@@ -19,6 +19,10 @@ class Perjalanan_dinas extends CI_Controller {
         '4' => 'menunggu verifikasi PPK',
         '5' => 'lengkap'
     );
+    var $status_diklat = array(
+        '0' => 'Tidak',
+        '1' => 'Ya',
+    );
     var $bulan_romawi = array(
         '01' => 'I',
         '02' => 'II',
@@ -48,6 +52,7 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->model('master/biaya_penginapan_model');
         $this->load->model('master/biaya_tiket_model');
         $this->load->model('master/biaya_representatif_model');
+        $this->load->model('master/biaya_diklat_model');
         $this->is_logged_in();
     }
 
@@ -75,6 +80,7 @@ class Perjalanan_dinas extends CI_Controller {
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
         $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
+        $data['status_diklat'] = $this->status_diklat;
         $this->load->view('admin/index', $data);
     }
 
@@ -100,6 +106,11 @@ class Perjalanan_dinas extends CI_Controller {
         $data['id_anggaran'] = $this->input->post('inpIdAnggaran');
         $data['jumlah_tujuan'] = $this->input->post('inpJumlahTujuan');
         $data['maksud_perjalanan'] = $this->input->post('inpMaksudPerjalanan');
+        if ($this->input->post('inDiklat') == 'Ya') {
+            $data['status_diklat'] = '1';
+        } else {
+            $data['status_diklat'] = '0';
+        }
 
         switch ($data['jumlah_tujuan']) {
             case 1 :
@@ -198,9 +209,9 @@ class Perjalanan_dinas extends CI_Controller {
             $output2 .=$row->status;
             $arr[1] = $output2;
         }
-        if($data['golAndStat']==null){
-             $arr[0] = '';
-             $arr[1] = '';
+        if ($data['golAndStat'] == null) {
+            $arr[0] = '';
+            $arr[1] = '';
         }
         echo json_encode($arr);
     }
@@ -216,8 +227,8 @@ class Perjalanan_dinas extends CI_Controller {
             $output1 .=$row->biaya;
             $arr[0] = $output1;
         }
-        if($data['uangharian']==null){
-             $arr[0] = 0;
+        if ($data['uangharian'] == null) {
+            $arr[0] = 0;
         }
         echo json_encode($arr);
     }
@@ -233,8 +244,24 @@ class Perjalanan_dinas extends CI_Controller {
             $output1 .=$row->biaya;
             $arr[0] = $output1;
         }
-        if($data['uangrepresentatif']==null){
-             $arr[0] = 0;
+        if ($data['uangrepresentatif'] == null) {
+            $arr[0] = 0;
+        }
+        echo json_encode($arr);
+    }
+
+    public function getBiayaDiklat() {
+        $nama_kota = $this->input->post('nama_kota', TRUE);
+
+        $data['uangdiklat'] = $this->biaya_diklat_model->getBiayaDiklat($nama_kota);
+        $output1 = null;
+
+        foreach ($data['uangdiklat'] as $row) {
+            $output1 .=$row->biaya;
+            $arr[0] = $output1;
+        }
+        if ($data['uangdiklat'] == null) {
+            $arr[0] = 0;
         }
         echo json_encode($arr);
     }
@@ -252,8 +279,8 @@ class Perjalanan_dinas extends CI_Controller {
             $output1 .=$row->biaya;
             $arr[0] = $output1;
         }
-        if($data['penginapan']==null){
-             $arr[0] = 0;
+        if ($data['penginapan'] == null) {
+            $arr[0] = 0;
         }
         echo json_encode($arr);
     }
@@ -352,8 +379,8 @@ class Perjalanan_dinas extends CI_Controller {
         foreach ($data['transport'] as $row) {
             $output .=$row->biaya;
         }
-        if($data['transport']==null){
-             $arr[0] = 0;
+        if ($data['transport'] == null) {
+            $arr[0] = 0;
         }
         echo $output;
     }

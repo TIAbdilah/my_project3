@@ -118,6 +118,24 @@
                 <td></td>
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalRepresentatif2" name="inSubtotalRepresentatif2"/></td>
             </tr>
+            <?php if ($data->status_diklat == 1) { ?>
+                <tr>
+                    <td><label>Uang Diklat</label></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Di" id="inKotaUangDiklat1" name="inKotaUangDiklat1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Subtotal" id="inSubtotalDiklat1" name="inSubtotalDiklat1"/></td>
+                </tr>
+                <tr>
+                    <td><label></label></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Di" id="inKotaUangDiklat2" name="inKotaUangDiklat2" value="<?php echo $data->nama_kota_tujuan_2 ?>"/></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="text" placeholder="Subtotal" id="inSubtotalDiklat2" name="inSubtotalDiklat2"/></td>
+                </tr>
+            <?php } ?>
             <tr>
                 <td><label>Transport Utama</label></td>
                 <td><input type="text" placeholder="Dari" id="inKotaAsal1" name="inKotaAsal1" value="Bandung"/></td>

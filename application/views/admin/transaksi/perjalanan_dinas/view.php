@@ -52,6 +52,10 @@ function format_date($string) {
                 <td valign="top">:&nbsp;<?php echo $data->maksud_perjalanan ?></td>
             </tr>
             <tr>
+                <td><strong>Diklat</strong></td>
+                <td valign="top">:&nbsp;<?php echo $status_diklat[$data->status_diklat] ?></td>
+            </tr>
+            <tr>
                 <td><strong>Jumlah Kota Tujuan</strong></td>
                 <td valign="top">:&nbsp;<?php echo $data->jumlah_tujuan ?></td>
             </tr>

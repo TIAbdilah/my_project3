@@ -122,10 +122,19 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_biaya'] = 'representatif';
             $data['kota_asal'] = NULL;
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
-            ;
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif1');
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
+            
+            //insert biaya representatif
+            $data['jenis_biaya'] = 'diklat';
+            $data['kota_asal'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaUangDiklat1');
+            $data['jenis_penginapan'] = NULL;
+            $data['jenis_kendaraan'] = NULL;
+            $data['biaya'] = $this->input->post('inSubtotalDiklat1');
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -197,7 +206,15 @@ class Detail_perjalanan_dinas extends CI_Controller {
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
             
-
+            //insert biaya representatif
+            $data['jenis_biaya'] = 'diklat';
+            $data['kota_asal'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaUangDiklat1');
+            $data['jenis_penginapan'] = NULL;
+            $data['jenis_kendaraan'] = NULL;
+            $data['biaya'] = $this->input->post('inSubtotalDiklat1');
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
 
             //insert biaya riil
             $data['jenis_biaya'] = 'riil';
@@ -245,7 +262,9 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['biaya'] = $this->input->post('inSubtotalTransportUtama2');
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
-//transport utama pulang
+            
+            
+//          transport utama pulang
 
             $data['tgl_berangkat'] = $this->input->post('inTglPulang2');
 
@@ -265,6 +284,16 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif2');
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
+            
+            //insert biaya representatif
+            $data['jenis_biaya'] = 'diklat';
+            $data['kota_asal'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaUangDiklat2');
+            $data['jenis_penginapan'] = NULL;
+            $data['jenis_kendaraan'] = NULL;
+            $data['biaya'] = $this->input->post('inSubtotalDiklat2');
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
         } else if ($jml_tujuan == 3) {
@@ -324,6 +353,16 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif1');
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
+            
+            //insert biaya representatif
+            $data['jenis_biaya'] = 'diklat';
+            $data['kota_asal'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaUangDiklat1');
+            $data['jenis_penginapan'] = NULL;
+            $data['jenis_kendaraan'] = NULL;
+            $data['biaya'] = $this->input->post('inSubtotalDiklat1');
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
 
             //insert biaya riil
             $data['jenis_biaya'] = 'riil';
@@ -381,6 +420,15 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif2');
 
 
+            //insert biaya representatif
+            $data['jenis_biaya'] = 'diklat';
+            $data['kota_asal'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaUangDiklat2');
+            $data['jenis_penginapan'] = NULL;
+            $data['jenis_kendaraan'] = NULL;
+            $data['biaya'] = $this->input->post('inSubtotalDiklat2');
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
 
 
             //------------------------------------------------------INSERT DATA KETIGA---------------------------------------------------------------
@@ -439,6 +487,16 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif3');
+            
+            //insert biaya representatif
+            $data['jenis_biaya'] = 'diklat';
+            $data['kota_asal'] = NULL;
+            $data['kota_tujuan'] = $this->input->post('inKotaUangDiklat3');
+            $data['jenis_penginapan'] = NULL;
+            $data['jenis_kendaraan'] = NULL;
+            $data['biaya'] = $this->input->post('inSubtotalDiklat3');
+//            print_r($data);echo '<br>';
+            $this->detail_perjalanan_dinas_model->add($data);
         }
 
         redirect('transaksi/perjalanan_dinas');
