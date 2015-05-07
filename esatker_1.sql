@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2015 at 09:48 AM
+-- Generation Time: May 07, 2015 at 10:55 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -1695,6 +1695,7 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `tanggal_approval` date NOT NULL,
   `status` varchar(25) NOT NULL,
   `status_penolakan` int(1) NOT NULL,
+  `status_diklat` int(1) NOT NULL,
   `id_anggaran` varchar(25) NOT NULL,
   `jumlah_tujuan` int(2) NOT NULL,
   `maksud_perjalanan` varchar(250) NOT NULL,
@@ -1708,25 +1709,26 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `kota_tujuan_2` varchar(25) DEFAULT NULL,
   `kota_tujuan_3` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `perjalanan_dinas`
 --
 
-INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `status`, `status_penolakan`, `id_anggaran`, `jumlah_tujuan`, `maksud_perjalanan`, `jadwal_berangkat_1`, `jadwal_berangkat_2`, `jadwal_berangkat_3`, `jadwal_pulang_1`, `jadwal_pulang_2`, `jadwal_pulang_3`, `kota_tujuan_1`, `kota_tujuan_2`, `kota_tujuan_3`) VALUES
-(1, '002/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 3, 'maksud satu', '2015-04-20', '2015-04-21', '2015-04-22', '2015-04-21', '2015-04-22', '2015-04-23', '1', '2', '1'),
-(2, '003/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', NULL, NULL, '0000-00-00', NULL, NULL, '1', NULL, NULL),
-(3, '004/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
-(4, '-', '0000-00-00', '5', 0, '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19'),
-(5, '-', '0000-00-00', '0', 1, '2', 1, 'studi banding ke kota jakarta', '2015-05-05', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '7', NULL, NULL),
-(6, '005/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, '2', 1, 'studi banding jakarta 2 unit', '2015-04-30', '0000-00-00', '0000-00-00', '2015-05-02', '0000-00-00', '0000-00-00', '7', NULL, NULL),
-(7, '-', '0000-00-00', '0', 0, '2', 2, 'dua tujuan', '2015-05-04', '2015-05-05', '0000-00-00', '2015-05-05', '2015-05-06', '0000-00-00', '3', '9', NULL),
-(8, '001/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '1', NULL, NULL),
-(10, '002/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '2', NULL, NULL),
-(11, '-', '0000-00-00', '0', 0, '2', 3, 'tiga tujuan beda kota', '2015-05-04', '2015-05-05', '2015-05-06', '2015-05-05', '2015-05-06', '2015-05-08', '1', '2', '3'),
-(12, '003/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-07', '0000-00-00', '0000-00-00', '1', NULL, NULL),
-(15, '-', '0000-00-00', '0', 0, '2', 1, 'satu representasi', '2015-05-07', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '2', NULL, NULL);
+INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `status`, `status_penolakan`, `status_diklat`, `id_anggaran`, `jumlah_tujuan`, `maksud_perjalanan`, `jadwal_berangkat_1`, `jadwal_berangkat_2`, `jadwal_berangkat_3`, `jadwal_pulang_1`, `jadwal_pulang_2`, `jadwal_pulang_3`, `kota_tujuan_1`, `kota_tujuan_2`, `kota_tujuan_3`) VALUES
+(1, '002/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, 0, '2', 3, 'maksud satu', '2015-04-20', '2015-04-21', '2015-04-22', '2015-04-21', '2015-04-22', '2015-04-23', '1', '2', '1'),
+(2, '003/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, 0, '2', 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '0000-00-00', NULL, NULL, '0000-00-00', NULL, NULL, '1', NULL, NULL),
+(3, '004/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, 0, '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL),
+(4, '-', '0000-00-00', '5', 0, 0, '2', 3, 'wwwwwwwwwwwwwwwwwwww1111111111111111', '2015-04-27', '2015-04-28', '2015-04-29', '2015-04-27', '2015-04-28', '2015-04-29', '17', '18', '19'),
+(5, '-', '0000-00-00', '0', 1, 0, '2', 1, 'studi banding ke kota jakarta', '2015-05-05', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '7', NULL, NULL),
+(6, '005/SPPD/SATKER/LP/IV/2015', '0000-00-00', '5', 0, 0, '2', 1, 'studi banding jakarta 2 unit', '2015-04-30', '0000-00-00', '0000-00-00', '2015-05-02', '0000-00-00', '0000-00-00', '7', NULL, NULL),
+(7, '-', '0000-00-00', '0', 0, 0, '2', 2, 'dua tujuan', '2015-05-04', '2015-05-05', '0000-00-00', '2015-05-05', '2015-05-06', '0000-00-00', '3', '9', NULL),
+(8, '001/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '1', NULL, NULL),
+(10, '002/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '2', NULL, NULL),
+(11, '-', '0000-00-00', '0', 0, 0, '2', 3, 'tiga tujuan beda kota', '2015-05-04', '2015-05-05', '2015-05-06', '2015-05-05', '2015-05-06', '2015-05-08', '1', '2', '3'),
+(12, '003/SPPD/SATKER/LP/V/2015', '0000-00-00', '5', 0, 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-07', '0000-00-00', '0000-00-00', '1', NULL, NULL),
+(15, '-', '0000-00-00', '0', 0, 0, '2', 1, 'satu representasi', '2015-05-07', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '2', NULL, NULL),
+(18, '-', '0000-00-00', '0', 0, 1, '2', 1, 'satu diklat', '2015-05-07', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '2', NULL, NULL);
 
 -- --------------------------------------------------------
 
