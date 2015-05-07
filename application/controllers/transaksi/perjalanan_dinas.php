@@ -53,6 +53,7 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->model('master/biaya_tiket_model');
         $this->load->model('master/biaya_representatif_model');
         $this->load->model('master/biaya_diklat_model');
+        $this->load->model('master/biaya_sewa_model');
         $this->is_logged_in();
     }
 
@@ -370,6 +371,54 @@ class Perjalanan_dinas extends CI_Controller {
         echo json_encode($arr);
     }
 
+    public function populateSewa() {
+        $param1 = $this->input->post('kota_tujuan1', TRUE);
+        $param2 = $this->input->post('kota_tujuan2', TRUE);
+        $param3 = $this->input->post('kota_tujuan3', TRUE);
+
+
+        $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param1);
+        $output1 = null;
+        $output1 = "<option value=''>Pilih</option>";
+        if ($data['transportsewa']) {
+            foreach ($data['transportsewa'] as $row) {
+                $output1 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[0] = $output1;
+        } else {
+            $output1 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $arr[0] = $output1;
+        }
+        
+        $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
+        $output2 = null;
+        $output2 = "<option value=''>Pilih</option>";
+        if ($data['transportsewa']) {
+            foreach ($data['transportsewa'] as $row) {
+                $output2 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[0] = $output2;
+        } else {
+            $output2 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $arr[0] = $output2;
+        }
+        
+                $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
+        $output3 = null;
+        $output3 = "<option value=''>Pilih</option>";
+        if ($data['transportsewa']) {
+            foreach ($data['transportsewa'] as $row) {
+                $output3 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[0] = $output3;
+        } else {
+            $output3 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $arr[0] = $output3;
+        }
+
+        echo json_encode($arr);
+    }
+
     public function calculateTransport() {
         $param = $this->input->post('id', TRUE);
         $param2 = $this->input->post('kota_asal', TRUE);
@@ -380,6 +429,20 @@ class Perjalanan_dinas extends CI_Controller {
             $output .=$row->biaya;
         }
         if ($data['transport'] == null) {
+            $arr[0] = 0;
+        }
+        echo $output;
+    }
+    
+    public function calculateSewa() {
+        $param = $this->input->post('id', TRUE);
+        $param2 = $this->input->post('kota_tujuan', TRUE);
+        $data['transportsewa'] = $this->biaya_sewa_model->calculateSewa($param, $param2);
+        $output = null;
+        foreach ($data['transportsewa'] as $row) {
+            $output .=$row->biaya;
+        }
+        if ($data['transportsewa'] == null) {
             $arr[0] = 0;
         }
         echo $output;

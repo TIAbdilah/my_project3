@@ -46,5 +46,28 @@ class Biaya_sewa_model extends CI_Model {
     public function delete($id) {
         $this->db->delete('biaya_sewa', array('id' => $id));
     }
+    
+    
+    public function populateSewa($param = string) {
+        $sql="select bs.* "
+                . "from biaya_sewa bs "
+                . "where bs.nama_kota = ("
+                . "select kt.nama_provinsi "
+                . "from kota_tujuan kt where kt.nama_kota = '".$param."') ";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+    
+    public function calculateSewa($param = string, $param2 = string) {
+        $sql="select bs.* "
+                . "from biaya_sewa bs "
+                . "where bs.nama_kota = ("
+                . "select kt.nama_provinsi "
+                . "from kota_tujuan kt where kt.nama_kota = '".$param2."') "
+                . "and jenis_kendaraan ='".$param."' ";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
 
 }

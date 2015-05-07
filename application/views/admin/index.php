@@ -321,6 +321,23 @@
                         }
                     });
                 });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/populateSewa",
+                        data: {
+                            kota_tujuan1: $('#inKotaTujuan1').val(),
+                            kota_tujuan2: $('#inKotaTujuan2').val(),
+                            kota_tujuan3: $('#inKotaTujuan3').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inJenisSewa1").html(data[0]);
+                            $("#inJenisSewa2").html(data[1]);
+                            $("#inJenisSewa3").html(data[2]);
+                        }
+                    });
+                });
                 $("#idJenisTransportUtama1").change(function() {
 
                     $.ajax({
@@ -370,6 +387,42 @@
                         type: "POST",
                         success: function(data) {
                             $("#inSubtotalTransportUtama4").val(data);
+                        }
+                    });
+                });
+                $("#inJenisSewa1").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
+                        data: {id: $(this).val(),
+                            kota_tujuan: $('#inKotaTujuan1').val()},
+                        type: "POST",
+                        success: function(data) {
+                            $("#inSubtotalSewa1").val(data);
+                        }
+                    });
+                });
+                $("#inJenisSewa2").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
+                        data: {id: $(this).val(),
+                            kota_tujuan: $('#inKotaTujuan2').val()},
+                        type: "POST",
+                        success: function(data) {
+                            $("#inSubtotalSewa2").val(data);
+                        }
+                    });
+                });
+                $("#inJenisSewa3").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
+                        data: {id: $(this).val(),
+                            kota_tujuan: $('#inKotaTujuan3').val()},
+                        type: "POST",
+                        success: function(data) {
+                            $("#inSubtotalSewa3").val(data);
                         }
                     });
                 });
