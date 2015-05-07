@@ -133,7 +133,7 @@
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
                         data: {nama_kota: $('#inKotaUangHarian1').val(),
-                            statuspeg: $('#inStatusPeg').text()},
+                            id: $(this).val()},
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
@@ -146,7 +146,7 @@
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
                         data: {nama_kota: $('#inKotaUangHarian2').val(),
-                            statuspeg: $('#inStatusPeg').text()},
+                            id: $(this).val()},
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
@@ -159,11 +159,50 @@
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
                         data: {nama_kota: $('#inKotaUangHarian3').val(),
-                            statuspeg: $('#inStatusPeg').text()},
+                           id: $(this).val()},
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
                             $("#inSubtotalUangHarian3").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
+                        data: {nama_kota: $('#inKotaUangHarian1').val(),
+                           id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalRepresentatif1").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
+                        data: {nama_kota: $('#inKotaUangHarian2').val(),
+                           id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalRepresentatif2").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
+                        data: {nama_kota: $('#inKotaUangHarian3').val(),
+                           id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalRepresentatif3").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
@@ -303,6 +342,11 @@
                     var total = $('#inTransPendukung').val();
                     $('#inSubtotalTransportPendukung').val(total);
                 });
+                $("#inTransPendukung").blur(function() {
+
+                    var total = $('#inTransPendukung').val();
+                    $('#inSubtotalTransportPendukung').val(total);
+                });
                 $("#inTransPendukung").keyup(function() {
 
                     $.ajax({
@@ -320,6 +364,11 @@
                     });
                 });
                 $("#inPengeluaranRiil").keyup(function() {
+
+                    var total = $('#inPengeluaranRiil').val();
+                    $('#inSubtotalPengeluaranRiil').val(total);
+                });
+                $("#inPengeluaranRiil").blur(function() {
 
                     var total = $('#inPengeluaranRiil').val();
                     $('#inSubtotalPengeluaranRiil').val(total);

@@ -19,7 +19,6 @@ class Perjalanan_dinas extends CI_Controller {
         '4' => 'menunggu verifikasi PPK',
         '5' => 'lengkap'
     );
-
     var $bulan_romawi = array(
         '01' => 'I',
         '02' => 'II',
@@ -48,6 +47,7 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->model('master/biaya_akomodasi_model');
         $this->load->model('master/biaya_penginapan_model');
         $this->load->model('master/biaya_tiket_model');
+        $this->load->model('master/biaya_representatif_model');
         $this->is_logged_in();
     }
 
@@ -198,19 +198,43 @@ class Perjalanan_dinas extends CI_Controller {
             $output2 .=$row->status;
             $arr[1] = $output2;
         }
+        if($data['golAndStat']==null){
+             $arr[0] = '';
+             $arr[1] = '';
+        }
         echo json_encode($arr);
     }
 
     public function getSubtotalBiaya() {
         $nama_kota = $this->input->post('nama_kota', TRUE);
-        $statuspeg = $this->input->post('statuspeg', TRUE);
+        $id_pegawai = $this->input->post('id', TRUE);
 
-        $data['uangharian'] = $this->biaya_akomodasi_model->getBiayaHarian($nama_kota, $statuspeg);
+        $data['uangharian'] = $this->biaya_akomodasi_model->getBiayaHarian($nama_kota, $id_pegawai);
         $output1 = null;
 
         foreach ($data['uangharian'] as $row) {
             $output1 .=$row->biaya;
             $arr[0] = $output1;
+        }
+        if($data['uangharian']==null){
+             $arr[0] = 0;
+        }
+        echo json_encode($arr);
+    }
+
+    public function getBiayaRepresentatif() {
+        $nama_kota = $this->input->post('nama_kota', TRUE);
+        $id_pegawai = $this->input->post('id', TRUE);
+
+        $data['uangrepresentatif'] = $this->biaya_representatif_model->getBiayaRepresentatif($nama_kota, $id_pegawai);
+        $output1 = null;
+
+        foreach ($data['uangrepresentatif'] as $row) {
+            $output1 .=$row->biaya;
+            $arr[0] = $output1;
+        }
+        if($data['uangrepresentatif']==null){
+             $arr[0] = 0;
         }
         echo json_encode($arr);
     }
@@ -227,6 +251,9 @@ class Perjalanan_dinas extends CI_Controller {
         foreach ($data['penginapan'] as $row) {
             $output1 .=$row->biaya;
             $arr[0] = $output1;
+        }
+        if($data['penginapan']==null){
+             $arr[0] = 0;
         }
         echo json_encode($arr);
     }
@@ -324,6 +351,9 @@ class Perjalanan_dinas extends CI_Controller {
         $output = null;
         foreach ($data['transport'] as $row) {
             $output .=$row->biaya;
+        }
+        if($data['transport']==null){
+             $arr[0] = 0;
         }
         echo $output;
     }

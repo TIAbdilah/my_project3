@@ -103,6 +103,22 @@
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalUangPenginapan2" name="inSubtotalUangPenginapan2"/></td>
             </tr>
             <tr>
+                <td><label>Biaya Representatif</label></td>
+                <td></td>
+                <td><input type="text" placeholder="Di" id="inKotaUangHarian1" name="inKotaUangHarian1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalRepresentatif1" name="inSubtotalRepresentatif1"/></td>
+            </tr>
+            <tr>
+                <td><label></label></td>
+                <td></td>
+                <td><input type="text" placeholder="Di" id="inKotaUangHarian2" name="inKotaUangHarian2" value="<?php echo $data->nama_kota_tujuan_2 ?>"/></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalRepresentatif2" name="inSubtotalRepresentatif2"/></td>
+            </tr>
+            <tr>
                 <td><label>Transport Utama</label></td>
                 <td><input type="text" placeholder="Dari" id="inKotaAsal1" name="inKotaAsal1" value="Bandung"/></td>
                 <td><input type="text" placeholder="Ke" id="inKotaTujuan1" name="inKotaTujuan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>

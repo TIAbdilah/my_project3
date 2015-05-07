@@ -50,12 +50,16 @@ class Biaya_akomodasi_model extends CI_Model {
         $this->db->delete('biaya_akomodasi', array('id' => $id));
     }
     
-    public function getBiayaHarian($nama_kota = string, $statuspeg = string) {
+    
+    public function getBiayaHarian($nama_kota = string, $id_pegawai = string) {
         $sql="select ba.* "
                 . "from biaya_akomodasi ba "
                 . "where ba.nama_kota = ("
                 . "select kt.nama_provinsi "
-                . "from kota_tujuan kt where kt.nama_kota = '".$nama_kota."') and ba.status_pegawai = '".$statuspeg."'";
+                . "from kota_tujuan kt where kt.nama_kota = '".$nama_kota."') "
+                . "and ba.status_pegawai = ("
+                . "select peg.status "
+                . "from pegawai peg where peg.id='".$id_pegawai."') ";
         $query = $this->db->query($sql);
         return $query->result();
     }
