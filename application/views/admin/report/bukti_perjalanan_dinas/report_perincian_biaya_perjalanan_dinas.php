@@ -10,12 +10,12 @@
         <tr>
             <td width="25%"><div align="left">Lampiran SPPD Nomor</div></td>
             <td width="2%"><div align="center">:</div></td>
-            <td width="73%"><div align="left"><?php echo $data_perjalanan_dinas->no_spt?></div></td>
+            <td width="73%"><div align="left"><?php echo $data_perjalanan_dinas->no_spt ?></div></td>
         </tr>
         <tr>
             <td>Tanggal</td>
             <td><div align="center">:</div></td>
-            <td><?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval)?></td>
+            <td><?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?></td>
         </tr>
     </table>
     <table style="width:100%;border-collapse: collapse" border="1">
@@ -31,7 +31,7 @@
         foreach ($list_data_detail_perjalanan as $data) {
             if ($data->biaya != 0) {
                 echo "<tr>"
-                . "<td align=\"center\">".$no."</td>"
+                . "<td align=\"center\">" . $no . "</td>"
                 . "<td>";
                 switch ($data->jenis_biaya) {
                     case 'harian':
@@ -70,7 +70,7 @@
         </tr>
     </table>
 
-    <p>Terbilang : <strong><?php echo $curency->convertCurrencyToWords($total_biaya)?></strong><br>
+    <p>Terbilang : <strong><?php echo $curency->convertCurrencyToWords($total_biaya) ?></strong><br>
 
     </p>
     <table style="width: 100%">
@@ -84,7 +84,7 @@
                     <br>
                     <br>
                 </p></td>
-            <td align="center" width="50%"> Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval)?><br>
+            <td align="center" width="50%"> Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?><br>
                 Yang melakukan perjalanan,<br>
                 <br>
                 <br>
@@ -103,12 +103,24 @@
         </tr>
         <tr>
             <td valign="top">Telah dibayar sebesar</td>
-            <td valign="top">: Rp. <?php echo number_format($data_panjar->jml_panjar) ?></td>
+            <td valign="top">: Rp. 
+                <?php
+                if (!empty($data_panjar->jml_panjar)) {
+                    echo number_format($data_panjar->jml_panjar);
+                } else {
+                    echo '0';
+                }
+                ?>
+            </td>
         </tr>
         <tr>
             <td valign="top">Sisa kurang/lebih</td>
-            <?php 
+            <?php
+            if (!empty($data_panjar->jml_panjar)) {
                 $sisa = $total_biaya - $data_panjar->jml_panjar;
+            } else {
+                $sisa = $total_biaya;
+            }
             ?>
             <td>: Rp. <?php echo number_format($sisa) ?></td>
         </tr>

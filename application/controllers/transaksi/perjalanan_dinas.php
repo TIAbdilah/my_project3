@@ -397,10 +397,10 @@ class Perjalanan_dinas extends CI_Controller {
             foreach ($data['transportsewa'] as $row) {
                 $output2 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
             }
-            $arr[0] = $output2;
+            $arr[1] = $output2;
         } else {
             $output2 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
-            $arr[0] = $output2;
+            $arr[1] = $output2;
         }
         
                 $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
@@ -410,10 +410,10 @@ class Perjalanan_dinas extends CI_Controller {
             foreach ($data['transportsewa'] as $row) {
                 $output3 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
             }
-            $arr[0] = $output3;
+            $arr[2] = $output3;
         } else {
             $output3 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
-            $arr[0] = $output3;
+            $arr[2] = $output3;
         }
 
         echo json_encode($arr);
