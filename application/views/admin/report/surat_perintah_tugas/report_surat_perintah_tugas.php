@@ -1,9 +1,3 @@
-<?php
-
-function format_date($string) {
-    return substr($string, 8, 2) . '-' . substr($string, 5, 2) . '-' . substr($string, 0, 4);
-}
-?>
 <html>
     <body>
     <center>
@@ -62,11 +56,11 @@ function format_date($string) {
             <td>:&nbsp;
                 <?php
                 if ($data->jumlah_tujuan == 1) {
-                    echo format_date($data->jadwal_berangkat_1);
+                    echo $format_date->format_date_dmy($data->jadwal_berangkat_1);
                 } else if ($data->jumlah_tujuan == 2) {
-                    echo format_date($data->jadwal_berangkat_1) . ' / ' . format_date($data->jadwal_berangkat_2);
+                    echo $format_date->format_date_dmy($data->jadwal_berangkat_1) . ' / ' . $format_date->format_date_dmy($data->jadwal_berangkat_2);
                 } else if ($data->jumlah_tujuan == 3) {
-                    echo format_date($data->jadwal_berangkat_1) . ' / ' . format_date($data->jadwal_berangkat_2) . ' / ' . format_date($data->jadwal_berangkat_3);
+                    echo $format_date->format_date_dmy($data->jadwal_berangkat_1) . ' / ' . $format_date->format_date_dmy($data->jadwal_berangkat_2) . ' / ' . $format_date->format_date_dmy($data->jadwal_berangkat_3);
                 }
                 ?>
             </td>
@@ -76,11 +70,11 @@ function format_date($string) {
             <td>:&nbsp;
                 <?php
                 if ($data->jumlah_tujuan == 1) {
-                    echo format_date($data->jadwal_pulang_1);
+                    echo $format_date->format_date_dmy($data->jadwal_pulang_1);
                 } else if ($data->jumlah_tujuan == 2) {
-                    echo format_date($data->jadwal_pulang_1) . ' / ' . format_date($data->jadwal_pulang_2);
+                    echo $format_date->format_date_dmy($data->jadwal_pulang_1) . ' / ' . $format_date->format_date_dmy($data->jadwal_pulang_2);
                 } else if ($data->jumlah_tujuan == 3) {
-                    echo format_date($data->jadwal_pulang_1) . ' / ' . format_date($data->jadwal_pulang_2) . ' / ' . format_date($data->jadwal_pulang_3);
+                    echo $format_date->format_date_dmy($data->jadwal_pulang_1) . ' / ' . $format_date->format_date_dmy($data->jadwal_pulang_2) . ' / ' . $format_date->format_date_dmy($data->jadwal_pulang_3);
                 }
                 ?>
             </td>
@@ -106,7 +100,7 @@ function format_date($string) {
                 <?php echo $data_unit->nama_pegawai ?>
             </td>
             <td align="center" width="50%">
-                Bandung, <?php echo date('d F Y') ?><br>
+                Bandung, <?php echo $format_date->format_date_dfy($data->tanggal_approval)?><br>
                 An. Kepala Satuan Kerja<br>
                 Pejabat Pembuat Komitmen<br>
                 <br>

@@ -7,6 +7,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+require_once(APPPATH . 'controllers/common/format_date.php');
+require_once(APPPATH . 'controllers/common/number_to_word_ind.php');
+
 class Bukti_perjalanan_dinas extends CI_Controller {
 
     var $title_page = "e-satker | Bukti Perjalanan Dinas";
@@ -16,6 +19,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $this->load->model('report/daftar_biaya_perjalanan_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
+        $this->load->model('transaksi/panjar_model');
         $this->load->model('master/pegawai_model');
         $this->is_logged_in();
     }
@@ -27,6 +31,13 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['data_pegawai'] = $this->pegawai_model->select_by_id($id_pegawai)->row();
         $data['data_perjalanan_dinas'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
         $data['list_data_detail_perjalanan'] = $this->detail_perjalanan_dinas_model->select_data_detail($id_header, $id_pegawai)->result();
+        $param = array(
+            'id_header' => $id_header,
+            'id_pegawai' => $id_pegawai
+        );
+        $data['data_panjar'] = $this->panjar_model->select_by_field($param)->row(); 
+        $data['format_date'] = new Format_date();
+        $data['curency'] = new Number_to_word_ind();
         $data['page'] = 'admin/report/bukti_perjalanan_dinas/view_perincian_biaya_perjalanan_dinas';
         $data['report_page'] = 'admin/report/bukti_perjalanan_dinas/report_perincian_biaya_perjalanan_dinas';
         $this->load->view('admin/index', $data);
@@ -37,6 +48,13 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['data_pegawai'] = $this->pegawai_model->select_by_id($id_pegawai)->row();
         $data['data_perjalanan_dinas'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
         $data['list_data_detail_perjalanan'] = $this->detail_perjalanan_dinas_model->select_data_detail($id_header, $id_pegawai)->result();
+        $param = array(
+            'id_header' => $id_header,
+            'id_pegawai' => $id_pegawai
+        );
+        $data['data_panjar'] = $this->panjar_model->select_by_field($param)->row(); 
+        $data['format_date'] = new Format_date();
+        $data['curency'] = new Number_to_word_ind();
         $html = $this->load->view('admin/report/bukti_perjalanan_dinas/report_perincian_biaya_perjalanan_dinas', $data, TRUE);
         pdf_create($html, "potrait", "Bukti Perjalanan Dinas ".date('mdy'), true);
     }

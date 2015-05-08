@@ -7,10 +7,12 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+require_once(APPPATH . 'controllers/common/format_date.php');
+
 class Surat_perintah_tugas extends CI_Controller {
 
     var $title_page = "e-satker | Surat Perintah Tugas";
-    
+
     function __construct() {
         parent::__construct();
         $this->load->model('report/surat_perintah_tugas_model');
@@ -25,7 +27,7 @@ class Surat_perintah_tugas extends CI_Controller {
         $data['title'] = $this->title_page;
         $id_unit = $this->input->post('inpIdUnit');
         $aksi = $this->input->post('inpButton');
-        
+
         if ($aksi != 'Cetak') {
 
             $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
@@ -39,6 +41,7 @@ class Surat_perintah_tugas extends CI_Controller {
                     'id_header' => $id
                 );
                 $data['list_data'] = $this->surat_perintah_tugas_model->select_by_field($param)->result();
+                $data['format_date'] = new Format_date();
                 $data['page'] = 'admin/report/surat_perintah_tugas/view_surat_perintah_tugas';
                 $data['report_page'] = 'admin/report/surat_perintah_tugas/report_surat_perintah_tugas';
                 $this->load->view('admin/index', $data);
@@ -62,9 +65,10 @@ class Surat_perintah_tugas extends CI_Controller {
                 'id_header' => $id_header
             );
             $data['list_data'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
+            $data['format_date'] = new Format_date();
             $html = $this->load->view('admin/report/surat_perintah_tugas/report_surat_perintah_tugas', $data, TRUE);
         }
-        pdf_create($html, "potrait", $data['data_unit']->kode_unit . date('mdy'), true);
+        pdf_create($html, "potrait", 'Surat Perintah Tugas-'.$data['data_unit']->kode_unit . date('mdy'), true);
     }
 
     public function is_logged_in() {
@@ -72,7 +76,7 @@ class Surat_perintah_tugas extends CI_Controller {
             redirect('login');
         }
     }
-    
+
 }
 
 ?>

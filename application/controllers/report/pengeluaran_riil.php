@@ -7,6 +7,8 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+require_once(APPPATH . 'controllers/common/format_date.php');
+
 class Pengeluaran_riil extends CI_Controller {
 
     var $title_page = "e-satker | Pengeluaran Riil";
@@ -26,6 +28,7 @@ class Pengeluaran_riil extends CI_Controller {
         $data['data_pegawai'] = $this->pegawai_model->select_by_id($id_pegawai)->row();
         $data['data_perjalanan_dinas'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
         $data['list_data_bukti_riil'] = $this->bukti_perjalanan_dinas_model->select_biaya_riil($id_header, $id_pegawai)->result();
+        $data['format_date'] = new Format_date();
         $data['page'] = 'admin/report/bukti_perjalanan_dinas/view_daftar_pengeluaran_riil';
         $data['report_page'] = 'admin/report/bukti_perjalanan_dinas/report_daftar_pengeluaran_riil';
         $this->load->view('admin/index', $data);
@@ -36,6 +39,7 @@ class Pengeluaran_riil extends CI_Controller {
         $data['data_pegawai'] = $this->pegawai_model->select_by_id($id_pegawai)->row();
         $data['data_perjalanan_dinas'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
         $data['list_data_bukti_riil'] = $this->bukti_perjalanan_dinas_model->select_biaya_riil($id_header, $id_pegawai)->result();
+        $data['format_date'] = new Format_date();
         $html = $this->load->view('admin/report/bukti_perjalanan_dinas/report_daftar_pengeluaran_riil', $data, TRUE);
         pdf_create($html, "potrait", "Pengeluaran Riil ".date('mdy'), true);
     }

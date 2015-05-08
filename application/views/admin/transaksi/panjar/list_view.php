@@ -40,8 +40,8 @@
                             <input type="hidden" name="inpIdPegawai" value="<?php echo $row->id_pegawai ?>" />
                             <table style="width: 100%">
                                 <tr>
-                                    <td width="20%">Jumlah Uang Muka</td>
-                                    <td><input type="text" id="inpJmlPanjar" name="inpJmlPanjar" placeholder="Kode Akun"></td>
+                                    <td width="25%">Jumlah Uang Muka</td>
+                                    <td><input type="text" id="inpJmlPanjar" name="inpJmlPanjar" placeholder="Jumlah Uang Muka"></td>
                                 </tr>
                                 <tr>
                                     <td>Penerima</td>

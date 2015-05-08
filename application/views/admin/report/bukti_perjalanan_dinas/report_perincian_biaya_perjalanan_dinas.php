@@ -15,7 +15,7 @@
         <tr>
             <td>Tanggal</td>
             <td><div align="center">:</div></td>
-            <td><?php echo date('d F Y')?></td>
+            <td><?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval)?></td>
         </tr>
     </table>
     <table style="width:100%;border-collapse: collapse" border="1">
@@ -70,7 +70,7 @@
         </tr>
     </table>
 
-    <p>Terbilang : .........................................................................................................................................................<br>
+    <p>Terbilang : <strong><?php echo $curency->convertCurrencyToWords($total_biaya)?></strong><br>
 
     </p>
     <table style="width: 100%">
@@ -84,7 +84,7 @@
                     <br>
                     <br>
                 </p></td>
-            <td align="center" width="50%"> Bandung, <?php echo date('d F Y') ?><br>
+            <td align="center" width="50%"> Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval)?><br>
                 Yang melakukan perjalanan,<br>
                 <br>
                 <br>
@@ -103,11 +103,14 @@
         </tr>
         <tr>
             <td valign="top">Telah dibayar sebesar</td>
-            <td valign="top">: Rp.</td>
+            <td valign="top">: Rp. <?php echo number_format($data_panjar->jml_panjar) ?></td>
         </tr>
         <tr>
             <td valign="top">Sisa kurang/lebih</td>
-            <td>: Rp.</td>
+            <?php 
+                $sisa = $total_biaya - $data_panjar->jml_panjar;
+            ?>
+            <td>: Rp. <?php echo number_format($sisa) ?></td>
         </tr>
     </table><br><br>
     <table style="width: 100%">

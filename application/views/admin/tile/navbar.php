@@ -60,8 +60,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo base_url() ?>transaksi/perjalanan_dinas">Perjalanan Dinas</a></li>
                         <li><a href="<?php echo base_url() ?>transaksi/panjar">Uang Muka Perjalanan Dinas</a></li>                        
-                        <li><a href="<?php echo base_url() ?>transaksi/bukti_perjalanan_dinas">Bukti Perjalanan Dinas</a></li>
-                        <li><a href="<?php echo base_url() ?>transaksi/pengeluaran_riil">Pengeluaran Riil</a></li>
+                        <!--<li><a href="<?php echo base_url() ?>transaksi/bukti_perjalanan_dinas">Bukti Perjalanan Dinas</a></li>-->
+                        <!--<li><a href="<?php echo base_url() ?>transaksi/pengeluaran_riil">Pengeluaran Riil</a></li>-->
                         <li><a href="<?php echo base_url() ?>transaksi/pengajuan_barang">Barang/Jasa</a></li>
                     </ul>
                 </li>

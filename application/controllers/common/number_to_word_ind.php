@@ -80,7 +80,7 @@ class Number_to_word_ind extends CI_Controller {
                     $w .= $this->convertIntegerToWords($r);
                 }
             } else {
-                $w .= $this->convertIntegerToWords(floor($x / 1000000)) . ' juta';
+                $w .= $this->convertIntegerToWords(floor($x / 1000000)) . ' Juta';
                 $r = fmod($x, 1000000);
                 if ($r > 0) {
                     $w .= ' ';

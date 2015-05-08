@@ -13,8 +13,11 @@ class Biaya_sewa_model extends CI_Model {
         parent::__construct();
     }
 
-    public function select_all() {
-        return $this->db->get('biaya_sewa');
+    public function select_all() {        
+        $this->db->select('*');
+        $this->db->from('biaya_sewa');
+        $this->db->order_by('nama_kota, jenis_kendaraan');
+        return $this->db->get();
     }
 
     public function select_by_id($id) {

@@ -36,5 +36,11 @@ class Format_date extends CI_Controller {
         $text = substr($string, 8, 2) . '-' . substr($string, 5, 2) . '-' . substr($string, 0, 4);
         return $text;
     }
+    
+    public function format_date_sql($string){
+        $text = '';
+        $text =  substr($string, 6, 4).'-'.substr($string, 3, 2).'-'.substr($string, 0, 2);;
+        return $text;
+    }
 
 }
