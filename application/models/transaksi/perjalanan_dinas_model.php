@@ -14,12 +14,13 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_all() {
-        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
-                . 'from perjalanan_dinas pd, '
-                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
-                . 'from anggaran a, kegiatan k, akun ak '
-                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
-                . 'where pd.id_anggaran = a1.id';
+        $query = "select pd.*, a1.nama_kegiatan, a1.jenis_belanja "
+                . "from perjalanan_dinas pd, "
+                . "(select a.id, k.nama_kegiatan, ak.jenis_belanja "
+                . "from anggaran a, kegiatan k, akun ak "
+                . "where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 "
+                . "where pd.id_anggaran = a1.id "
+                . "order by status";
         return $this->db->query($query);
     }
 

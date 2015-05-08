@@ -28,7 +28,7 @@
             <td><?php echo $data_pegawai->jabatan ?></td>
         </tr>
     </table>
-    <p>berdasarkan Surat Perintah Perjalanan Dinas (SPPD) Nomor <strong><?php echo $data_perjalanan_dinas->no_spt ?></strong> tanggal, <strong><?php echo date('d F Y') ?></strong> dengan ini kami menyatakan dengan sesungguhnya bahwa :</p>
+    <p>berdasarkan Surat Perintah Perjalanan Dinas (SPPD) Nomor <strong><?php echo $data_perjalanan_dinas->no_spt ?></strong> tanggal, <strong><?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?></strong> dengan ini kami menyatakan dengan sesungguhnya bahwa :</p>
     <p>1. Biaya transport pegawai dan/atau biaya penginapan di bawah ini yang tidak dapat diperoleh bukti-bukti pengeluarannya, meliputi :</p>
     <table style="width:100%;border-collapse: collapse" border="1">
         <tr>
@@ -80,7 +80,7 @@
                 <br>
 
             </td>
-            <td align="center" width="50%"><p>Bandung, <?php echo date('d F Y');?><br>
+            <td align="center" width="50%"><p>Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?><br>
                     Yang melakukan perjalanan,<br>
                     <br>
                 </p>

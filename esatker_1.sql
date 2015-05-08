@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.2.0.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: May 07, 2015 at 10:55 AM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Host: localhost
+-- Generation Time: May 08, 2015 at 10:41 AM
+-- Server version: 5.1.37
+-- PHP Version: 5.3.0
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -42,6 +41,11 @@ CREATE TABLE IF NOT EXISTS `akomodasi_perjalanan` (
   `biaya_taksi` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `akomodasi_perjalanan`
+--
+
 
 -- --------------------------------------------------------
 
@@ -106,6 +110,11 @@ CREATE TABLE IF NOT EXISTS `approval` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `approval`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -148,6 +157,11 @@ CREATE TABLE IF NOT EXISTS `biaya` (
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `biaya`
+--
+
 
 -- --------------------------------------------------------
 
@@ -316,15 +330,47 @@ CREATE TABLE IF NOT EXISTS `biaya_diklat` (
   `nama_provinsi` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `biaya_diklat`
 --
 
 INSERT INTO `biaya_diklat` (`id`, `nama_provinsi`, `biaya`) VALUES
-(2, 'ACEH', 120000),
-(3, 'B A L I', 150000);
+(1, 'ACEH', 140000),
+(2, 'SUMATERA UTARA', 150000),
+(3, 'RIAU', 150000),
+(4, 'KEPULAUAN RIAU', 150000),
+(5, 'JAMBI', 150000),
+(6, 'SUMATERA BARAT', 150000),
+(7, 'SUMATERA SELATAN', 150000),
+(8, 'LAMPUNG', 150000),
+(9, 'BENGKULU', 150000),
+(10, 'BANGKA BELITUNG', 160000),
+(11, 'BANTEN', 150000),
+(12, 'JAWA BARAT', 170000),
+(13, 'D.K.I   JAKARTA', 210000),
+(14, 'JAWA TENGAH', 150000),
+(15, 'D.I.  YOGYAKARTA', 170000),
+(16, 'JAWA TIMUR', 160000),
+(17, 'B A L I', 190000),
+(18, 'NUSA TENGGARA BARAT', 180000),
+(19, 'NUSA TENGGARA TIMUR', 170000),
+(20, 'KALIMANTAN BARAT', 150000),
+(21, 'KALIMANTAN TENGAH', 140000),
+(22, 'KALIMANTAN SELATAN', 150000),
+(23, 'KALIMANTAN TIMUR', 170000),
+(24, 'KALIMANTAN UTARA ', 170000),
+(25, 'SULAWESI UTARA', 150000),
+(26, 'GORONTALO', 150000),
+(27, 'SULAWESI BARAT', 160000),
+(28, 'SULAWESI SELATAN', 170000),
+(29, 'SULAWESI TENGAH', 150000),
+(30, 'SULAWESI TENGGARA', 150000),
+(31, 'MALUKU', 150000),
+(32, 'MALUKU UTARA', 170000),
+(33, 'PAPUA', 230000),
+(34, 'PAPUA BARAT', 190000);
 
 -- --------------------------------------------------------
 
@@ -338,152 +384,285 @@ CREATE TABLE IF NOT EXISTS `biaya_penginapan` (
   `golongan` varchar(25) DEFAULT NULL,
   `biaya` int(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=140 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=273 ;
 
 --
 -- Dumping data for table `biaya_penginapan`
 --
 
 INSERT INTO `biaya_penginapan` (`id`, `nama_kota`, `golongan`, `biaya`) VALUES
-(1, 'ACEH', 'IV', 1080000),
-(2, 'SUMATERA UTARA', 'IV', 703000),
-(3, 'RIAU', 'IV', 868000),
-(4, 'KEPULAUAN RIAU', 'IV', 650000),
-(5, 'JAMBI', 'IV', 697000),
-(6, 'SUMATERA BARAT', 'IV', 884000),
-(7, 'SUMATERA SELATAN', 'IV', 605000),
-(8, 'LAMPUNG', 'IV', 790000),
-(9, 'BENGKULU', 'IV', 712000),
-(10, 'BANGKA BELITUNG', 'IV', 850000),
-(11, 'BANTEN', 'IV', 1024000),
-(12, 'JAWA BARAT', 'IV', 949000),
-(13, 'D.K.I   JAKARTA', 'IV', 800000),
-(14, 'JAWA TENGAH', 'IV', 1024000),
-(15, 'D.I.  YOGYAKARTA', 'IV', 747000),
-(16, 'JAWA TIMUR', 'IV', 841000),
-(17, 'B A L I', 'IV', 1304000),
-(18, 'NUSA TENGGARA BARAT', 'IV', 737000),
-(19, 'NUSA TENGGARA TIMUR', 'IV', 700000),
-(20, 'KALIMANTAN BARAT', 'IV', 866000),
-(21, 'KALIMANTAN TENGAH', 'IV', 923000),
-(22, 'KALIMANTAN SELATAN', 'IV', 816000),
-(23, 'KALIMANTAN TIMUR', 'IV', 1596000),
-(24, 'KALIMANTAN UTARA ', 'IV', 1596000),
-(25, 'SULAWESI UTARA', 'IV', 640000),
-(26, 'GORONTALO', 'IV', 910000),
-(27, 'SULAWESI BARAT', 'IV', 910000),
-(28, 'SULAWESI SELATAN', 'IV', 968000),
-(29, 'SULAWESI TENGAH', 'IV', 894000),
-(30, 'SULAWESI TENGGARA', 'IV', 802000),
-(31, 'MALUKU', 'IV', 680000),
-(32, 'MALUKU UTARA', 'IV', 600000),
-(33, 'PAPUA', 'IV', 754000),
-(34, 'PAPUA BARAT', 'IV', 976000),
-(35, 'ACEH', 'III', 410000),
-(36, 'SUMATERA UTARA', 'III', 505000),
-(37, 'RIAU', 'III', 450000),
-(38, 'KEPULAUAN RIAU', 'III', 502000),
-(39, 'JAMBI', 'III', 382000),
-(40, 'SUMATERA BARAT', 'III', 477000),
-(41, 'SUMATERA SELATAN', 'III', 514000),
-(42, 'LAMPUNG', 'III', 374000),
-(43, 'BENGKULU', 'III', 599000),
-(44, 'BANGKA BELITUNG', 'III', 533000),
-(45, 'BANTEN', 'III', 797000),
-(46, 'JAWA BARAT', 'III', 515000),
-(47, 'D.K.I   JAKARTA', 'III', 610000),
-(48, 'JAWA TENGAH', 'III', 497000),
-(49, 'D.I.  YOGYAKARTA', 'III', 629000),
-(50, 'JAWA TIMUR', 'III', 499000),
-(51, 'B A L I', 'III', 904000),
-(52, 'NUSA TENGGARA BARAT', 'III', 540000),
-(53, 'NUSA TENGGARA TIMUR', 'III', 662000),
-(54, 'KALIMANTAN BARAT', 'III', 430000),
-(55, 'KALIMANTAN TENGAH', 'III', 558000),
-(56, 'KALIMANTAN SELATAN', 'III', 500000),
-(57, 'KALIMANTAN TIMUR', 'III', 550000),
-(58, 'KALIMANTAN UTARA ', 'III', 550000),
-(59, 'SULAWESI UTARA', 'III', 549000),
-(60, 'GORONTALO', 'III', 423000),
-(61, 'SULAWESI BARAT', 'III', 425000),
-(62, 'SULAWESI SELATAN', 'III', 539000),
-(63, 'SULAWESI TENGAH', 'III', 493000),
-(64, 'SULAWESI TENGGARA', 'III', 488000),
-(65, 'MALUKU', 'III', 545000),
-(66, 'MALUKU UTARA', 'III', 478000),
-(67, 'PAPUA', 'III', 460000),
-(68, 'PAPUA BARAT', 'III', 798000),
-(69, 'ACEH', 'I', 370000),
-(70, 'SUMATERA UTARA', 'I', 310000),
-(71, 'RIAU', 'I', 380000),
-(72, 'KEPULAUAN RIAU', 'I', 280000),
-(73, 'JAMBI', 'I', 290000),
-(74, 'SUMATERA BARAT', 'I', 370000),
-(75, 'SUMATERA SELATAN', 'I', 310000),
-(76, 'LAMPUNG', 'I', 356000),
-(77, 'BENGKULU', 'I', 510000),
-(78, 'BANGKA BELITUNG', 'I', 304000),
-(79, 'BANTEN', 'I', 400000),
-(80, 'JAWA BARAT', 'I', 463000),
-(81, 'D.K.I   JAKARTA', 'I', 400000),
-(82, 'JAWA TENGAH', 'I', 350000),
-(83, 'D.I.  YOGYAKARTA', 'I', 461000),
-(84, 'JAWA TIMUR', 'I', 329000),
-(85, 'B A L I', 'I', 658000),
-(86, 'NUSA TENGGARA BARAT', 'I', 360000),
-(87, 'NUSA TENGGARA TIMUR', 'I', 400000),
-(88, 'KALIMANTAN BARAT', 'I', 361000),
-(89, 'KALIMANTAN TENGAH', 'I', 436000),
-(90, 'KALIMANTAN SELATAN', 'I', 379000),
-(91, 'KALIMANTAN TIMUR', 'I', 450000),
-(92, 'KALIMANTAN UTARA ', 'I', 450000),
-(93, 'SULAWESI UTARA', 'I', 342000),
-(94, 'GORONTALO', 'I', 240000),
-(95, 'SULAWESI BARAT', 'I', 360000),
-(96, 'SULAWESI SELATAN', 'I', 378000),
-(97, 'SULAWESI TENGAH', 'I', 389000),
-(98, 'SULAWESI TENGGARA', 'I', 420000),
-(99, 'MALUKU', 'I', 414000),
-(100, 'MALUKU UTARA', 'I', 380000),
-(101, 'PAPUA', 'I', 414000),
-(102, 'PAPUA BARAT', 'I', 370000),
-(103, 'ACEH', 'II', 370000),
-(104, 'SUMATERA UTARA', 'II', 310000),
-(105, 'RIAU', 'II', 380000),
-(106, 'KEPULAUAN RIAU', 'II', 280000),
-(107, 'JAMBI', 'II', 290000),
-(108, 'SUMATERA BARAT', 'II', 370000),
-(109, 'SUMATERA SELATAN', 'II', 310000),
-(110, 'LAMPUNG', 'II', 356000),
-(111, 'BENGKULU', 'II', 510000),
-(112, 'BANGKA BELITUNG', 'II', 304000),
-(113, 'BANTEN', 'II', 400000),
-(114, 'JAWA BARAT', 'II', 463000),
-(115, 'D.K.I   JAKARTA', 'II', 400000),
-(116, 'JAWA TENGAH', 'II', 350000),
-(117, 'D.I.  YOGYAKARTA', 'II', 461000),
-(118, 'JAWA TIMUR', 'II', 329000),
-(119, 'B A L I', 'II', 658000),
-(120, 'NUSA TENGGARA BARAT', 'II', 360000),
-(121, 'NUSA TENGGARA TIMUR', 'II', 400000),
-(122, 'KALIMANTAN BARAT', 'II', 361000),
-(123, 'KALIMANTAN TENGAH', 'II', 436000),
-(124, 'KALIMANTAN SELATAN', 'II', 379000),
-(125, 'KALIMANTAN TIMUR', 'II', 450000),
-(126, 'KALIMANTAN UTARA ', 'II', 450000),
-(127, 'SULAWESI UTARA', 'II', 342000),
-(128, 'GORONTALO', 'II', 240000),
-(129, 'SULAWESI BARAT', 'II', 360000),
-(130, 'SULAWESI SELATAN', 'II', 378000),
-(131, 'SULAWESI TENGAH', 'II', 389000),
-(132, 'SULAWESI TENGGARA', 'II', 420000),
-(133, 'MALUKU', 'II', 414000),
-(134, 'MALUKU UTARA', 'II', 380000),
-(135, 'PAPUA', 'II', 414000),
-(136, 'PAPUA BARAT', 'II', 370000),
-(137, 'B A L I', 'Eselon I', 2100000),
-(138, 'B A L I', 'Eselon II', 3200000),
-(139, 'B A L I', 'Eselon III', 4300000);
+(1, 'ACEH', 'Esselon I', 4420000),
+(2, 'SUMATERA UTARA', 'Esselon I', 4960000),
+(3, 'RIAU', 'Esselon I', 3817000),
+(4, 'KEPULAUAN RIAU', 'Esselon I', 4275000),
+(5, 'JAMBI', 'Esselon I', 4000000),
+(6, 'SUMATERA BARAT', 'Esselon I', 4240000),
+(7, 'SUMATERA SELATAN', 'Esselon I', 4680000),
+(8, 'LAMPUNG', 'Esselon I', 3960000),
+(9, 'BENGKULU', 'Esselon I', 1300000),
+(10, 'BANGKA BELITUNG', 'Esselon I', 3335000),
+(11, 'BANTEN', 'Esselon I', 3808000),
+(12, 'JAWA BARAT', 'Esselon I', 3664000),
+(13, 'D.K.I   JAKARTA', 'Esselon I', 8720000),
+(14, 'JAWA TENGAH', 'Esselon I', 4146000),
+(15, 'D.I.  YOGYAKARTA', 'Esselon I', 4620000),
+(16, 'JAWA TIMUR', 'Esselon I', 4400000),
+(17, 'B A L I', 'Esselon I', 4881000),
+(18, 'NUSA TENGGARA BARAT', 'Esselon I', 2429000),
+(19, 'NUSA TENGGARA TIMUR', 'Esselon I', 3000000),
+(20, 'KALIMANTAN BARAT', 'Esselon I', 2400000),
+(21, 'KALIMANTAN TENGAH', 'Esselon I', 3000000),
+(22, 'KALIMANTAN SELATAN', 'Esselon I', 4250000),
+(23, 'KALIMANTAN TIMUR', 'Esselon I', 4000000),
+(24, 'KALIMANTAN UTARA ', 'Esselon I', 4000000),
+(25, 'SULAWESI UTARA', 'Esselon I', 3200000),
+(26, 'GORONTALO', 'Esselon I', 1320000),
+(27, 'SULAWESI BARAT', 'Esselon I', 1260000),
+(28, 'SULAWESI SELATAN', 'Esselon I', 4820000),
+(29, 'SULAWESI TENGAH', 'Esselon I', 2030000),
+(30, 'SULAWESI TENGGARA', 'Esselon I', 1850000),
+(31, 'MALUKU', 'Esselon I', 3000000),
+(32, 'MALUKU UTARA', 'Esselon I', 3110000),
+(33, 'PAPUA', 'Esselon I', 2850000),
+(34, 'PAPUA BARAT', 'Esselon I', 2750000),
+(35, 'ACEH', 'Esselon II', 1308000),
+(36, 'SUMATERA UTARA', 'Esselon II', 1214000),
+(37, 'RIAU', 'Esselon II', 1168000),
+(38, 'KEPULAUAN RIAU', 'Esselon II', 1285000),
+(39, 'JAMBI', 'Esselon II', 1176000),
+(40, 'SUMATERA BARAT', 'Esselon II', 1155000),
+(41, 'SUMATERA SELATAN', 'Esselon II', 1228000),
+(42, 'LAMPUNG', 'Esselon II', 1299000),
+(43, 'BENGKULU', 'Esselon II', 790000),
+(44, 'BANGKA BELITUNG', 'Esselon II', 1310000),
+(45, 'BANTEN', 'Esselon II', 1430000),
+(46, 'JAWA BARAT', 'Esselon II', 1753000),
+(47, 'D.K.I   JAKARTA', 'Esselon II', 1086000),
+(48, 'JAWA TENGAH', 'Esselon II', 1478000),
+(49, 'D.I.  YOGYAKARTA', 'Esselon II', 1334000),
+(50, 'JAWA TIMUR', 'Esselon II', 1359000),
+(51, 'B A L I', 'Esselon II', 1810000),
+(52, 'NUSA TENGGARA BARAT', 'Esselon II', 2738000),
+(53, 'NUSA TENGGARA TIMUR', 'Esselon II', 1000000),
+(54, 'KALIMANTAN BARAT', 'Esselon II', 1130000),
+(55, 'KALIMANTAN TENGAH', 'Esselon II', 1596000),
+(56, 'KALIMANTAN SELATAN', 'Esselon II', 1679000),
+(57, 'KALIMANTAN TIMUR', 'Esselon II', 3021000),
+(58, 'KALIMANTAN UTARA ', 'Esselon II', 3021000),
+(59, 'SULAWESI UTARA', 'Esselon II', 1553000),
+(60, 'GORONTALO', 'Esselon II', 1134000),
+(61, 'SULAWESI BARAT', 'Esselon II', 1030000),
+(62, 'SULAWESI SELATAN', 'Esselon II', 1912000),
+(63, 'SULAWESI TENGAH', 'Esselon II', 1298000),
+(64, 'SULAWESI TENGGARA', 'Esselon II', 1070000),
+(65, 'MALUKU', 'Esselon II', 1030000),
+(66, 'MALUKU UTARA', 'Esselon II', 1512000),
+(67, 'PAPUA', 'Esselon II', 1668000),
+(68, 'PAPUA BARAT', 'Esselon II', 1482000),
+(69, 'ACEH', 'Esselon III', 1080000),
+(70, 'SUMATERA UTARA', 'Esselon III', 703000),
+(71, 'RIAU', 'Esselon III', 868000),
+(72, 'KEPULAUAN RIAU', 'Esselon III', 650000),
+(73, 'JAMBI', 'Esselon III', 697000),
+(74, 'SUMATERA BARAT', 'Esselon III', 884000),
+(75, 'SUMATERA SELATAN', 'Esselon III', 605000),
+(76, 'LAMPUNG', 'Esselon III', 790000),
+(77, 'BENGKULU', 'Esselon III', 712000),
+(78, 'BANGKA BELITUNG', 'Esselon III', 850000),
+(79, 'BANTEN', 'Esselon III', 1024000),
+(80, 'JAWA BARAT', 'Esselon III', 949000),
+(81, 'D.K.I   JAKARTA', 'Esselon III', 800000),
+(82, 'JAWA TENGAH', 'Esselon III', 1024000),
+(83, 'D.I.  YOGYAKARTA', 'Esselon III', 747000),
+(84, 'JAWA TIMUR', 'Esselon III', 841000),
+(85, 'B A L I', 'Esselon III', 1304000),
+(86, 'NUSA TENGGARA BARAT', 'Esselon III', 737000),
+(87, 'NUSA TENGGARA TIMUR', 'Esselon III', 700000),
+(88, 'KALIMANTAN BARAT', 'Esselon III', 866000),
+(89, 'KALIMANTAN TENGAH', 'Esselon III', 923000),
+(90, 'KALIMANTAN SELATAN', 'Esselon III', 816000),
+(91, 'KALIMANTAN TIMUR', 'Esselon III', 1596000),
+(92, 'KALIMANTAN UTARA ', 'Esselon III', 1596000),
+(93, 'SULAWESI UTARA', 'Esselon III', 640000),
+(94, 'GORONTALO', 'Esselon III', 910000),
+(95, 'SULAWESI BARAT', 'Esselon III', 910000),
+(96, 'SULAWESI SELATAN', 'Esselon III', 968000),
+(97, 'SULAWESI TENGAH', 'Esselon III', 894000),
+(98, 'SULAWESI TENGGARA', 'Esselon III', 802000),
+(99, 'MALUKU', 'Esselon III', 680000),
+(100, 'MALUKU UTARA', 'Esselon III', 600000),
+(101, 'PAPUA', 'Esselon III', 754000),
+(102, 'PAPUA BARAT', 'Esselon III', 976000),
+(103, 'ACEH', 'IV', 1080000),
+(104, 'SUMATERA UTARA', 'IV', 703000),
+(105, 'RIAU', 'IV', 868000),
+(106, 'KEPULAUAN RIAU', 'IV', 650000),
+(107, 'JAMBI', 'IV', 697000),
+(108, 'SUMATERA BARAT', 'IV', 884000),
+(109, 'SUMATERA SELATAN', 'IV', 605000),
+(110, 'LAMPUNG', 'IV', 790000),
+(111, 'BENGKULU', 'IV', 712000),
+(112, 'BANGKA BELITUNG', 'IV', 850000),
+(113, 'BANTEN', 'IV', 1024000),
+(114, 'JAWA BARAT', 'IV', 949000),
+(115, 'D.K.I   JAKARTA', 'IV', 800000),
+(116, 'JAWA TENGAH', 'IV', 1024000),
+(117, 'D.I.  YOGYAKARTA', 'IV', 747000),
+(118, 'JAWA TIMUR', 'IV', 841000),
+(119, 'B A L I', 'IV', 1304000),
+(120, 'NUSA TENGGARA BARAT', 'IV', 737000),
+(121, 'NUSA TENGGARA TIMUR', 'IV', 700000),
+(122, 'KALIMANTAN BARAT', 'IV', 866000),
+(123, 'KALIMANTAN TENGAH', 'IV', 923000),
+(124, 'KALIMANTAN SELATAN', 'IV', 816000),
+(125, 'KALIMANTAN TIMUR', 'IV', 1596000),
+(126, 'KALIMANTAN UTARA ', 'IV', 1596000),
+(127, 'SULAWESI UTARA', 'IV', 640000),
+(128, 'GORONTALO', 'IV', 910000),
+(129, 'SULAWESI BARAT', 'IV', 910000),
+(130, 'SULAWESI SELATAN', 'IV', 968000),
+(131, 'SULAWESI TENGAH', 'IV', 894000),
+(132, 'SULAWESI TENGGARA', 'IV', 802000),
+(133, 'MALUKU', 'IV', 680000),
+(134, 'MALUKU UTARA', 'IV', 600000),
+(135, 'PAPUA', 'IV', 754000),
+(136, 'PAPUA BARAT', 'IV', 976000),
+(137, 'ACEH', 'Esselon IV', 410000),
+(138, 'SUMATERA UTARA', 'Esselon IV', 505000),
+(139, 'RIAU', 'Esselon IV', 450000),
+(140, 'KEPULAUAN RIAU', 'Esselon IV', 502000),
+(141, 'JAMBI', 'Esselon IV', 382000),
+(142, 'SUMATERA BARAT', 'Esselon IV', 477000),
+(143, 'SUMATERA SELATAN', 'Esselon IV', 514000),
+(144, 'LAMPUNG', 'Esselon IV', 374000),
+(145, 'BENGKULU', 'Esselon IV', 599000),
+(146, 'BANGKA BELITUNG', 'Esselon IV', 533000),
+(147, 'BANTEN', 'Esselon IV', 797000),
+(148, 'JAWA BARAT', 'Esselon IV', 515000),
+(149, 'D.K.I   JAKARTA', 'Esselon IV', 610000),
+(150, 'JAWA TENGAH', 'Esselon IV', 497000),
+(151, 'D.I.  YOGYAKARTA', 'Esselon IV', 629000),
+(152, 'JAWA TIMUR', 'Esselon IV', 499000),
+(153, 'B A L I', 'Esselon IV', 904000),
+(154, 'NUSA TENGGARA BARAT', 'Esselon IV', 540000),
+(155, 'NUSA TENGGARA TIMUR', 'Esselon IV', 662000),
+(156, 'KALIMANTAN BARAT', 'Esselon IV', 430000),
+(157, 'KALIMANTAN TENGAH', 'Esselon IV', 558000),
+(158, 'KALIMANTAN SELATAN', 'Esselon IV', 500000),
+(159, 'KALIMANTAN TIMUR', 'Esselon IV', 550000),
+(160, 'KALIMANTAN UTARA ', 'Esselon IV', 550000),
+(161, 'SULAWESI UTARA', 'Esselon IV', 549000),
+(162, 'GORONTALO', 'Esselon IV', 423000),
+(163, 'SULAWESI BARAT', 'Esselon IV', 425000),
+(164, 'SULAWESI SELATAN', 'Esselon IV', 539000),
+(165, 'SULAWESI TENGAH', 'Esselon IV', 493000),
+(166, 'SULAWESI TENGGARA', 'Esselon IV', 488000),
+(167, 'MALUKU', 'Esselon IV', 545000),
+(168, 'MALUKU UTARA', 'Esselon IV', 478000),
+(169, 'PAPUA', 'Esselon IV', 460000),
+(170, 'PAPUA BARAT', 'Esselon IV', 798000),
+(171, 'ACEH', 'III', 410000),
+(172, 'SUMATERA UTARA', 'III', 505000),
+(173, 'RIAU', 'III', 450000),
+(174, 'KEPULAUAN RIAU', 'III', 502000),
+(175, 'JAMBI', 'III', 382000),
+(176, 'SUMATERA BARAT', 'III', 477000),
+(177, 'SUMATERA SELATAN', 'III', 514000),
+(178, 'LAMPUNG', 'III', 374000),
+(179, 'BENGKULU', 'III', 599000),
+(180, 'BANGKA BELITUNG', 'III', 533000),
+(181, 'BANTEN', 'III', 797000),
+(182, 'JAWA BARAT', 'III', 515000),
+(183, 'D.K.I   JAKARTA', 'III', 610000),
+(184, 'JAWA TENGAH', 'III', 497000),
+(185, 'D.I.  YOGYAKARTA', 'III', 629000),
+(186, 'JAWA TIMUR', 'III', 499000),
+(187, 'B A L I', 'III', 904000),
+(188, 'NUSA TENGGARA BARAT', 'III', 540000),
+(189, 'NUSA TENGGARA TIMUR', 'III', 662000),
+(190, 'KALIMANTAN BARAT', 'III', 430000),
+(191, 'KALIMANTAN TENGAH', 'III', 558000),
+(192, 'KALIMANTAN SELATAN', 'III', 500000),
+(193, 'KALIMANTAN TIMUR', 'III', 550000),
+(194, 'KALIMANTAN UTARA ', 'III', 550000),
+(195, 'SULAWESI UTARA', 'III', 549000),
+(196, 'GORONTALO', 'III', 423000),
+(197, 'SULAWESI BARAT', 'III', 425000),
+(198, 'SULAWESI SELATAN', 'III', 539000),
+(199, 'SULAWESI TENGAH', 'III', 493000),
+(200, 'SULAWESI TENGGARA', 'III', 488000),
+(201, 'MALUKU', 'III', 545000),
+(202, 'MALUKU UTARA', 'III', 478000),
+(203, 'PAPUA', 'III', 460000),
+(204, 'PAPUA BARAT', 'III', 798000),
+(205, 'ACEH', 'I', 370000),
+(206, 'SUMATERA UTARA', 'I', 310000),
+(207, 'RIAU', 'I', 380000),
+(208, 'KEPULAUAN RIAU', 'I', 280000),
+(209, 'JAMBI', 'I', 290000),
+(210, 'SUMATERA BARAT', 'I', 370000),
+(211, 'SUMATERA SELATAN', 'I', 310000),
+(212, 'LAMPUNG', 'I', 356000),
+(213, 'BENGKULU', 'I', 510000),
+(214, 'BANGKA BELITUNG', 'I', 304000),
+(215, 'BANTEN', 'I', 400000),
+(216, 'JAWA BARAT', 'I', 463000),
+(217, 'D.K.I   JAKARTA', 'I', 400000),
+(218, 'JAWA TENGAH', 'I', 350000),
+(219, 'D.I.  YOGYAKARTA', 'I', 461000),
+(220, 'JAWA TIMUR', 'I', 329000),
+(221, 'B A L I', 'I', 658000),
+(222, 'NUSA TENGGARA BARAT', 'I', 360000),
+(223, 'NUSA TENGGARA TIMUR', 'I', 400000),
+(224, 'KALIMANTAN BARAT', 'I', 361000),
+(225, 'KALIMANTAN TENGAH', 'I', 436000),
+(226, 'KALIMANTAN SELATAN', 'I', 379000),
+(227, 'KALIMANTAN TIMUR', 'I', 450000),
+(228, 'KALIMANTAN UTARA ', 'I', 450000),
+(229, 'SULAWESI UTARA', 'I', 342000),
+(230, 'GORONTALO', 'I', 240000),
+(231, 'SULAWESI BARAT', 'I', 360000),
+(232, 'SULAWESI SELATAN', 'I', 378000),
+(233, 'SULAWESI TENGAH', 'I', 389000),
+(234, 'SULAWESI TENGGARA', 'I', 420000),
+(235, 'MALUKU', 'I', 414000),
+(236, 'MALUKU UTARA', 'I', 380000),
+(237, 'PAPUA', 'I', 414000),
+(238, 'PAPUA BARAT', 'I', 370000),
+(239, 'ACEH', 'II', 370000),
+(240, 'SUMATERA UTARA', 'II', 310000),
+(241, 'RIAU', 'II', 380000),
+(242, 'KEPULAUAN RIAU', 'II', 280000),
+(243, 'JAMBI', 'II', 290000),
+(244, 'SUMATERA BARAT', 'II', 370000),
+(245, 'SUMATERA SELATAN', 'II', 310000),
+(246, 'LAMPUNG', 'II', 356000),
+(247, 'BENGKULU', 'II', 510000),
+(248, 'BANGKA BELITUNG', 'II', 304000),
+(249, 'BANTEN', 'II', 400000),
+(250, 'JAWA BARAT', 'II', 463000),
+(251, 'D.K.I   JAKARTA', 'II', 400000),
+(252, 'JAWA TENGAH', 'II', 350000),
+(253, 'D.I.  YOGYAKARTA', 'II', 461000),
+(254, 'JAWA TIMUR', 'II', 329000),
+(255, 'B A L I', 'II', 658000),
+(256, 'NUSA TENGGARA BARAT', 'II', 360000),
+(257, 'NUSA TENGGARA TIMUR', 'II', 400000),
+(258, 'KALIMANTAN BARAT', 'II', 361000),
+(259, 'KALIMANTAN TENGAH', 'II', 436000),
+(260, 'KALIMANTAN SELATAN', 'II', 379000),
+(261, 'KALIMANTAN TIMUR', 'II', 450000),
+(262, 'KALIMANTAN UTARA ', 'II', 450000),
+(263, 'SULAWESI UTARA', 'II', 342000),
+(264, 'GORONTALO', 'II', 240000),
+(265, 'SULAWESI BARAT', 'II', 360000),
+(266, 'SULAWESI SELATAN', 'II', 378000),
+(267, 'SULAWESI TENGAH', 'II', 389000),
+(268, 'SULAWESI TENGGARA', 'II', 420000),
+(269, 'MALUKU', 'II', 414000),
+(270, 'MALUKU UTARA', 'II', 380000),
+(271, 'PAPUA', 'II', 414000),
+(272, 'PAPUA BARAT', 'II', 370000);
 
 -- --------------------------------------------------------
 
@@ -504,11 +683,11 @@ CREATE TABLE IF NOT EXISTS `biaya_representatif` (
 --
 
 INSERT INTO `biaya_representatif` (`id`, `nama_kota`, `tingkat`, `biaya`) VALUES
-(1, 'ACEH', 'Eselon I', 200000),
-(2, 'ACEH', 'Eselon II', 100000),
-(3, 'B A L I', 'Eselon I', 200000),
-(4, 'B A L I', 'Eselon II', 300000),
-(5, 'B A L I', 'Eselon III', 400000);
+(1, 'ACEH', 'Esselon I', 200000),
+(2, 'ACEH', 'Esselon II', 100000),
+(3, 'B A L I', 'Esselon I', 200000),
+(4, 'B A L I', 'Esselon II', 300000),
+(5, 'B A L I', 'Esselon III', 400000);
 
 -- --------------------------------------------------------
 
@@ -522,16 +701,115 @@ CREATE TABLE IF NOT EXISTS `biaya_sewa` (
   `nama_kota` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=103 ;
 
 --
 -- Dumping data for table `biaya_sewa`
 --
 
 INSERT INTO `biaya_sewa` (`id`, `jenis_kendaraan`, `nama_kota`, `biaya`) VALUES
-(1, 'Roda 4', 'ACEH', 766000),
-(2, 'Roda 6 / Bus Sedang', 'ACEH', 2050000),
-(3, 'Roda 6 / Bus Besar', 'ACEH', 3670000);
+(1, 'Roda 4', 'ACEH', 200000),
+(2, 'Roda 4', 'SUMATERA UTARA', 200000),
+(3, 'Roda 4', 'RIAU', 200000),
+(4, 'Roda 4', 'KEPULAUAN RIAU', 200000),
+(5, 'Roda 4', 'JAMBI', 200000),
+(6, 'Roda 4', 'SUMATERA BARAT', 200000),
+(7, 'Roda 4', 'SUMATERA SELATAN', 200000),
+(8, 'Roda 4', 'LAMPUNG', 200000),
+(9, 'Roda 4', 'BENGKULU', 200000),
+(10, 'Roda 4', 'BANGKA BELITUNG', 200000),
+(11, 'Roda 4', 'BANTEN', 200000),
+(12, 'Roda 4', 'JAWA BARAT', 200000),
+(13, 'Roda 4', 'D.K.I   JAKARTA', 200000),
+(14, 'Roda 4', 'JAWA TENGAH', 200000),
+(15, 'Roda 4', 'D.I.  YOGYAKARTA', 200000),
+(16, 'Roda 4', 'JAWA TIMUR', 200000),
+(17, 'Roda 4', 'B A L I', 200000),
+(18, 'Roda 4', 'NUSA TENGGARA BARAT', 200000),
+(19, 'Roda 4', 'NUSA TENGGARA TIMUR', 200000),
+(20, 'Roda 4', 'KALIMANTAN BARAT', 200000),
+(21, 'Roda 4', 'KALIMANTAN TENGAH', 200000),
+(22, 'Roda 4', 'KALIMANTAN SELATAN', 200000),
+(23, 'Roda 4', 'KALIMANTAN TIMUR', 200000),
+(24, 'Roda 4', 'KALIMANTAN UTARA ', 200000),
+(25, 'Roda 4', 'SULAWESI UTARA', 200000),
+(26, 'Roda 4', 'GORONTALO', 200000),
+(27, 'Roda 4', 'SULAWESI BARAT', 200000),
+(28, 'Roda 4', 'SULAWESI SELATAN', 200000),
+(29, 'Roda 4', 'SULAWESI TENGAH', 200000),
+(30, 'Roda 4', 'SULAWESI TENGGARA', 200000),
+(31, 'Roda 4', 'MALUKU', 200000),
+(32, 'Roda 4', 'MALUKU UTARA', 200000),
+(33, 'Roda 4', 'PAPUA', 200000),
+(34, 'Roda 4', 'PAPUA BARAT', 200000),
+(35, 'Roda 6 / Bus Sedang', 'ACEH', 400000),
+(36, 'Roda 6 / Bus Sedang', 'SUMATERA UTARA', 400000),
+(37, 'Roda 6 / Bus Sedang', 'RIAU', 400000),
+(38, 'Roda 6 / Bus Sedang', 'KEPULAUAN RIAU', 400000),
+(39, 'Roda 6 / Bus Sedang', 'JAMBI', 400000),
+(40, 'Roda 6 / Bus Sedang', 'SUMATERA BARAT', 400000),
+(41, 'Roda 6 / Bus Sedang', 'SUMATERA SELATAN', 400000),
+(42, 'Roda 6 / Bus Sedang', 'LAMPUNG', 400000),
+(43, 'Roda 6 / Bus Sedang', 'BENGKULU', 400000),
+(44, 'Roda 6 / Bus Sedang', 'BANGKA BELITUNG', 400000),
+(45, 'Roda 6 / Bus Sedang', 'BANTEN', 400000),
+(46, 'Roda 6 / Bus Sedang', 'JAWA BARAT', 400000),
+(47, 'Roda 6 / Bus Sedang', 'D.K.I   JAKARTA', 400000),
+(48, 'Roda 6 / Bus Sedang', 'JAWA TENGAH', 400000),
+(49, 'Roda 6 / Bus Sedang', 'D.I.  YOGYAKARTA', 400000),
+(50, 'Roda 6 / Bus Sedang', 'JAWA TIMUR', 400000),
+(51, 'Roda 6 / Bus Sedang', 'B A L I', 400000),
+(52, 'Roda 6 / Bus Sedang', 'NUSA TENGGARA BARAT', 400000),
+(53, 'Roda 6 / Bus Sedang', 'NUSA TENGGARA TIMUR', 400000),
+(54, 'Roda 6 / Bus Sedang', 'KALIMANTAN BARAT', 400000),
+(55, 'Roda 6 / Bus Sedang', 'KALIMANTAN TENGAH', 400000),
+(56, 'Roda 6 / Bus Sedang', 'KALIMANTAN SELATAN', 400000),
+(57, 'Roda 6 / Bus Sedang', 'KALIMANTAN TIMUR', 400000),
+(58, 'Roda 6 / Bus Sedang', 'KALIMANTAN UTARA ', 400000),
+(59, 'Roda 6 / Bus Sedang', 'SULAWESI UTARA', 400000),
+(60, 'Roda 6 / Bus Sedang', 'GORONTALO', 400000),
+(61, 'Roda 6 / Bus Sedang', 'SULAWESI BARAT', 400000),
+(62, 'Roda 6 / Bus Sedang', 'SULAWESI SELATAN', 400000),
+(63, 'Roda 6 / Bus Sedang', 'SULAWESI TENGAH', 400000),
+(64, 'Roda 6 / Bus Sedang', 'SULAWESI TENGGARA', 400000),
+(65, 'Roda 6 / Bus Sedang', 'MALUKU', 400000),
+(66, 'Roda 6 / Bus Sedang', 'MALUKU UTARA', 400000),
+(67, 'Roda 6 / Bus Sedang', 'PAPUA', 400000),
+(68, 'Roda 6 / Bus Sedang', 'PAPUA BARAT', 400000),
+(69, 'Roda 6 / Bus Besar', 'ACEH', 500000),
+(70, 'Roda 6 / Bus Besar', 'SUMATERA UTARA', 500000),
+(71, 'Roda 6 / Bus Besar', 'RIAU', 500000),
+(72, 'Roda 6 / Bus Besar', 'KEPULAUAN RIAU', 500000),
+(73, 'Roda 6 / Bus Besar', 'JAMBI', 500000),
+(74, 'Roda 6 / Bus Besar', 'SUMATERA BARAT', 500000),
+(75, 'Roda 6 / Bus Besar', 'SUMATERA SELATAN', 500000),
+(76, 'Roda 6 / Bus Besar', 'LAMPUNG', 500000),
+(77, 'Roda 6 / Bus Besar', 'BENGKULU', 500000),
+(78, 'Roda 6 / Bus Besar', 'BANGKA BELITUNG', 500000),
+(79, 'Roda 6 / Bus Besar', 'BANTEN', 500000),
+(80, 'Roda 6 / Bus Besar', 'JAWA BARAT', 500000),
+(81, 'Roda 6 / Bus Besar', 'D.K.I   JAKARTA', 500000),
+(82, 'Roda 6 / Bus Besar', 'JAWA TENGAH', 500000),
+(83, 'Roda 6 / Bus Besar', 'D.I.  YOGYAKARTA', 500000),
+(84, 'Roda 6 / Bus Besar', 'JAWA TIMUR', 500000),
+(85, 'Roda 6 / Bus Besar', 'B A L I', 500000),
+(86, 'Roda 6 / Bus Besar', 'NUSA TENGGARA BARAT', 500000),
+(87, 'Roda 6 / Bus Besar', 'NUSA TENGGARA TIMUR', 500000),
+(88, 'Roda 6 / Bus Besar', 'KALIMANTAN BARAT', 500000),
+(89, 'Roda 6 / Bus Besar', 'KALIMANTAN TENGAH', 500000),
+(90, 'Roda 6 / Bus Besar', 'KALIMANTAN SELATAN', 500000),
+(91, 'Roda 6 / Bus Besar', 'KALIMANTAN TIMUR', 500000),
+(92, 'Roda 6 / Bus Besar', 'KALIMANTAN UTARA ', 500000),
+(93, 'Roda 6 / Bus Besar', 'SULAWESI UTARA', 500000),
+(94, 'Roda 6 / Bus Besar', 'GORONTALO', 500000),
+(95, 'Roda 6 / Bus Besar', 'SULAWESI BARAT', 500000),
+(96, 'Roda 6 / Bus Besar', 'SULAWESI SELATAN', 500000),
+(97, 'Roda 6 / Bus Besar', 'SULAWESI TENGAH', 500000),
+(98, 'Roda 6 / Bus Besar', 'SULAWESI TENGGARA', 500000),
+(99, 'Roda 6 / Bus Besar', 'MALUKU', 500000),
+(100, 'Roda 6 / Bus Besar', 'MALUKU UTARA', 500000),
+(101, 'Roda 6 / Bus Besar', 'PAPUA', 500000),
+(102, 'Roda 6 / Bus Besar', 'PAPUA BARAT', 500000);
 
 -- --------------------------------------------------------
 
@@ -608,7 +886,7 @@ CREATE TABLE IF NOT EXISTS `bukti_perjalanan_dinas` (
   `nomor_bukti` text,
   `jumlah_bukti` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
 
 --
 -- Dumping data for table `bukti_perjalanan_dinas`
@@ -855,6 +1133,11 @@ CREATE TABLE IF NOT EXISTS `golongan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `golongan`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -867,6 +1150,11 @@ CREATE TABLE IF NOT EXISTS `jenis_barang` (
   `nama_barang` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis_barang`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1012,6 +1300,11 @@ CREATE TABLE IF NOT EXISTS `koordinator` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `koordinator`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1077,7 +1370,7 @@ CREATE TABLE IF NOT EXISTS `listcode` (
   `list_name` varchar(50) DEFAULT NULL,
   `list_item` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=69 ;
 
 --
 -- Dumping data for table `listcode`
@@ -1136,13 +1429,16 @@ INSERT INTO `listcode` (`id`, `list_name`, `list_item`) VALUES
 (56, 'Golongan', 'IV/A'),
 (57, 'Golongan', 'IV/B'),
 (58, 'Golongan', 'IV/C'),
-(61, 'Golongan', 'IV/D'),
-(60, 'Golongan', 'Eselon I'),
-(62, 'Golongan', 'Eselon II'),
-(63, 'Golongan (Biaya Penginapan)', 'Eselon I'),
-(64, 'Golongan (Biaya Penginapan)', 'Eselon II'),
-(65, 'Golongan (Biaya Penginapan)', 'Eselon III'),
-(66, 'Tingkat', 'Eselon III');
+(59, 'Golongan', 'IV/D'),
+(60, 'Golongan', 'Esselon I'),
+(61, 'Golongan', 'Esselon II'),
+(62, 'Golongan', 'Esselon III'),
+(63, 'Golongan (Biaya Penginapan)', 'Esselon I'),
+(64, 'Golongan (Biaya Penginapan)', 'Esselon II'),
+(65, 'Golongan (Biaya Penginapan)', 'Esselon III'),
+(66, 'Golongan', 'Esselon IV'),
+(67, 'Golongan (Biaya Penginapan)', 'Esselon IV'),
+(68, 'Tingkat', 'Eselon III');
 
 -- --------------------------------------------------------
 
@@ -1379,6 +1675,11 @@ CREATE TABLE IF NOT EXISTS `pajak` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `pajak`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1392,7 +1693,7 @@ CREATE TABLE IF NOT EXISTS `panjar` (
   `jml_panjar` int(11) DEFAULT NULL,
   `penerima` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `panjar`
@@ -1400,7 +1701,8 @@ CREATE TABLE IF NOT EXISTS `panjar` (
 
 INSERT INTO `panjar` (`id`, `id_header`, `id_pegawai`, `jml_panjar`, `penerima`) VALUES
 (1, 12, 10, 400000, 10),
-(2, 12, 122, 200000, 122);
+(2, 12, 122, 200000, 122),
+(3, 10, 10, 1000000, 10);
 
 -- --------------------------------------------------------
 
@@ -1626,7 +1928,7 @@ INSERT INTO `pegawai` (`id`, `nip`, `nama`, `golongan`, `jabatan`, `tgl_lahir`, 
 (193, ' ', 'Usup Ruswandi', ' ', ' ', '0000-00-00', '', 'PNS', '9', '', '', NULL, NULL, 0),
 (194, '008', 'Taufik Ismail Abdilah, S.Kom', 'III/A', 'Peneliti', '1989-07-24', '2a', 'Status', '1', '', 'S1', 'UPI', 'Ahli Komputer', 1),
 (195, '196101131990031001', 'Budi Rahardjo', 'III/D', 'Kabid ', '2015-05-04', '-', 'Non PNS (S1)', '9', 'PNS', 'S1', 'Nowhere', 'Menghitung', 1),
-(196, '196101131990031098', 'Prof. dr. Raden Fatah', 'Eselon I', 'Menteri', '0000-00-00', '-', 'PNS', '2', '-', 'S3', NULL, NULL, 0);
+(196, '196101131990031098', 'Prof. dr. Raden Fatah', 'Esselon I', 'Menteri', '0000-00-00', '-', 'PNS', '2', '-', 'S3', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1837,6 +2139,11 @@ CREATE TABLE IF NOT EXISTS `transportasi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Dumping data for table `transportasi`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1879,6 +2186,11 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `id_role` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_user_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `user_role`
+--
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

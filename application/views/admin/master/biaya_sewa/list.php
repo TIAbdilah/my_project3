@@ -8,7 +8,7 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;">
-        <table id="example" class="table table-striped table-bordered">
+        <table id="example2" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th width="5%"> No </th>
