@@ -19,7 +19,7 @@ function format_date($string) {
         </a>
     </div>
     <div class="widget-content" style="padding: 10px;">
-        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/bukti_perjalanan_dinas/process/edit') ?>" method="POST">
+        <form class="bs-docs-example form-horizontal" action="#" method="POST">
 
             <input type="hidden" name="inJmlTujuan" value="<?php echo $jumlah_tujuan ?>" />
             <input type="hidden" name="inIdPegawai" value="<?php echo $id_pegawai ?>" />
