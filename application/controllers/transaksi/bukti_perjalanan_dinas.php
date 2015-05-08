@@ -47,8 +47,13 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['id_header'] = $id_header;
         $data['id_pegawai'] = $id_pegawai;
         $data['jumlah_tujuan'] = $jumlah_tujuan;
-//                $x = explode("%20", $kota_tujuan);
-//        $y = $x[0]+" "+$x[1];
+        if (strpos($kota_tujuan, '%20') !== false) {
+            $x = explode('%20', $kota_tujuan);
+            $y = $x[0] . ' ' . $x[1];
+        } else {
+            $y = $kota_tujuan;
+        }
+
         $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $y)->row();
         $this->load->view('admin/index', $data);
     }
