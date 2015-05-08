@@ -35,6 +35,7 @@ class Pegawai extends CI_Controller {
         $data['title'] = "e-satker | Pegawai";
         $data['page'] = 'admin/master/pegawai/add';
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $data['SIList_tingkat'] = $this->listcode_model->select_by_field('list_name','Tingkat')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
@@ -45,6 +46,7 @@ class Pegawai extends CI_Controller {
         $data['page'] = 'admin/master/pegawai/edit';
         $data['row'] = $this->pegawai_model->select_by_id($id)->row();  
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $data['SIList_tingkat'] = $this->listcode_model->select_by_field('list_name','Tingkat')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
@@ -62,6 +64,7 @@ class Pegawai extends CI_Controller {
         $data['kode_unit'] = $this->input->post('inpKodeUnit');
         $data['kriteria_pegawai'] = $this->input->post('inpKriteriaPegawai');
         $data['status_pendidikan'] = $this->input->post('inpStatusPendidikan');
+        $data['tingkat'] = $this->input->post('inpTingkat');
         
         if ($action == 'add') {
             $this->pegawai_model->add($data);

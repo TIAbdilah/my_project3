@@ -32,6 +32,19 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="inpTingkat">Tingkat</label>
+                <div class="controls">
+                    <select name="inpTingkat">
+                        <option>Tingkat</option>
+                        <?php
+                        foreach ($SIList_tingkat as $row) {
+                            echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="inpJabatan">Jabatan</label>
                 <div class="controls">
                     <input type="text" id="inpJabatan" name="inpJabatan" placeholder="Jabatan">

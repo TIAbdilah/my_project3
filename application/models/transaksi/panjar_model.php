@@ -19,6 +19,7 @@ class Panjar_model extends CI_Model {
                 . ", sum(d.biaya) as total_biaya "
                 . ", (select pj.jml_panjar from panjar pj where pj.id_header = d.id_header and pj.id_pegawai = d.id_pegawai) as jml_panjar "
                 . ", (select pj.penerima from panjar pj where pj.id_header = d.id_header and pj.id_pegawai = d.id_pegawai) as penerima "
+                . ", (select pj.deskripsi_panjar from panjar pj where pj.id_header = d.id_header and pj.id_pegawai = d.id_pegawai) as deskripsi_panjar "
                 . ", (select (select p.nama from pegawai p where p.id = pj.penerima) as nama_penerima from panjar pj where pj.id_header = d.id_header and pj.id_pegawai = d.id_pegawai) as nama_penerima "
                 . "from detail_perjalanan_dinas d "
                 . "where d.id_header = ".$id_header." "                
@@ -67,7 +68,8 @@ class Panjar_model extends CI_Model {
             'id_header' => $data['id_header'],
             'id_pegawai' => $data['id_pegawai'],
             'jml_panjar' => $data['jml_panjar'],
-            'penerima' => $data['penerima']
+            'penerima' => $data['penerima'],
+            'deskripsi_panjar' => $data['deskripsi_panjar']
         );
         $this->db->insert('panjar', $data);
     }
@@ -77,7 +79,8 @@ class Panjar_model extends CI_Model {
             'id_header' => $data['id_header'],
             'id_pegawai' => $data['id_pegawai'],
             'jml_panjar' => $data['jml_panjar'],
-            'penerima' => $data['penerima']
+            'penerima' => $data['penerima'],
+            'deskripsi_panjar' => $data['deskripsi_panjar']
         );
         $this->db->update('panjar', $data, "id = " . $id);
     }

@@ -15,6 +15,7 @@
                     <th> NIP</th>
                     <th> Nama</th>
                     <th> Pangkat/Golongan</th>
+                    <th> Tingkat</th>
                     <th> Institusi</th>
                     <th> Jabatan</th>
                     <th> Kepakaran/Keahlian</th>
@@ -30,6 +31,7 @@
                     . "<td>" . $row->nip . " </td>"
                     . "<td><a href=\"" . site_url('master/narasumber/view/' . $row->id) . "\">" . $row->nama . "</a></td>"
                     . "<td>" . $row->golongan . "</td>"
+                    . "<td>" . $row->tingkat . "</td>"
                     . "<td>" . $row->institusi . "</td>"
                     . "<td>" . $row->jabatan . "</td>"
                     . "<td>" . $row->kepakaran . "</td>"

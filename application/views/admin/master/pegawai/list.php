@@ -14,7 +14,8 @@
                     <th width="5%"> No </th>
                     <th> NIP</th>
                     <th> Nama</th>
-                    <th> Golongan</th>
+                    <th> Gol.</th>
+                    <th> Tingkat</th>
                     <th> Jabatan</th>
                     <th> Kelas Jabatan</th>
                     <th> Status</th>
@@ -31,6 +32,7 @@
                     . "<td>" . $row->nip . " </td>"
                     . "<td><a href=\"" . site_url('master/pegawai/view/' . $row->id) . "\">" . $row->nama . "</a></td>"
                     . "<td>" . $row->golongan . "</td>"
+                    . "<td>" . $row->tingkat . "</td>"
                     . "<td>" . $row->jabatan . "</td>"
                     . "<td>" . $row->kelas_jabatan . "</td>"
                     . "<td>" . $row->status . "</td>"

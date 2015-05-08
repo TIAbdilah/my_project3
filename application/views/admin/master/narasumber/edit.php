@@ -37,6 +37,19 @@ function format_date($string) {
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="inpTingkat">Tingkat</label>
+                <div class="controls">
+                    <select name="inpTingkat">
+                        <option>Tingkat</option>
+                        <?php
+                        foreach ($SIList_tingkat as $row_4) {
+                            echo "<option value=\"" . $row_4->list_item . "\"".set_select('inpTingkat', $row_4->list_item, $row_4->list_item == $row->tingkat).">" . $row_4->list_item . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="inpJabatan">Jabatan</label>
                 <div class="controls">
                     <input type="text" id="inpJabatan" name="inpJabatan" value="<?php echo $row->jabatan ?>">

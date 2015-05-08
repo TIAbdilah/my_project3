@@ -13,6 +13,7 @@
                     <th> Total Biaya Perjalanan</th>
                     <th> Jumlah Uang Muka</th>
                     <th> Penerima</th>
+                    <th> Deskripsi</th>
                     <th class="td-actions"> </th>
                 </tr>
             </thead>            
@@ -26,6 +27,7 @@
                     . "<td>" . number_format($row->total_biaya) . "</td>"
                     . "<td>" . number_format($row->jml_panjar) . "</td>"
                     . "<td>" . $row->nama_penerima . "</td>"
+                    . "<td>" . $row->deskripsi_panjar . "</td>"
                     . "<td class=\"td-actions\">";
                     ?>
                 <a title="Edit" href="#addDetail<?php echo $no ?>" class="btn btn-mini btn-warning" data-toggle="modal"><i class="btn-icon-only icon-pencil"></i></a>
@@ -55,6 +57,12 @@
                                             ?>
                                         </select>
                                     </td>                                    
+                                </tr>
+                                <tr>
+                                    <td width="25%">Deskripsi Uang Muka</td>
+                                    <td>
+                                        <textarea name="inpDeskripsiPanjar" placeholder="Deskripsi Uang Muka" id="inpDeskripsiPanjar" class="input-large" rows="2"></textarea>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2"><button type="submit" class="btn">Simpan</button></td>

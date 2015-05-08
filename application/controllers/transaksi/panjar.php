@@ -36,7 +36,7 @@ class Panjar extends CI_Controller {
     }
 
     public function view($id) {
-        $data['title'] = "e-satker | Biaya Sewa";
+        $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/panjar/view';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
         $data['list_data'] = $this->panjar_model->select_by_header($id)->result();
@@ -45,7 +45,7 @@ class Panjar extends CI_Controller {
     }
 
     public function add() {
-        $data['title'] = "e-satker | Biaya Sewa";
+        $data['title'] = $this->title_page;
         $data['page'] = 'admin/master/panjar/add';
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
@@ -53,7 +53,7 @@ class Panjar extends CI_Controller {
     }
 
     public function edit($id) {
-        $data['title'] = "e-satker | Biaya Sewa";
+        $data['title'] = $this->title_page;
         $data['page'] = 'admin/master/panjar/edit';
         $data['row'] = $this->panjar_model->select_by_id($id)->row();
         $data['SIList_kota'] = $this->kota_tujuan_model->select_all()->result();
@@ -67,6 +67,7 @@ class Panjar extends CI_Controller {
         $data['id_pegawai'] = $this->input->post('inpIdPegawai');
         $data['jml_panjar'] = $this->input->post('inpJmlPanjar');
         $data['penerima'] = $this->input->post('inpPenerima');
+        $data['deskripsi_panjar'] = $this->input->post('inpDeskripsiPanjar');
 
         if ($action == 'add') {
             $this->panjar_model->add($data);

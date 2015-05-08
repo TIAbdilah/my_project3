@@ -15,12 +15,12 @@
         <tr>
             <td width="21%"><div align="left">1. Kode Kantor/Satker</div></td>
             <td width="2%"><div align="center">:</div></td>
-            <td width="77%"><div align="left"></div></td>
+            <td width="77%"><div align="left">0123/12312/12/313/1</div></td>
         </tr>
         <tr>
             <td>2. Nama Kantor/Satker</td>
             <td><div align="center">:</div></td>
-            <td>&nbsp;</td>
+            <td>Satuan Kerja Satu Dua dan Tiga</td>
         </tr>
         <tr>
             <td>3. Tanggal dan Nomor DIPA</td>

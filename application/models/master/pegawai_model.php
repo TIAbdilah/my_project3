@@ -47,7 +47,8 @@ class Pegawai_model extends CI_Model {
             'kode_unit' => $data['kode_unit'],
             'kriteria_pegawai' => $data['kriteria_pegawai'],
             'status_pendidikan' => $data['status_pendidikan'],
-            'narasumber' => 0
+            'narasumber' => 0,
+            'tingkat' => $data['tingkat']
         );
         $this->db->insert('pegawai', $data);
     }
@@ -63,7 +64,8 @@ class Pegawai_model extends CI_Model {
             'status' => $data['status'],
             'kode_unit' => $data['kode_unit'],
             'kriteria_pegawai' => $data['kriteria_pegawai'],
-            'status_pendidikan' => $data['status_pendidikan']
+            'status_pendidikan' => $data['status_pendidikan'],
+            'tingkat' => $data['tingkat']
         );
         $this->db->update('pegawai', $data, "id = " . $id);
     }

@@ -35,6 +35,7 @@ class Narasumber extends CI_Controller {
         $data['title'] = "e-satker | Narasumber";
         $data['page'] = 'admin/master/narasumber/add';
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $data['SIList_tingkat'] = $this->listcode_model->select_by_field('list_name','Tingkat')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
@@ -45,6 +46,7 @@ class Narasumber extends CI_Controller {
         $data['page'] = 'admin/master/narasumber/edit';
         $data['row'] = $this->narasumber_model->select_by_id($id)->row();  
         $data['SIList_golongan'] = $this->listcode_model->select_by_field('list_name','Golongan')->result();
+        $data['SIList_tingkat'] = $this->listcode_model->select_by_field('list_name','Tingkat')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
         $this->load->view('admin/index', $data);
@@ -64,6 +66,7 @@ class Narasumber extends CI_Controller {
         $data['status_pendidikan'] = $this->input->post('inpStatusPendidikan');
         $data['institusi'] = $this->input->post('inpInstitusi');
         $data['kepakaran'] = $this->input->post('inpKepakaran');
+        $data['tingkat'] = $this->input->post('inpTingkat');
         
         if ($action == 'add') {
             $this->narasumber_model->add($data);

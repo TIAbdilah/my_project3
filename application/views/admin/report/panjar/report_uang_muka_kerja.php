@@ -24,7 +24,7 @@
         <tr>
             <td>Untuk pembayaran</td>
             <td>:</td>
-            <td> Uang muka perjalanan dinas dengan nomor <?php echo $data_header->no_spt?></td>
+            <td><?php echo $data_panjar->deskripsi_panjar?></td>
         </tr>
     </table>
     <p><u>Jumlah Rp.</u><?php echo number_format($data_panjar->jml_panjar)?></p>

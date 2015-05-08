@@ -64,7 +64,7 @@ class Surat_perintah_tugas extends CI_Controller {
                 'id_unit' => $id_unit,
                 'id_header' => $id_header
             );
-            $data['list_data'] = $this->detail_perjalanan_dinas_model->select_by_field($param)->result();
+            $data['list_data'] = $this->surat_perintah_tugas_model->select_by_field($param)->result();
             $data['format_date'] = new Format_date();
             $html = $this->load->view('admin/report/surat_perintah_tugas/report_surat_perintah_tugas', $data, TRUE);
         }

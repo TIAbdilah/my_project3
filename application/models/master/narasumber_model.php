@@ -48,6 +48,7 @@ class Narasumber_model extends CI_Model {
             'kriteria_pegawai' => $data['kriteria_pegawai'],
             'status_pendidikan' => $data['status_pendidikan'],
             'narasumber' => 1,
+            'tingkat' => $data['tingkat'],
             'institusi' => $data['institusi'],
             'kepakaran' => $data['kepakaran']
         );
@@ -66,6 +67,7 @@ class Narasumber_model extends CI_Model {
             'kode_unit' => $data['kode_unit'],
             'kriteria_pegawai' => $data['kriteria_pegawai'],
             'status_pendidikan' => $data['status_pendidikan'],
+            'tingkat' => $data['tingkat'],
             'institusi' => $data['institusi'],
             'kepakaran' => $data['kepakaran']
         );
