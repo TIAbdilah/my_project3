@@ -19,7 +19,7 @@
         <tr>
             <td>Banyaknya uang (rupiah)</td>
             <td>:</td>
-            <td>&nbsp;</td>
+            <td><?php echo $curency->convertCurrencyToWords($data_panjar->jml_panjar)?></td>
         </tr>
         <tr>
             <td>Untuk pembayaran</td>
@@ -52,7 +52,7 @@
                 <br>
             </p></td>
         <td valign="top" align="center" width="30%">
-            <p>Bandung, <?php echo date('d F Y')?><br>
+            <p>Bandung, <?php echo $format_date->format_date_dfy($data_header->tanggal_approval)?><br>
                 Yang menerima,</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
