@@ -47,7 +47,9 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['id_header'] = $id_header;
         $data['id_pegawai'] = $id_pegawai;
         $data['jumlah_tujuan'] = $jumlah_tujuan;
-        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan)->row();
+//                $x = explode("%20", $kota_tujuan);
+//        $y = $x[0]+" "+$x[1];
+        $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $y)->row();
         $this->load->view('admin/index', $data);
     }
 
@@ -57,6 +59,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['id_header'] = $id_header;
         $data['id_pegawai'] = $id_pegawai;
         $data['jumlah_tujuan'] = $jumlah_tujuan;
+
 //          $data['kota_tujuan'] = $kota_tujuan;
         $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan)->row();
         $data['data_bukti'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_bukti($id_header, $id_pegawai, $kota_tujuan)->row();
