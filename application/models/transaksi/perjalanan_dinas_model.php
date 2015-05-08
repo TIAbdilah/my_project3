@@ -52,6 +52,7 @@ class Perjalanan_dinas_model extends CI_Model {
         $data = array(
             'no_spt' => $data['no_spt'],
             'status' => $data['status_approval'],
+            'status_diklat' => $data['status_diklat'],
             'id_anggaran' => $data['id_anggaran'],
             'jumlah_tujuan' => $data['jumlah_tujuan'],
             'maksud_perjalanan' => $data['maksud_perjalanan'],
@@ -72,6 +73,7 @@ class Perjalanan_dinas_model extends CI_Model {
         $data = array(
             'no_spt' => $data['no_spt'],
             'status' => $data['status_approval'],
+            'status_diklat' => $data['status_diklat'],
             'id_anggaran' => $data['id_anggaran'],
             'jumlah_tujuan' => $data['jumlah_tujuan'],
             'maksud_perjalanan' => $data['maksud_perjalanan'],

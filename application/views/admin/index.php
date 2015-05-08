@@ -133,7 +133,7 @@
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
                         data: {nama_kota: $('#inKotaUangHarian1').val(),
-                            statuspeg: $('#inStatusPeg').text()},
+                            id: $(this).val()},
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
@@ -146,7 +146,7 @@
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
                         data: {nama_kota: $('#inKotaUangHarian2').val(),
-                            statuspeg: $('#inStatusPeg').text()},
+                            id: $(this).val()},
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
@@ -159,11 +159,86 @@
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
                         data: {nama_kota: $('#inKotaUangHarian3').val(),
-                            statuspeg: $('#inStatusPeg').text()},
+                           id: $(this).val()},
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
                             $("#inSubtotalUangHarian3").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
+                        data: {nama_kota: $('#inKotaUangHarian1').val(),
+                           id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalRepresentatif1").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
+                        data: {nama_kota: $('#inKotaUangHarian2').val(),
+                           id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalRepresentatif2").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
+                        data: {nama_kota: $('#inKotaUangHarian3').val(),
+                           id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalRepresentatif3").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
+                        data: {nama_kota: $('#inKotaUangDiklat1').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalDiklat1").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
+                        data: {nama_kota: $('#inKotaUangDiklat2').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalDiklat2").attr("value", data[0] * $('#inLamaHari').val());
+                        }
+                    });
+                });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
+                        data: {nama_kota: $('#inKotaUangDiklat3').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inSubtotalDiklat3").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
@@ -246,6 +321,23 @@
                         }
                     });
                 });
+                $("#inNamaPegawai").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/populateSewa",
+                        data: {
+                            kota_tujuan1: $('#inKotaTujuan1').val(),
+                            kota_tujuan2: $('#inKotaTujuan2').val(),
+                            kota_tujuan3: $('#inKotaTujuan3').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inJenisSewa1").html(data[0]);
+                            $("#inJenisSewa2").html(data[1]);
+                            $("#inJenisSewa3").html(data[2]);
+                        }
+                    });
+                });
                 $("#idJenisTransportUtama1").change(function() {
 
                     $.ajax({
@@ -298,7 +390,48 @@
                         }
                     });
                 });
+                $("#inJenisSewa1").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
+                        data: {id: $(this).val(),
+                            kota_tujuan: $('#inKotaTujuan1').val()},
+                        type: "POST",
+                        success: function(data) {
+                            $("#inSubtotalSewa1").val(data);
+                        }
+                    });
+                });
+                $("#inJenisSewa2").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
+                        data: {id: $(this).val(),
+                            kota_tujuan: $('#inKotaTujuan2').val()},
+                        type: "POST",
+                        success: function(data) {
+                            $("#inSubtotalSewa2").val(data);
+                        }
+                    });
+                });
+                $("#inJenisSewa3").change(function() {
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
+                        data: {id: $(this).val(),
+                            kota_tujuan: $('#inKotaTujuan3').val()},
+                        type: "POST",
+                        success: function(data) {
+                            $("#inSubtotalSewa3").val(data);
+                        }
+                    });
+                });
                 $("#inTransPendukung").keyup(function() {
+
+                    var total = $('#inTransPendukung').val();
+                    $('#inSubtotalTransportPendukung').val(total);
+                });
+                $("#inTransPendukung").blur(function() {
 
                     var total = $('#inTransPendukung').val();
                     $('#inSubtotalTransportPendukung').val(total);
@@ -320,6 +453,11 @@
                     });
                 });
                 $("#inPengeluaranRiil").keyup(function() {
+
+                    var total = $('#inPengeluaranRiil').val();
+                    $('#inSubtotalPengeluaranRiil').val(total);
+                });
+                $("#inPengeluaranRiil").blur(function() {
 
                     var total = $('#inPengeluaranRiil').val();
                     $('#inSubtotalPengeluaranRiil').val(total);

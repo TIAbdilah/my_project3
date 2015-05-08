@@ -26,6 +26,12 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="inDiklat">Diklat</label>
+                <div class="controls">
+                    <input type="checkbox" name="inDiklat" id="inDiklat" value="Ya"/>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="inpJumlahTujuan">Jumlah Kota Tujuan</label>
                 <div class="controls">
                     <label class="radio inline">

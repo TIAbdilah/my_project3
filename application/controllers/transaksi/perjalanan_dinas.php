@@ -19,7 +19,10 @@ class Perjalanan_dinas extends CI_Controller {
         '4' => 'menunggu verifikasi PPK',
         '5' => 'lengkap'
     );
-
+    var $status_diklat = array(
+        '0' => 'Tidak',
+        '1' => 'Ya',
+    );
     var $bulan_romawi = array(
         '01' => 'I',
         '02' => 'II',
@@ -48,6 +51,9 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->model('master/biaya_akomodasi_model');
         $this->load->model('master/biaya_penginapan_model');
         $this->load->model('master/biaya_tiket_model');
+        $this->load->model('master/biaya_representatif_model');
+        $this->load->model('master/biaya_diklat_model');
+        $this->load->model('master/biaya_sewa_model');
         $this->is_logged_in();
     }
 
@@ -75,6 +81,7 @@ class Perjalanan_dinas extends CI_Controller {
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
         $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
+        $data['status_diklat'] = $this->status_diklat;
         $this->load->view('admin/index', $data);
     }
 
@@ -100,6 +107,11 @@ class Perjalanan_dinas extends CI_Controller {
         $data['id_anggaran'] = $this->input->post('inpIdAnggaran');
         $data['jumlah_tujuan'] = $this->input->post('inpJumlahTujuan');
         $data['maksud_perjalanan'] = $this->input->post('inpMaksudPerjalanan');
+        if ($this->input->post('inDiklat') == 'Ya') {
+            $data['status_diklat'] = '1';
+        } else {
+            $data['status_diklat'] = '0';
+        }
 
         switch ($data['jumlah_tujuan']) {
             case 1 :
@@ -198,19 +210,59 @@ class Perjalanan_dinas extends CI_Controller {
             $output2 .=$row->status;
             $arr[1] = $output2;
         }
+        if ($data['golAndStat'] == null) {
+            $arr[0] = '';
+            $arr[1] = '';
+        }
         echo json_encode($arr);
     }
 
     public function getSubtotalBiaya() {
         $nama_kota = $this->input->post('nama_kota', TRUE);
-        $statuspeg = $this->input->post('statuspeg', TRUE);
+        $id_pegawai = $this->input->post('id', TRUE);
 
-        $data['uangharian'] = $this->biaya_akomodasi_model->getBiayaHarian($nama_kota, $statuspeg);
+        $data['uangharian'] = $this->biaya_akomodasi_model->getBiayaHarian($nama_kota, $id_pegawai);
         $output1 = null;
 
         foreach ($data['uangharian'] as $row) {
             $output1 .=$row->biaya;
             $arr[0] = $output1;
+        }
+        if ($data['uangharian'] == null) {
+            $arr[0] = 0;
+        }
+        echo json_encode($arr);
+    }
+
+    public function getBiayaRepresentatif() {
+        $nama_kota = $this->input->post('nama_kota', TRUE);
+        $id_pegawai = $this->input->post('id', TRUE);
+
+        $data['uangrepresentatif'] = $this->biaya_representatif_model->getBiayaRepresentatif($nama_kota, $id_pegawai);
+        $output1 = null;
+
+        foreach ($data['uangrepresentatif'] as $row) {
+            $output1 .=$row->biaya;
+            $arr[0] = $output1;
+        }
+        if ($data['uangrepresentatif'] == null) {
+            $arr[0] = 0;
+        }
+        echo json_encode($arr);
+    }
+
+    public function getBiayaDiklat() {
+        $nama_kota = $this->input->post('nama_kota', TRUE);
+
+        $data['uangdiklat'] = $this->biaya_diklat_model->getBiayaDiklat($nama_kota);
+        $output1 = null;
+
+        foreach ($data['uangdiklat'] as $row) {
+            $output1 .=$row->biaya;
+            $arr[0] = $output1;
+        }
+        if ($data['uangdiklat'] == null) {
+            $arr[0] = 0;
         }
         echo json_encode($arr);
     }
@@ -227,6 +279,9 @@ class Perjalanan_dinas extends CI_Controller {
         foreach ($data['penginapan'] as $row) {
             $output1 .=$row->biaya;
             $arr[0] = $output1;
+        }
+        if ($data['penginapan'] == null) {
+            $arr[0] = 0;
         }
         echo json_encode($arr);
     }
@@ -316,6 +371,54 @@ class Perjalanan_dinas extends CI_Controller {
         echo json_encode($arr);
     }
 
+    public function populateSewa() {
+        $param1 = $this->input->post('kota_tujuan1', TRUE);
+        $param2 = $this->input->post('kota_tujuan2', TRUE);
+        $param3 = $this->input->post('kota_tujuan3', TRUE);
+
+
+        $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param1);
+        $output1 = null;
+        $output1 = "<option value=''>Pilih</option>";
+        if ($data['transportsewa']) {
+            foreach ($data['transportsewa'] as $row) {
+                $output1 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[0] = $output1;
+        } else {
+            $output1 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $arr[0] = $output1;
+        }
+        
+        $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
+        $output2 = null;
+        $output2 = "<option value=''>Pilih</option>";
+        if ($data['transportsewa']) {
+            foreach ($data['transportsewa'] as $row) {
+                $output2 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[0] = $output2;
+        } else {
+            $output2 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $arr[0] = $output2;
+        }
+        
+                $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
+        $output3 = null;
+        $output3 = "<option value=''>Pilih</option>";
+        if ($data['transportsewa']) {
+            foreach ($data['transportsewa'] as $row) {
+                $output3 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
+            }
+            $arr[0] = $output3;
+        } else {
+            $output3 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $arr[0] = $output3;
+        }
+
+        echo json_encode($arr);
+    }
+
     public function calculateTransport() {
         $param = $this->input->post('id', TRUE);
         $param2 = $this->input->post('kota_asal', TRUE);
@@ -324,6 +427,23 @@ class Perjalanan_dinas extends CI_Controller {
         $output = null;
         foreach ($data['transport'] as $row) {
             $output .=$row->biaya;
+        }
+        if ($data['transport'] == null) {
+            $arr[0] = 0;
+        }
+        echo $output;
+    }
+    
+    public function calculateSewa() {
+        $param = $this->input->post('id', TRUE);
+        $param2 = $this->input->post('kota_tujuan', TRUE);
+        $data['transportsewa'] = $this->biaya_sewa_model->calculateSewa($param, $param2);
+        $output = null;
+        foreach ($data['transportsewa'] as $row) {
+            $output .=$row->biaya;
+        }
+        if ($data['transportsewa'] == null) {
+            $arr[0] = 0;
         }
         echo $output;
     }

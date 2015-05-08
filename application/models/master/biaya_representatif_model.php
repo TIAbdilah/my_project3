@@ -46,5 +46,18 @@ class Biaya_representatif_model extends CI_Model {
     public function delete($id) {
         $this->db->delete('biaya_representatif', array('id' => $id));
     }
+    
+    public function getBiayaRepresentatif($nama_kota = string, $id_pegawai = string) {
+        $sql="select br.* "
+                . "from biaya_representatif br "
+                . "where br.nama_kota = ("
+                . "select kt.nama_provinsi "
+                . "from kota_tujuan kt where kt.nama_kota = '".$nama_kota."') "
+                . "and br.tingkat = ("
+                . "select peg.golongan "
+                . "from pegawai peg where peg.id='".$id_pegawai."') ";
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
 
 }
