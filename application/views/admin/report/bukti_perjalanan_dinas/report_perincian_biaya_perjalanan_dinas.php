@@ -28,33 +28,33 @@
         <?php
         $no = 1;
         $total_biaya = 0;
-        foreach ($list_data_detail_perjalanan as $data) {
+        foreach ($list_data_bukti as $data) {
             if ($data->biaya != 0) {
                 echo "<tr>"
-                . "<td align=\"center\">" . $no . "</td>"
-                . "<td>";
+                . "<td align=\"center\">" . $no . "</td>";
+                echo "<td>";
                 switch ($data->jenis_biaya) {
                     case 'harian':
-                        echo "Biaya akomodasi di kota " . $data->kota_tujuan;
+                        echo "Biaya akomodasi di kota " . "B";
                         break;
                     case 'penginapan':
-                        echo "Biaya penginapan di kota " . $data->kota_tujuan;
+                        echo "Biaya penginapan di kota " . "B";
                         break;
                     case 'transport_utama':
-                        echo "Biaya tiket perjalanan dari kota " . $data->kota_asal . " ke " . $data->kota_tujuan . " menggunakan " . $data->jenis_kendaraan;
+                        echo "Biaya tiket perjalanan dari kota " . "A" . " ke " . "B" . " menggunakan " . "X";
                         break;
                     case 'transport_pendukung':
-                        echo "Biaya transport pendukung di kota" . $data->kota_tujuan;
+                        echo "Biaya transport pendukung di kota" . "B";
                         break;
                     case 'representatif':
-                        echo "Uang representatif di kota" . $data->kota_tujuan;
+                        echo "Uang representatif di kota" . "B";
                         break;
                     default:
-                        echo "Biaya pengeluaran riil di kota " . $data->kota_tujuan;
+                        echo "Biaya pengeluaran riil di kota " . "B";
                         break;
                 }
-                echo"</td>"
-                . "<td align=\"right\">" . number_format($data->biaya) . "</td>"
+                echo"</td>";
+                echo "<td align=\"right\">" . number_format($data->biaya) . "</td>"
                 . "<td>&nbsp;</td>"
                 . "</tr>";
                 $no++;

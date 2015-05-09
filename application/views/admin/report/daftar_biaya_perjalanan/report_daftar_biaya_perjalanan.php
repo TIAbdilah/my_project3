@@ -5,7 +5,7 @@
     <body>
     <center>
         <h3><u>DAFTAR NOMINATIF PERJALANAN DINAS</u></h3>
-        <p>Nomor : <?php echo $data->no_spt?></p>
+        <p>Nomor : <?php echo $data_header->no_spt ?></p>
         <p>
             <label><br>
             </label>
@@ -25,12 +25,12 @@
         <tr>
             <td>3. Tanggal dan Nomor DIPA</td>
             <td><div align="center">:</div></td>
-            <td><?php echo $data->no_spt.' ('.date('d F Y').')'?></td>
+            <td><?php echo $data_header->no_spt . ' yang di setujui pada tanggal ' . $format_date->format_date_dfy($data_header->tanggal_approval) ?></td>
         </tr>
         <tr>
             <td>4. Jenis Belanja</td>
             <td><div align="center">:</div></td>
-            <td><?php echo $data->jenis_belanja?></td>
+            <td><?php echo $data_header->jenis_belanja ?></td>
         </tr>
     </table>
     <p>&nbsp;</p>
@@ -39,13 +39,13 @@
             <tr>
                 <th rowspan="2" width="3%">No</th>
                 <th rowspan="2" width="15%">Nama</th>
-                <th rowspan="2" width="8%">Gol</th>
+                <th rowspan="2" width="5%">Gol</th>
                 <th rowspan="2" width="15%">Jabatan</th>
                 <th rowspan="2" width="8%">Tujuan</th>
                 <th colspan="2">Tanggal</th>
-                <th rowspan="2" width="8%">Lama Perj. Dinas</th>
+                <th rowspan="2" width="5%">Lama Perj. Dinas</th>
                 <th colspan="5">Rincian Kebutuhan Dana (Rp)</th>
-                <th rowspan="2"  width="3%" class="td-actions">Keterangan</th>
+                <!--<th rowspan="2"  width="3%" class="td-actions">Keterangan</th>-->
             </tr>
             <tr>
                 <th width="8%">Berangkat</th>
@@ -70,18 +70,18 @@
                 echo "<tr>"
                 . "<td>" . $no . "</td>"
                 . "<td>" . $data->nama_pegawai . " </td>"
-                . "<td>" . $data->golongan . "</td>"
+                . "<td align=\"center\">" . $data->golongan . "</td>"
                 . "<td>" . $data->jabatan . "</td>"
-                . "<td>" . $data->kota_tujuan . "</td>"
-                . "<td>" . $data->tgl_berangkat . "</td>"
-                . "<td>" . $data->tgl_pulang . "</td>"
-                . "<td></td>"
+                . "<td align=\"center\">" . $data->kota_tujuan . "</td>"
+                . "<td align=\"center\">" . $format_date->format_date_dmy($data->tgl_berangkat) . "</td>"
+                . "<td align=\"center\">" . $format_date->format_date_dmy($data->tgl_pulang) . "</td>"
+                . "<td align=\"center\">" . $data->lama_hari . "</td>"
                 . "<td align=\"right\">" . number_format($data->harian) . "</td>"
                 . "<td align=\"right\">" . number_format($data->representatif) . "</td>"
                 . "<td align=\"right\">" . number_format($subtotal_transport) . "</td>"
                 . "<td align=\"right\">" . number_format($data->penginapan) . "</td>"
                 . "<td align=\"right\">" . number_format($subtotal) . "</td>"
-                . "<td></td>"
+                //. "<td></td>"
                 . "</tr>";
                 $no++;
                 $total += $subtotal;
@@ -106,7 +106,7 @@
             </td>
             <td align="center" width="50%">
                 <p>
-                    Bandung, <?php echo date('d F Y') ?><br>
+                    Bandung, <?php echo $format_date->format_date_dfy($data_header->tanggal_approval) ?><br>
                     PEJABAT PEMBUAT KOMITMEN<br>
                     <br>
                 </p>
