@@ -70,7 +70,7 @@ class Pengajuan_barang extends CI_Controller {
         $data['list_data'] = $this->detail_pengajuan_barang_model->select_by_id($id)->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
-        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
+//        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -95,11 +95,14 @@ class Pengajuan_barang extends CI_Controller {
     }
 
     public function edit($id) {
-        $data['title'] = $this->title_page;
-        $data['page'] = 'admin/transaksi/perjalanan_dinas/edit';
-        $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
+       $data['title'] = $this->title_page;
+        $data['page'] = 'admin/transaksi/pengajuan_barang/edit';
+        $data['data'] = $this->pengajuan_barang_model->select_by_id($id)->row();    
+        $data['anggaran'] = $this->anggaran_model->getDetailAnggaran2($data['data']->id)->row();
         $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
+        $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
+        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -172,17 +175,20 @@ class Pengajuan_barang extends CI_Controller {
         }
         echo json_encode($arr);
     }
-    
+
     public function getDetailAnggaran() {
         $id = $this->input->post('id', TRUE);
         $data['data'] = $this->anggaran_model->getDetailAnggaran($id);
         $output1 = null;
         $output2 = null;
+        $output3 = null;
         foreach ($data['data'] as $row) {
             $output1 .=$row->kode_kegiatan;
             $arr[0] = $output1;
-            $output2 .=$row-> kode_akun;
+            $output2 .=$row->kode_akun;
             $arr[1] = $output2;
+            $output3 .=$row->pagu;
+            $arr[2] = $output3;
         }
         echo json_encode($arr);
     }
@@ -259,6 +265,34 @@ class Pengajuan_barang extends CI_Controller {
             $output .= "<option value=''>-Data Master Belum Diisi-</option>";
             echo $output;
         }
+    }
+    public function tahu(){
+         echo '<script language="javascript">';
+     echo 'alert(test)';
+     echo '</script>';
+    }
+
+
+    public function populateBarang() {
+ echo '<script language="javascript">';
+     echo 'alert(test)';
+     echo '</script>';
+        $param = $this->input->post('kode_jenis', TRUE);
+        print_r($param);
+        $data['barang'] = $this->barang_model->populateBarang($param);
+        $output1 = null;
+        $output1 = "<option value=''>Pilih</option>";
+        if ($data['barang']) {
+            foreach ($data['barang'] as $row) {
+                $output1 .= "<option value='" . $row->id . "'>" . $row->nama_barang . "</option>";
+            }
+           $arr[0] = $output1;
+        } else {
+            $output1 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $arr[0] = $output1;
+        }
+        $arr[1] = "2342423";
+        echo json_encode($arr);
     }
 
     public function calculateTransport() {

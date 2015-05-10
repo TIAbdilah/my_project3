@@ -229,7 +229,7 @@
                 <td></td>
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportUtama4" name="inSubtotalTransportUtama4"/></td>
             </tr>
-                        <tr>
+            <tr>
                 <td><label>Sewa</label></td>
                 <td></td>
                 <td><input type="text" placeholder="Ke" id="inKotaTujuan1" name="inKotaTujuan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
@@ -274,12 +274,44 @@
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung"/></td>
             </tr>
             <tr>
+                <td></td>
+                <td><input type="text" placeholder="Jumlah" id="inTransPendukung2" name="inTransPendukung2"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportPendukung2" name="inSubtotalTransportPendukung2"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="text" placeholder="Jumlah" id="inTransPendukung3" name="inTransPendukung3"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportPendukung3" name="inSubtotalTransportPendukung3"/></td>
+            </tr>
+            <tr>
                 <td><label>Pengeluaran Riil</label></td>
                 <td><input type="text" placeholder="Jumlah" id="inPengeluaranRiil" name="inPengeluaranRiil"/></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="text" placeholder="Jumlah" id="inPengeluaranRiil2" name="inPengeluaranRiil2"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalPengeluaranRiil2" name="inSubtotalPengeluaranRiil2"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="text" placeholder="Jumlah" id="inPengeluaranRiil3" name="inPengeluaranRiil3"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalPengeluaranRiil3" name="inSubtotalPengeluaranRiil3"/></td>
             </tr>
             <tr>
                 <td colspan="5" align="center"><label><b>TOTAL</b></label></td>

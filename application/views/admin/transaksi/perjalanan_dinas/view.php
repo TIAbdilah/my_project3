@@ -21,11 +21,17 @@ function format_date($string) {
                         <input type="hidden" name="inpStatus" value="<?php echo $data->status ?>" />
                         <?php if ($this->session->userdata('role') != 'operator' && $data->status != 5) { ?>
                             <strong>Verifikasi</strong><br>
-                            <textarea style="width: 95%" rows="2" name="inpKomentar" placeholder="Alasan Penolakan"></textarea><br>
+
+                            <?php
+                            if ($this->session->flashdata('result') != ''):
+                                echo $this->session->flashdata('result');
+                            endif;
+                            ?>
+                            <textarea style="width: 95%" rows="2" name="inpKomentar" id="inpKomentar" placeholder="Alasan Penolakan"></textarea><br>
                             <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Setuju"/>
                             <input type="submit" class="btn btn-danger" id="btnKomentar" name="inpAksi" value="Tolak"/>
                             <br>
-                        <?php } if ($this->session->userdata('role') == 'operator' && $data->status == 0){ ?>
+                        <?php } if ($this->session->userdata('role') == 'operator' && $data->status == 0) { ?>
                             <strong>Ajukan</strong><br>
                             <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Ajukan"/>
                         <?php } ?>

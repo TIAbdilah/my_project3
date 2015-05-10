@@ -20,7 +20,7 @@ class Perjalanan_dinas_model extends CI_Model {
                 . "from anggaran a, kegiatan k, akun ak "
                 . "where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 "
                 . "where pd.id_anggaran = a1.id "
-                . "order by status";
+                . "order by status asc, tanggal_pembuatan desc";
         return $this->db->query($query);
     }
 

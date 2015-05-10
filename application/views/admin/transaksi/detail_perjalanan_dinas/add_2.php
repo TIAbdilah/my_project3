@@ -205,12 +205,28 @@
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung"/></td>
             </tr>
             <tr>
+                <td></td>
+                <td><input type="text" placeholder="Jumlah" id="inTransPendukung2" name="inTransPendukung2"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalTransportPendukung2" name="inSubtotalTransportPendukung2"/></td>
+            </tr>
+            <tr>
                 <td><label>Pengeluaran Riil</label></td>
                 <td><input type="text" placeholder="Jumlah" id="inPengeluaranRiil" name="inPengeluaranRiil"/></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td><input type="text" placeholder="Subtotal" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil"/></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="text" placeholder="Jumlah" id="inPengeluaranRiil2" name="inPengeluaranRiil2"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="text" placeholder="Subtotal" id="inSubtotalPengeluaranRiil2" name="inSubtotalPengeluaranRiil2"/></td>
             </tr>
             <tr>
                 <td colspan="5" align="center"><label><b>TOTAL</b></label></td>

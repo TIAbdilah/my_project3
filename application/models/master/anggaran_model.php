@@ -113,5 +113,34 @@ class Anggaran_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    public function getDetailAnggaran2($id_anggaran = string) {
+    $this->db->select('*');
+        //subquery kegiatan
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nama_kegiatan')->from('kegiatan');
+        $sub->where('anggaran.id_kegiatan = kegiatan.id');
+        $this->subquery->end_subquery('nama_kegiatan');
+        //subquery kegiatan
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('kode_kegiatan')->from('kegiatan');
+        $sub->where('anggaran.id_kegiatan = kegiatan.id');
+        $this->subquery->end_subquery('kode_kegiatan');
+        //subquery akun
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('jenis_belanja')->from('akun');
+        $sub->where('anggaran.id_akun = akun.id');
+        $this->subquery->end_subquery('jenis_belanja');
+        //subquery akun
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('kode_akun')->from('akun');
+        $sub->where('anggaran.id_akun = akun.id');
+        $this->subquery->end_subquery('kode_akun');
+        //
+        $this->db->from('anggaran');
+        $this->db->where('id', $id_anggaran);
+
+        return $this->db->get();
+    }
 
 }

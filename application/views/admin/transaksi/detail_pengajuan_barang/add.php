@@ -8,7 +8,7 @@
             <tr>
                 <td><label>Jenis Barang</label></td>
                 <td>
-                   <select class="input-xlarge" name="inKodeJenisBarang">
+                    <select class="input-xlarge" name="inKodeJenisBarang" id="inKodeJenisBarang">
                         <option>Jenis Barang</option>
                         <?php
                         foreach ($SIList_jenisBarang as $row) {
@@ -22,12 +22,7 @@
                 <td><label>Nama Barang</label></td>
                 <td>
                    <select class="input-xlarge" name="inNamaBarang" id="inNamaBarang">
-                        <option>Nama Barang</option>
-                        <?php
-                        foreach ($SIList_nama_barang as $row_1) {
-                            echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama_barang . "</option>";
-                        }
-                        ?>
+                       
                     </select>
                 </td>
             </tr>

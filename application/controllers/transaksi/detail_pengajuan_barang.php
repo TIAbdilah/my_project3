@@ -104,8 +104,8 @@ class Detail_pengajuan_barang extends CI_Controller {
         } else {
             $this->detail_pengajuan_barang_model->edit($id, $data);
         }
-
-        redirect('transaksi/pengajuan_barang');
+        redirect($_SERVER['HTTP_REFERER']);
+//        redirect('transaksi/pengajuan_barang');
     }
 
     public function delete($id) {

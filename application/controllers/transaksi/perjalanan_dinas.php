@@ -169,6 +169,7 @@ class Perjalanan_dinas extends CI_Controller {
 
     public function update_status($id_header) {
         $aksi = $this->input->post('inpAksi');
+        $data['tolak'] = 0;
         $status = $this->input->post('inpStatus');
         if ($aksi == 'Setuju' || $aksi == 'Ajukan') {
             $data['status'] = $status + 1;
@@ -178,24 +179,34 @@ class Perjalanan_dinas extends CI_Controller {
                 $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
                 $counter = $this->counter->generateId($pattern);
                 $data['no_spt'] = $counter . "/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
-                $data['tanggal_approval'] = date('yyyy-mm-dd');
+                $data['tanggal_approval'] = date('Y-m-d');
                 $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
                 $data['status_penolakan'] = 0;
                 $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
+            } else {
+                $data['status_penolakan'] = 0;
+                $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
             }
-        } else {
-            $data['status'] = $status - 1;
-            $data['status_penolakan'] = 1;
-            $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
+            redirect('transaksi/perjalanan_dinas');
+        } else { //kalo ditolak
+            $komen = $this->input->post("inpKomentar");
+            if (empty($komen)) {
+                $this->session->set_flashdata('result', '<div class="alert alert-danger" role="alert">Untuk menolak, kolom komentar harus diisi</div>');
+                redirect($_SERVER['HTTP_REFERER'], $data);
+            } else {
+                $data['status'] = $status - 1;
+                $data['status_penolakan'] = 1;
+                $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
 
-            $this->perjalanan_dinas_model->update_status($id_header, $data);
+                $this->perjalanan_dinas_model->update_status($id_header, $data);
 
-            $data['id_header'] = $id_header;
-            $data['username'] = $this->session->userdata('role');
-            $data['komentar'] = $this->input->post('inpKomentar');
-            $this->komentar_model->add($data);
+                $data['id_header'] = $id_header;
+                $data['username'] = $this->session->userdata('role');
+                $data['komentar'] = $this->input->post('inpKomentar');
+                $this->komentar_model->add($data);
+                redirect('transaksi/perjalanan_dinas');
+            }
         }
-        redirect('transaksi/perjalanan_dinas');
     }
 
     //tambahan untuk ajax
@@ -389,7 +400,7 @@ class Perjalanan_dinas extends CI_Controller {
             $output1 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
             $arr[0] = $output1;
         }
-        
+
         $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
         $output2 = null;
         $output2 = "<option value=''>Pilih</option>";
@@ -402,8 +413,8 @@ class Perjalanan_dinas extends CI_Controller {
             $output2 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
             $arr[1] = $output2;
         }
-        
-                $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
+
+        $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
         $output3 = null;
         $output3 = "<option value=''>Pilih</option>";
         if ($data['transportsewa']) {
@@ -433,7 +444,7 @@ class Perjalanan_dinas extends CI_Controller {
         }
         echo $output;
     }
-    
+
     public function calculateSewa() {
         $param = $this->input->post('id', TRUE);
         $param2 = $this->input->post('kota_tujuan', TRUE);
@@ -449,12 +460,40 @@ class Perjalanan_dinas extends CI_Controller {
     }
 
     public function hitungTotal() {
-        $param = $this->input->post('a', TRUE);
+        //uang harian
+        $param1 = $this->input->post('a', TRUE);
+        $param12 = $this->input->post('a2', TRUE);
+        $param13 = $this->input->post('a3', TRUE);
+        //penginapaan
         $param2 = $this->input->post('b', TRUE);
+        $param22 = $this->input->post('b2', TRUE);
+        $param23 = $this->input->post('b3', TRUE);
+        //transport utama
         $param3 = $this->input->post('c', TRUE);
+        $param32 = $this->input->post('c2', TRUE);
+        $param33 = $this->input->post('c3', TRUE);
+        $param34 = $this->input->post('c4', TRUE);
+        //transport pendukung
         $param4 = $this->input->post('d', TRUE);
+        $param42 = $this->input->post('d2', TRUE);
+        $param43 = $this->input->post('d3', TRUE);
+        //pengeluaran riil
         $param5 = $this->input->post('e', TRUE);
-        echo $param + $param2 + $param3 + $param4 + $param5;
+        $param52 = $this->input->post('e2', TRUE);
+        $param53 = $this->input->post('e3', TRUE);
+        //representatif
+        $param6 = $this->input->post('f', TRUE);
+        $param62 = $this->input->post('f2', TRUE);
+        $param63 = $this->input->post('f3', TRUE);
+        //diklat
+        $param7 = $this->input->post('g', TRUE);
+        $param72 = $this->input->post('g2', TRUE);
+        $param73 = $this->input->post('g3', TRUE);
+        //sewa
+        $param8 = $this->input->post('h', TRUE);
+        $param82 = $this->input->post('h2', TRUE);
+        $param83 = $this->input->post('h3', TRUE);
+        echo $param1 + $param12 + $param13 + $param2 + $param22 + $param23 + $param3 + $param32 + $param33 + $param34 + $param4 + $param42 + $param43 + $param5 + $param52 + $param53 + $param6 + $param62 + $param63 + $param7 + $param72 + $param73 + $param8 + $param82 + $param83;
     }
 
     public function dayBetweenTwoDates() {

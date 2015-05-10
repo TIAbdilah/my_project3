@@ -64,4 +64,13 @@ class Barang_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    
+    public function populateBarang($param = string) {
+        $this->db->select('id,nama_barang');
+        $this->db->from('barang');
+        $this->db->where('kode_jenis_barang', $param);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
 }

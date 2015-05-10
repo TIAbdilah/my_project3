@@ -58,13 +58,6 @@ function format_date($string) {
                         <td><input type="text" placeholder="Selisih" id="inSelisihTransportUtama1" name="inSelisihTransportUtama1" value="<?php echo number_format($data_detail->transport_utama - $data_bukti->jumlah_transport_utama) ?>"/></td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><input type="text" placeholder="Biaya" id="inSubtotalTransportUtama2" name="inSubtotalTransportUtama2"/></td>
-                        <td><input type="text" placeholder="Nomor" id="inNomorBuktiTransportUtama2" name="inNomorBuktiTransportUtama2" value="<?php echo $data_bukti->nomor_transport_utama_2 ?>"/></td>
-                        <td><input type="text" placeholder="Jumlah" id="inJumlahTransportUtama2" name="inJumlahTransportUtama2" value="<?php echo $data_bukti->jumlah_transport_utama_2 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihTransportUtama2" name="inSelisihTransportUtama2"/></td>
-                    </tr>
-                    <tr>
                         <td><label>Transport Pendukung</label></td>
                         <td><input type="text" placeholder="Biaya" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung" value="<?php echo number_format($data_detail->transport_pendukung) ?>"/></td>
                         <td><input type="text" placeholder="Nomor" id="inNomorBuktiTransportPendukung" name="inNomorBuktiTransportPendukung" value="<?php echo $data_bukti->nomor_transport_pendukung ?>"/></td>

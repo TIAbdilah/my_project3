@@ -39,8 +39,8 @@
                     }
                     echo "<a title=\"View\" href=\"" . site_url('transaksi/pengajuan_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
                     if ($row->status_approval == 0 && $this->session->userdata('role') == 'operator') {
-//                        echo "<a title=\"Edit\" href=\"" . site_url('transaksi/perjalanan_dinas/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>";
-                        echo "<a title=\"Delete\" href=\"" . site_url('transaksi/perjalanan_dinas/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>";
+                        echo "<a title=\"Edit\" href=\"" . site_url('transaksi/pengajuan_barang/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>";
+                        echo "<a title=\"Delete\" href=\"" . site_url('transaksi/pengajuan_barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>";
                     }
                     echo "</td>"
                     . "</tr>";
