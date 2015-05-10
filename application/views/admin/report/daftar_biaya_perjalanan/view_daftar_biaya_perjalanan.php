@@ -5,7 +5,7 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;"><br>       
-        <a href="<?php echo site_url('report/daftar_biaya_perjalanan/print_report/'.$data->id) ?>">
+        <a href="<?php echo site_url('report/daftar_biaya_perjalanan/print_report/'.$data_header->id) ?>">
             <button class="btn">Cetak</button>
         </a>
     </div>

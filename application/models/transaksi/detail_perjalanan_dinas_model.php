@@ -32,6 +32,7 @@ class Detail_perjalanan_dinas_model extends CI_Model {
                 . ", d.tgl_berangkat "
                 . ", d.tgl_pulang "
                 . ", d.id_pegawai as id_pegawai "
+                . ", (select DATEDIFF(d.tgl_pulang, d.tgl_berangkat)) as lama_hari"                
                 . ", (select d1.biaya from detail_perjalanan_dinas d1 where jenis_biaya = 'harian' and d1.id_pegawai = d.id_pegawai and d.id_header = d1.id_header and d.kota_tujuan = d1.kota_tujuan ) as harian "
                 . ", (select d2.biaya from detail_perjalanan_dinas d2 where jenis_biaya = 'penginapan' and d2.id_pegawai = d.id_pegawai and d.id_header = d2.id_header and d.kota_tujuan = d2.kota_tujuan ) as penginapan "
                 . ", (select d3.biaya from detail_perjalanan_dinas d3 where jenis_biaya = 'transport_utama' and d3.id_pegawai = d.id_pegawai and d.id_header = d3.id_header and d.kota_tujuan = d3.kota_tujuan ) as transport_utama "

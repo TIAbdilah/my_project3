@@ -22,7 +22,7 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        return $this->db->get_where('biaya_tiket', $param);
+        return $this->db->get_where('detail_perjalanan_dinas', $param);
     }
 
     public function select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan) {
@@ -94,7 +94,7 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
                 . "and id_header = ".$id_header;
         return $this->db->query($sql);
     }
-
+    
     public function add($data) {
         $data = array(
             'id_pegawai' => $data['id_pegawai'],
