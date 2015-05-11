@@ -25,7 +25,7 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('bukti_perjalanan_dinas');
         $this->db->where($param);
-        $this->db->order_by('jenis_biaya, kota_tujuan');
+        $this->db->order_by('kota_tujuan, jenis_biaya');
         return $this->db->get();
     }
 

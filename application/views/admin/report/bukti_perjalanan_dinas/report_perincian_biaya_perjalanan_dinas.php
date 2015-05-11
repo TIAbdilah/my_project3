@@ -49,6 +49,12 @@
                     case 'representatif':
                         echo "Uang representatif di kota " . $data->kota_tujuan;
                         break;
+                    case 'diklat':
+                        echo "Uang diklat di kota " . $data->kota_tujuan;
+                        break;
+                    case 'sewa':
+                        echo "Uang sewa di kota " . $data->kota_tujuan;
+                        break;
                     default:
                         echo "Biaya pengeluaran riil di kota " . $data->kota_tujuan;
                         break;

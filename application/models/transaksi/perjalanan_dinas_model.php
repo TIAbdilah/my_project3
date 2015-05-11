@@ -130,4 +130,8 @@ class Perjalanan_dinas_model extends CI_Model {
     public function format_date_to_sql($str){        
         return substr($str, 6, 4).'-'.substr($str, 3, 2).'-'.substr($str, 0, 2);
     }
+    
+    public function get_biaya_total(){
+        $sql = 'SELECT id_header, sum(biaya) as total_biaya  FROM `detail_perjalanan_dinas` group by id_header';
+    }
 }
