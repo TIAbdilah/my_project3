@@ -134,7 +134,23 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['jenis_biaya'] = 'representatif';
         $data['biaya'] = $this->input->post('inSubtotalRepresentatif');
         $data['nomor_bukti'] = $this->input->post('inNomorBuktiRepresentatif');
-        $data['jumlah_bukti'] = $this->input->post('inJumlahUangRepresentatif');
+        $data['jumlah_bukti'] = $this->input->post('inJumlahRepresentatif');
+        $data['kota_tujuan'] = $kota_tujuan;
+        $this->bukti_perjalanan_dinas_model->add($data);
+        
+        //insert biaya sewa
+        $data['jenis_biaya'] = 'sewa';
+        $data['biaya'] = $this->input->post('inSubtotalSewa');
+        $data['nomor_bukti'] = $this->input->post('inNomorBuktiSewa');
+        $data['jumlah_bukti'] = $this->input->post('inJumlahSewa');
+        $data['kota_tujuan'] = $kota_tujuan;
+        $this->bukti_perjalanan_dinas_model->add($data);
+
+        //insert biaya diklat
+        $data['jenis_biaya'] = 'diklat';
+        $data['biaya'] = $this->input->post('inSubtotalDiklat');
+        $data['nomor_bukti'] = $this->input->post('inNomorBuktiDiklat');
+        $data['jumlah_bukti'] = $this->input->post('inJumlahDiklat');
         $data['kota_tujuan'] = $kota_tujuan;
         $this->bukti_perjalanan_dinas_model->add($data);
 

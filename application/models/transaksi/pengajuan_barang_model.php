@@ -64,7 +64,7 @@ class Pengajuan_barang_model extends CI_Model {
             'status_approval' => $data['status_approval'],
             'tanggal_pengajuan' => $this->format_date_to_sql($data['tanggal_pengajuan'])
         );
-        $this->db->update('biaya_sewa', $data, "id = " . $id);
+        $this->db->update('pengajuan_barang', $data, "id = " . $id);
     }
 
     public function delete($id) {

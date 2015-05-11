@@ -97,63 +97,63 @@ function format_date($string) {
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil2" name="inNomorBuktiPengeluaranRiil2" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_2 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil2" name="inJumlahPengeluaranRiil2" value="<?php echo $data_bukti->jumlah_riil_2 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil2" name="inSelisihPengeluaranRiil2" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_2) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil2" name="inSelisihPengeluaranRiil2" value="<?php echo number_format(($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil3" name="inNomorBuktiPengeluaranRiil3" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_3 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil3" name="inJumlahPengeluaranRiil3" value="<?php echo $data_bukti->jumlah_riil_3 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil3" name="inSelisihPengeluaranRiil3" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_3) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil3" name="inSelisihPengeluaranRiil3" value="<?php echo number_format((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil4" name="inNomorBuktiPengeluaranRiil4" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_4 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil4" name="inJumlahPengeluaranRiil4" value="<?php echo $data_bukti->jumlah_riil_4 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil4" name="inSelisihPengeluaranRiil4" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_4) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil4" name="inSelisihPengeluaranRiil4" value="<?php echo number_format(((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) - $data_bukti->jumlah_riil_4) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil5" name="inNomorBuktiPengeluaranRiil5" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_5 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil5" name="inJumlahPengeluaranRiil5" value="<?php echo $data_bukti->jumlah_riil_5 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil5" name="inSelisihPengeluaranRiil5" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_5) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil5" name="inSelisihPengeluaranRiil5" value="<?php echo number_format((((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) - $data_bukti->jumlah_riil_4) - $data_bukti->jumlah_riil_5) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil6" name="inNomorBuktiPengeluaranRiil6" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_6 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil6" name="inJumlahPengeluaranRiil6" value="<?php echo $data_bukti->jumlah_riil_6 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil6" name="inSelisihPengeluaranRiil6" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_6) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil6" name="inSelisihPengeluaranRiil6" value="<?php echo number_format(((((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) - $data_bukti->jumlah_riil_4) - $data_bukti->jumlah_riil_5) - $data_bukti->jumlah_riil_6) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil7" name="inNomorBuktiPengeluaranRiil7" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_7 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil7" name="inJumlahPengeluaranRiil7" value="<?php echo $data_bukti->jumlah_riil_7 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil7" name="inSelisihPengeluaranRiil7" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_7) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil7" name="inSelisihPengeluaranRiil7" value="<?php echo number_format((((((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) - $data_bukti->jumlah_riil_4) - $data_bukti->jumlah_riil_5) - $data_bukti->jumlah_riil_6) - $data_bukti->jumlah_riil_7) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil8" name="inNomorBuktiPengeluaranRiil8" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_8 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil8" name="inJumlahPengeluaranRiil8" value="<?php echo $data_bukti->jumlah_riil_8 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil8" name="inSelisihPengeluaranRiil8" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_8) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil8" name="inSelisihPengeluaranRiil8" value="<?php echo number_format(((((((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) - $data_bukti->jumlah_riil_4) - $data_bukti->jumlah_riil_5) - $data_bukti->jumlah_riil_6) - $data_bukti->jumlah_riil_7) - $data_bukti->jumlah_riil_8) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil9" name="inNomorBuktiPengeluaranRiil9" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_9 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil9" name="inJumlahPengeluaranRiil9" value="<?php echo $data_bukti->jumlah_riil_9 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil9" name="inSelisihPengeluaranRiil9" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_9) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil9" name="inSelisihPengeluaranRiil9" value="<?php echo number_format((((((((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) - $data_bukti->jumlah_riil_4) - $data_bukti->jumlah_riil_5) - $data_bukti->jumlah_riil_6) - $data_bukti->jumlah_riil_7) - $data_bukti->jumlah_riil_8) - $data_bukti->jumlah_riil_9) ?>"/></td>
                     </tr>
                     <tr>
                         <td><label></label></td>
                         <td></td>
                         <td><textarea id="inNomorBuktiPengeluaranRiil10" name="inNomorBuktiPengeluaranRiil10" rows="2" placeholder="Deskripsi Pengeluaran Riil"><?php echo $data_bukti->nomor_riil_10 ?></textarea></td>
                         <td><input type="text" placeholder="Jumlah" id="inJumlahPengeluaranRiil10" name="inJumlahPengeluaranRiil10" value="<?php echo $data_bukti->jumlah_riil_10 ?>"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil10" name="inSelisihPengeluaranRiil10" value="<?php echo number_format($data_detail->riil - $data_bukti->jumlah_riil_10) ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihPengeluaranRiil10" name="inSelisihPengeluaranRiil10" value="<?php echo number_format(((((((((($data_detail->riil - $data_bukti->jumlah_riil) - $data_bukti->jumlah_riil_2) - $data_bukti->jumlah_riil_3) - $data_bukti->jumlah_riil_4) - $data_bukti->jumlah_riil_5) - $data_bukti->jumlah_riil_6) - $data_bukti->jumlah_riil_7) - $data_bukti->jumlah_riil_8) - $data_bukti->jumlah_riil_9) - $data_bukti->jumlah_riil_10) ?>"/></td>
 <!--                    <tr>
                         <td colspan="4" align="center"><label><b>TOTAL</b></label></td>
                         <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya" /></td>
