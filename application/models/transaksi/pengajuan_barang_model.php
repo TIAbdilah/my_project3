@@ -24,18 +24,25 @@ class Pengajuan_barang_model extends CI_Model {
     }
 
     public function select_by_id($id) {
-         $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
+        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
                 . 'from pengajuan_barang pd, '
                 . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pd.id_anggaran = a1.id '
-                . 'and pd.id = '.$id;
+                . 'and pd.id = ' . $id;
         return $this->db->query($query);
     }
 
-    public function select_by_field($field, $keyword) {
-        return $this->db->get_where('biaya_sewa', array($field => $keyword));
+    public function select_by_field($param2 = array()) {
+        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
+                . 'from pengajuan_barang pd, '
+                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
+                . 'from anggaran a, kegiatan k, akun ak '
+                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
+                . 'where pd.id_anggaran = a1.id '
+                . 'and pd.status_approval ='.$param2['status_approval'];
+        return $this->db->query($query);
     }
 
     public function add($data) {
@@ -51,7 +58,7 @@ class Pengajuan_barang_model extends CI_Model {
 
     public function edit($id, $data) {
         $data = array(
-             'id_anggaran' => $data['id_anggaran'],
+            'id_anggaran' => $data['id_anggaran'],
             'maksud_kegiatan' => $data['maksud_kegiatan'],
             'nomor_pengajuan' => $data['nomor_pengajuan'],
             'status_approval' => $data['status_approval'],
@@ -63,14 +70,14 @@ class Pengajuan_barang_model extends CI_Model {
     public function delete($id) {
         $this->db->delete('pengajuan_barang', array('id' => $id));
     }
-    
+
     public function update_status($id, $data) {
         $data = array(
             'status_approval' => $data['status_approval']
         );
         $this->db->update('pengajuan_barang', $data, "id = " . $id);
     }
-    
+
     public function update_status_penolakan($id, $data) {
         $data = array(
             'status_penolakan' => $data['status_penolakan']
@@ -85,9 +92,9 @@ class Pengajuan_barang_model extends CI_Model {
         );
         $this->db->update('pengajuan_barang', $data, "id = " . $id);
     }
-    
-    public function format_date_to_sql($str){        
-        return substr($str, 6, 4).'-'.substr($str, 3, 2).'-'.substr($str, 0, 2);
+
+    public function format_date_to_sql($str) {
+        return substr($str, 6, 4) . '-' . substr($str, 3, 2) . '-' . substr($str, 0, 2);
     }
 
 }

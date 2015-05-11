@@ -3,25 +3,15 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+require_once(APPPATH . 'controllers/common/array_custom.php');
 
-    var $status = array(
-        '0' => 'baru dibuat',
-        '1' => 'menunggu verivikasi esselon 4',
-        '2' => 'menunggu verivikasi esselon 3',
-        '3' => 'menunggu verivikasi asisten satker',
-        '4' => 'menunggu verivikasi PPK',
-        '5' => 'lima'
-    );
-    var $status_penolakan = array(
-        '0' => '-',
-        '1' => '<button class="btn btn-danger"><strong>DITOLAK</strong></button>'
-    );
+class Home extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
         $this->load->model('master/users_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->load->model('transaksi/pengajuan_barang_model');
         $this->is_logged_in();
     }
 
@@ -38,10 +28,17 @@ class Home extends CI_Controller {
         $param = array(
             'status' => $int_role[$role]
         );
+        $param2 = array(
+            'status_approval' => $int_role[$role]
+        );
         $data['list_data'] = $this->perjalanan_dinas_model->select_by_field($param)->result();
+        $data['list_data_barang'] = $this->pengajuan_barang_model->select_by_field($param2)->result();
         $data['page'] = 'admin/master/tasklist/list';
-        $data['status'] = $this->status;
-        $data['status_penolakan'] = $this->status_penolakan;
+        
+        $array_custom = new Array_custom();
+        $data['status'] = $array_custom->status;
+        $data['status_penolakan'] = $array_custom->status_penolakan;
+        $data['status_approval'] = $array_custom->status;
         $this->load->view('admin/index', $data);
     }
 

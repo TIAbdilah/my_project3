@@ -3,22 +3,10 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+require_once(APPPATH . 'controllers/common/array_custom.php');
+
 class Format_date extends CI_Controller {
 
-    var $bulan = array(
-        '01'=>'Januari',
-        '02'=>'Februari',
-        '03'=>'Maret',
-        '04'=>'April',
-        '05'=>'Mei',
-        '06'=>'Juni',
-        '07'=>'Juli',
-        '08'=>'Agustus',
-        '09'=>'September',
-        '10'=>'Oktober',
-        '11'=>'November',
-        '12'=>'Desember',
-    );
     public function index() {
         $number = '2015-05-08';
         echo $this->format_date_dfy($number).'<br>';
@@ -26,8 +14,9 @@ class Format_date extends CI_Controller {
     }
 
     public function format_date_dfy($string) {
+        $array_custom = new Array_custom();
         $text = '';
-        $text = substr($string, 8, 2) . ' ' . $this->bulan[substr($string, 5, 2)] . ' ' . substr($string, 0, 4);
+        $text = substr($string, 8, 2) . ' ' . $array_custom->bulan[substr($string, 5, 2)] . ' ' . substr($string, 0, 4);
         return $text;
     }
     

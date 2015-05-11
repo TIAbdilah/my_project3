@@ -10,7 +10,7 @@
     <div class="widget-content" style="padding: 10px;">
         <table id="example1" class="table table-striped table-bordered">
             <thead>
-                
+
                 <tr>
                     <th width="2%">No</th>
                     <th width="8%">Jenis Barang</th>
@@ -23,19 +23,29 @@
             <tbody>
                 <?php
                 $no = 1;
+                $total = 0;
                 foreach ($list_data as $row) {
+                    $subtotal = $row->jumlah * $row->pagu_harga;
+
                     echo "<tr>"
                     . "<td>" . $no . "</td>"
                     . "<td>" . $row->id_jenis_barang . " </td>"
                     . "<td>" . $row->nama_barang . "</td>"
-                    . "<td>" . $row->pagu_harga . "</td>"
-                    . "<td>" . $row->jumlah . "</td>"
-                    . "<td>" . $row->jumlah*$row->pagu_harga . "</td>"                    
+                    . "<td>" . number_format($row->pagu_harga) . "</td>"
+                    . "<td>" . number_format($row->jumlah) . "</td>"
+                    . "<td>" . number_format($subtotal) . "</td>"
                     . "</tr>";
                     $no++;
+                    $total = $total + $subtotal;
                 }
                 ?>
+                <tr>
+                    <th colspan="5">Total</th>
+                    <th><?php echo number_format($total) ?></th>
+
+                </tr>
             </tbody>
+
         </table>
     </div>
     <!-- /widget-content --> 
