@@ -29,32 +29,32 @@
         $no = 1;
         $total_biaya = 0;
         foreach ($list_data_bukti as $data) {
-            if ($data->biaya != 0) {
+            if ($data->jumlah_bukti != 0) {
                 echo "<tr>"
                 . "<td align=\"center\">" . $no . "</td>";
                 echo "<td>";
                 switch ($data->jenis_biaya) {
                     case 'harian':
-                        echo "Biaya akomodasi di kota " . "B";
+                        echo "Biaya akomodasi di kota " . $data->kota_tujuan;
                         break;
                     case 'penginapan':
-                        echo "Biaya penginapan di kota " . "B";
+                        echo "Biaya penginapan di kota " . $data->kota_tujuan;
                         break;
                     case 'transport_utama':
-                        echo "Biaya tiket perjalanan dari kota " . "A" . " ke " . "B" . " menggunakan " . "X";
+                        echo "Biaya tiket perjalanan ke kota " . $data->kota_tujuan;
                         break;
                     case 'transport_pendukung':
-                        echo "Biaya transport pendukung di kota" . "B";
+                        echo "Biaya transport pendukung di kota " . $data->kota_tujuan;
                         break;
                     case 'representatif':
-                        echo "Uang representatif di kota" . "B";
+                        echo "Uang representatif di kota " . $data->kota_tujuan;
                         break;
                     default:
-                        echo "Biaya pengeluaran riil di kota " . "B";
+                        echo "Biaya pengeluaran riil di kota " . $data->kota_tujuan;
                         break;
                 }
                 echo"</td>";
-                echo "<td align=\"right\">" . number_format($data->biaya) . "</td>"
+                echo "<td align=\"right\">" . number_format($data->jumlah_bukti) . "</td>"
                 . "<td>&nbsp;</td>"
                 . "</tr>";
                 $no++;
