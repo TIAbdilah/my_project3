@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2015 at 01:48 PM
+-- Generation Time: May 11, 2015 at 06:07 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -616,7 +616,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `nama_barang` varchar(50) NOT NULL,
   `satuan` varchar(10) NOT NULL,
   `pagu_harga` varchar(20) NOT NULL,
-  `kode_jenis_barang` varchar(25) NOT NULL,
+  `kode_jenis_barang` varchar(100) NOT NULL,
   `tipe_barang` varchar(25) DEFAULT NULL,
   `merek_barang` varchar(25) DEFAULT NULL,
   `spesifikasi` text,
@@ -1370,44 +1370,43 @@ CREATE TABLE IF NOT EXISTS `bukti_perjalanan_dinas` (
   `jumlah_bukti` int(20) DEFAULT NULL,
   `kota_tujuan` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=231 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=290 ;
 
 --
 -- Dumping data for table `bukti_perjalanan_dinas`
 --
 
 INSERT INTO `bukti_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `jenis_biaya`, `biaya`, `nomor_bukti`, `jumlah_bukti`, `kota_tujuan`) VALUES
-(224, 10, 12, 'riil_4', 0, '', 0, 'Banda Aceh'),
-(223, 10, 12, 'riil_3', 0, '', 0, 'Banda Aceh'),
-(222, 10, 12, 'riil_2', 0, 'sdfds', 200000, 'Banda Aceh'),
-(221, 10, 12, 'riil', 400000, 'riil', 200000, 'Banda Aceh'),
-(220, 10, 12, 'representatif', 0, '0', 0, 'Banda Aceh'),
-(219, 10, 12, 'transport_pendukung', 300000, 'dfs', 300000, 'Banda Aceh'),
-(218, 10, 12, 'transport_utama', 1500000, 'dsf', 1500000, 'Banda Aceh'),
-(217, 10, 12, 'penginapan', 1230000, 'sfds', 1230000, 'Banda Aceh'),
-(215, 10, 12, 'riil_10', 0, '', 0, 'Bandung'),
-(216, 10, 12, 'harian', 1440000, 'dsf', 1440000, 'Banda Aceh'),
-(214, 10, 12, 'riil_9', 0, '', 0, 'Bandung'),
-(213, 10, 12, 'riil_8', 0, '', 0, 'Bandung'),
-(212, 10, 12, 'riil_7', 0, '', 0, 'Bandung'),
-(211, 10, 12, 'riil_6', 0, '', 0, 'Bandung'),
-(210, 10, 12, 'riil_5', 0, '', 0, 'Bandung'),
-(209, 10, 12, 'riil_4', 0, '', 0, 'Bandung'),
-(208, 10, 12, 'riil_3', 0, '', 0, 'Bandung'),
-(207, 10, 12, 'riil_2', 0, '', 0, 'Bandung'),
-(206, 10, 12, 'riil', 0, '', 0, 'Bandung'),
-(205, 10, 12, 'representatif', 0, '0', 0, 'Bandung'),
-(204, 10, 12, 'transport_pendukung', 0, '', 0, 'Bandung'),
-(203, 10, 12, 'transport_utama_2', 0, '0', 0, 'Bandung'),
-(202, 10, 12, 'transport_utama', 175000, 'trans', 175000, 'Bandung'),
-(201, 10, 12, 'penginapan', 0, '', 0, 'Bandung'),
-(200, 10, 12, 'harian', 0, '', 0, 'Bandung'),
-(225, 10, 12, 'riil_5', 0, '', 0, 'Banda Aceh'),
-(226, 10, 12, 'riil_6', 0, '', 0, 'Banda Aceh'),
-(227, 10, 12, 'riil_7', 0, '', 0, 'Banda Aceh'),
-(228, 10, 12, 'riil_8', 0, '', 0, 'Banda Aceh'),
-(229, 10, 12, 'riil_9', 0, '', 0, 'Banda Aceh'),
-(230, 10, 12, 'riil_10', 0, '', 0, 'Banda Aceh');
+(289, 31, 15, 'riil_10', 0, '', 0, 'Denpasar'),
+(288, 31, 15, 'riil_9', 0, '', 0, 'Denpasar'),
+(286, 31, 15, 'riil_7', 0, '', 0, 'Denpasar'),
+(287, 31, 15, 'riil_8', 0, '', 0, 'Denpasar'),
+(285, 31, 15, 'riil_6', 0, '', 0, 'Denpasar'),
+(284, 31, 15, 'riil_5', 0, '', 0, 'Denpasar'),
+(282, 31, 15, 'riil_3', 0, '', 0, 'Denpasar'),
+(283, 31, 15, 'riil_4', 0, '', 0, 'Denpasar'),
+(281, 31, 15, 'riil_2', 0, '', 0, 'Denpasar'),
+(280, 31, 15, 'riil', 0, '', 0, 'Denpasar'),
+(279, 31, 15, 'representatif', 0, '0', 0, 'Denpasar'),
+(278, 31, 15, 'transport_pendukung', 0, '', 0, 'Denpasar'),
+(277, 31, 15, 'transport_utama', 300000, '', 300000, 'Denpasar'),
+(276, 31, 15, 'penginapan', 658000, '', 658000, 'Denpasar'),
+(275, 31, 15, 'harian', 960000, '', 960000, 'Denpasar'),
+(274, 31, 15, 'riil_10', 0, '', 0, 'Banda Aceh'),
+(273, 31, 15, 'riil_9', 0, '', 0, 'Banda Aceh'),
+(272, 31, 15, 'riil_8', 0, '', 0, 'Banda Aceh'),
+(271, 31, 15, 'riil_7', 0, '', 0, 'Banda Aceh'),
+(270, 31, 15, 'riil_6', 0, '', 0, 'Banda Aceh'),
+(269, 31, 15, 'riil_5', 0, '', 0, 'Banda Aceh'),
+(268, 31, 15, 'riil_4', 0, '', 0, 'Banda Aceh'),
+(267, 31, 15, 'riil_3', 0, '', 0, 'Banda Aceh'),
+(266, 31, 15, 'riil_2', 0, '', 0, 'Banda Aceh'),
+(265, 31, 15, 'riil', 100000, '', 0, 'Banda Aceh'),
+(264, 31, 15, 'representatif', 0, '2121', 0, 'Banda Aceh'),
+(263, 31, 15, 'transport_pendukung', 100000, '', 100000, 'Banda Aceh'),
+(262, 31, 15, 'transport_utama', 1500000, '', 1500000, 'Banda Aceh'),
+(261, 31, 15, 'penginapan', 370000, '', 370000, 'Banda Aceh'),
+(260, 31, 15, 'harian', 720000, '', 720000, 'Banda Aceh');
 
 -- --------------------------------------------------------
 
@@ -1429,7 +1428,7 @@ CREATE TABLE IF NOT EXISTS `counter` (
 INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
 (1, 'IV-2015', 5),
 (2, 'asdf12', 4),
-(3, 'V-2015', 9);
+(3, 'V-2015', 14);
 
 -- --------------------------------------------------------
 
@@ -1829,7 +1828,7 @@ CREATE TABLE IF NOT EXISTS `komentar` (
   `username` varchar(50) NOT NULL,
   `komentar` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `komentar`
@@ -1856,7 +1855,9 @@ INSERT INTO `komentar` (`id`, `id_header`, `username`, `komentar`) VALUES
 (18, '16', 'esselon 4', ''),
 (19, '16', 'esselon 4', ''),
 (20, '16', 'esselon 4', ''),
-(21, '16', 'esselon 4', 'tolak');
+(21, '16', 'esselon 4', 'tolak'),
+(22, '3', 'esselon 4', 'tolak'),
+(23, '2', 'esselon 4', 'isi');
 
 -- --------------------------------------------------------
 
@@ -2506,6 +2507,8 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
   `maksud_kegiatan` text,
   `tanggal_pengajuan` date DEFAULT NULL,
   `status_approval` int(2) NOT NULL,
+  `status_penolakan` int(1) NOT NULL,
+  `tanggal_approval` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -2513,10 +2516,10 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
 -- Dumping data for table `pengajuan_barang`
 --
 
-INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`) VALUES
-(1, '-', 2, 'transaksi pengajuan barang', '0000-00-00', 0),
-(2, '-', 2, 'transaksi', '2015-05-05', 0),
-(3, '-', 2, 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0);
+INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`, `tanggal_approval`) VALUES
+(1, '-', 2, 'transaksi pengajuan barang', '0000-00-00', 0, 0, '0000-00-00'),
+(2, '-', 2, 'transaksi', '2015-05-05', 0, 1, '0000-00-00'),
+(3, '014/Barang/SATKER/LP/V/2015', 2, 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 5, 0, '2015-05-11');
 
 -- --------------------------------------------------------
 
