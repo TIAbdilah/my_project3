@@ -35,7 +35,7 @@
                     <th rowspan="2" width="15%">Jabatan</th>
                     <th rowspan="2" width="8%">Tujuan</th>
                     <th colspan="2">Tanggal</th>
-                    <th colspan="6">Rincian Kebutuhan Dana (Rp)</th>
+                    <th colspan="8">Rincian Kebutuhan Dana (Rp)</th>
                     <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
                         <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
                     <?php } ?>
@@ -51,6 +51,8 @@
                     <th width="6%">Trans</th>
                     <th width="6%">Penginapan</th>
                     <th width="6%">Riil</th>
+                    <th width="6%">Diklat</th>
+                    <th width="6%">Sewa</th>
                     <th width="6%">Jumlah</th>
                 </tr>
             </thead>
@@ -63,7 +65,7 @@
                 $nama_pegawai = "";
                 foreach ($list_data_detail as $data_detail) {
                     $subtotal_transport = $data_detail->transport_utama + $data_detail->transport_pendukung;
-                    $subtotal = $data_detail->harian + $data_detail->representatif + $subtotal_transport + $data_detail->penginapan + $data_detail->riil;
+                    $subtotal = $data_detail->harian + $data_detail->representatif + $subtotal_transport + $data_detail->penginapan + $data_detail->riil + $data_detail->diklat + $data_detail->sewa;
                     echo "<tr>"
                     . "<td>" . $no . "</td>"
                     . "<td>" . $data_detail->nama_pegawai . " </td>"
@@ -72,11 +74,13 @@
                     . "<td>" . $data_detail->kota_tujuan . "</td>"
                     . "<td>" . $data_detail->tgl_berangkat . "</td>"
                     . "<td>" . $data_detail->tgl_pulang . "</td>"
-                    . "<td>" . number_format($data_detail->harian) . "</td>"
+                    . "<td align=\"right\">" . number_format($data_detail->harian) . "</td>"
                     . "<td>" . number_format($data_detail->representatif) . "</td>"
                     . "<td>" . number_format($subtotal_transport) . "</td>"
                     . "<td>" . number_format($data_detail->penginapan) . "</td>"
                     . "<td>" . number_format($data_detail->riil) . "</td>"
+                    . "<td>" . number_format($data_detail->diklat) . "</td>"
+                    . "<td>" . number_format($data_detail->sewa) . "</td>"
                     . "<td>" . number_format($subtotal) . "</td>";
                     if ($this->session->userdata('role') == 'operator' && $data->status == 0) {
                         echo "<td class=\"td-actions\">"
@@ -103,7 +107,7 @@
                 }
                 ?>
                 <tr>
-                    <th colspan="12">Total</th>
+                    <th colspan="14">Total</th>
                     <th><?php echo number_format($total) ?></th>
                     <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
                         <th>&nbsp;</th>

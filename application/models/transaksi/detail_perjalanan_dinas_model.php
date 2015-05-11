@@ -39,6 +39,8 @@ class Detail_perjalanan_dinas_model extends CI_Model {
                 . ", (select d4.biaya from detail_perjalanan_dinas d4 where jenis_biaya = 'transport_pendukung' and d4.id_pegawai = d.id_pegawai and d.id_header = d4.id_header and d.kota_tujuan = d4.kota_tujuan ) as transport_pendukung "
                 . ", (select d5.biaya from detail_perjalanan_dinas d5 where jenis_biaya = 'riil' and d5.id_pegawai = d.id_pegawai and d.id_header = d5.id_header and d.kota_tujuan = d5.kota_tujuan ) as riil "
                 . ", (select d6.biaya from detail_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai and d.id_header = d6.id_header and d.kota_tujuan = d6.kota_tujuan ) as representatif "
+                . ", (select d7.biaya from detail_perjalanan_dinas d7 where jenis_biaya = 'diklat' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header and d.kota_tujuan = d7.kota_tujuan ) as diklat "
+                . ", (select d8.biaya from detail_perjalanan_dinas d8 where jenis_biaya = 'sewa' and d8.id_pegawai = d.id_pegawai and d.id_header = d8.id_header and d.kota_tujuan = d8.kota_tujuan ) as sewa "
                 . "from detail_perjalanan_dinas d "
                 . "where d.id_header = " . $param['id_header'] . " "
                 . "group by id_header, nama_pegawai, kota_tujuan "
