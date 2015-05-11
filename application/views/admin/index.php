@@ -774,7 +774,7 @@
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil10').val(selisih2);
                 });
-                $("#inKodeJenisBarang").change(function () {
+                $("#inKodeJenisBarang").change(function() {
 //alert($(this).val());
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/populateBarang",
@@ -784,7 +784,6 @@
                         dataType: "json",
                         success: function (data) {
                             $("#inNamaBarang").html(data[0]);
-                            $("#inTipeBarang").val(data[1]);
                         }
                     });
                 });

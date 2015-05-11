@@ -64,6 +64,28 @@ class Pengajuan_barang_model extends CI_Model {
         $this->db->delete('pengajuan_barang', array('id' => $id));
     }
     
+    public function update_status($id, $data) {
+        $data = array(
+            'status_approval' => $data['status_approval']
+        );
+        $this->db->update('pengajuan_barang', $data, "id = " . $id);
+    }
+    
+    public function update_status_penolakan($id, $data) {
+        $data = array(
+            'status_penolakan' => $data['status_penolakan']
+        );
+        $this->db->update('pengajuan_barang', $data, "id = " . $id);
+    }
+
+    public function update_no_spt($id, $data) {
+        $data = array(
+            'nomor_pengajuan' => $data['nomor_pengajuan'],
+            'tanggal_approval' => $data['tanggal_approval']
+        );
+        $this->db->update('pengajuan_barang', $data, "id = " . $id);
+    }
+    
     public function format_date_to_sql($str){        
         return substr($str, 6, 4).'-'.substr($str, 3, 2).'-'.substr($str, 0, 2);
     }

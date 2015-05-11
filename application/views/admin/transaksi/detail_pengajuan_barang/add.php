@@ -19,32 +19,34 @@
                 </td>
             </tr>
             <tr>
+                
                 <td><label>Nama Barang</label></td>
                 <td>
                    <select class="input-xlarge" name="inNamaBarang" id="inNamaBarang">
                        
                     </select>
-                </td>
-            </tr>
-            <tr>
+                </td> 
                 <td><label>Tipe</label></td>
                 <td>
                     <input type="text" id="inTipeBarang" name="inTipeBarang"/>
                 </td>
             </tr>
             <tr>
+                <td colspan="2">&nbsp;</td>
                 <td><label>Merk</label></td>
                 <td>
                     <input type="text" id="inMerk" name="inMerk"/>
                 </td>
             </tr>
             <tr>
+                                <td colspan="2">&nbsp;</td>
                 <td><label>Satuan</label></td>
                 <td>
                     <input type="text" id="inSatuanBarang" name="inSatuanBarang"/>
                 </td>
             </tr>
             <tr>
+                                <td colspan="2">&nbsp;</td>
                 <td><label>Harga</label></td>
                 <td>
                     <input type="text"  id="inHargaBarang" name="inHargaBarang"/>

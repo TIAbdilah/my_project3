@@ -67,6 +67,7 @@ class Pengajuan_barang extends CI_Controller {
         $param = array(
             'id_header' => $id
         );
+         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['list_data'] = $this->detail_pengajuan_barang_model->select_by_id($id)->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
@@ -132,28 +133,47 @@ class Pengajuan_barang extends CI_Controller {
 
     public function update_status($id_header) {
         $aksi = $this->input->post('inpAksi');
+        $data['tolak'] = 0;
         $status = $this->input->post('inpStatus');
         if ($aksi == 'Setuju' || $aksi == 'Ajukan') {
-            $data['status'] = $status + 1;
-            $this->perjalanan_dinas_model->update_status($id_header, $data);
+            $data['status_approval'] = $status + 1;
+//            print_r($status);
+            $this->pengajuan_barang_model->update_status($id_header, $data);
             if ($this->session->userdata('role') == 'ppk') {
                 $this->counter = new Counter();
                 $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
                 $counter = $this->counter->generateId($pattern);
-                $data['no_spt'] = $counter . "/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
-                $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
+                $data['nomor_pengajuan'] = $counter . "/Barang/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
+                $data['tanggal_approval'] = date('Y-m-d');
+                $this->pengajuan_barang_model->update_no_spt($id_header, $data);
+                $data['status_penolakan'] = 0;
+                $this->pengajuan_barang_model->update_status_penolakan($id_header, $data);
+            } else {
+                $data['status_penolakan'] = 0;
+                $this->pengajuan_barang_model->update_status_penolakan($id_header, $data);
             }
-        } else {
-            $data['status'] = $status - 1;
-            $this->perjalanan_dinas_model->update_status($id_header, $data);
+            redirect('transaksi/pengajuan_barang');
+        } else { //kalo ditolak
+            $komen = $this->input->post("inpKomentar");
+            if (empty($komen)) {
+                $this->session->set_flashdata('result', '<div class="alert alert-danger" role="alert">Untuk menolak, kolom komentar harus diisi</div>');
+                redirect($_SERVER['HTTP_REFERER'], $data);
+            } else {
+                $data['status_approval'] = $status - 1;
+                $data['status_penolakan'] = 1;
+                $this->pengajuan_barang_model->update_status_penolakan($id_header, $data);
 
-            $data['id_header'] = $id_header;
-            $data['username'] = $this->session->userdata('role');
-            $data['komentar'] = $this->input->post('inpKomentar');
-            $this->komentar_model->add($data);
+                $this->pengajuan_barang_model->update_status($id_header, $data);
+
+                $data['id_header'] = $id_header;
+                $data['username'] = $this->session->userdata('role');
+                $data['komentar'] = $this->input->post('inpKomentar');
+                $this->komentar_model->add($data);
+                redirect('transaksi/pengajuan_barang');
+            }
         }
-        redirect('transaksi/perjalanan_dinas');
     }
+
 
     //tambahan untuk ajax
     public function getDetailBarang() {
@@ -266,34 +286,26 @@ class Pengajuan_barang extends CI_Controller {
             echo $output;
         }
     }
-    public function tahu(){
-         echo '<script language="javascript">';
-     echo 'alert(test)';
-     echo '</script>';
-    }
-
-
+    
     public function populateBarang() {
- echo '<script language="javascript">';
-     echo 'alert(test)';
-     echo '</script>';
-        $param = $this->input->post('kode_jenis', TRUE);
-        print_r($param);
-        $data['barang'] = $this->barang_model->populateBarang($param);
+        $param1 = $this->input->post('kode_jenis', TRUE);
+
+
+        $data['barang'] = $this->barang_model->populateBarang($param1);
         $output1 = null;
         $output1 = "<option value=''>Pilih</option>";
         if ($data['barang']) {
             foreach ($data['barang'] as $row) {
                 $output1 .= "<option value='" . $row->id . "'>" . $row->nama_barang . "</option>";
             }
-           $arr[0] = $output1;
+            $arr[0] = $output1;
         } else {
             $output1 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
             $arr[0] = $output1;
         }
-        $arr[1] = "2342423";
         echo json_encode($arr);
     }
+
 
     public function calculateTransport() {
         $param = $this->input->post('id', TRUE);
