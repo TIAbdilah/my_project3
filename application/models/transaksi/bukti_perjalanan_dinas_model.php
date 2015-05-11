@@ -22,7 +22,11 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        return $this->db->get_where('detail_perjalanan_dinas', $param);
+        $this->db->select('*');
+        $this->db->from('bukti_perjalanan_dinas');
+        $this->db->where($param);
+        $this->db->order_by('kota_tujuan, jenis_biaya');
+        return $this->db->get();
     }
 
     public function select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan) {

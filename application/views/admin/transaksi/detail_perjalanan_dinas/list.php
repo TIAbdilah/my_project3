@@ -40,7 +40,7 @@
                         <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
                     <?php } ?>
                     <?php if ($data->status == 5 and $this->session->userdata('role') == 'operator') { ?>
-                        <th rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
+                        <th colspan="2" rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
                         <?php } ?>
                 </tr>
                 <tr>
@@ -62,6 +62,7 @@
                 $subtotal_transport = 0;
                 $subtotal = 0;
                 $total = 0;
+                $nama_pegawai = "";
                 foreach ($list_data_detail as $data_detail) {
                     $subtotal_transport = $data_detail->transport_utama + $data_detail->transport_pendukung;
                     $subtotal = $data_detail->harian + $data_detail->representatif + $subtotal_transport + $data_detail->penginapan + $data_detail->riil + $data_detail->diklat + $data_detail->sewa;
@@ -90,13 +91,19 @@
                         echo "<td class=\"td-actions\">"
                         . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/add/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
                         . "<a title=\"View Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-edit\"> </i></a>"
-                        . "<a title=\"Report (Bukti Perjalanan Dinas)\" href=\"" . site_url('report/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
-                        . "<a title=\"Report (Pengeluaran Riil)\" href=\"" . site_url('report/pengeluaran_riil/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
                         . "</td>";
+                        $rowspan = $data->jumlah_tujuan + 1;
+                        if ($nama_pegawai != $data_detail->nama_pegawai) {
+                            echo "<td rowspan=\"" . $rowspan . "\">"
+                            . "<a title=\"Report (Bukti Perjalanan Dinas)\" href=\"" . site_url('report/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
+                            . "<a title=\"Report (Pengeluaran Riil)\" href=\"" . site_url('report/pengeluaran_riil/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
+                            . "</td>";
+                        }
                     }
                     echo "</tr>";
                     $no++;
                     $total += $subtotal;
+                    $nama_pegawai = $data_detail->nama_pegawai;
                 }
                 ?>
                 <tr>
@@ -106,7 +113,7 @@
                         <th>&nbsp;</th>
                     <?php } ?>
                     <?php if ($data->status == 5 and $this->session->userdata('role') == 'operator') { ?>
-                        <th>&nbsp;</th>
+                        <th colspan="2">&nbsp;</th>
                     <?php } ?>
                 </tr>
             </tbody>
