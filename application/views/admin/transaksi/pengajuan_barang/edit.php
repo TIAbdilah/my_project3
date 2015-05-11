@@ -10,7 +10,7 @@
     </div>           
     <div class="widget-content" style="padding: 10px;">
 
-        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/pengajuan_barang/process/edit') ?>" method="POST">            
+        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/pengajuan_barang/process/edit/'.$data->id) ?>" method="POST">            
             <div class="control-group">
                 <label class="control-label" for="nomorPengajuan">Nomor Pengajuan</label>
                 <div class="controls">
