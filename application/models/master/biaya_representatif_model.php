@@ -54,7 +54,7 @@ class Biaya_representatif_model extends CI_Model {
                 . "select kt.nama_provinsi "
                 . "from kota_tujuan kt where kt.nama_kota = '".$nama_kota."') "
                 . "and br.tingkat = ("
-                . "select peg.golongan "
+                . "select peg.tingkat "
                 . "from pegawai peg where peg.id='".$id_pegawai."') ";
         $query = $this->db->query($sql);
         return $query->result();
