@@ -50,13 +50,6 @@ function format_date($string) {
                         <td><input type="text" placeholder="Jumlah" id="inJumlahTransportUtama1" name="inJumlahTransportUtama1" value="<?php echo $data_detail->transport_utama ?>"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihTransportUtama1" name="inSelisihTransportUtama1"/></td>
                     </tr>
-<!--                    <tr>
-                        <td></td>
-                        <td><input type="text" placeholder="Biaya" id="inSubtotalTransportUtama2" name="inSubtotalTransportUtama2"/></td>
-                        <td><input type="text" placeholder="Nomor" id="inNomorBuktiTransportUtama2" name="inNomorBuktiTransportUtama2"/></td>
-                        <td><input type="text" placeholder="Jumlah" id="inJumlahTransportUtama2" name="inJumlahTransportUtama2"/></td>
-                        <td><input type="text" placeholder="Selisih" id="inSelisihTransportUtama2" name="inSelisihTransportUtama2"/></td>
-                    </tr>-->
                     <tr>
                         <td><label>Transport Pendukung</label></td>
                         <td><input type="text" placeholder="Biaya" id="inSubtotalTransportPendukung" name="inSubtotalTransportPendukung" value="<?php echo $data_detail->transport_pendukung ?>"/></td>
@@ -64,6 +57,28 @@ function format_date($string) {
                         <td><input type="text" placeholder="Jumlah" id="inJumlahTransportPendukung" name="inJumlahTransportPendukung" value="<?php echo $data_detail->transport_pendukung ?>"/></td>
                         <td><input type="text" placeholder="Selisih" id="inSelisihTransportPendukung" name="inSelisihTransportPendukung"/></td>
                     </tr>
+                    <tr>
+                        <td><label>Uang Refresentatif</label></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalRefresentatif" name="inSubtotalRefresentatif" value="<?php echo $data_detail->representatif ?>"/></td>
+                        <td><input type="text" placeholder="Nomor" id="inNomorBuktiRefresentatif" name="inNomorBuktiRefresentatif"/></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahRefresentatif" name="inJumlahRefresentatif" value="<?php echo $data_detail->representatif ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihRefresentatif" name="inSelisihRefresentatif"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Diklat</label></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalDiklat" name="inSubtotalDiklat" value="<?php echo $data_detail->diklat ?>"/></td>
+                        <td><input type="text" placeholder="Nomor" id="inNomorBuktiDiklat" name="inNomorBuktiDiklat"/></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahDiklat" name="inJumlahDiklat" value="<?php echo $data_detail->diklat ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihDiklat" name="inSelisihDiklat"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Sewa</label></td>
+                        <td><input type="text" placeholder="Biaya" id="inSubtotalSewa" name="inSubtotalSewa" value="<?php echo $data_detail->sewa ?>"/></td>
+                        <td><input type="text" placeholder="Nomor" id="inNomorBuktiSewa" name="inNomorBuktiSewa"/></td>
+                        <td><input type="text" placeholder="Jumlah" id="inJumlahSewa" name="inJumlahSewa" value="<?php echo $data_detail->sewa ?>"/></td>
+                        <td><input type="text" placeholder="Selisih" id="inSelisihSewa" name="inSelisihSewa"/></td>
+                    </tr>
+                    
                     <tr>
                         <td><label>Pengeluaran Riil</label></td>
                         <td><input type="text" placeholder="Biaya" id="inSubtotalPengeluaranRiil" name="inSubtotalPengeluaranRiil" value="<?php echo $data_detail->riil ?>"/></td>

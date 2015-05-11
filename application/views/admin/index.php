@@ -683,6 +683,27 @@
                     var selisih = biaya - jumlah;
                     $('#inSelisihTransportPendukung').val(selisih);
                 });
+                $("#inJumlahRefresentatif").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalRefresentatif').val());
+                    var jumlah = parseInt($('#inJumlahRefresentatif').val());
+                    var selisih = biaya - jumlah;
+                    $('#inSelisihRefresentatif').val(selisih);
+                });
+                $("#inJumlahDiklat").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalDiklat').val());
+                    var jumlah = parseInt($('#inJumlahDiklat').val());
+                    var selisih = biaya - jumlah;
+                    $('#inSelisihDiklat').val(selisih);
+                });
+                $("#inJumlahSewa").keyup(function () {
+
+                    var biaya = parseInt($('#inSubtotalSewa').val());
+                    var jumlah = parseInt($('#inJumlahSewa').val());
+                    var selisih = biaya - jumlah;
+                    $('#inSelisihSewa').val(selisih);
+                });
                 $("#inJumlahPengeluaranRiil").keyup(function () {
 
                     var biaya = parseInt($('#inSubtotalPengeluaranRiil').val());

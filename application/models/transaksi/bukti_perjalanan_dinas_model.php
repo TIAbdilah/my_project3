@@ -38,10 +38,12 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
                 . ", (select d4.biaya from detail_perjalanan_dinas d4 where jenis_biaya = 'transport_pendukung' and d4.id_pegawai = d.id_pegawai and d.id_header = d4.id_header and d.kota_tujuan = d4.kota_tujuan) as transport_pendukung "
                 . ", (select d5.biaya from detail_perjalanan_dinas d5 where jenis_biaya = 'riil' and d5.id_pegawai = d.id_pegawai and d.id_header = d5.id_header and d.kota_tujuan = d5.kota_tujuan) as riil "
                 . ", (select d6.biaya from detail_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai and d.id_header = d6.id_header and d.kota_tujuan = d6.kota_tujuan) as representatif "
+                . ", (select d7.biaya from detail_perjalanan_dinas d7 where jenis_biaya = 'diklat' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header and d.kota_tujuan = d7.kota_tujuan) as diklat "
+                . ", (select d8.biaya from detail_perjalanan_dinas d8 where jenis_biaya = 'sewa' and d8.id_pegawai = d.id_pegawai and d.id_header = d8.id_header and d.kota_tujuan = d8.kota_tujuan) as sewa "
                 . "from detail_perjalanan_dinas d "
                 . "where d.id_header = " . $id_header . " "
                 . "and d.id_pegawai = " . $id_pegawai . " "
-                . "and d.kota_tujuan = '" . $kota_tujuan . "' "                
+                . "and d.kota_tujuan = '" . $kota_tujuan . "' "
                 . "group by nama_pegawai, kota_tujuan";
         return $this->db->query($sql);
     }
@@ -54,12 +56,16 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
                 . ", (select d4.nomor_bukti from bukti_perjalanan_dinas d4 where jenis_biaya = 'transport_pendukung' and d4.id_pegawai = d.id_pegawai and d.id_header = d4.id_header  and d4.kota_tujuan ='" . $kota_tujuan . "') as nomor_transport_pendukung "
                 . ", (select d5.nomor_bukti from bukti_perjalanan_dinas d5 where jenis_biaya = 'riil' and d5.id_pegawai = d.id_pegawai and d.id_header = d5.id_header  and d5.kota_tujuan ='" . $kota_tujuan . "') as nomor_riil "
                 . ", (select d6.nomor_bukti from bukti_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai and d.id_header = d6.id_header  and d6.kota_tujuan ='" . $kota_tujuan . "') as nomor_representatif "
+                . ", (select d7.nomor_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'diklat' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as nomor_diklat "
+                . ", (select d8.nomor_bukti from bukti_perjalanan_dinas d8 where jenis_biaya = 'sewa' and d8.id_pegawai = d.id_pegawai and d.id_header = d8.id_header  and d8.kota_tujuan ='" . $kota_tujuan . "') as nomor_sewa "
                 . ", (select d1.jumlah_bukti from bukti_perjalanan_dinas d1 where jenis_biaya = 'harian' and d1.id_pegawai = d.id_pegawai and d.id_header = d1.id_header  and d1.kota_tujuan ='" . $kota_tujuan . "') as jumlah_harian "
                 . ", (select d2.jumlah_bukti from bukti_perjalanan_dinas d2 where jenis_biaya = 'penginapan' and d2.id_pegawai = d.id_pegawai and d.id_header = d2.id_header  and d2.kota_tujuan ='" . $kota_tujuan . "') as jumlah_penginapan "
                 . ", (select d3.jumlah_bukti from bukti_perjalanan_dinas d3 where jenis_biaya = 'transport_utama' and d3.id_pegawai = d.id_pegawai and d.id_header = d3.id_header  and d3.kota_tujuan ='" . $kota_tujuan . "') as jumlah_transport_utama "
                 . ", (select d4.jumlah_bukti from bukti_perjalanan_dinas d4 where jenis_biaya = 'transport_pendukung' and d4.id_pegawai = d.id_pegawai and d.id_header = d4.id_header  and d4.kota_tujuan ='" . $kota_tujuan . "') as jumlah_transport_pendukung "
                 . ", (select d5.jumlah_bukti from bukti_perjalanan_dinas d5 where jenis_biaya = 'riil' and d5.id_pegawai = d.id_pegawai and d.id_header = d5.id_header  and d5.kota_tujuan ='" . $kota_tujuan . "') as jumlah_riil "
                 . ", (select d6.jumlah_bukti from bukti_perjalanan_dinas d6 where jenis_biaya = 'representatif' and d6.id_pegawai = d.id_pegawai and d.id_header = d6.id_header  and d6.kota_tujuan ='" . $kota_tujuan . "') as jumlah_representatif "
+                . ", (select d7.jumlah_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'diklat' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as jumlah_diklat "
+                . ", (select d8.jumlah_bukti from bukti_perjalanan_dinas d8 where jenis_biaya = 'sewa' and d8.id_pegawai = d.id_pegawai and d.id_header = d8.id_header  and d8.kota_tujuan ='" . $kota_tujuan . "') as jumlah_sewa "
                 . ", (select d7.nomor_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'riil_2' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as nomor_riil_2 "
                 . ", (select d7.jumlah_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'riil_2' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as jumlah_riil_2 "
                 . ", (select d7.nomor_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'riil_3' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as nomor_riil_3 "
@@ -78,23 +84,22 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
                 . ", (select d7.jumlah_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'riil_9' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as jumlah_riil_9 "
                 . ", (select d7.nomor_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'riil_10' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as nomor_riil_10 "
                 . ", (select d7.jumlah_bukti from bukti_perjalanan_dinas d7 where jenis_biaya = 'riil_10' and d7.id_pegawai = d.id_pegawai and d.id_header = d7.id_header  and d7.kota_tujuan ='" . $kota_tujuan . "') as jumlah_riil_10 "
-               
                 . "from bukti_perjalanan_dinas d "
                 . "where d.id_header = " . $id_header . " "
                 . "and d.id_pegawai = " . $id_pegawai . " "
                 . "";
         return $this->db->query($sql);
     }
-    
-    public function select_biaya_riil($id_header, $id_pegawai){
+
+    public function select_biaya_riil($id_header, $id_pegawai) {
         $sql = "SELECT * "
                 . "FROM bukti_perjalanan_dinas "
                 . "where jenis_biaya in ('riil','riil_2','riil_3','riil_4','riil_5','riil_6','riil_7','riil_8','riil_9','riil_10') "
-                . "and id_pegawai = ".$id_pegawai." "
-                . "and id_header = ".$id_header;
+                . "and id_pegawai = " . $id_pegawai . " "
+                . "and id_header = " . $id_header;
         return $this->db->query($sql);
     }
-    
+
     public function add($data) {
         $data = array(
             'id_pegawai' => $data['id_pegawai'],
