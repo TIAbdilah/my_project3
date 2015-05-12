@@ -79,7 +79,18 @@
         <script src="<?php echo base_url() . '/assets/' ?>js/fnFakeRowspan.js"></script>
 
         <script type="text/javascript" language="javascript" class="init">
-
+function addCommas(nStr)
+                {
+                    nStr += '';
+                    x = nStr.split('.');
+                    x1 = x[0];
+                    x2 = x.length > 1 ? '.' + x[1] : '';
+                    var rgx = /(\d+)(\d{3})/;
+                    while (rgx.test(x1)) {
+                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                    }
+                    return x1 + x2;
+                }
             $(function () {
                 var $divs1 = $('#divs1 > div');
                 var $divs2 = $('#divs2 > div');
@@ -643,11 +654,12 @@
                         success: function (data) {
                             $("#inKodeKegiatan").val(data[0]);
                             $("#inAkun").val(data[1]);
-                            $("#inPagu").val(data[2]);
+                            $("#inPagu").val(addCommas(data[2]));
 
                         }
                     });
                 });
+                
                 $("#inJumlahUangHarian1").keyup(function () {
 
                     var biaya = parseInt($('#inSubtotalUangHarian1').val());
@@ -774,7 +786,7 @@
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil10').val(selisih2);
                 });
-                $("#inKodeJenisBarang").change(function() {
+                $("#inKodeJenisBarang").change(function () {
 //alert($(this).val());
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/populateBarang",

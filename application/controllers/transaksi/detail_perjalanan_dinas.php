@@ -481,6 +481,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif2');
+            $this->detail_perjalanan_dinas_model->add($data);
 
 
             //insert biaya diklat
@@ -579,6 +580,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
             $data['biaya'] = $this->input->post('inSubtotalRepresentatif3');
+            $this->detail_perjalanan_dinas_model->add($data);
 
             //insert biaya diklat
             $data['jenis_biaya'] = 'diklat';
