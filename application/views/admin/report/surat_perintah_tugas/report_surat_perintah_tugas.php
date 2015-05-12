@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td valign="top">Maksud Perjalanan Dinas</td>
-            <td valign="top">: <?php echo $data->maksud_perjalanan ?></td>
+            <td valign="top">:&nbsp;<?php echo $data->maksud_perjalanan ?></td>
         </tr>
         <tr>
             <td valign="top">Tanggal Berangkat</td>
@@ -85,7 +85,7 @@
         </tr>
         <tr>
             <td valign="top">Pembebanan Biaya</td>
-            <td>: </td>
+            <td>: <?php echo $data->kode_akun."-".$data->jenis_belanja?></td>
         </tr>
     </table><br><br>
     <table style="width: 100%">

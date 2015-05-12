@@ -9,15 +9,7 @@ function format_date($string) {
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>View Data </h3>
-    </div>           
-    <div class="widget-content" style="padding: 10px;">
-        <a target="_blank" href="<?php echo site_url('report/pengeluaran_riil/view/' . $id_header . '/' . $id_pegawai) ?>">
-            <button class="btn">Cetak Bukti Riil</button>
-        </a>
-        <a target="_blank" href="<?php echo site_url('report/bukti_perjalanan_dinas/view/' . $id_header . '/' . $id_pegawai) ?>">
-            <button class="btn">Cetak Bukti Rincian Biaya Perjalanan</button>
-        </a>
-    </div>
+    </div>  
     <div class="widget-content" style="padding: 10px;">
         <form class="bs-docs-example form-horizontal" action="#" method="POST">
 
@@ -28,7 +20,6 @@ function format_date($string) {
             <table border="0" style="width: 100%">        
 
                 <tbody>
-
                     <tr>
                         <td></td>
                         <td align="center"><strong>Biaya</strong></td>

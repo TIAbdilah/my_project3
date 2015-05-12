@@ -32,8 +32,8 @@
                     . "<td class=\"td-actions\">";
                     
                     if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
-                        echo "<a title=\"Report (Surat Perintah Tugas)\" href=\"" . site_url('report/surat_perintah_tugas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
-                        echo "<a title=\"Report (Daftar Biaya Perjalanan Dinas)\" href=\"" . site_url('report/daftar_biaya_perjalanan/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                        echo "<a title=\"Report (Surat Perintah Tugas)\" target=\"_blank\" href=\"" . site_url('report/surat_perintah_tugas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                        echo "<a title=\"Report (Daftar Biaya Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/daftar_biaya_perjalanan/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
                     }
                     echo "<a title=\"View\" href=\"" . site_url('transaksi/perjalanan_dinas/view/' . $row->id.'/'. $row->jumlah_tujuan) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
                     if ($row->status == 0 && $this->session->userdata('role') == 'operator') {

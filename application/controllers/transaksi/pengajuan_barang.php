@@ -1,7 +1,9 @@
 <?php
 
-//Programer     : Taufik Ismail Abdilah
-//Created Date  : 26 Apr 2015
+//Created By    : Rizal
+//Updated By    : Rizal
+//Created Date  : 1 Mei 2015
+//Updated Date  : 1 Mei 2015
 //Projet        : E-SATKER
 
 if (!defined('BASEPATH'))

@@ -1,7 +1,9 @@
 <?php
 
-//Programer     : Taufik Ismail A, S.Kom
+//Created By    : Taufik Ismail A, S.Kom
+//Updated By    : Taufik Ismail A, S.Kom
 //Created Date  : 6 Apr 2015
+//Updated Date  : 6 Apr 2015
 //Projet        : E-SATKER
 
 if (!defined('BASEPATH'))
@@ -53,6 +55,7 @@ class Anggaran extends CI_Controller {
         $data['id_kegiatan'] = $this->input->post('inpIdKegiatan');
         $data['id_akun'] = $this->input->post('inpIdAkun');
         $data['pagu'] = $this->input->post('inpPagu');
+        $data['sisa'] = $this->input->post('inpPagu');
         $data['tahun_anggaran'] = $this->input->post('inpTahunAnggaran');
 
         if ($action == 'add') {

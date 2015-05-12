@@ -38,23 +38,25 @@
         <thead>
             <tr>
                 <th rowspan="2" width="3%">No</th>
-                <th rowspan="2" width="15%">Nama</th>
+                <th rowspan="2" width="12%">Nama</th>
                 <th rowspan="2" width="5%">Gol</th>
-                <th rowspan="2" width="15%">Jabatan</th>
-                <th rowspan="2" width="8%">Tujuan</th>
+                <th rowspan="2" width="12%">Jabatan</th>
+                <th rowspan="2" width="7%">Tujuan</th>
                 <th colspan="2">Tanggal</th>
                 <th rowspan="2" width="5%">Lama Perj. Dinas</th>
-                <th colspan="5">Rincian Kebutuhan Dana (Rp)</th>
+                <th colspan="7">Rincian Kebutuhan Dana (Rp)</th>
                 <!--<th rowspan="2"  width="3%" class="td-actions">Keterangan</th>-->
             </tr>
             <tr>
-                <th width="8%">Berangkat</th>
-                <th width="8%">Kembali</th>
+                <th width="7%">Berangkat</th>
+                <th width="7%">Kembali</th>
 
                 <th width="6%">Uang Harian</th>
                 <th width="6%">Uang Ref</th>
                 <th width="6%">Trans</th>
                 <th width="6%">Penginapan</th>
+                <th width="6%">Diklat</th>
+                <th width="6%">Sewa</th>
                 <th width="6%">Jumlah</th>
             </tr>
         </thead>
@@ -80,6 +82,8 @@
                 . "<td align=\"right\">" . number_format($data->representatif) . "</td>"
                 . "<td align=\"right\">" . number_format($subtotal_transport) . "</td>"
                 . "<td align=\"right\">" . number_format($data->penginapan) . "</td>"
+                . "<td align=\"right\">" . number_format($data->penginapan) . "</td>"
+                . "<td align=\"right\">" . number_format($data->penginapan) . "</td>"
                 . "<td align=\"right\">" . number_format($subtotal) . "</td>"
                 //. "<td></td>"
                 . "</tr>";
@@ -87,7 +91,10 @@
                 $total += $subtotal;
             }
             ?>
-
+            <tr>
+                <td colspan="14" align="center"><strong>Total</strong></td>
+                <td align="right"><?php echo number_format($total)?></td>
+            </tr>
         </tbody>
     </table>
     <table style="width: 100%">

@@ -13,12 +13,13 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="ppd">
-                <table class="table table-striped table-bordered">
+                <table id="example" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th width="5%"> No</th>
                             <th width="15%"> No SPT</th>
-                            <th width="40%"> Anggaran</th>
+                            <th width="20%"> Anggaran</th>
+                            <th width="20%"> Maksud Kegitan</th>
                             <th width="15%"> Status Dokumen</th>
                             <th width="10%"> Status Penolakan</th>
                             <th class="td-actions">&nbsp;</th>
@@ -31,7 +32,8 @@
                             echo "<tr>"
                             . "<td>" . $no . "</td>"
                             . "<td>" . $row->no_spt . " </td>"
-                            . "<td>" . $row->nama_kegiatan . "</td>"
+                            . "<td>" . $row->nama_kegiatan . " - " . $row->jenis_belanja . " </td>"
+                            . "<td>" . $row->maksud_perjalanan . "</td>"
                             . "<td>" . $status[$row->status] . "</td>"
                             . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                             . "<td class=\"td-actions\">";

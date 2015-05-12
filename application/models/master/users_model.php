@@ -1,5 +1,11 @@
 <?php
 
+//Created By    : Rizal
+//Updated By    : Taufik Ismail A, S.Kom
+//Created Date  : 9 Apr 2015
+//Updated Date  : 9 Apr 2015
+//Projet        : E-SATKER
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 

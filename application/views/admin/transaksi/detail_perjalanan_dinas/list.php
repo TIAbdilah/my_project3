@@ -95,8 +95,8 @@
                         $rowspan = $data->jumlah_tujuan + 1;
                         if ($nama_pegawai != $data_detail->nama_pegawai) {
                             echo "<td rowspan=\"" . $rowspan . "\">"
-                            . "<a title=\"Report (Bukti Perjalanan Dinas)\" href=\"" . site_url('report/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
-                            . "<a title=\"Report (Pengeluaran Riil)\" href=\"" . site_url('report/pengeluaran_riil/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
+                            . "<a title=\"Report (Bukti Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
+                            . "<a title=\"Report (Pengeluaran Riil)\" target=\"_blank\" href=\"" . site_url('report/pengeluaran_riil/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
                             . "</td>";
                         }
                     }

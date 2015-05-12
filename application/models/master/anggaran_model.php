@@ -1,7 +1,9 @@
 <?php
 
-//Programer     : Taufik Ismail A, S.Kom
-//Created Date  : 6 Apr 2015
+//Created By    : Taufik Ismail A, S.Kom
+//Updated By    : Taufik Ismail A, S.Kom
+//Created Date  : 9 Apr 2015
+//Updated Date  : 9 Apr 2015
 //Projet        : E-SATKER
 
 if (!defined('BASEPATH'))
@@ -57,6 +59,7 @@ class Anggaran_model extends CI_Model {
             'id_kegiatan' => $data['id_kegiatan'],
             'id_akun' => $data['id_akun'],
             'pagu' => $data['pagu'],
+            'sisa' => $data['sisa'],
             'tahun_anggaran' => $data['tahun_anggaran']
         );
         $this->db->insert('anggaran', $data);
@@ -66,7 +69,8 @@ class Anggaran_model extends CI_Model {
         $data = array(
             'id_kegiatan' => $data['id_kegiatan'],
             'id_akun' => $data['id_akun'],
-            'pagu' => $data['pagu'],
+            'pagu' => $data['pagu'],            
+            'sisa' => $data['sisa'],
             'tahun_anggaran' => $data['tahun_anggaran']
         );
         $this->db->update('anggaran', $data, "id = " . $id);

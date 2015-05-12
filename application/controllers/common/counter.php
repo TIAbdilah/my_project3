@@ -1,13 +1,13 @@
 <?php
 
+//Created By    : Taufik Ismail A, S.Kom
+//Updated By    : Taufik Ismail A, S.Kom
+//Created Date  : 9 Apr 2015
+//Updated Date  : 9 Apr 2015
+//Projet        : E-SATKER
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-
-// ***
-// Author		: TI Abdilah
-// Create		: 14/01/14 (TI Abdilah)
-// Update		: 14/01/14 (TI Abdilah)
-// ***
 
 class Counter extends CI_Controller {
 
