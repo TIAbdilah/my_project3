@@ -24,24 +24,18 @@ class Home extends CI_Controller {
     public function index() {
         $data['title'] = "e-satker | Home";
         $role = $this->session->userdata('role');
-        $int_role = array(
-            'operator' => 0,
-            'esselon 4' => 1,
-            'esselon 3' => 2,
-            'asisten satker' => 3,
-            'ppk' => 4
-        );
+        
+        $array_custom = new Array_custom();
+        
         $param = array(
-            'status' => $int_role[$role]
+            'status' => $array_custom->int_role[$role]
         );
         $param2 = array(
-            'status_approval' => $int_role[$role]
+            'status_approval' => $array_custom->int_role[$role]
         );
         $data['list_data'] = $this->perjalanan_dinas_model->select_by_field($param)->result();
         $data['list_data_barang'] = $this->pengajuan_barang_model->select_by_field($param2)->result();
-        $data['page'] = 'admin/master/tasklist/list';
-        
-        $array_custom = new Array_custom();
+        $data['page'] = 'admin/master/tasklist/list';        
         $data['status'] = $array_custom->status;
         $data['status_penolakan'] = $array_custom->status_penolakan;
         $data['status_approval'] = $array_custom->status;

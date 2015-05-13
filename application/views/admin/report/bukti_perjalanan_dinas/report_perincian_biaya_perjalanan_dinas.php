@@ -1,8 +1,51 @@
 <html>
     <body>
-    <center>
-        <img height="20%" width="100%" src="<?php echo $_SERVER['DOCUMENT_ROOT'] . '/esatker/assets/img/' ?>header surat.jpg" />
-    </center>
+        <table>
+            <tr>
+                <td>
+                    <img style="float: left" height="20%" width="65%" src="<?php echo $_SERVER['DOCUMENT_ROOT'] . '/esatker/assets/img/' ?>header surat.jpg" />
+                </td>
+                <td>
+                    <table style="border-collapse: collapse" border="1">
+                        <tr>
+                            <td>1. Kode SATKER</td>
+                            <td>63232</td>
+                        </tr>
+                        <tr>
+                            <td>2. Tahun Anggaran</td>
+                            <td>2015</td>
+                        </tr>
+                        <tr>
+                            <td>3. Pembebanan</td>
+                            <td>DIPA</td>
+                        </tr>
+                        <tr>
+                            <td>4. Tolak Ukur / Kegiatan</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5. Mata Anggaran</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6. No. Urut B.K.U</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7. Tanggal Pembukuan</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8. Paraf</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+<!--<img style="float: left" height="20%" width="75%" src="<?php echo base_url() . '/assets/img/' ?>header surat.jpg" />-->
+
     <center>
         <h3>PERINCIAN BIAYA PERJALANAN DINAS</h3>
     </center>

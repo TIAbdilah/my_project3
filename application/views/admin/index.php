@@ -79,26 +79,26 @@
         <script src="<?php echo base_url() . '/assets/' ?>js/fnFakeRowspan.js"></script>
 
         <script type="text/javascript" language="javascript" class="init">
-function addCommas(nStr)
-                {
-                    nStr += '';
-                    x = nStr.split('.');
-                    x1 = x[0];
-                    x2 = x.length > 1 ? '.' + x[1] : '';
-                    var rgx = /(\d+)(\d{3})/;
-                    while (rgx.test(x1)) {
-                        x1 = x1.replace(rgx, '$1' + ',' + '$2');
-                    }
-                    return x1 + x2;
+            function addCommas(nStr)
+            {
+                nStr += '';
+                x = nStr.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? '.' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1)) {
+                    x1 = x1.replace(rgx, '$1' + ',' + '$2');
                 }
-            $(function () {
+                return x1 + x2;
+            }
+            $(function() {
                 var $divs1 = $('#divs1 > div');
                 var $divs2 = $('#divs2 > div');
                 var $divs3 = $('#divs3 > div');
                 $divs1.hide();
                 $divs2.hide();
                 $divs3.hide();
-                $('input[type=radio]').on('change', function () {
+                $('input[type=radio]').on('change', function() {
                     $divs1.hide();
                     $divs2.hide();
                     $divs3.hide();
@@ -107,17 +107,20 @@ function addCommas(nStr)
                     $divs3.eq($('input[type=radio]').index(this)).show();
                 });
             });
-            $(function () {
+            $(function() {
                 $('#myTab a:first').tab('show');
-                $('#myTab a').click(function (e) {
+                $('#myTab a').click(function(e) {
                     e.preventDefault();
                     $(this).tab('show');
                 })
             });
 
-            $(document).ready(function () {
+            $(document).ready(function() {
 
                 $('#example').dataTable({
+                    info: false
+                });
+                $('#example11').dataTable({
                     info: false
                 });
 
@@ -126,20 +129,20 @@ function addCommas(nStr)
                     todayHighlight: true
                 });
 
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getDetailPegawai",
                         data: {id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inGolongan").html(data[0]);
                             $("#inStatusPeg").html(data[1]);
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
@@ -147,12 +150,12 @@ function addCommas(nStr)
                             id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalUangHarian1").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
@@ -160,12 +163,12 @@ function addCommas(nStr)
                             id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalUangHarian2").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getSubtotalBiaya",
@@ -173,12 +176,12 @@ function addCommas(nStr)
                             id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalUangHarian3").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
@@ -186,12 +189,12 @@ function addCommas(nStr)
                             id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalRepresentatif1").attr("value", data[0]);
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
@@ -199,12 +202,12 @@ function addCommas(nStr)
                             id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalRepresentatif2").attr("value", data[0]);
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaRepresentatif",
@@ -212,43 +215,43 @@ function addCommas(nStr)
                             id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalRepresentatif3").attr("value", data[0]);
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
                         data: {nama_kota: $('#inKotaUangDiklat1').val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalDiklat1").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
                         data: {nama_kota: $('#inKotaUangDiklat2').val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalDiklat2").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaDiklat",
                         data: {nama_kota: $('#inKotaUangDiklat3').val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalDiklat3").attr("value", data[0] * $('#inLamaHari').val());
                         }
                     });
@@ -267,7 +270,7 @@ function addCommas(nStr)
 //                        }
 //                    });
 //                });
-                $("#inJenisPenginapan1").change(function () {
+                $("#inJenisPenginapan1").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaHotelNonHotel",
@@ -276,12 +279,12 @@ function addCommas(nStr)
                             golongan: $('#inGolongan').text()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalUangPenginapan1").attr("value", data[0] * ($('#inLamaHari').val() - 1));
                         }
                     });
                 });
-                $("#inJenisPenginapan2").change(function () {
+                $("#inJenisPenginapan2").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaHotelNonHotel",
@@ -290,12 +293,12 @@ function addCommas(nStr)
                             golongan: $('#inGolongan').text()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalUangPenginapan2").attr("value", data[0] * ($('#inLamaHari').val() - 1));
                         }
                     });
                 });
-                $("#inJenisPenginapan3").change(function () {
+                $("#inJenisPenginapan3").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/getBiayaHotelNonHotel",
@@ -304,12 +307,12 @@ function addCommas(nStr)
                             golongan: $('#inGolongan').text()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalUangPenginapan3").attr("value", data[0] * ($('#inLamaHari').val() - 1));
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/populateTransport",
@@ -324,7 +327,7 @@ function addCommas(nStr)
                             kota_tujuan4: $('#inKotaTujuan4').val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#idJenisTransportUtama1").html(data[0]);
                             $("#idJenisTransportUtama2").html(data[1]);
                             $("#idJenisTransportUtama3").html(data[2]);
@@ -332,7 +335,7 @@ function addCommas(nStr)
                         }
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/populateSewa",
@@ -342,14 +345,14 @@ function addCommas(nStr)
                             kota_tujuan3: $('#inKotaTujuan3').val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inJenisSewa1").html(data[0]);
                             $("#inJenisSewa2").html(data[1]);
                             $("#inJenisSewa3").html(data[2]);
                         }
                     });
                 });
-                $("#idJenisTransportUtama1").change(function () {
+                $("#idJenisTransportUtama1").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateTransport",
@@ -357,12 +360,12 @@ function addCommas(nStr)
                             kota_asal: $('#inKotaAsal1').val(),
                             kota_tujuan: $('#inKotaTujuan1').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalTransportUtama1").val(data);
                         }
                     });
                 });
-                $("#idJenisTransportUtama2").change(function () {
+                $("#idJenisTransportUtama2").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateTransport",
@@ -370,12 +373,12 @@ function addCommas(nStr)
                             kota_asal: $('#inKotaAsal2').val(),
                             kota_tujuan: $('#inKotaTujuan2').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalTransportUtama2").val(data);
                         }
                     });
                 });
-                $("#idJenisTransportUtama3").change(function () {
+                $("#idJenisTransportUtama3").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateTransport",
@@ -383,12 +386,12 @@ function addCommas(nStr)
                             kota_asal: $('#inKotaAsal3').val(),
                             kota_tujuan: $('#inKotaTujuan3').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalTransportUtama3").val(data);
                         }
                     });
                 });
-                $("#idJenisTransportUtama4").change(function () {
+                $("#idJenisTransportUtama4").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateTransport",
@@ -396,78 +399,78 @@ function addCommas(nStr)
                             kota_asal: $('#inKotaAsal4').val(),
                             kota_tujuan: $('#inKotaTujuan4').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalTransportUtama4").val(data);
                         }
                     });
                 });
-                $("#inJenisSewa1").change(function () {
+                $("#inJenisSewa1").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
                         data: {id: $(this).val(),
                             kota_tujuan: $('#inKotaTujuan1').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalSewa1").val(data);
                         }
                     });
                 });
-                $("#inJenisSewa2").change(function () {
+                $("#inJenisSewa2").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
                         data: {id: $(this).val(),
                             kota_tujuan: $('#inKotaTujuan2').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalSewa2").val(data);
                         }
                     });
                 });
-                $("#inJenisSewa3").change(function () {
+                $("#inJenisSewa3").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/calculateSewa",
                         data: {id: $(this).val(),
                             kota_tujuan: $('#inKotaTujuan3').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSubtotalSewa3").val(data);
                         }
                     });
                 });
-                $("#inTransPendukung").keyup(function () {
+                $("#inTransPendukung").keyup(function() {
 
                     var total = $('#inTransPendukung').val();
                     $('#inSubtotalTransportPendukung').val(total);
                 });
-                $("#inTransPendukung").blur(function () {
+                $("#inTransPendukung").blur(function() {
 
                     var total = $('#inTransPendukung').val();
                     $('#inSubtotalTransportPendukung').val(total);
                 });
-                $("#inTransPendukung2").keyup(function () {
+                $("#inTransPendukung2").keyup(function() {
 
                     var total = $('#inTransPendukung2').val();
                     $('#inSubtotalTransportPendukung2').val(total);
                 });
-                $("#inTransPendukung2").blur(function () {
+                $("#inTransPendukung2").blur(function() {
 
                     var total = $('#inTransPendukung2').val();
                     $('#inSubtotalTransportPendukung2').val(total);
                 });
-                $("#inTransPendukung3").keyup(function () {
+                $("#inTransPendukung3").keyup(function() {
 
                     var total = $('#inTransPendukung3').val();
                     $('#inSubtotalTransportPendukung3').val(total);
                 });
-                $("#inTransPendukung3").blur(function () {
+                $("#inTransPendukung3").blur(function() {
 
                     var total = $('#inTransPendukung3').val();
                     $('#inSubtotalTransportPendukung3').val(total);
                 });
-                $("#inTransPendukung").keyup(function () {
+                $("#inTransPendukung").keyup(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
@@ -497,43 +500,43 @@ function addCommas(nStr)
                             h2: $('#inSubtotalSewa2').val(),
                             h3: $('#inSubtotalSewa3').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inTotalBiaya").val(data);
                         }
 
                     });
                 });
-                $("#inPengeluaranRiil").keyup(function () {
+                $("#inPengeluaranRiil").keyup(function() {
 
                     var total = $('#inPengeluaranRiil').val();
                     $('#inSubtotalPengeluaranRiil').val(total);
                 });
-                $("#inPengeluaranRiil").blur(function () {
+                $("#inPengeluaranRiil").blur(function() {
 
                     var total = $('#inPengeluaranRiil').val();
                     $('#inSubtotalPengeluaranRiil').val(total);
                 });
-                $("#inPengeluaranRiil2").keyup(function () {
+                $("#inPengeluaranRiil2").keyup(function() {
 
                     var total = $('#inPengeluaranRiil2').val();
                     $('#inSubtotalPengeluaranRiil2').val(total);
                 });
-                $("#inPengeluaranRiil2").blur(function () {
+                $("#inPengeluaranRiil2").blur(function() {
 
                     var total = $('#inPengeluaranRiil2').val();
                     $('#inSubtotalPengeluaranRiil2').val(total);
                 });
-                $("#inPengeluaranRiil3").keyup(function () {
+                $("#inPengeluaranRiil3").keyup(function() {
 
                     var total = $('#inPengeluaranRiil3').val();
                     $('#inSubtotalPengeluaranRiil3').val(total);
                 });
-                $("#inPengeluaranRiil3").blur(function () {
+                $("#inPengeluaranRiil3").blur(function() {
 
                     var total = $('#inPengeluaranRiil3').val();
                     $('#inSubtotalPengeluaranRiil3').val(total);
                 });
-                $("#inPengeluaranRiil").keyup(function () {
+                $("#inPengeluaranRiil").keyup(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
@@ -563,13 +566,13 @@ function addCommas(nStr)
                             h2: $('#inSubtotalSewa2').val(),
                             h3: $('#inSubtotalSewa3').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inTotalBiaya").val(data);
                         }
 
                     });
                 });
-                $("#inNamaPegawai").change(function () {
+                $("#inNamaPegawai").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
@@ -579,13 +582,13 @@ function addCommas(nStr)
                             d: $('#inSubtotalTransportPendukung').val(),
                             e: $('#inSubtotalPengeluaranRiil').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inTotalBiaya").val(data);
                         }
 
                     });
                 });
-                $("#idJenisTransportUtama1").change(function () {
+                $("#idJenisTransportUtama1").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
@@ -595,13 +598,13 @@ function addCommas(nStr)
                             d: $('#inSubtotalTransportPendukung').val(),
                             e: $('#inSubtotalPengeluaranRiil').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inTotalBiaya").val(data);
                         }
 
                     });
                 });
-                $("#inJenisPenginapan1").change(function () {
+                $("#inJenisPenginapan1").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/hitungTotal",
@@ -611,31 +614,31 @@ function addCommas(nStr)
                             d: $('#inSubtotalTransportPendukung').val(),
                             e: $('#inSubtotalPengeluaranRiil').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inTotalBiaya").val(data);
                         }
 
                     });
                 });
-                $("#btnTambahPengajuan").click(function () {
+                $("#btnTambahPengajuan").click(function() {
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanan_dinas/dayBetweenTwoDates",
                         data: {par1: $('#inTglPulang').val(),
                             par2: $('#inTglBerangkat').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inLamaHari").attr("value", data);
                         }
                     });
                 });
-                $("#inNamaBarang").change(function () {
+                $("#inNamaBarang").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/getDetailBarang",
                         data: {id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inSatuanBarang").val(data[0]);
                             $("#inHargaBarang").val(data[1]);
                             $("#inTipeBarang").val(data[2]);
@@ -644,14 +647,14 @@ function addCommas(nStr)
                     });
                 });
 
-                $("#inIdAnggaran").change(function () {
+                $("#inIdAnggaran").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/getDetailAnggaran",
                         data: {id: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inKodeKegiatan").val(data[0]);
                             $("#inAkun").val(data[1]);
                             $("#inPagu").val(addCommas(data[2]));
@@ -659,134 +662,134 @@ function addCommas(nStr)
                         }
                     });
                 });
-                
-                $("#inJumlahUangHarian1").keyup(function () {
+
+                $("#inJumlahUangHarian1").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalUangHarian1').val());
                     var jumlah = parseInt($('#inJumlahUangHarian1').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihUangHarian1').val(selisih);
                 });
-                $("#inJumlahUangPenginapan1").keyup(function () {
+                $("#inJumlahUangPenginapan1").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalUangPenginapan1').val());
                     var jumlah = parseInt($('#inJumlahUangPenginapan1').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihUangPenginapan1').val(selisih);
                 });
-                $("#inJumlahTransportUtama1").keyup(function () {
+                $("#inJumlahTransportUtama1").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalTransportUtama1').val());
                     var jumlah = parseInt($('#inJumlahTransportUtama1').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihTransportUtama1').val(selisih);
                 });
-                $("#inJumlahTransportUtama2").keyup(function () {
+                $("#inJumlahTransportUtama2").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalTransportUtama2').val());
                     var jumlah = parseInt($('#inJumlahTransportUtama2').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihTransportUtama2').val(selisih);
                 });
-                $("#inJumlahTransportPendukung").keyup(function () {
+                $("#inJumlahTransportPendukung").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalTransportPendukung').val());
                     var jumlah = parseInt($('#inJumlahTransportPendukung').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihTransportPendukung').val(selisih);
                 });
-                $("#inJumlahRefresentatif").keyup(function () {
+                $("#inJumlahRefresentatif").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalRefresentatif').val());
                     var jumlah = parseInt($('#inJumlahRefresentatif').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihRefresentatif').val(selisih);
                 });
-                $("#inJumlahDiklat").keyup(function () {
+                $("#inJumlahDiklat").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalDiklat').val());
                     var jumlah = parseInt($('#inJumlahDiklat').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihDiklat').val(selisih);
                 });
-                $("#inJumlahSewa").keyup(function () {
+                $("#inJumlahSewa").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalSewa').val());
                     var jumlah = parseInt($('#inJumlahSewa').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihSewa').val(selisih);
                 });
-                $("#inJumlahPengeluaranRiil").keyup(function () {
+                $("#inJumlahPengeluaranRiil").keyup(function() {
 
                     var biaya = parseInt($('#inSubtotalPengeluaranRiil').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil').val());
                     var selisih = biaya - jumlah;
                     $('#inSelisihPengeluaranRiil').val(selisih);
                 });
-                $("#inJumlahPengeluaranRiil2").keyup(function () {
+                $("#inJumlahPengeluaranRiil2").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil2').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil2').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil3").keyup(function () {
+                $("#inJumlahPengeluaranRiil3").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil2').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil3').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil3').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil4").keyup(function () {
+                $("#inJumlahPengeluaranRiil4").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil3').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil4').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil4').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil5").keyup(function () {
+                $("#inJumlahPengeluaranRiil5").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil4').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil5').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil5').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil6").keyup(function () {
+                $("#inJumlahPengeluaranRiil6").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil5').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil6').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil6').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil7").keyup(function () {
+                $("#inJumlahPengeluaranRiil7").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil6').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil7').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil7').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil8").keyup(function () {
+                $("#inJumlahPengeluaranRiil8").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil7').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil8').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil8').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil9").keyup(function () {
+                $("#inJumlahPengeluaranRiil9").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil8').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil9').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil9').val(selisih2);
                 });
-                $("#inJumlahPengeluaranRiil10").keyup(function () {
+                $("#inJumlahPengeluaranRiil10").keyup(function() {
 
                     var selisih1 = parseInt($('#inSelisihPengeluaranRiil9').val());
                     var jumlah = parseInt($('#inJumlahPengeluaranRiil10').val());
                     var selisih2 = selisih1 - jumlah;
                     $('#inSelisihPengeluaranRiil10').val(selisih2);
                 });
-                $("#inKodeJenisBarang").change(function () {
+                $("#inKodeJenisBarang").change(function() {
 //alert($(this).val());
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/populateBarang",
@@ -794,7 +797,7 @@ function addCommas(nStr)
                             kode_jenis: $(this).val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inNamaBarang").html(data[0]);
                         }
                     });
@@ -813,13 +816,13 @@ function addCommas(nStr)
 //        });
 //    });
 
-                $("#inKotaTujuan1").change(function () {
+                $("#inKotaTujuan1").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanandinasdetail/calculatePenginapan",
                         data: {nama_kota: $("#inKotaTujuan1 option:selected").text()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#outBiayaPenginapan").val(data);
                             $("#outBiayaPenginapanCalc").val($("#outLamaPerjalanan").val() + " Hari X " + data);
                             $("#outBiayaPenginapanTotal").val($("#outLamaPerjalanan").val() * data);
@@ -827,13 +830,13 @@ function addCommas(nStr)
 
                     });
                 });
-                $("#inTransportUtama").change(function () {
+                $("#inTransportUtama").change(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanandinasdetail/calculateTransport",
                         data: {id: $(this).val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#outTransportUtama").attr("value", data);
                             $("#outTransportUtamaCalc").attr("value", "2 X " + data);
                             $("#outTransportUtamaTotal").attr("value", 2 * data);
@@ -843,7 +846,7 @@ function addCommas(nStr)
                     });
                 });
 
-                $("#btnTambahDetail").click(function () {
+                $("#btnTambahDetail").click(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanandinasdetail/dayBetweenTwoDates",
@@ -854,12 +857,12 @@ function addCommas(nStr)
                             par5: $('.inJadwalPulang3').val(),
                             par6: $('.inJadwalBerangkat3').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#outLamaPerjalanan").val(data);
                         }
                     });
                 });
-                $("#btnTambahDetail").click(function () {
+                $("#btnTambahDetail").click(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanandinasdetail/hitungAkomodasi",
@@ -874,7 +877,7 @@ function addCommas(nStr)
                             par9: $('#inKotaTujuan3').val()},
                         type: "POST",
                         dataType: "json",
-                        success: function (data) {
+                        success: function(data) {
                             $("#outBiayaAkomodasiPengali1").attr("value", data[0] + " X");
                             $("#outBiayaAkomodasiPengali2").attr("value", data[1] + " X");
                             $("#outBiayaAkomodasiPengali3").attr("value", data[2] + " X");
@@ -901,19 +904,19 @@ function addCommas(nStr)
                         }
                     });
                 });
-                $("#btnTambahDetail").click(function () {
+                $("#btnTambahDetail").click(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanandinasdetail/populateTransport",
                         data: {nama_kota: $("#inKotaTujuan1 option:selected").text()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#inTransportUtama").html(data);
                         }
 
                     });
                 });
-                $("#btnHitungTotal").click(function () {
+                $("#btnHitungTotal").click(function() {
 
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/perjalanandinasdetail/hitungTotal",
@@ -923,7 +926,7 @@ function addCommas(nStr)
                             d: $('#outTransportPendukung').val(),
                             e: $('#outPengeluaranRiil').val()},
                         type: "POST",
-                        success: function (data) {
+                        success: function(data) {
                             $("#outTOTAL").val(data);
 //                             $("#outBiayaAkomodasi1").val($('#inKotaTujuan1').val());
                         }
@@ -931,7 +934,7 @@ function addCommas(nStr)
                     });
                     return false;
                 });
-                $("input[name$='jumtujuan']").click(function () {
+                $("input[name$='jumtujuan']").click(function() {
                     var test = $(this).val();
                     $("div.desc").hide();
                     $("#Tujuan" + test).show();
@@ -944,12 +947,12 @@ function addCommas(nStr)
                 ],
                 "order": [[1, 'asc']],
                 "displayLength": 10,
-                "drawCallback": function (settings) {
+                "drawCallback": function(settings) {
                     var api = this.api();
                     var rows = api.rows({page: 'current'}).nodes();
                     var last = null;
 
-                    api.column(1, {page: 'current'}).data().each(function (group, i) {
+                    api.column(1, {page: 'current'}).data().each(function(group, i) {
                         if (last !== group) {
                             $(rows).eq(i).before(
                                     '<tr class="group"><td colspan="5">' + group + '</td></tr>'
@@ -962,7 +965,7 @@ function addCommas(nStr)
             });
 
             // Order by the grouping
-            $('#example2 tbody').on('click', 'tr.group', function () {
+            $('#example2 tbody').on('click', 'tr.group', function() {
                 var currentOrder = table.order()[0];
                 if (currentOrder[0] === 1 && currentOrder[1] === 'asc') {
                     table.order([1, 'desc']).draw();

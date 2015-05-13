@@ -6,29 +6,30 @@
     <!-- /widget-header -->
     <div class="widget-content"><br>
         <form class="bs-docs-example form-horizontal" action="<?php echo site_url('master/users/process/add') ?>" method="POST">
-             <div class="control-group">
+            <div class="control-group">
                 <label class="control-label" for="inpIdJenisPengguna">Role</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpIdJenisPengguna">
                         <option>Jenis Pengguna</option>
                         <?php
                         foreach ($SIList_role as $row) {
-                            echo "<option value=\"" . $row->id_role . "\">" . $row->nama_role. "</option>";
+                            echo "<option value=\"" . $row->id_role . "\">" . $row->nama_role . "</option>";
                         }
                         ?>
                     </select>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="inpNama">Nama</label>
+                <label class="control-label" for="inpIdPegawai">Nama Pegawai</label>
                 <div class="controls">
-                    <input type="text" id="inpNama" name="inpNama" placeholder="Nama">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inpNip">NIP</label>
-                <div class="controls">
-                    <input type="text" id="inpNip" name="inpNip" placeholder="NIP">
+                    <select class="input-xlarge" name="inpIdPegawai">
+                        <option>Nama  Pegawai</option>
+                        <?php
+                        foreach ($SIList_pegawai as $row_1) {
+                            echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="control-group">

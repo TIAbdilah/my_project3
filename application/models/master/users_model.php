@@ -40,10 +40,22 @@ class Users_model extends CI_Model {
     public function select_all() {
         
         $this->db->select('*');
+       
         $sub = $this->subquery->start_subquery('select');
-        $sub->select('nama_role')->from('role');
+        $sub->select('nama')->from('pegawai');
+        $sub->where('pengguna.id_pegawai = pegawai.id');
+        $this->subquery->end_subquery('nama');
+       
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nip')->from('pegawai');
+        $sub->where('pengguna.id_pegawai = pegawai.id');
+        $this->subquery->end_subquery('nip');
+       
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nama_role')->from('role');       
         $sub->where('pengguna.id_jenis_pengguna = role.id_role');
         $this->subquery->end_subquery('nama_role');
+        
         $this->db->from('pengguna');
         
         return $this->db->get();
@@ -55,10 +67,22 @@ class Users_model extends CI_Model {
 
     public function select_by_field($field, $keyword) {
         $this->db->select('*');
+        
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nama')->from('pegawai');
+        $sub->where('pengguna.id_pegawai = pegawai.id');
+        $this->subquery->end_subquery('nama');
+        
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nip')->from('pegawai');
+        $sub->where('pengguna.id_pegawai = pegawai.id');
+        $this->subquery->end_subquery('nip');
+        
         $sub = $this->subquery->start_subquery('select');
         $sub->select('nama_role')->from('role');
         $sub->where('pengguna.id_jenis_pengguna = role.id_role');
         $this->subquery->end_subquery('nama_role');
+        
         $this->db->from('pengguna');
         $this->db->where(array($field => $keyword));
         return $this->db->get();
@@ -67,8 +91,7 @@ class Users_model extends CI_Model {
     public function add($data) {
         $data = array(
             'id_jenis_pengguna' => $data['id_jenis_pengguna'],
-            'nama' => $data['nama'],
-            'nip' => $data['nip'],
+            'id_pegawai' => $data['id_pegawai'],
             'alamat' => $data['alamat'],
             'email' => $data['email'],
             'username' => $data['username'],
@@ -81,8 +104,7 @@ class Users_model extends CI_Model {
     public function edit($id, $data) {
         $data = array(
             'id_jenis_pengguna' => $data['id_jenis_pengguna'],
-            'nama' => $data['nama'],
-            'nip' => $data['nip'],
+            'id_pegawai' => $data['id_pegawai'],
             'alamat' => $data['alamat'],
             'email' => $data['email'],
             'username' => $data['username'],

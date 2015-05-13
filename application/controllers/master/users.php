@@ -15,6 +15,7 @@ class Users extends CI_Controller {
         parent::__construct();
         $this->load->model('master/users_model');
         $this->load->model('master/role_model');
+        $this->load->model('master/pegawai_model');
         $this->is_logged_in();
     }
 
@@ -36,6 +37,7 @@ class Users extends CI_Controller {
         $data['title'] = "e-satker | User";
         $data['page'] = 'admin/master/users/add';
         $data['SIList_role'] = $this->role_model->select_all()->result();
+        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -44,14 +46,14 @@ class Users extends CI_Controller {
         $data['page'] = 'admin/master/users/edit';
         $data['row'] = $this->users_model->select_by_id($id)->row();
         $data['SIList_role'] = $this->role_model->select_all()->result();
+        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
     public function process($action, $id = null) {
 
         $data['id_jenis_pengguna'] = $this->input->post('inpIdJenisPengguna');
-        $data['nama'] = $this->input->post('inpNama');
-        $data['nip'] = $this->input->post('inpNip');
+        $data['id_pegawai'] = $this->input->post('inpIdPegawai');
         $data['alamat'] = $this->input->post('inpAlamat');
         $data['email'] = $this->input->post('inpEmail');
         $data['username'] = $this->input->post('inpUsername');

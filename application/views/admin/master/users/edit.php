@@ -19,16 +19,17 @@
                     </select>
                 </div>
             </div>
-            <div class="control-group">
-                <label class="control-label" for="inpNama">Nama</label>
+             <div class="control-group">
+                <label class="control-label" for="inpIdPegawai">Nama Pegawai</label>
                 <div class="controls">
-                    <input type="text" id="inpNama" name="inpNama" value="<?php echo $row->nama ?>">
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="inpNip">NIP</label>
-                <div class="controls">
-                    <input type="text" id="inpNip" name="inpNip" value="<?php echo $row->nip ?>">
+                    <select class="input-xlarge" name="inpIdPegawai">
+                        <option>Nama  Pegawai</option>
+                        <?php
+                        foreach ($SIList_pegawai as $row_2) {
+                            echo "<option value=\"" . $row_2->id . "\"".set_select('inpIdPegawai', $row_2->id, $row_2->id == $row->id_pegawai).">" . $row_2->nama . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="control-group">

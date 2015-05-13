@@ -54,7 +54,7 @@
                 </table>
             </div>
             <div class="tab-pane" id="pbj">
-                <table id="example" class="table table-striped table-bordered">
+                <table id="example11" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th width="5%"> No</th>
