@@ -33,10 +33,10 @@ class Surat_perintah_tugas extends CI_Controller {
         if ($aksi != 'Cetak') {
 
             $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
+            $data['list_data_kendaraan'] = $this->detail_perjalanan_dinas_model->select_jenis_kendaraan_from_detail($id)->result();
             $data['SIList_unit'] = $this->detail_perjalanan_dinas_model->select_unit_from_detail($id)->result();
 
             if (!empty($id_unit)) {
-
                 $data['data_unit'] = $this->unit_model->select_by_id($id_unit)->row();
                 $param = array(
                     'id_unit' => $id_unit,

@@ -81,7 +81,18 @@
         </tr>
         <tr>
             <td valign="top">Kendaraan</td>
-            <td>: Pesawat</td>
+            <td>:&nbsp;
+                <?php 
+                $kendaraan = '';
+                foreach ($list_data_kendaraan as $data_ken) {
+                    if($kendaraan != $data_ken->jenis_kendaraan){
+                        echo $data_ken->jenis_kendaraan.',';
+                    }
+                    $kendaraan = $data_ken->jenis_kendaraan;
+                }
+                        
+                ?>
+            </td>
         </tr>
         <tr>
             <td valign="top">Pembebanan Biaya</td>

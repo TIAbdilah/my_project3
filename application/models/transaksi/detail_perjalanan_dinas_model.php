@@ -128,5 +128,13 @@ class Detail_perjalanan_dinas_model extends CI_Model {
                 . "group by d.id_pegawai, d.kota_tujuan";
         return $this->db->query($sql);
     }
+    
+    public function select_jenis_kendaraan_from_detail($id_header) {
+        $sql = "select distinct jenis_kendaraan, id_header "
+                . "from detail_perjalanan_dinas "
+                . "where jenis_biaya = 'transport_utama' "
+                . "and id_header = ".$id_header;
+        return $this->db->query($sql);
+    }
 
 }
