@@ -16,7 +16,10 @@ class Rekap_perdin_pegawai_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        $sql = "SELECT dp.id_header, dp.id_pegawai, dp.tgl_berangkat, dp.tgl_pulang, "
+        $sql = "SELECT dp.id_header, "
+                . "dp.id_pegawai, "
+                . "(select p.nama from pegawai p where p.id = dp.id_pegawai) as nama_pegawai, "                
+                . "dp.tgl_berangkat, dp.tgl_pulang, "
                 . "month(dp.tgl_berangkat) as bln_berangkat, "
                 . "year(dp.tgl_berangkat) as thn_berangkat, "
                 . "month(dp.tgl_pulang) as bln_pulang, "

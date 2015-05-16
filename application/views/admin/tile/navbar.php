@@ -73,7 +73,7 @@
                 </li>
                 <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-list-alt"></i><span>Laporan</span> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<?php echo base_url() ?>">Perjalanan Dinas</a></li>
+                        <li><a href="<?php echo site_url('report/rekap_perdin_pegawai/view') ?>">Rekap Perjalanan Dinas</a></li>
                         <li><a href="<?php echo base_url() ?>">Barang dan Jasa</a></li>
                     </ul>
                 </li>

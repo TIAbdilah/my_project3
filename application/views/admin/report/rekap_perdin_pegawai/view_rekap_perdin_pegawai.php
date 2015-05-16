@@ -16,8 +16,16 @@
                 ?>
             </select>&nbsp;
             <button type="submit" class="btn">Tampilkan</button>            
-        </form>
-        
+        </form>        
+        <?php 
+            if(!empty($month) && !empty($year)){
+        ?>
+        <a href="<?php echo site_url('report/rekap_perdin_pegawai/print_report/' . $month . '/' . $year) ?>">
+            <button class="btn">Cetak</button>
+        </a>
+        <?php
+            }
+        ?>
     </div>
     <div class="widget-content" style="padding: 10px;"><br>
         <?php $this->load->view($report_page) ?>

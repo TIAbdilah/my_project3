@@ -46,16 +46,18 @@ class Rekap_perdin_pegawai extends CI_Controller {
         }
     }
 
-    public function print_report($id_header, $id_pegawai) {
+    public function print_report($month, $year) {
         $this->load->helper('to_pdf');
-        $data['data_header'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
+        $data['array_custom'] = new Array_custom();
+        $data['month'] = $month;
+        $data['year'] = $year;
         $param = array(
-            'id_header' => $id_header,
-            'id_pegawai' => $id_pegawai
+            'bulan' => $month,
+            'tahun' => $year
         );
-        $data['data_panjar'] = $this->panjar_model->select_by_field($param)->row();
-        $html = $this->load->view('admin/report/panjar/report_uang_muka_kerja', $data, TRUE);
-        pdf_create($html, "potrait", "Uang Muka Perjalnan " . date('mdy'), true);
+        $data['list_data'] = $this->rekap_perdin_pegawai_model->select_by_field($param)->result();
+        $html = $this->load->view('admin/report/rekap_perdin_pegawai/report_rekap_perdin_pegawai', $data, TRUE);
+        pdf_create($html, "landscape", "Rekap Perjalanan Dinas " . date('mdy'), true);
     }
 
     public function is_logged_in() {

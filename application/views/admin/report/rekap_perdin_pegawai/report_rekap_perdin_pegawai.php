@@ -13,10 +13,9 @@ function add_zero($x) {
         Bulan:
         <?php
         $bl = add_zero($month);
-        echo $array_custom->bulan[$bl] . " " . $year
+        echo "<strong>".$array_custom->bulan[$bl] . " " . $year."</strong>"
         ?><br>
         Bid. Program dan Kerjasama<br>
-        SubBid. Program dan Evaluasi<br><br>
 
         <table style="width: 100%;border-collapse: collapse" border="1" >
             <tr>
@@ -42,7 +41,7 @@ function add_zero($x) {
                 ?>
                 <tr>
                     <td><?php echo $no?></td>
-                    <td><?php echo $data->id_pegawai.' '.$data->id_header?></td>                    
+                    <td><?php echo $data->nama_pegawai?></td>                    
                     <?php
                     $t_ber = strtotime($data->tgl_berangkat);
                     $t_pul = strtotime($data->tgl_pulang);
@@ -50,12 +49,14 @@ function add_zero($x) {
                         $tgl = strtotime($year . "-" . $month . "-" . $i);
                         $day = date('D', $tgl);
                         if ($day == 'Sun') {
-                            $color = 'red';
+                            $color = '#003322';
+                        } else if ($day == 'Sat') {
+                            $color = '#ABD0BC';
                         } else {
                             $color = 'white';
                         }
                         if ($tgl <= $t_pul && $tgl >= $t_ber) {
-                            $color = 'blue';
+                            $color = '#00D856';
                         }
                         echo "<td  style=\"background-color:" . $color . "\"></td>";
                     }
