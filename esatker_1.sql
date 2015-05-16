@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 13, 2015 at 09:32 AM
+-- Generation Time: May 16, 2015 at 12:11 PM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -1708,20 +1708,7 @@ INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_ber
 (73, 10, 8, '2015-05-04', '2015-05-06', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
 (74, 10, 8, '2015-05-04', '2015-05-06', 'riil', NULL, 'Banda Aceh', NULL, NULL, 230000),
 (121, 10, 10, '2015-05-04', '2015-05-06', 'penginapan', NULL, 'Denpasar', 'Hotel', NULL, 1808000),
-(119, 10, 9, '2015-05-06', '2015-05-07', 'transport_utama', 'Banda Aceh', 'Bandung', NULL, 'Pesawat', 175000),
 (120, 10, 10, '2015-05-04', '2015-05-06', 'harian', NULL, 'Denpasar', NULL, NULL, 1440000),
-(118, 10, 9, '2015-05-06', '2015-05-07', 'transport_utama', 'Denpasar', 'Banda Aceh', NULL, 'Pesawat', 300000),
-(117, 10, 9, '2015-05-06', '2015-05-07', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 410000),
-(115, 10, 9, '2015-05-05', '2015-05-06', 'transport_utama', 'Banda Aceh', 'Denpasar', NULL, 'Pesawat', 300000),
-(116, 10, 9, '2015-05-06', '2015-05-07', 'harian', NULL, 'Banda Aceh', NULL, NULL, 720000),
-(113, 10, 9, '2015-05-05', '2015-05-06', 'harian', NULL, 'Denpasar', NULL, NULL, 960000),
-(114, 10, 9, '2015-05-05', '2015-05-06', 'penginapan', NULL, 'Denpasar', 'Hotel', NULL, 904000),
-(112, 10, 9, '2015-05-04', '2015-05-05', 'riil', NULL, 'Banda Aceh', NULL, NULL, 13000),
-(111, 10, 9, '2015-05-04', '2015-05-05', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
-(110, 10, 9, '2015-05-04', '2015-05-05', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 12000),
-(109, 10, 9, '2015-05-04', '2015-05-05', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
-(108, 10, 9, '2015-05-04', '2015-05-05', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 410000),
-(107, 10, 9, '2015-05-04', '2015-05-05', 'harian', NULL, 'Banda Aceh', NULL, NULL, 720000),
 (122, 10, 10, '2015-05-04', '2015-05-06', 'transport_utama', 'Bandung', 'Denpasar', NULL, 'Pesawat', 300000),
 (123, 10, 10, '2015-05-04', '2015-05-06', 'transport_utama', 'Denpasar', 'Bandung', NULL, 'Pesawat', 300000),
 (124, 10, 10, '2015-05-04', '2015-05-06', 'transport_pendukung', NULL, 'Denpasar', NULL, NULL, 10000),
@@ -2765,6 +2752,7 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
   `maksud_kegiatan` text,
   `tanggal_pengajuan` date DEFAULT NULL,
   `status_approval` int(2) NOT NULL,
+  `status_penolakan` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
@@ -2772,11 +2760,11 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
 -- Dumping data for table `pengajuan_barang`
 --
 
-INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`) VALUES
-(1, '-', 2, 'transaksi pengajuan barang', '0000-00-00', 0),
-(2, '-', 2, 'transaksi', '2015-05-05', 0),
-(3, '-', 2, 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0),
-(4, '-', 378, 'pengadaan barang untuk pers', '2015-05-20', 1);
+INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`) VALUES
+(1, '-', 2, 'transaksi pengajuan barang', '0000-00-00', 0, NULL),
+(2, '-', 2, 'transaksi', '2015-05-05', 0, NULL),
+(3, '-', 2, 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0, NULL),
+(4, '-', 378, 'pengadaan barang untuk pers', '2015-05-20', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -3021,6 +3009,24 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 -- Dumping data for table `user_role`
 --
 
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `view_realisasi_anggaran`
+--
+CREATE TABLE IF NOT EXISTS `view_realisasi_anggaran` (
+`id_anggaran` varbinary(25)
+,`biaya` double
+);
+-- --------------------------------------------------------
+
+--
+-- Structure for view `view_realisasi_anggaran`
+--
+DROP TABLE IF EXISTS `view_realisasi_anggaran`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_realisasi_anggaran` AS select (select `pb`.`id_anggaran` AS `id_anggaran` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) AS `id_anggaran`,sum(((select `b`.`pagu_harga` AS `pagu_harga` from `barang` `b` where (`b`.`id` = `db`.`id_barang`)) * `db`.`jumlah`)) AS `biaya` from `detail_pengajuan_barang` `db` group by (select `pb`.`id_anggaran` AS `id_anggaran` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) union select (select `pd`.`id_anggaran` AS `id_anggaran` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`)) AS `id_anggaran`,sum(`dpd`.`biaya`) AS `sum(dpd.biaya)` from `detail_perjalanan_dinas` `dpd` group by (select `pd`.`id_anggaran` AS `id_anggaran` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`));
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

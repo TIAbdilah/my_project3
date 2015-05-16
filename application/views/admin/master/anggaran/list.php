@@ -13,10 +13,11 @@
                 <tr>
                     <th width="5%"> No </th>
                     <th> Kegiatan</th>
-                    <th> Kode Kegiatan</th>
                     <th> Kode Akun</th>
                     <th> Akun</th>
                     <th> Pagu</th>
+                    <th> Realisasi</th>
+                    <th> Sisa</th>
                     <th> Tahun</th>
                     <th class="td-actions"> </th>
                 </tr>
@@ -27,11 +28,12 @@
                 foreach ($list_data as $row) {
                     echo "<tr>"
                     . "<td>" . $no . "</td>"
-                    . "<td>" . $row->nama_kegiatan . " </td>"
-                    . "<td>" . $row->kode_kegiatan . " </td>"
+                    . "<td>" . $row->kode_kegiatan ." - ".$row->nama_kegiatan. " </td>"
                     . "<td>" . $row->kode_akun . "</td>"
                     . "<td>" . $row->jenis_belanja . "</td>"
                     . "<td>" . number_format($row->pagu) . "</td>"
+                    . "<td>" . number_format($row->biaya) . "</td>"
+                    . "<td>" . number_format($row->sisa) . "</td>"
                     . "<td>" . $row->tahun_anggaran . "</td>"
                     . "<td class=\"td-actions\">"
                     . "<a title=\"Edit\" href=\"" . site_url('master/anggaran/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
