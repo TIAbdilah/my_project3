@@ -622,7 +622,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `merek_barang` varchar(25) DEFAULT NULL,
   `spesifikasi` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `barang`
@@ -630,13 +630,60 @@ CREATE TABLE IF NOT EXISTS `barang` (
 
 INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `satuan`, `pagu_harga`, `kode_jenis_barang`, `tipe_barang`, `merek_barang`, `spesifikasi`) VALUES
 (1, 'BB001', 'Semen', 'pcs', '50000', 'Bahan Bangunan', '-', 'Tiga Roda', '-'),
-(2, 'BB002', 'Besi Beton', 'pcs', '20000', 'Bahan Bangunan', '-', '-', '-'),
-(3, 'BB003', 'Paku ', 'kg', '10000', 'Bahan Bangunan', '-', '-', '-'),
-(4, 'BB004', 'Batako', 'pcs', '500', 'Bahan Bangunan', '-', '-', '-'),
-(5, 'BB005', 'Asbes', 'pcs', '30000', 'Bahan Bangunan', '-', '-', '-'),
-(6, 'ATK001', 'Kertas HVS', 'rim', '300000', 'Fotocopy dan Penjilidan', '-', 'E-Paper', '-'),
-(7, 'ATK0012', 'Laptop', 'pcs', '5000000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'MP2342', 'Asus', '-'),
-(8, 'ATK0013', 'Kamera', 'pcs', '7000000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'NIKON', '-');
+(2, 'AT001', 'Kertas HVS', 'rim', '42000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'BOLA DUNIA', 'A4, 80gr'),
+(3, 'AT002', 'Kertas HVS', 'rim', '39000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'BOLA DUNIA', 'A4, 70gr'),
+(4, 'AT003', 'Kertas HVS', 'rim', '42000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'BOLA DUNIA', 'F4, 80gr'),
+(5, 'AT004', 'Kertas Concorde', 'set', '6000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', '-', '-', 'A4, 160gr, isi 10'),
+(6, 'AT005', 'Glossy Photo Paper', 'pak', '29000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, '-', 'A4, isi 20'),
+(7, 'AT006', 'Ordner Plastik A4 + Mica 8.5 cm', 'buah', '57000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'BAMBI ', 'A4'),
+(8, 'AT007', 'BINDEX Odner Karton Folio 5 cm (727)', 'lusin', '140000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(9, 'AT008', 'BANTEX Box File Tipe 4011', 'buah', '20000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(10, 'AT009', 'BANTEX Box File Tipe 1034', 'buah', '13000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(11, 'AT010', 'Map President F4', 'buah', '8000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(12, 'AT011', 'DAICHI Map Bening L9001 (A4) Putih', 'lusin', '15000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(13, 'AT012', 'BAMBI Clear Holder F4 Isi 20', 'buah', '14000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(14, 'AT013', 'Binder Clips', 'kotak', '12000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'KENKO', 'No. 260'),
+(15, 'AT014', 'Binder Clips', 'kotak', '8500', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'KENKO', 'No. 200'),
+(16, 'AT015', 'Binder Clips', 'kotak', '6000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'KENKO', 'No. 155'),
+(17, 'AT016', 'Binder Clips', 'kotak', '5000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'KENKO', 'No. 111'),
+(18, 'AT017', 'Binder Clips', 'kotak', '2700', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'KENKO', 'No. 107'),
+(19, 'AT018', 'Whiteboard Spidol', 'buah', '7000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'SNOWMAN ', 'BG-12'),
+(20, 'AT019', 'Stapler', 'buah', '60000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'MAX', '50'),
+(21, 'AT020', 'Stapler', 'buah', '12500', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'MAX', '10'),
+(22, 'AT021', 'Isi Stapler', 'pak', '70000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'MAX', '50'),
+(23, 'AT022', 'Isi Stapler', 'pak', '35000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'MAX', '10'),
+(24, 'AT023', 'Stapler Remover', 'buah', '25000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'MAX', NULL),
+(25, 'AT024', 'POST IT Mark & Note', 'set', '8000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(26, 'AT025', 'POST IT 654 Warna', 'set', '48000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(27, 'AT026', 'SINAR DUNIA Amplop Putih No. 90', 'pak', '15000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(28, 'AT027', 'SINAR DUNIA Amplop Putih No. 104', 'pak', '10000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(29, 'AT028', 'PILOT Balliner Ballpoint', 'lusin', '140000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(30, 'AT029', 'FASTER Ballpoint C6/606', 'lusin', '25000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(31, 'AT030', 'STEADLER Pensil 2B', 'lusin', '35000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(32, 'AT031', 'Penggaris Besi 40 cm', 'buah', '10000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(33, 'AT032', 'KENKO Rautan Meja Besar - Angel 5', 'buah', '50000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(34, 'AT033', 'KENKO Name Card Book 320', 'buah', '40000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(35, 'AT034', 'JOYKO Gunting 848', 'buah', '7500', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(36, 'AT035', 'Dispenser Tape Sedang M700', 'buah', '12500', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(37, 'AT036', 'KENKO Cutter L-500', 'pak', '14000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(38, 'AT037', 'KENKO Cutter A-300', 'pak', '10000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(39, 'AT038', 'KENKO Isi Cutter Besar L-500', 'tube', '4500', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(40, 'AT039', 'KENKO Isi Cutter Kecil A-300', 'tube', '2400', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(41, 'AT040', 'Amplop Coklat A4', 'pak', '27000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(42, 'AT041', 'Amplop Coklat Folio', 'pak', '31000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(43, 'AT042', 'Pensil Mekanik Pentel 0.5', 'buah', '10000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(44, 'AT043', 'isi Pensil Mekanik 0.5', 'buah', '2500', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(45, 'AT044', 'BOSS Stabillo ', 'buah', '9000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(46, 'AT045', 'Black Tonner', 'buah', '850000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'HP', 'P1505 (85A)'),
+(47, 'AT046', 'Black Tonner', 'buah', '850000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'HP', 'M1132 MFP (85A)'),
+(48, 'AT047', 'Tinta Printer', 'buah', '100000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'Epson', 'Black - L350'),
+(49, 'AT048', 'Tinta Printer', 'buah', '100000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'Epson', 'Cyan - L351'),
+(50, 'AT049', 'Tinta Printer', 'buah', '100000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'Epson', 'Magenta - L352'),
+(51, 'AT050', 'Tinta Printer', 'buah', '100000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'Epson', 'Yellow - L353'),
+(52, 'AT051', 'USB Flashdisk', 'buah', '150000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'Kingston', '16 GB'),
+(53, 'AT052', 'DVD-R', 'tabung', '200000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, 'isi 50'),
+(54, 'AT053', 'CD-RW', 'tabung', '215000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'GT-Pro', 'isi 50'),
+(55, 'AT054', 'Casing CD dan DVD Plastik', 'buah', '3000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
