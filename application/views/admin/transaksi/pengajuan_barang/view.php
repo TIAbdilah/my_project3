@@ -37,6 +37,7 @@
         <form action="<?php echo site_url('transaksi/pengajuan_barang/update_status/' . $data->id) ?>" method="POST">            
             <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
             <input type="hidden" name="inpStatus" value="<?php echo $data->status_approval ?>" />
+            <input type="hidden" name="inTotalDetailBarang" id="inTotalDetailBarang" />
             <?php if ($this->session->userdata('role') != 'operator' && $data->status_approval != 5) { ?>
                                 <!--<strong>Verifikasi</strong><br>-->
 

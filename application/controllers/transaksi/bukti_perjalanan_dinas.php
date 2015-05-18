@@ -87,17 +87,32 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['kota_tujuan'] = $y;
         $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $y)->row();
         $data['data_bukti'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_bukti($id_header, $id_pegawai, $y)->row();
-        $this->load->view('admin/index', $data);
+        if ($this->ceknumrows($id_header, $id_pegawai, $y) > 0) {
+            $this->load->view('admin/index', $data);
+        } else {
+            $this->session->set_flashdata('bukti', '<div class="alert alert-danger" role="alert">Bukti untuk kota dan pegawai ini belum diisi.</div>');
+            redirect($_SERVER['HTTP_REFERER'], $data);
+        }
+    }
+
+    public function ceknumrows($id_header, $id_pegawai, $kota_tujuan) {
+
+        return $this->bukti_perjalanan_dinas_model->ceknumrows($id_header, $id_pegawai, $kota_tujuan);
     }
 
     public function process($action, $id = null) {
 
         $jml_tujuan = $this->input->post('inJmlTujuan');
+        $id_pegawai = $this->input->post('inIdPegawai');
         $id_header = $this->input->post('inIdHeader');
         $kota_tujuan = $this->input->post('inKotaTujuan');
-//        if ($jml_tujuan == 1) {
         $data['id_header'] = $this->input->post('inIdHeader');
         $data['id_pegawai'] = $this->input->post('inIdPegawai');
+
+
+        if (($this->bukti_perjalanan_dinas_model->ceknumrows($id_header, $id_pegawai, $kota_tujuan) > 0)) {
+            $this->bukti_perjalanan_dinas_model->delete($id_header, $id_pegawai, $kota_tujuan);
+        }
 
         //insert bukti akomodasi
         $data['jenis_biaya'] = 'harian';
@@ -134,12 +149,12 @@ class Bukti_perjalanan_dinas extends CI_Controller {
 
         //insert biaya representatif
         $data['jenis_biaya'] = 'representatif';
-        $data['biaya'] = $this->input->post('inSubtotalRepresentatif');
-        $data['nomor_bukti'] = $this->input->post('inNomorBuktiRepresentatif');
-        $data['jumlah_bukti'] = $this->input->post('inJumlahRepresentatif');
+        $data['biaya'] = $this->input->post('inSubtotalRefresentatif');
+        $data['nomor_bukti'] = $this->input->post('inNomorBuktiRefresentatif');
+        $data['jumlah_bukti'] = $this->input->post('inJumlahRefresentatif');
         $data['kota_tujuan'] = $kota_tujuan;
         $this->bukti_perjalanan_dinas_model->add($data);
-        
+
         //insert biaya sewa
         $data['jenis_biaya'] = 'sewa';
         $data['biaya'] = $this->input->post('inSubtotalSewa');
@@ -226,7 +241,6 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['jumlah_bukti'] = $this->input->post('inJumlahPengeluaranRiil10');
         $data['kota_tujuan'] = $kota_tujuan;
         $this->bukti_perjalanan_dinas_model->add($data);
-//        }
 
         redirect('transaksi/perjalanan_dinas/view/' . $id_header . '/' . $jml_tujuan);
     }

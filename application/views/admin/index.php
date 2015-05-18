@@ -79,6 +79,13 @@
         <script src="<?php echo base_url() . '/assets/' ?>js/fnFakeRowspan.js"></script>
 
         <script type="text/javascript" language="javascript" class="init">
+            var noCommas = $('#outTotalDetail').text().replace(/,/g, ''),
+            asANumber = +noCommas;
+            $('#inTotalDetail').val(asANumber);
+            var noCommas = $('#outTotalDetailBarang').text().replace(/,/g, ''),
+            asANumber = +noCommas;
+            $('#inTotalDetailBarang').val(asANumber);
+            
             function addCommas(nStr)
             {
                 nStr += '';
@@ -91,6 +98,12 @@
                 }
                 return x1 + x2;
             }
+//            $(function() {
+//                var $radios = $('input:radio[name=inpJumlahTujuan]');
+//                if($radios.is(':checked') === true) {
+//                    $radios.filter('[value=2]').prop('checked', true);
+//                }
+//            });
             $(function() {
                 var $divs1 = $('#divs1 > div');
                 var $divs2 = $('#divs2 > div');
@@ -107,6 +120,32 @@
                     $divs3.eq($('input[type=radio]').index(this)).show();
                 });
             });
+//            var button1 = document.getElementById("optionsRadios1");
+//            var button2 = document.getElementById("optionsRadios2");
+//            var button3 = document.getElementById("optionsRadios3");
+//            if (button1.checked){
+//                $divs1.hide();
+//                    $divs2.hide();
+//                    $divs3.hide();
+//                    $divs1.eq($('input[type=radio]').index(1)).show();
+//                    $divs2.eq($('input[type=radio]').index(this)).show();
+//                    $divs3.eq($('input[type=radio]').index(this)).show();
+//            }else if (button2.checked) {
+//                var $divs1 = $('#divs1 > div');
+//                var $divs2 = $('#divs2 > div');
+//                var $divs3 = $('#divs3 > div');
+//
+//                $divs1.show();
+//                    $divs2.show();
+//                    $divs3.show();
+//alert($divs1;
+//            }else if (button3.checked) {
+//                alert("radio2 selected");
+//            }
+            //code for total di perjadin
+           
+            
+            
             $(function() {
                 $('#myTab a:first').tab('show');
                 $('#myTab a').click(function(e) {

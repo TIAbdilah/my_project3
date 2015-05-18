@@ -31,6 +31,16 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
         return $this->db->get();
     }
 
+    public function ceknumrows($id_header, $id_pegawai, $kota_tujuan) {
+        $sql = "select * "
+                . "from bukti_perjalanan_dinas "
+                . "where id_header = " . $id_header . " "
+                . "and id_pegawai = " . $id_pegawai . " "
+                . "and kota_tujuan = '" . $kota_tujuan . "' ";
+        $query = $this->db->query($sql);
+        return $query->num_rows();
+    }
+    
     public function select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan) {
         $sql = "select "
                 . "(select p1.nama from pegawai p1 where p1.id = d.id_pegawai) as nama_pegawai "
@@ -133,8 +143,15 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
         $this->db->update('detail_perjalanan_dinas', $data, "id = " . $id);
     }
 
-    public function delete($id) {
-        $this->db->delete('biaya_tiket', array('id' => $id));
+
+    
+    public function delete($id_header, $id_pegawai, $kota_tujuan) {
+        $sql = "delete "
+                . "from bukti_perjalanan_dinas "
+                . "where id_header = " . $id_header . " "
+                . "and id_pegawai = " . $id_pegawai . " "
+                . "and kota_tujuan = '" . $kota_tujuan . "' ";
+        return  $this->db->query($sql);
     }
 
     public function format_date_to_sql($str) {

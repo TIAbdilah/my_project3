@@ -7,6 +7,11 @@ function format_date($string) {
 
 <!-- widget-header -->
 <div class="widget widget-table action-table">
+    <?php
+                if ($this->session->flashdata('bukti') != ''):
+                    echo $this->session->flashdata('bukti');
+                endif;
+                ?>
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>View Data </h3>
     </div>           
@@ -19,6 +24,7 @@ function format_date($string) {
                     <form action="<?php echo site_url('transaksi/perjalanan_dinas/update_status/' . $data->id) ?>" method="POST">            
                         <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
                         <input type="hidden" name="inpStatus" value="<?php echo $data->status ?>" />
+                        <input type="hidden" name="inTotalDetail" id="inTotalDetail" />
                         <?php if ($this->session->userdata('role') != 'operator' && $data->status != 5) { ?>
                             <strong>Verifikasi</strong><br>
 

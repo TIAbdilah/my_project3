@@ -17,7 +17,7 @@ class Detail_pengajuan_barang_model extends CI_Model {
 
     public function select_all() {
         $query = 'select pd.*, '
-                 . '(select k1.nama_barang from barang k1 where k1.id = pd.id_barang) as nama_barang, '
+                . '(select k1.nama_barang from barang k1 where k1.id = pd.id_barang) as nama_barang, '
                 . '(select k1.pagu_harga from barang k1 where k1.id = pd.id_barang) as pagu_harga '
                 . 'from detail_pengajuan_barang pd ';
 
@@ -29,9 +29,10 @@ class Detail_pengajuan_barang_model extends CI_Model {
 //    }
 
     public function select_by_id($id) {
-       $query = 'select pd.*, '
-                 . '(select k1.nama_barang from barang k1 where k1.id = pd.id_barang) as nama_barang, '
-                . '(select k1.pagu_harga from barang k1 where k1.id = pd.id_barang) as pagu_harga '
+        $query = 'select pd.*, '
+                . '(select k1.nama_barang from barang k1 where k1.id = pd.id_barang) as nama_barang, '
+                . '(select k1.pagu_harga from barang k1 where k1.id = pd.id_barang) as pagu_harga, '
+                . '(select k1.satuan from barang k1 where k1.id = pd.id_barang) as satuan '
                 . 'from detail_pengajuan_barang pd '
                 . 'where pd.id_pengajuan_barang = ' . $id;
         return $this->db->query($query);

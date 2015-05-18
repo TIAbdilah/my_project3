@@ -18,6 +18,7 @@
                     <th width="6%">Harga</th>
                     <th width="6%">Quantity</th>
                     <th width="6%">Total</th>
+                    <!--<th width="6%">&nbsp;</th>-->
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,10 @@
                     . "<td>" . number_format($row->pagu_harga) . "</td>"
                     . "<td>" . number_format($row->jumlah) . "</td>"
                     . "<td>" . number_format($subtotal) . "</td>"
+//                    . "<td class=\"td-actions\">"
+//                    . "<a title=\"Edit\" href=\"" . site_url('transaksi/detail_pengajuan_barang/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
+//                    . "<a title=\"Delete\" href=\"" . site_url('transaksi/detail_pengajuan_barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>
+//                                                </td>"
                     . "</tr>";
                     $no++;
                     $total = $total + $subtotal;
@@ -41,8 +46,8 @@
                 ?>
                 <tr>
                     <th colspan="5">Total</th>
-                    <th><?php echo number_format($total) ?></th>
-
+                    <th id="outTotalDetailBarang"><?php echo number_format($total) ?></th>
+                    <!--<th></th>-->
                 </tr>
             </tbody>
 

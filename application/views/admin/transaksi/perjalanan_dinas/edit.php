@@ -40,7 +40,7 @@
                         <input type="radio" name="inpJumlahTujuan" id="optionsRadios2" value="2" <?php echo set_radio('inpJumlahTujuan', 2, $data->jumlah_tujuan == 2)?>>2 Kota
                     </label>
                     <label class="radio inline">
-                        <input type="radio" name="inpJumlahTujuan" id="optionsRadios3" value="3" <?php echo set_radio('inpJumlahTujuan', 3, $data->jumlah_tujuan == 3)?>>3 Kota
+                        <input type="radio" name="inpJumlahTujuan"  id="optionsRadios3" value="3" <?php echo set_radio('inpJumlahTujuan', 3, $data->jumlah_tujuan == 3)?>>3 Kota
                     </label>
                 </div>
             </div>

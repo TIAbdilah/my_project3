@@ -69,7 +69,7 @@ class Pengajuan_barang extends CI_Controller {
         $param = array(
             'id_header' => $id
         );
-         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
+        $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['list_data'] = $this->detail_pengajuan_barang_model->select_by_id($id)->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
@@ -98,9 +98,9 @@ class Pengajuan_barang extends CI_Controller {
     }
 
     public function edit($id) {
-       $data['title'] = $this->title_page;
+        $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/pengajuan_barang/edit';
-        $data['data'] = $this->pengajuan_barang_model->select_by_id($id)->row();    
+        $data['data'] = $this->pengajuan_barang_model->select_by_id($id)->row();
         $data['anggaran'] = $this->anggaran_model->getDetailAnggaran2($data['data']->id)->row();
         $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
@@ -143,9 +143,10 @@ class Pengajuan_barang extends CI_Controller {
             $this->pengajuan_barang_model->update_status($id_header, $data);
             if ($this->session->userdata('role') == 'ppk') {
                 $this->counter = new Counter();
-                $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
+                $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y') . "-" . "BARANG";
                 $counter = $this->counter->generateId($pattern);
-                $data['nomor_pengajuan'] = $counter . "/Barang/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
+                $subcounter = substr($counter, 0,6);
+                $data['nomor_pengajuan'] = $subcounter . "/BARANG/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
                 $data['tanggal_approval'] = date('Y-m-d');
                 $this->pengajuan_barang_model->update_no_spt($id_header, $data);
                 $data['status_penolakan'] = 0;
@@ -175,7 +176,6 @@ class Pengajuan_barang extends CI_Controller {
             }
         }
     }
-
 
     //tambahan untuk ajax
     public function getDetailBarang() {
@@ -288,7 +288,7 @@ class Pengajuan_barang extends CI_Controller {
             echo $output;
         }
     }
-    
+
     public function populateBarang() {
         $param1 = $this->input->post('kode_jenis', TRUE);
 
@@ -307,7 +307,6 @@ class Pengajuan_barang extends CI_Controller {
         }
         echo json_encode($arr);
     }
-
 
     public function calculateTransport() {
         $param = $this->input->post('id', TRUE);

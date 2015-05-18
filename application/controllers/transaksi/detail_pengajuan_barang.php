@@ -86,11 +86,12 @@ class Detail_pengajuan_barang extends CI_Controller {
     }
 
     public function edit($id) {
-        $data['title'] = $this->title_page;
-        $data['page'] = 'admin/transaksi/perjalanan_dinas/edit';
-        $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
+       $data['title'] = $this->title_page;
+        $data['page'] = 'admin/transaksi/detail_pengajuan_barang/edit';
         $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
+        $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
+        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 

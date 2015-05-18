@@ -41,7 +41,7 @@
                     <?php } ?>
                     <?php if ($data->status == 5 and $this->session->userdata('role') == 'operator') { ?>
                         <th colspan="2" rowspan="2"  width="3%" class="td-actions">&nbsp;</th>
-                        <?php } ?>
+                    <?php } ?>
                 </tr>
                 <tr>
                     <th width="8%">Berangkat</th>
@@ -88,6 +88,7 @@
                         . "<a title=\"Delete\" href=\"" . site_url('transaksi/detail_perjalanan_dinas/delete/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
                         . "</td>";
                     } else if ($this->session->userdata('role') == 'operator' && $data->status == 5) {
+                        
                         echo "<td class=\"td-actions\">"
                         . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/add/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
                         . "<a title=\"View Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-edit\"> </i></a>"
@@ -109,8 +110,8 @@
                 ?>
                 <tr>
                     <th colspan="14">Total</th>
-                    <th><?php echo number_format($total) ?></th>
-                    <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
+                    <th id="outTotalDetail"><?php echo number_format($total) ?></th>
+                        <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
                         <th>&nbsp;</th>
                     <?php } ?>
                     <?php if ($data->status == 5 and $this->session->userdata('role') == 'operator') { ?>
