@@ -61,6 +61,7 @@ class Surat_perintah_tugas extends CI_Controller {
         $this->load->helper('to_pdf');
         if (!empty($id_unit)) {
             $data['data'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
+            $data['list_data_kendaraan'] = $this->detail_perjalanan_dinas_model->select_jenis_kendaraan_from_detail($id_header)->result();
             $data['data_unit'] = $this->unit_model->select_by_id($id_unit)->row();
             $param = array(
                 'id_unit' => $id_unit,

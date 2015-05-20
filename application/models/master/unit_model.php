@@ -21,6 +21,10 @@ class Unit_model extends CI_Model {
         $sub->select('nama')->from('pegawai');
         $sub->where('pegawai.id = unit.kepala');
         $this->subquery->end_subquery('nama_pegawai');
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nip')->from('pegawai');
+        $sub->where('pegawai.id = unit.kepala');
+        $this->subquery->end_subquery('nip_pegawai');
         $this->db->from('unit');
 
         return $this->db->get();
@@ -32,6 +36,10 @@ class Unit_model extends CI_Model {
         $sub->select('nama')->from('pegawai');
         $sub->where('pegawai.id = unit.kepala');
         $this->subquery->end_subquery('nama_pegawai');
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nip')->from('pegawai');
+        $sub->where('pegawai.id = unit.kepala');
+        $this->subquery->end_subquery('nip_pegawai');
         return $this->db->get_where('unit', array('id' => $id));
     }
 

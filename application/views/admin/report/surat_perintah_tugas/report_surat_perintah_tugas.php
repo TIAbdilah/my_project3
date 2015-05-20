@@ -34,8 +34,9 @@
     </ol> 
     <table style="width: 100%">
         <tr>
-            <td valign="top" width="35%">Tujuan Perjalanan Dinas ke</td>
-            <td>:&nbsp;
+            <td valign="top" width="30%">Tujuan Perjalanan Dinas ke</td>
+            <td valign="top" width="3%">:</td>
+            <td>
                     <?php
                     if ($data->jumlah_tujuan == 1) {
                         echo $data->nama_kota_tujuan_1;
@@ -49,11 +50,13 @@
         </tr>
         <tr>
             <td valign="top">Maksud Perjalanan Dinas</td>
-            <td valign="top">:&nbsp;<?php echo $data->maksud_perjalanan ?></td>
+            <td valign="top">:</td>
+            <td valign="top"><?php echo $data->maksud_perjalanan ?></td>
         </tr>
         <tr>
             <td valign="top">Tanggal Berangkat</td>
-            <td>:&nbsp;
+            <td valign="top">:</td>
+            <td>
                 <?php
                 if ($data->jumlah_tujuan == 1) {
                     echo $format_date->format_date_dmy($data->jadwal_berangkat_1);
@@ -67,7 +70,8 @@
         </tr>
         <tr>
             <td valign="top">Tanggal Kembali</td>
-            <td>:&nbsp;
+            <td valign="top">:</td>
+            <td>
                 <?php
                 if ($data->jumlah_tujuan == 1) {
                     echo $format_date->format_date_dmy($data->jadwal_pulang_1);
@@ -81,12 +85,17 @@
         </tr>
         <tr>
             <td valign="top">Kendaraan</td>
-            <td>:&nbsp;
+            <td valign="top">:</td>
+            <td>
                 <?php 
                 $kendaraan = '';
                 foreach ($list_data_kendaraan as $data_ken) {
                     if($kendaraan != $data_ken->jenis_kendaraan){
-                        echo $data_ken->jenis_kendaraan.',';
+                        if($kendaraan == ''){
+                            echo $data_ken->jenis_kendaraan;
+                        } else {
+                            echo ','.$data_ken->jenis_kendaraan;
+                        }
                     }
                     $kendaraan = $data_ken->jenis_kendaraan;
                 }
@@ -96,7 +105,8 @@
         </tr>
         <tr>
             <td valign="top">Pembebanan Biaya</td>
-            <td>: <?php echo $data->kode_akun."-".$data->jenis_belanja?></td>
+            <td valign="top">:</td>
+            <td><?php echo $data->kode_kegiatan.".".$data->kode_akun?></td>
         </tr>
     </table><br><br>
     <table style="width: 100%">
@@ -108,7 +118,8 @@
                 <br>
                 <br>
                 <br>
-                <?php echo $data_unit->nama_pegawai ?>
+        <u><?php echo $data_unit->nama_pegawai ?><br></u>
+                NIP:&nbsp;<?php echo $data_unit->nip_pegawai?>
             </td>
             <td align="center" width="50%">
                 Bandung, <?php echo $format_date->format_date_dfy($data->tanggal_approval)?><br>
