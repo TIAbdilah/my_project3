@@ -14,9 +14,9 @@
                     <th width="5%"> No</th>
                     <th width="15%"> No SPT</th>
                     <th width="20%"> Anggaran</th>
-                    <th width="15%"> Maksud</th>
+                    <th width="30%"> Maksud</th>
                     <th width="10%"> Status</th>
-                    <th width="30%" class="td-actions">&nbsp;</th>
+                    <th width="15%" class="td-actions">&nbsp;</th>
                 </tr>
             </thead>
             <tbody>

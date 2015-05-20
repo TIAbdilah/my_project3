@@ -16,20 +16,24 @@ class Rekap_perdin_pegawai_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        $sql = "SELECT dp.id_header, "
-                . "dp.id_pegawai, "
-                . "(select p.nama from pegawai p where p.id = dp.id_pegawai) as nama_pegawai, "                
-                . "dp.tgl_berangkat, dp.tgl_pulang, "
-                . "month(dp.tgl_berangkat) as bln_berangkat, "
-                . "year(dp.tgl_berangkat) as thn_berangkat, "
-                . "month(dp.tgl_pulang) as bln_pulang, "
-                . "year(dp.tgl_pulang) as thn_pulang "
+        $sql = "select s1.* "
+                . "from "
+                . "(SELECT dp.id_header "
+                . ",dp.id_pegawai  "
+                . ",(select p.nama from pegawai p where p.id = dp.id_pegawai) as nama_pegawai "
+                . ", (select pd1.jadwal_berangkat_1 from perjalanan_dinas pd1 where pd1.id = dp.id_header) as berangkat "
+                . ", (select pd2.jadwal_pulang_1 from perjalanan_dinas pd2 where pd2.id = dp.id_header) as pulang_1 "
+                . ", (select pd3.jadwal_pulang_2 from perjalanan_dinas pd3 where pd3.id = dp.id_header) as pulang_2 "
+                . ", (select pd4.jadwal_pulang_3 from perjalanan_dinas pd4 where pd4.id = dp.id_header) as pulang_3 "
                 . "FROM detail_perjalanan_dinas dp "
                 . "where dp.id_header in (select pd.id from perjalanan_dinas pd where pd.status = 5) "
-                . "and month(dp.tgl_berangkat) = " . $param['bulan'] . " or month(dp.tgl_pulang) = " . $param['bulan'] . " "
-                . "and year(dp.tgl_berangkat) = " . $param['tahun'] . " and year(dp.tgl_pulang) = " . $param['tahun'] . " "
                 . "group by id_header, id_pegawai "
-                . "order by id_header";
+                . "order by id_header "
+                . ") s1 "
+                . "where  month(s1.berangkat) =  ".$param['bulan']."  or month(s1.pulang_1) =  ".$param['bulan']." "
+                . "or month(s1.pulang_2) =  ".$param['bulan']." or month(s1.pulang_3) =  ".$param['bulan']." "
+                . "and year(s1.berangkat) =  ".$param['tahun']."  and year(s1.pulang_1) =  ".$param['tahun']." "
+                . "and year(s1.pulang_2) =  ".$param['tahun']."  and year(s1.pulang_3) =  ".$param['tahun']." ";
         return $this->db->query($sql);
     }
 

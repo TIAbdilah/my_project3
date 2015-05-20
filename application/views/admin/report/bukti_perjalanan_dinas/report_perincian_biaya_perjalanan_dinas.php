@@ -9,7 +9,7 @@
                     <table style="border-collapse: collapse" border="1">
                         <tr>
                             <td>1. Kode SATKER</td>
-                            <td>63232</td>
+                            <td>622319</td>
                         </tr>
                         <tr>
                             <td>2. Tahun Anggaran</td>
@@ -78,7 +78,7 @@
                 echo "<td>";
                 switch ($data->jenis_biaya) {
                     case 'harian':
-                        echo "Biaya akomodasi di kota " . $data->kota_tujuan;
+                        echo "Biaya uang harian di kota " . $data->kota_tujuan;
                         break;
                     case 'penginapan':
                         echo "Biaya penginapan di kota " . $data->kota_tujuan;
@@ -118,33 +118,34 @@
             <td>&nbsp;</td>
         </tr>
     </table>
-
-    <p>Terbilang : <strong><?php echo $curency->convertCurrencyToWords($total_biaya) ?></strong><br>
-
-    </p>
+    <p>Terbilang : <strong><?php echo $curency->convertCurrencyToWords($total_biaya) ?></strong></p>
+    <br>
     <table style="width: 100%">
         <tr>
-            <td align="center" width="50%"> <p>Bendahara Pengeluaran,<br>
-                </p>
-                <p>&nbsp;</p>
-                <p><br>
-                    Drajat Subuhri<br>
-                    NIP. 1996806122007011004<br>
-                    <br>
-                    <br>
-                </p></td>
-            <td align="center" width="50%"> Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?><br>
+            <td align="center" width="50%"> 
+                Bendahara Pengeluaran,<br>
+                <br>
+                <br>
+                <br>
+                <br>
+                Drajat Subuhri<br>
+                NIP. 1996806122007011004<br>
+            </td>
+            <td align="center" width="50%"> 
+                Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?><br>
                 Yang melakukan perjalanan,<br>
                 <br>
                 <br>
                 <br>
-                <br>
-                <?php echo $data_pegawai->nama ?></td>
+                <?php echo $data_pegawai->nama ?><br>
+                NIP.&nbsp;<?php echo $data_pegawai->nip ?><br>
+            </td>
         </tr>
     </table>
-
+    <br>
     <hr>
-    <center>PERHITUNGAN SPPD RAMPUNG</center>
+    <br>
+    <center><h3>PERHITUNGAN SPPD RAMPUNG</h3></center><br>
     <table style="width: 100%">
         <tr>
             <td valign="top" width="35%">Ditetapkan sejumlah</td>
@@ -154,8 +155,8 @@
             <td valign="top">Telah dibayar sebesar</td>
             <td valign="top">: Rp. 
                 <?php
-                if (!empty($data_panjar->jml_panjar)) {
-                    echo number_format($data_panjar->jml_panjar);
+                if (!empty($data_detail_panjar->jumlah)) {
+                    echo number_format($data_detail_panjar->jumlah);
                 } else {
                     echo '0';
                 }
@@ -165,8 +166,8 @@
         <tr>
             <td valign="top">Sisa kurang/lebih</td>
             <?php
-            if (!empty($data_panjar->jml_panjar)) {
-                $sisa = $total_biaya - $data_panjar->jml_panjar;
+            if (!empty($data_detail_panjar->jumlah)) {
+                $sisa = $total_biaya - $data_detail_panjar->jumlah;
             } else {
                 $sisa = $total_biaya;
             }

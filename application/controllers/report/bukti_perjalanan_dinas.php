@@ -22,7 +22,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
         $this->load->model('transaksi/bukti_perjalanan_dinas_model');
-        $this->load->model('transaksi/panjar_model');
+        $this->load->model('transaksi/detail_panjar_model');
         $this->load->model('master/pegawai_model');
         $this->is_logged_in();
     }
@@ -37,8 +37,8 @@ class Bukti_perjalanan_dinas extends CI_Controller {
             'id_header' => $id_header,
             'id_pegawai' => $id_pegawai
         );
-        $data['list_data_bukti'] = $this->bukti_perjalanan_dinas_model->select_by_field($param)->result();        
-        $data['data_panjar'] = $this->panjar_model->select_by_field($param)->row(); 
+        $data['list_data_bukti'] = $this->bukti_perjalanan_dinas_model->select_by_field($param)->result(); 
+        $data['data_detail_panjar'] = $this->detail_panjar_model->select_by_field($param)->row();
         $data['format_date'] = new Format_date();
         $data['curency'] = new Number_to_word_ind();
         $data['page'] = 'admin/report/bukti_perjalanan_dinas/view_perincian_biaya_perjalanan_dinas';

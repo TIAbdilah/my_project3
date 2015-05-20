@@ -5,7 +5,7 @@
     </div>
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;"><br>       
-        <a href="<?php echo site_url('report/panjar/print_report/'.$id_header."/".$id_pegawai) ?>">
+        <a href="<?php echo site_url('report/panjar/print_report/'.$id_panjar) ?>">
             <button class="btn">Cetak</button>
         </a>
     </div>

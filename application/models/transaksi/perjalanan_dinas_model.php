@@ -41,13 +41,14 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
-                . 'from perjalanan_dinas pd, '
-                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
-                . 'from anggaran a, kegiatan k, akun ak '
-                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
-                . 'where pd.id_anggaran = a1.id '
-                . 'and pd.status = '.$param['status'];
+        $query = "select pd.*, a1.nama_kegiatan, a1.jenis_belanja "
+                . "from perjalanan_dinas pd, "
+                . "(select a.id, k.nama_kegiatan, ak.jenis_belanja "
+                . "from anggaran a, kegiatan k, akun ak "
+                . "where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 "
+                . "where pd.id_anggaran = a1.id "
+                . "and pd.status = ".$param['status']." "
+                . "order by tanggal_approval";
         return $this->db->query($query);
     }
 

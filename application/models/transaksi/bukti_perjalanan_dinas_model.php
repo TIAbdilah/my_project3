@@ -27,7 +27,7 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('bukti_perjalanan_dinas');
         $this->db->where($param);
-        $this->db->order_by('kota_tujuan, jenis_biaya');
+        $this->db->order_by('jenis_biaya, kota_tujuan');
         return $this->db->get();
     }
 
@@ -142,8 +142,6 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
 
         $this->db->update('detail_perjalanan_dinas', $data, "id = " . $id);
     }
-
-
     
     public function delete($id_header, $id_pegawai, $kota_tujuan) {
         $sql = "delete "
@@ -152,10 +150,6 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
                 . "and id_pegawai = " . $id_pegawai . " "
                 . "and kota_tujuan = '" . $kota_tujuan . "' ";
         return  $this->db->query($sql);
-    }
-
-    public function format_date_to_sql($str) {
-        return substr($str, 6, 4) . '-' . substr($str, 3, 2) . '-' . substr($str, 0, 2);
     }
 
 }

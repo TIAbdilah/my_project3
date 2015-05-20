@@ -27,8 +27,8 @@
                     . "<td>" . $row->jenis_belanja . "</td>"
                     . "<td class=\"td-actions\">"
                     . "<a title=\"Edit\" href=\"" . site_url('master/akun/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
-                    . "<a title=\"Delete\" href=\"" . site_url('master/akun/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>
-                                                </td>"
+                    . "<a title=\"Delete\" href=\"" . site_url('master/akun/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
+                    . "</td>"
                     . "</tr>";
                     $no++;
                 }

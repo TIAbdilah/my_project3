@@ -12,54 +12,59 @@
     </center>
     <table style="width:100%">
         <tr>
-            <td width="21%">Sudah terima dari</td>
+            <td width="30%">Sudah terima dari</td>
             <td width="2%">:</td>
             <td width="77%">Kepala Satuan Kerja Pusat Penelitian dan Pengembangan Permukiman</td>
         </tr>
         <tr>
             <td>Banyaknya uang (rupiah)</td>
             <td>:</td>
-            <td><?php echo $curency->convertCurrencyToWords($data_panjar->jml_panjar)?></td>
+            <td><?php echo $curency->convertCurrencyToWords($data_panjar->jumlah) ?></td>
         </tr>
         <tr>
             <td>Untuk pembayaran</td>
             <td>:</td>
-            <td><?php echo $data_panjar->deskripsi_panjar?></td>
+            <td><?php echo $data_panjar->deskripsi_panjar ?></td>
         </tr>
     </table>
-    <p><u>Jumlah Rp.</u><?php echo number_format($data_panjar->jml_panjar)?></p>
+    <p><u>Jumlah Rp.</u><?php echo number_format($data_panjar->jumlah) ?></p>
 
 <table style="width: 100%">
     <tr>
         <td valign="top" align="center" width="30%">
-            <p>Mengetahui/menyetujui<br>
-                <strong>An. Kepala Satuan Kerja</strong><br>
-                Pejabat Pembuat Komitmen,</p>
-            <p>&nbsp;</p>
-            <p><br>
-                <strong><u>Iwan Suprijanto, ST, MT</u></strong><br>
-                NIP: 197109301998031001 </p>
+            Mengetahui/menyetujui<br>
+            <strong>An. Kepala Satuan Kerja</strong><br>
+            Pejabat Pembuat Komitmen,<br>
             <br>
             <br>
+            <br>
+            <strong><u>Iwan Suprijanto, ST, MT</u></strong><br>
+            NIP: 197109301998031001 
         </td>
         <td valign="top" align="center" width="30%">
-            <p>Setuju Bayar<br>
-                Bendahara Pengeluaran,<br>
-            </p>
-            <p>&nbsp;</p>
-            <p><strong><u>Drajat Subuhri</u></strong><br>
-                NIP. 1983200423042023201<br>
-                <br>
-            </p></td>
+            <br>
+            Setuju Bayar<br>
+            Bendahara Pengeluaran,<br>
+            <br>
+            <br>
+            <br>
+            <strong><u>Drajat Subuhri</u></strong><br>
+            NIP. 1983200423042023201<br>
+        </td>
         <td valign="top" align="center" width="30%">
-            <p>Bandung, <?php echo $format_date->format_date_dfy($data_header->tanggal_approval)?><br>
-                Yang menerima,</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p><strong><?php echo $data_panjar->nama_penerima?></strong></p></td>
+            <br>
+            Bandung, <?php echo $format_date->format_date_dfy($data_header->tanggal_approval) ?><br>
+            Yang menerima,<br>
+            <br>
+            <br>
+            <br>
+            <strong><?php echo $data_panjar->nama_penerima ?></strong><br>
+            NIP.&nbsp;<?php echo $data_panjar->nip_penerima?>
+        </td>
     </tr>
 </table>
-<p>CATATAN :<br>
+
+<p><br>CATATAN :<br>
 </p>
 <ol>
     <li>Uang muka/panjar ini harap dipertanggung jawabkan dengan Kwitansi dalam wktu 3 (tiga) hari kerja setelah uang muka dierima.</li>

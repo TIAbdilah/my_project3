@@ -9,7 +9,7 @@
                     <table style="border-collapse: collapse" border="1">
                         <tr>
                             <td>1. Kode SATKER</td>
-                            <td>63232</td>
+                            <td>622319</td>
                         </tr>
                         <tr>
                             <td>2. Tahun Anggaran</td>

@@ -23,31 +23,24 @@ class Panjar extends CI_Controller {
         $this->is_logged_in();
     }
 
-    public function view($id_header, $id_pegawai) {
-        $data['title'] = $this->title_page;
-        $data['data_header'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
-        $param = array(
-            'id_header' => $id_header,
-            'id_pegawai' => $id_pegawai
-        );
-        $data['data_panjar'] = $this->panjar_model->select_by_field($param)->row();      
+    public function view($id_panjar) {
+        $data['title'] = $this->title_page;        
+        $data['data_panjar'] = $this->panjar_model->select_by_field(array('id'=>$id_panjar))->row();        
+        $data['data_header'] = $this->perjalanan_dinas_model->select_by_id($data['data_panjar']->id_header)->row();     
         $data['curency'] = new Number_to_word_ind();
         $data['format_date'] = new Format_date();
-        $data['id_header'] = $id_header;
-        $data['id_pegawai'] = $id_pegawai;
+        $data['id_panjar'] = $id_panjar;
         $data['page'] = 'admin/report/panjar/view_uang_muka_kerja';
         $data['report_page'] = 'admin/report/panjar/report_uang_muka_kerja';
         $this->load->view('admin/index', $data);
     }
 
-    public function print_report($id_header, $id_pegawai) {
+    public function print_report($id_panjar) {
         $this->load->helper('to_pdf');
-        $data['data_header'] = $this->perjalanan_dinas_model->select_by_id($id_header)->row();
-        $param = array(
-            'id_header' => $id_header,
-            'id_pegawai' => $id_pegawai
-        );
-        $data['data_panjar'] = $this->panjar_model->select_by_field($param)->row();
+        $data['data_panjar'] = $this->panjar_model->select_by_field(array('id'=>$id_panjar))->row();        
+        $data['data_header'] = $this->perjalanan_dinas_model->select_by_id($data['data_panjar']->id_header)->row();     
+        $data['curency'] = new Number_to_word_ind();
+        $data['format_date'] = new Format_date();
         $html = $this->load->view('admin/report/panjar/report_uang_muka_kerja', $data, TRUE);
         pdf_create($html, "potrait", "Uang Muka Perjalnan ".date('mdy'), true);
     }

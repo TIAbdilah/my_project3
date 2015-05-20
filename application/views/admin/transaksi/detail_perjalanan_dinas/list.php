@@ -1,6 +1,6 @@
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>List Data Anggaran</h3>
+        <h3>List Detail Data Perjalanan Dinas</h3>
         <span class="pull-right" style="margin-right: 10px;">
             <?php if ($data->status == 0 and $this->session->userdata('role') == 'operator') { ?>
                 <a href="#addDetail" role="button" class="btn" data-toggle="modal" id="btnTambahPengajuan" name="btnTambahPengajuan">Tambah Pengajuan Perjalanan Dinas</a>

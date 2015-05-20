@@ -13,33 +13,30 @@
                 <tr>
                     <th width="5%"> No</th>
                     <th width="15%"> No SPT</th>
-                    <th width="40%"> Anggaran</th>
-                    <th width="15%"> Maksud</th>
-                    <th width="10%"> Status</th>
-                    <th width="10%" class="td-actions">&nbsp;</th>
+                    <th width="20%"> Penerima</th>
+                    <th width="30%"> Deskripsi</th>
+                    <th width="10%"> Jumlah Uang Muka</th>
+                    <th width="15%" class="td-actions">&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = 1;
                 foreach ($list_data as $row) {
-                    if ($row->status == 5) {
-                        echo "<tr>"
-                        . "<td>" . $no . "</td>"
-                        . "<td>" . $row->no_spt . " </td>"
-                        . "<td>" . $row->nama_kegiatan . "</td>"
-                        . "<td>" . $row->maksud_perjalanan . "</td>"
-                        . "<td>" . $status[$row->status] . "</td>"
-                        . "<td class=\"td-actions\">";
-
-//                        if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
-//                            echo "<a title=\"Report (Uang Muka Kerja)\" href=\"" . site_url('report/panjar/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
-//                        }
-                        echo "<a title=\"View\" href=\"" . site_url('transaksi/panjar/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";                        
-                        echo "</td>"
-                        . "</tr>";
-                        $no++;
-                    }
+                    echo "<tr>"
+                    . "<td>" . $no . "</td>"
+                    . "<td>" . $row->no_spt . " </td>"
+                    . "<td>" . $row->nama_penerima . "</td>"
+                    . "<td>" . $row->deskripsi_panjar . "</td>"
+                    . "<td>" . number_format($row->jumlah) . "</td>"
+                    . "<td class=\"td-actions\">"
+                    . "<a title=\"Report (Uang Muka Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/panjar/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>"
+                    . "<a title=\"View\" href=\"" . site_url('transaksi/panjar/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>"
+                    . "<a title=\"Edit\" href=\"" . site_url('transaksi/panjar/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
+                    . "<a title=\"Delete\" href=\"" . site_url('transaksi/panjar/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
+                    . "</td>"
+                    . "</tr>";
+                    $no++;
                 }
                 ?>
             </tbody>

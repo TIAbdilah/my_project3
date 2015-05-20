@@ -26,7 +26,8 @@ function add_zero($x) {
                 $width_colspan = $int_day * 2;
                 ?>
                 <td colspan="<?php echo $int_day ?>" width="<?php echo $width_colspan . "%" ?>"  align="center">Tanggal</td>
-                <td rowspan="2"  width="10%" align="center">Ket</td>
+                <td rowspan="2"  width="3%" align="center">Jml</td>
+                <td rowspan="2"  width="7%" align="center">Ket</td>
             </tr>
             <tr>
                 <?php
@@ -42,9 +43,12 @@ function add_zero($x) {
                 <tr>
                     <td><?php echo $no?></td>
                     <td><?php echo $data->nama_pegawai?></td>                    
-                    <?php
-                    $t_ber = strtotime($data->tgl_berangkat);
-                    $t_pul = strtotime($data->tgl_pulang);
+                    <?php                    
+                    $t_ber = strtotime($data->berangkat);
+                    $t_pul = strtotime($data->pulang_1);
+                    if($data->pulang_2 != '0000-00-00'){$t_pul = strtotime($data->pulang_2);}
+                    if($data->pulang_3 != '0000-00-00'){$t_pul = strtotime($data->pulang_3);}
+                    $jml = 0;
                     for ($i = 1; $i <= $int_day; $i++) {
                         $tgl = strtotime($year . "-" . $month . "-" . $i);
                         $day = date('D', $tgl);
@@ -57,10 +61,12 @@ function add_zero($x) {
                         }
                         if ($tgl <= $t_pul && $tgl >= $t_ber) {
                             $color = '#00D856';
+                            $jml += 1;
                         }
                         echo "<td  style=\"background-color:" . $color . "\"></td>";
                     }
                     ?>
+                    <td align="center"><?php echo $jml;?></td>
                     <td></td>
                 </tr>
                 <?php
