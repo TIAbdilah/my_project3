@@ -19,7 +19,7 @@
                     <th> Pagu</th>
                     <th> Realisasi</th>
                     <th> Sisa</th>
-                    <th> Tahun</th>
+                    <th> Persentase</th>
                     <th class="td-actions"> </th>
                 </tr>
             </thead>
@@ -32,10 +32,11 @@
                     . "<td>" . $row->kode_kegiatan ." - ".$row->nama_kegiatan. " </td>"
                     . "<td>" . $row->kode_akun . "</td>"
                     . "<td>" . $row->jenis_belanja . "</td>"
-                    . "<td>" . number_format($row->pagu) . "</td>"
-                    . "<td>" . number_format($row->biaya) . "</td>"
-                    . "<td>" . number_format($row->sisa) . "</td>"
-                    . "<td>" . $row->tahun_anggaran . "</td>"
+                    . "<td class=\"dt-body-right\">" . number_format($row->pagu) . "</td>"
+                    . "<td class=\"dt-body-right\">" . number_format($row->biaya) . "</td>"
+                    . "<td class=\"dt-body-right\">" . number_format($row->sisa) . "</td>";
+                    $persen = ($row->biaya / $row->pagu)*100;
+                    echo "<td class=\"dt-body-right\">" . sprintf("%.2f", $persen) . "% </td>"
                     . "<td class=\"td-actions\">"
                     . "<a title=\"Edit\" href=\"" . site_url('master/anggaran/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
                     . "<a title=\"Delete\" href=\"" . site_url('master/anggaran/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"

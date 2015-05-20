@@ -31,7 +31,7 @@
                 <tr>
                     <th rowspan="2" width="3%">No</th>
                     <th rowspan="2" width="15%">Nama / NIP</th>
-                    <th rowspan="2" width="8%">Golongan</th>
+                    <th rowspan="2" width="8%">GOL</th>
                     <th rowspan="2" width="15%">Jabatan</th>
                     <th rowspan="2" width="8%">Tujuan</th>
                     <th colspan="2">Tanggal</th>
@@ -63,15 +63,19 @@
                 $subtotal = 0;
                 $total = 0;
                 $nama_pegawai = "";
+                $rowspan = $data->jumlah_tujuan + 1;
                 foreach ($list_data_detail as $data_detail) {
                     $subtotal_transport = $data_detail->transport_utama + $data_detail->transport_pendukung;
                     $subtotal = $data_detail->harian + $data_detail->representatif + $subtotal_transport + $data_detail->penginapan + $data_detail->riil + $data_detail->diklat + $data_detail->sewa;
-                    echo "<tr>"
-                    . "<td>" . $no . "</td>"
-                    . "<td>" . $data_detail->nama_pegawai . " </td>"
-                    . "<td>" . $data_detail->golongan . "</td>"
-                    . "<td>" . $data_detail->jabatan . "</td>"
-                    . "<td>" . $data_detail->kota_tujuan . "</td>"
+                    echo "<tr>";
+                    if ($nama_pegawai != $data_detail->nama_pegawai) {
+                        echo "<td valign=\"top\" align=\"center\" rowspan=\"" . $rowspan . "\">" . $no . "</td>"
+                        . "<td valign=\"top\" rowspan=\"" . $rowspan . "\">" . $data_detail->nama_pegawai . " </td>"
+                        . "<td valign=\"top\" align=\"center\" rowspan=\"" . $rowspan . "\">" . $data_detail->golongan . "</td>"
+                        . "<td valign=\"top\" rowspan=\"" . $rowspan . "\">" . $data_detail->jabatan . "</td>";
+                        $no++;
+                    }
+                    echo "<td>" . $data_detail->kota_tujuan . "</td>"
                     . "<td>" . $data_detail->tgl_berangkat . "</td>"
                     . "<td>" . $data_detail->tgl_pulang . "</td>"
                     . "<td align=\"right\">" . number_format($data_detail->harian) . "</td>"
@@ -88,22 +92,20 @@
                         . "<a title=\"Delete\" href=\"" . site_url('transaksi/detail_perjalanan_dinas/delete/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
                         . "</td>";
                     } else if ($this->session->userdata('role') == 'operator' && $data->status == 5) {
-                        
+
                         echo "<td class=\"td-actions\">"
-                        . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/add/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>"
-                        . "<a title=\"View Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-edit\"> </i></a>"
+                        . "<a title=\"Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/add/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
+                        . "<a title=\"View Bukti\" href=\"" . site_url('transaksi/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai . '/' . $data->jumlah_tujuan . '/' . $data_detail->kota_tujuan) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-edit\"> </i></a>"
                         . "</td>";
-                        $rowspan = $data->jumlah_tujuan + 1;
                         if ($nama_pegawai != $data_detail->nama_pegawai) {
                             echo "<td rowspan=\"" . $rowspan . "\">"
-                            . "<a title=\"Report (Kuitansi)\" target=\"_blank\" href=\"" . site_url('report/kuitansi/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
-                            . "<a title=\"Report (Bukti Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
-                            . "<a title=\"Report (Pengeluaran Riil)\" target=\"_blank\" href=\"" . site_url('report/pengeluaran_riil/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-danger\"><i class=\"btn-icon-only icon-print\"> </i></a>"
+                            . "<a title=\"Report (Kuitansi)\" target=\"_blank\" href=\"" . site_url('report/kuitansi/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-primary\"><i class=\"btn-icon-only icon-print\"> </i></a>"
+                            . "<a title=\"Report (Bukti Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/bukti_perjalanan_dinas/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"> </i></a>"
+                            . "<a title=\"Report (Pengeluaran Riil)\" target=\"_blank\" href=\"" . site_url('report/pengeluaran_riil/view/' . $data->id . '/' . $data_detail->id_pegawai) . "\" class=\"btn btn-mini btn-primary\"><i class=\"btn-icon-only icon-print\"> </i></a>"
                             . "</td>";
                         }
                     }
                     echo "</tr>";
-                    $no++;
                     $total += $subtotal;
                     $nama_pegawai = $data_detail->nama_pegawai;
                 }

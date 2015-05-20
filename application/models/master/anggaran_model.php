@@ -23,8 +23,8 @@ class Anggaran_model extends CI_Model {
                 . ", (select k.kode_kegiatan from kegiatan k where k.id = a.id_kegiatan) as kode_kegiatan "
                 . ", (select ak.kode_akun from akun ak where ak.id = a.id_akun) as kode_akun "
                 . ", (select ak.jenis_belanja from akun ak where ak.id = a.id_akun) as jenis_belanja "
-                . ", (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id group by v1.id_anggaran) as biaya "
-                . ", (a.pagu - (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id group by v1.id_anggaran)) as sisa "
+                . ", (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran) as biaya "
+                . ", (a.pagu - (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran)) as sisa "
                 . "from anggaran a "
                 . "group by id "
                 . "order by kode_kegiatan, kode_akun";
