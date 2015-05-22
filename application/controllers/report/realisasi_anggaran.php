@@ -26,7 +26,7 @@ class Realisasi_anggaran extends CI_Controller {
 
     public function print_report_1() {
         $this->load->helper('to_pdf');
-        $data['list_data'] = $this->anggaran_model->select_all()->result();
+        $data['list_data'] = $this->anggaran_model->select_by_field(array('id_unit' => $this->session->userdata('kode_unit')))->result();
         $html = $this->load->view('admin/report/realisasi_anggaran/report_realisasi_anggaran', $data, TRUE);
         pdf_create($html, "landscape", "Realisasi Anggaran " . date('mdy'), true);
     }

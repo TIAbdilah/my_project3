@@ -21,6 +21,7 @@ class Anggaran_model extends CI_Model {
         $sql = "select a.* "
                 . ", (select k.nama_kegiatan from kegiatan k where k.id = a.id_kegiatan) as nama_kegiatan "
                 . ", (select k.kode_kegiatan from kegiatan k where k.id = a.id_kegiatan) as kode_kegiatan "
+                . ", (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) as id_unit "
                 . ", (select ak.kode_akun from akun ak where ak.id = a.id_akun) as kode_akun "
                 . ", (select ak.jenis_belanja from akun ak where ak.id = a.id_akun) as jenis_belanja "
                 . ", (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran) as biaya "
@@ -35,8 +36,24 @@ class Anggaran_model extends CI_Model {
         return $this->db->get_where('anggaran', array('id' => $id));
     }
 
-    public function select_by_field($field, $keyword) {
-        return $this->db->get_where('anggaran', array($field => $keyword));
+    public function select_by_field($param = array()) {
+//        return $this->db->get_where('anggaran', array($field => $keyword));
+        $sql = "select a.* "
+                . ", (select k.nama_kegiatan from kegiatan k where k.id = a.id_kegiatan) as nama_kegiatan "
+                . ", (select k.kode_kegiatan from kegiatan k where k.id = a.id_kegiatan) as kode_kegiatan "
+                . ", (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) as id_unit "
+                . ", (select ak.kode_akun from akun ak where ak.id = a.id_akun) as kode_akun "
+                . ", (select ak.jenis_belanja from akun ak where ak.id = a.id_akun) as jenis_belanja "
+                . ", (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran) as biaya "
+                . ", (a.pagu - (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran)) as sisa "
+                . "from anggaran a "
+                . "where 1 = 1 ";
+        if ($param['id_unit']) {
+            $sql = $sql . "and (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) = " . $param['id_unit']." ";
+        }
+        $sql = $sql . "group by id "
+                . "order by kode_kegiatan, kode_akun";
+        return $this->db->query($sql);
     }
 
     public function add($data) {

@@ -74,6 +74,11 @@ class Users_model extends CI_Model {
         $this->subquery->end_subquery('nama');
         
         $sub = $this->subquery->start_subquery('select');
+        $sub->select('kode_unit')->from('pegawai');
+        $sub->where('pengguna.id_pegawai = pegawai.id');
+        $this->subquery->end_subquery('kode_unit');
+        
+        $sub = $this->subquery->start_subquery('select');
         $sub->select('nip')->from('pegawai');
         $sub->where('pengguna.id_pegawai = pegawai.id');
         $this->subquery->end_subquery('nip');

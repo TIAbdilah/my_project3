@@ -52,7 +52,7 @@ class Kegiatan extends CI_Controller {
 
     public function process($action, $id = null) {
 
-        $data['kode_unit'] = $this->input->post('inpKodeUnit');
+        $data['id_unit'] = $this->input->post('inpKodeUnit');
         $data['kode_kegiatan'] = $this->input->post('inpKodeKegiatan');
         $data['nama_kegiatan'] = $this->input->post('inpNamaKegiatan');
         $data['koordinator'] = $this->input->post('inpKoordinator');

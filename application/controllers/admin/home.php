@@ -25,16 +25,9 @@ class Home extends CI_Controller {
         $data['title'] = "e-satker | Home";
         $role = $this->session->userdata('role');
         
-        $array_custom = new Array_custom();
-        
-        $param = array(
-            'status' => $array_custom->int_role[$role]
-        );
-        $param2 = array(
-            'status_approval' => $array_custom->int_role[$role]
-        );
-        $data['list_data'] = $this->perjalanan_dinas_model->select_by_field($param)->result();
-        $data['list_data_barang'] = $this->pengajuan_barang_model->select_by_field($param2)->result();
+        $array_custom = new Array_custom();        
+        $data['list_data'] = $this->perjalanan_dinas_model->select_by_field(array('status' => $array_custom->int_role[$role]))->result();
+        $data['list_data_barang'] = $this->pengajuan_barang_model->select_by_field(array('status_approval' => $array_custom->int_role[$role]))->result();
         $data['page'] = 'admin/master/tasklist/list';        
         $data['status'] = $array_custom->status;
         $data['status_penolakan'] = $array_custom->status_penolakan;

@@ -16,9 +16,9 @@ class Pengajuan_barang_model extends CI_Model {
     }
 
     public function select_all() {
-        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
+        $query = 'select pd.*, a1.* '
                 . 'from pengajuan_barang pd, '
-                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
+                . '(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja '
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pd.id_anggaran = a1.id '
@@ -27,9 +27,9 @@ class Pengajuan_barang_model extends CI_Model {
     }
 
     public function select_by_id($id) {
-        $query = 'select pb.*, a1.nama_kegiatan, a1.jenis_belanja, a1.kode_kegiatan '
+        $query = 'select pb.*, a1.* '
                 . 'from pengajuan_barang pb, '
-                . '(select a.id, k.nama_kegiatan, k.kode_kegiatan, ak.jenis_belanja '
+                . '(select a.id, k.nama_kegiatan, k.kode_kegiatan, k.id_unit, ak.jenis_belanja '
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pb.id_anggaran = a1.id '
@@ -38,9 +38,9 @@ class Pengajuan_barang_model extends CI_Model {
     }
 
     public function select_by_field($param2 = array()) {
-        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja '
+        $query = 'select pd.*, a1.* '
                 . 'from pengajuan_barang pd, '
-                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja '
+                . '(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja '
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pd.id_anggaran = a1.id '

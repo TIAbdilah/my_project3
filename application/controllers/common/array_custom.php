@@ -18,6 +18,13 @@ class Array_custom extends CI_Controller {
         'asisten satker' => 3,
         'ppk' => 4
     );
+    var $kode_role = array(
+        1 => 'OPR',
+        2 => 'ES4',
+        3 => 'ES3',
+        4 => 'AST',
+        5 => 'PPK',
+    );
     var $status = array(
         '0' => 'baru dibuat',
         '1' => 'menunggu verifikasi esselon 4',

@@ -36,7 +36,7 @@
                     . "<td>" . $row->merek_barang . "</td>"
                     . "<td>" . $row->spesifikasi . "</td>"
                     . "<td>" . $row->satuan . "</td>"
-                    . "<td>" . $row->pagu_harga . "</td>"
+                    . "<td>" . number_format($row->pagu_harga) . "</td>"
                     . "<td class=\"td-actions\">"
                     . "<a title=\"Edit\" href=\"" . site_url('master/barang/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
                     . "<a title=\"Delete\" href=\"" . site_url('master/barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"

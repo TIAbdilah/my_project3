@@ -22,7 +22,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpKodeBarang">Kode Barang</label>
                 <div class="controls">
-                    <input type="text" id="inpKodeBarang" name="inpKodeBarang" placeholder="Kode Barang">
+                    <input type="text" id="inpKodeBarang" name="inpKodeBarang" disabled="disabled" placeholder="Kode Barang">
                 </div>
             </div>
             <div class="control-group">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 20, 2015 at 10:59 PM
+-- Generation Time: May 22, 2015 at 11:35 PM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `akomodasi_perjalanan` (
 CREATE TABLE IF NOT EXISTS `akun` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kode_akun` int(11) DEFAULT NULL,
-  `jenis_belanja` varchar(25) DEFAULT NULL,
+  `jenis_belanja` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
@@ -66,44 +66,44 @@ CREATE TABLE IF NOT EXISTS `akun` (
 
 INSERT INTO `akun` (`id`, `kode_akun`, `jenis_belanja`) VALUES
 (1, 511111, 'Belanja Gaji Pokok PNS'),
-(2, 511119, 'Belanja Pembulatan Gaji P'),
-(3, 511121, 'Belanja Tunj.Suami/Istri '),
+(2, 511119, 'Belanja Pembulatan Gaji PNS'),
+(3, 511121, 'Belanja Tunj.Suami/Istri PNS'),
 (4, 511122, 'Belanja Tunj. Anak PNS'),
-(5, 511123, 'Belanja Tunj. Struktural '),
-(6, 511124, 'Belanja Tunj. Fungsional '),
+(5, 511123, 'Belanja Tunj. Struktural PNS'),
+(6, 511124, 'Belanja Tunj. Fungsional PNS'),
 (7, 511125, 'Belanja Tunj. PPh PNS'),
 (8, 511126, 'BelanjaTunj. Beras PNS'),
 (9, 511129, 'Belanja Uang Makan PNS'),
 (10, 512111, 'Belanja Uang Honor Tetap'),
-(11, 512151, 'Belanja Tunjangan Umum PN'),
+(11, 512151, 'Belanja Tunjangan Umum PNS'),
 (12, 512211, 'Belanja Uang Lembur'),
-(13, 512411, 'Belanja Pegawai (Tunjanga'),
-(14, 521111, 'Belanja Keperluan Perkant'),
-(15, 521111, 'Belanja Keperluan Sehari-'),
-(16, 521114, 'Belanja Pengiriman Surat '),
-(17, 521115, 'Honor Operasional Satuan '),
+(13, 512411, 'Belanja Pegawai (Tunjangan Khusus/Kegiatan)'),
+(14, 521111, 'Belanja Keperluan Perkantoran'),
+(15, 521111, 'Belanja Keperluan Sehari-hari Perkantoran (Lebih dari 40 Pegawai)'),
+(16, 521114, 'Belanja Pengiriman Surat Dinas Pos Pusat'),
+(17, 521115, 'Honor Operasional Satuan Kerja'),
 (18, 521211, 'Belanja Bahan'),
 (19, 521213, 'Honor output kegiatan'),
-(20, 521219, 'Belanja Barang Non Operas'),
-(21, 521811, 'Belanja Barang Untuk Pers'),
-(22, 521821, 'Belanja Barang Persediaan'),
+(20, 521219, 'Belanja Barang Non Operasional Lainnya'),
+(21, 521811, 'Belanja Barang Untuk Persediaan Barang Konsumsi'),
+(22, 521821, 'Belanja Barang Persediaan Bahan Baku'),
 (23, 522111, 'Belanja Langganan Listrik'),
 (24, 522112, 'Belanja Langganan Telepon'),
 (25, 522113, 'Belanja Langganan Air'),
 (26, 522141, 'Belanja Sewa'),
 (27, 522151, 'Belanja Jasa Profesi'),
 (28, 522191, 'Belanja Jasa Lainnya'),
-(29, 523111, 'Belanja Biaya Pemeliharaa'),
-(30, 523112, 'Belanja Barang Persediaan'),
-(31, 523119, 'Belanja Biaya Pemeliharaa'),
-(32, 523121, 'Belanja Biaya Pemeliharaa'),
-(33, 523133, 'Belanja Biaya Pemeliharaa'),
+(29, 523111, 'Belanja Biaya Pemeliharaan Gedung dan Bangunan '),
+(30, 523112, 'Belanja Barang Persediaan Pemeliharaan'),
+(31, 523119, 'Belanja Biaya Pemeliharaan Gedung dan Bangunan Lainnya'),
+(32, 523121, 'Belanja Biaya Pemeliharaan Peralatan dan Mesin'),
+(33, 523133, 'Belanja Biaya Pemeliharaan Jaringan'),
 (34, 524111, 'Belanja Perjalanan Biasa'),
-(35, 524211, 'Belanja Perjalanan Biasa '),
-(36, 524219, 'Belanja Perjalanan Lainny'),
-(37, 526113, 'Belanja Gedung dan Bangun'),
-(38, 532111, 'Belanja Modal Peralatan d'),
-(39, 533121, 'Belanja Penambahan Nilai '),
+(35, 524211, 'Belanja Perjalanan Biasa - Luar Negeri'),
+(36, 524219, 'Belanja Perjalanan Lainnya - Luar Negeri'),
+(37, 526113, 'Belanja Gedung dan Bangunan untuk Diserahkan kepada Masyarakat/Pemda'),
+(38, 532111, 'Belanja Modal Peralatan dan Mesin'),
+(39, 533121, 'Belanja Penambahan Nilai Gedung dan Bangunan'),
 (40, 536111, 'Belanja Modal Lainnya');
 
 -- --------------------------------------------------------
@@ -631,7 +631,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `merek_barang` varchar(25) DEFAULT NULL,
   `spesifikasi` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
 
 --
 -- Dumping data for table `barang`
@@ -692,7 +692,9 @@ INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `satuan`, `pagu_harga`
 (52, 'AT051', 'USB Flashdisk', 'buah', '150000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'Kingston', '16 GB'),
 (53, 'AT052', 'DVD-R', 'tabung', '200000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, 'isi 50'),
 (54, 'AT053', 'CD-RW', 'tabung', '215000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, 'GT-Pro', 'isi 50'),
-(55, 'AT054', 'Casing CD dan DVD Plastik', 'buah', '3000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL);
+(55, 'AT054', 'Casing CD dan DVD Plastik', 'buah', '3000', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', NULL, NULL, NULL),
+(56, 'BBG001', 'semen', 'pcs', '60000', 'Bahan Bangunan', '-', 'HOLCIM', '-'),
+(57, 'BBG003', 'Semen', 'pcs', '55000', 'Bahan Bangunan', '-', 'Semen Indonesia', '-');
 
 -- --------------------------------------------------------
 
@@ -1748,7 +1750,7 @@ CREATE TABLE IF NOT EXISTS `counter` (
   `pattern` varchar(20) NOT NULL,
   `counter` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `counter`
@@ -1758,7 +1760,8 @@ INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
 (1, 'IV-2015', 5),
 (2, 'asdf12', 4),
 (3, 'V-2015', 14),
-(4, 'V-2015-BARANG', 3);
+(4, 'V-2015-BARANG', 3),
+(5, 'BBG', 3);
 
 -- --------------------------------------------------------
 
@@ -2166,7 +2169,7 @@ CREATE TABLE IF NOT EXISTS `jenis_barang` (
 
 CREATE TABLE IF NOT EXISTS `kegiatan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_unit` varchar(25) NOT NULL,
+  `id_unit` int(11) NOT NULL,
   `kode_kegiatan` varchar(50) NOT NULL,
   `nama_kegiatan` varchar(100) NOT NULL,
   `koordinator` varchar(25) DEFAULT NULL,
@@ -2178,88 +2181,88 @@ CREATE TABLE IF NOT EXISTS `kegiatan` (
 -- Dumping data for table `kegiatan`
 --
 
-INSERT INTO `kegiatan` (`id`, `kode_unit`, `kode_kegiatan`, `nama_kegiatan`, `koordinator`, `penanggung_jawab`) VALUES
-(1, '1', '2433.001.001.107', 'Inovasi Teknologi dan Manajemen Permukiman', '1', '2'),
-(2, '1', '2433.001.003.107.A', 'Penelitian dan Pengembangan Teknologi Pengolahan Air Minum ', '1', '2'),
-(3, '1', '2433.001.003.107.B', 'Pengkajian dan Pengembang ITF', '1', '2'),
-(4, '1', '2433.001.004.107.A', 'Kelembagaan dalam Implementasi Kebijakan Sertifikat Laik Fungsi Bangunan Gedung', '1', '2'),
-(5, '1', '2433.001.004.107.B', 'Penyusunan Pedoman Matra Ruang ', '1', '2'),
-(6, '1', '2433.001.005.107', 'Potensi Bahan Bangunan Lokal untuk Mendukung Pembangunan Perumahan Sederhana Menggunakan Sistem Info', '1', '2'),
-(7, '1', '2433.003.002.107.A', 'Pengembangan Model Penataan Kawasan Padat dan Kumuh di Perkotaan', '1', '2'),
-(8, '1', '2433.003.002.107.B', 'Pengkajian dan Pengembangan Model Permukiman di Kawasan Pesisir', '1', '2'),
-(9, '1', '2433.003.002.107.C', 'Pengembangan Model Penataan Kawasan Pulau-Pulau Kecil', '1', '2'),
-(10, '1', '2433.003.002.107.D', 'Pengembangan Model Penataan Kawasan Perbatasan', '1', '2'),
-(11, '1', '2433.003.004.107.A', 'Pengembangan Teknologi Perbaikan Gedung dan Perkuatan (Retrofingfitting) Struktur Beton Bertulang Un', '1', '2'),
-(12, '1', '2433.003.004.107.B', 'Pengkajian dan Pengembangan Analisis Resiko Gempa ', '1', '2'),
-(13, '1', '2433.003.004.107.C', 'Pengembangan Model Laboratorium Arsitektur, Struktur dan Utilitas', '1', '2'),
-(14, '1', '2433.004.002.107', 'Penelitian Sistem Rating untuk Perumahan dan Permukiman Hijau', '1', '2'),
-(15, '1', '2433.004.004.107', 'Pengembangan Green Label dalam Penyediaan Bahan Bangunan', '1', '2'),
-(16, '1', '2433.004.006.107.A', 'Penyusunan Pedoman Sistem Rating Bangunan Hijau pada Bangunan Gedung', '1', '2'),
-(17, '1', '2433.004.006.107.A', 'Pengembangan Metodelogi  Pengukuran Perhitungan Emisi Gas Rumah Kaca pada Sektor Air Limbah', '1', '2'),
-(18, '1', '2433.005.004.107', 'Penyusunan Konsep Pedoman Teknologi Bahan Bangunan Alternatif', '1', '2'),
-(19, '1', '2433.006.003.107.A', 'Pengembangan Teknologi Air Limbah dengan Sistem Vermibiofilter', '1', '2'),
-(20, '1', '2433.006.003.107.B', 'Pengembangan dan Penerapan Teknologi Air Minum dan Sanitasi di Kawasan Permukiman DAS', '1', '2'),
-(21, '1', '2433.006.003.107.C', 'Pengembangan dan Penerapan Teknologi Air Minum di Pulau Kecil', '1', '2'),
-(22, '1', '2433.006.005.107', 'Pengkajian dan Penerapan Teknologi Rumah Murah, Sehat dan Layak Huni', '1', '2'),
-(23, '1', '2433.008.001.014', 'Penyusunan Naskah Kebijakan Bidang Permukiman (Kajian Kebijakan)', '1', '2'),
-(24, '1', '2433.009.001.040.A', 'Diseminasi dan Sosialisasi SPM Bidang Permukiman', '1', '2'),
-(25, '1', '2433.009.001.040.B', 'Diseminasi dan Sosialisasi Teknologi Bidang Permukiman', '1', '2'),
-(26, '1', '2433.009.001.040.C', 'Publikasi dan Dokumentasi Hasil Litbang', '1', '2'),
-(27, '1', '2433.009.001.040.D', 'Penyelenggaraan dan Keikutsertaan Pameran', '1', '2'),
-(28, '1', '2433.010.001.044', 'Bantuan Teknis / Administratif / Manajemen', '1', '2'),
-(29, '1', '2433.012.001.048.A', 'Perencanaan/Implementasi/Pengelolaan Sistem Akuntansi Pemerintah', '1', '2'),
-(30, '1', '2433.012.001.048.B', 'Pembinaan Administrasi dan Pengelolaan Keuangan', '1', '2'),
-(31, '1', '2433.012.002.047.A', 'Pengelolaan Barang Milik/Kekayaan Negara', '1', '2'),
-(32, '1', '2433.012.002.051.D', 'Penyelenggaraan Humas dan Protokol', '1', '2'),
-(33, '1', '2433.012.002.051.E', 'Operasional Jaringan', '1', '2'),
-(34, '1', '2433.012.002.051.F', 'Penyelenggaraan Sistem Informasi', '1', '2'),
-(35, '1', '2433.012.002.053.D', 'Penelitian Klarifikasi, Registrasi, Penerapan Sistem Kearsipan', '1', '2'),
-(36, '1', '2433.012.003.051.C', 'Penerbitan Jurnal', '1', '2'),
-(37, '1', '2433.012.003.053.A', 'Penataan Manajemen Kelembagaan', '1', '2'),
-(38, '1', '2433.012.003.053.B', 'Pengembangan Mutu Kelembagaan', '1', '2'),
-(39, '1', '2433.012.003.053.C', 'Administrasi Umum dan Peningkatan Sarana Kelitbangan', '1', '2'),
-(40, '1', '2433.012.003.058.A', 'Penyelenggaraan Kepustakaan', '1', '2'),
-(41, '1', '2433.012.004.012.A', 'Pembinaan Administrasi Pengelolaan Kepegawaian', '1', '2'),
-(42, '1', '2433.012.004.012.A', 'Pengembangan Jabatan Fungsional SDM Iptek', '1', '2'),
-(43, '1', '2433.012.004.012.B', 'Pengembangan Kompetensi SDM', '1', '2'),
-(44, '1', '2433.012.004.012.D', 'Pengurusan Visa/Paspor', '1', '2'),
-(45, '1', '2433.012.004.012.E', 'Pengurusan HAKI', '1', '2'),
-(46, '1', '2433.012.004.040.A', 'Penyelenggaraan dan Keikutsertaan dalam Seminar Nasional dan Internasional', '1', '2'),
-(47, '1', '2433.012.005.018.A', 'Penyusunan Rencana Kerja dan Anggaran', '1', '2'),
-(48, '1', '2433.012.005.200.A', 'Monitoring Pelaksanaan Kegiatan', '1', '2'),
-(49, '1', '2433.012.005.200.B', 'Evaluasi Kemanfaatan Hasil Litbang', '1', '2'),
-(50, '1', '2433.012.006.045.A', 'Kerjasama Dalam Negeri', '1', '2'),
-(51, '1', '2433.012.006.045.B', 'Pengembangan Unit Inkubasi Hasil Litbang Permukiman', '1', '2'),
-(52, '1', '2433.012.006.045.C', 'Kesekretariatan Kerjasama Luar Negeri', '1', '2'),
-(53, '1', '2433.012.006.045.D', 'Kesekretariatan RCCEHUD', '1', '2'),
-(54, '1', '2433.012.007.015', 'Perumusan SPM', '1', '2'),
-(55, '1', '2433.012.008.011.A', 'Administrasi Kegiatan', '1', '2'),
-(56, '1', '2433.012.009.055.A', 'Laboratorium Struktur dan Konstruksi Bangunan', '1', '2'),
-(57, '1', '2433.012.009.055.B', 'Laboratorium Bahan Bangunan', '1', '2'),
-(58, '1', '2433.012.009.055.C', 'Laboratorium Tata Bangunan', '1', '2'),
-(59, '1', '2433.012.009.055.D', 'Laboratorium Lingkungan Permukiman', '1', '2'),
-(60, '1', '2433.012.009.055.E', 'Studio Perumahan', '1', '2'),
-(61, '1', '2433.012.009.060.A', 'Penyusunan Data Center', '1', '2'),
-(62, '1', '2433.013.001.011', 'Pengelola PNBP (Administrasi Kegiatan)', '1', '2'),
-(63, '1', '2433.013.002.152', 'Penerimaan Negara Bukan Pajak', '1', '2'),
-(64, '1', '2433.014.001.114', 'Pengadaan Peralatan Laboratorium', '1', '2'),
-(65, '1', '2433.994.001', 'Pembayaran Gaji dan Tunjangan', '1', '2'),
-(66, '1', '2433.994.002.A', 'Pengadaan Toga/Pakaian Kerja Supir/Pesuruh/ Perawan/Dokter/Satpam/Tenaga Teknis Lainnya', '1', '2'),
-(67, '1', '2433.994.002.C', 'Operasional Perkantoran dan Pimpinan (Rapat Koordinasi)', '1', '2'),
-(68, '1', '2433.994.002.', 'Perawatan Gedung Kantor', '1', '2'),
-(69, '1', '2433.994.002.E', 'Perawatan Rumah Negara', '1', '2'),
-(70, '1', '2433.994.002.G', 'Perawatan Sarana Gedung', '1', '2'),
-(71, '1', '2433.994.002.H', 'Perawatan Kendaraan Bermotor Roda 4/Roda 6/ Roda 10', '1', '2'),
-(72, '1', '2433.994.002.I', 'Perawatan Kendaraan Bermotor Roda 2', '1', '2'),
-(73, '1', '2433.994.002.K', 'Langganan Daya dan Jasa', '1', '2'),
-(74, '1', '2433.994.002.L', 'Jasa Keamanan dan Kebersihan', '1', '2'),
-(75, '1', '2433.994.002.M', 'Jasa Pos / Giro / Sertifikat', '1', '2'),
-(76, '1', '2433.994.002.N', 'Pertemuan dan Penerimaan Delegasi/Misi/Tamu', '1', '2'),
-(77, '1', '2433.994.002.P', 'Keperluan Perkantoran', '1', '2'),
-(78, '1', '2433.996.001.114', 'Pengadaan Alat Studio dan Komunikasi', '1', '2'),
-(79, '1', '2433.996.002.114', 'Pengadaan Alat Pengolah Data', '1', '2'),
-(80, '1', '2433.997.001.114', 'Pengadaan Mebelair', '1', '2'),
-(81, '1', '2433.998.001.056', 'Peningkatan / Pembangunan Prasarana dan Sarana Internal Kementerian PU', '1', '2');
+INSERT INTO `kegiatan` (`id`, `id_unit`, `kode_kegiatan`, `nama_kegiatan`, `koordinator`, `penanggung_jawab`) VALUES
+(1, 2, '2433.001.001.107', 'Inovasi Teknologi dan Manajemen Permukiman', '1', '2'),
+(2, 3, '2433.001.003.107.A', 'Penelitian dan Pengembangan Teknologi Pengolahan Air Minum ', '1', '2'),
+(3, 1, '2433.001.003.107.B', 'Pengkajian dan Pengembang ITF', '1', '2'),
+(4, 1, '2433.001.004.107.A', 'Kelembagaan dalam Implementasi Kebijakan Sertifikat Laik Fungsi Bangunan Gedung', '1', '2'),
+(5, 1, '2433.001.004.107.B', 'Penyusunan Pedoman Matra Ruang ', '1', '2'),
+(6, 1, '2433.001.005.107', 'Potensi Bahan Bangunan Lokal untuk Mendukung Pembangunan Perumahan Sederhana Menggunakan Sistem Info', '1', '2'),
+(7, 1, '2433.003.002.107.A', 'Pengembangan Model Penataan Kawasan Padat dan Kumuh di Perkotaan', '1', '2'),
+(8, 1, '2433.003.002.107.B', 'Pengkajian dan Pengembangan Model Permukiman di Kawasan Pesisir', '1', '2'),
+(9, 1, '2433.003.002.107.C', 'Pengembangan Model Penataan Kawasan Pulau-Pulau Kecil', '1', '2'),
+(10, 1, '2433.003.002.107.D', 'Pengembangan Model Penataan Kawasan Perbatasan', '1', '2'),
+(11, 1, '2433.003.004.107.A', 'Pengembangan Teknologi Perbaikan Gedung dan Perkuatan (Retrofingfitting) Struktur Beton Bertulang Un', '1', '2'),
+(12, 1, '2433.003.004.107.B', 'Pengkajian dan Pengembangan Analisis Resiko Gempa ', '1', '2'),
+(13, 1, '2433.003.004.107.C', 'Pengembangan Model Laboratorium Arsitektur, Struktur dan Utilitas', '1', '2'),
+(14, 1, '2433.004.002.107', 'Penelitian Sistem Rating untuk Perumahan dan Permukiman Hijau', '1', '2'),
+(15, 1, '2433.004.004.107', 'Pengembangan Green Label dalam Penyediaan Bahan Bangunan', '1', '2'),
+(16, 1, '2433.004.006.107.A', 'Penyusunan Pedoman Sistem Rating Bangunan Hijau pada Bangunan Gedung', '1', '2'),
+(17, 1, '2433.004.006.107.A', 'Pengembangan Metodelogi  Pengukuran Perhitungan Emisi Gas Rumah Kaca pada Sektor Air Limbah', '1', '2'),
+(18, 1, '2433.005.004.107', 'Penyusunan Konsep Pedoman Teknologi Bahan Bangunan Alternatif', '1', '2'),
+(19, 1, '2433.006.003.107.A', 'Pengembangan Teknologi Air Limbah dengan Sistem Vermibiofilter', '1', '2'),
+(20, 1, '2433.006.003.107.B', 'Pengembangan dan Penerapan Teknologi Air Minum dan Sanitasi di Kawasan Permukiman DAS', '1', '2'),
+(21, 1, '2433.006.003.107.C', 'Pengembangan dan Penerapan Teknologi Air Minum di Pulau Kecil', '1', '2'),
+(22, 1, '2433.006.005.107', 'Pengkajian dan Penerapan Teknologi Rumah Murah, Sehat dan Layak Huni', '1', '2'),
+(23, 1, '2433.008.001.014', 'Penyusunan Naskah Kebijakan Bidang Permukiman (Kajian Kebijakan)', '1', '2'),
+(24, 1, '2433.009.001.040.A', 'Diseminasi dan Sosialisasi SPM Bidang Permukiman', '1', '2'),
+(25, 1, '2433.009.001.040.B', 'Diseminasi dan Sosialisasi Teknologi Bidang Permukiman', '1', '2'),
+(26, 1, '2433.009.001.040.C', 'Publikasi dan Dokumentasi Hasil Litbang', '1', '2'),
+(27, 1, '2433.009.001.040.D', 'Penyelenggaraan dan Keikutsertaan Pameran', '1', '2'),
+(28, 1, '2433.010.001.044', 'Bantuan Teknis / Administratif / Manajemen', '1', '2'),
+(29, 1, '2433.012.001.048.A', 'Perencanaan/Implementasi/Pengelolaan Sistem Akuntansi Pemerintah', '1', '2'),
+(30, 1, '2433.012.001.048.B', 'Pembinaan Administrasi dan Pengelolaan Keuangan', '1', '2'),
+(31, 1, '2433.012.002.047.A', 'Pengelolaan Barang Milik/Kekayaan Negara', '1', '2'),
+(32, 1, '2433.012.002.051.D', 'Penyelenggaraan Humas dan Protokol', '1', '2'),
+(33, 1, '2433.012.002.051.E', 'Operasional Jaringan', '1', '2'),
+(34, 1, '2433.012.002.051.F', 'Penyelenggaraan Sistem Informasi', '1', '2'),
+(35, 1, '2433.012.002.053.D', 'Penelitian Klarifikasi, Registrasi, Penerapan Sistem Kearsipan', '1', '2'),
+(36, 1, '2433.012.003.051.C', 'Penerbitan Jurnal', '1', '2'),
+(37, 1, '2433.012.003.053.A', 'Penataan Manajemen Kelembagaan', '1', '2'),
+(38, 1, '2433.012.003.053.B', 'Pengembangan Mutu Kelembagaan', '1', '2'),
+(39, 1, '2433.012.003.053.C', 'Administrasi Umum dan Peningkatan Sarana Kelitbangan', '1', '2'),
+(40, 1, '2433.012.003.058.A', 'Penyelenggaraan Kepustakaan', '1', '2'),
+(41, 1, '2433.012.004.012.A', 'Pembinaan Administrasi Pengelolaan Kepegawaian', '1', '2'),
+(42, 1, '2433.012.004.012.A', 'Pengembangan Jabatan Fungsional SDM Iptek', '1', '2'),
+(43, 1, '2433.012.004.012.B', 'Pengembangan Kompetensi SDM', '1', '2'),
+(44, 1, '2433.012.004.012.D', 'Pengurusan Visa/Paspor', '1', '2'),
+(45, 1, '2433.012.004.012.E', 'Pengurusan HAKI', '1', '2'),
+(46, 1, '2433.012.004.040.A', 'Penyelenggaraan dan Keikutsertaan dalam Seminar Nasional dan Internasional', '1', '2'),
+(47, 1, '2433.012.005.018.A', 'Penyusunan Rencana Kerja dan Anggaran', '1', '2'),
+(48, 1, '2433.012.005.200.A', 'Monitoring Pelaksanaan Kegiatan', '1', '2'),
+(49, 1, '2433.012.005.200.B', 'Evaluasi Kemanfaatan Hasil Litbang', '1', '2'),
+(50, 1, '2433.012.006.045.A', 'Kerjasama Dalam Negeri', '1', '2'),
+(51, 1, '2433.012.006.045.B', 'Pengembangan Unit Inkubasi Hasil Litbang Permukiman', '1', '2'),
+(52, 1, '2433.012.006.045.C', 'Kesekretariatan Kerjasama Luar Negeri', '1', '2'),
+(53, 1, '2433.012.006.045.D', 'Kesekretariatan RCCEHUD', '1', '2'),
+(54, 1, '2433.012.007.015', 'Perumusan SPM', '1', '2'),
+(55, 1, '2433.012.008.011.A', 'Administrasi Kegiatan', '1', '2'),
+(56, 1, '2433.012.009.055.A', 'Laboratorium Struktur dan Konstruksi Bangunan', '1', '2'),
+(57, 1, '2433.012.009.055.B', 'Laboratorium Bahan Bangunan', '1', '2'),
+(58, 1, '2433.012.009.055.C', 'Laboratorium Tata Bangunan', '1', '2'),
+(59, 1, '2433.012.009.055.D', 'Laboratorium Lingkungan Permukiman', '1', '2'),
+(60, 1, '2433.012.009.055.E', 'Studio Perumahan', '1', '2'),
+(61, 1, '2433.012.009.060.A', 'Penyusunan Data Center', '1', '2'),
+(62, 1, '2433.013.001.011', 'Pengelola PNBP (Administrasi Kegiatan)', '1', '2'),
+(63, 1, '2433.013.002.152', 'Penerimaan Negara Bukan Pajak', '1', '2'),
+(64, 1, '2433.014.001.114', 'Pengadaan Peralatan Laboratorium', '1', '2'),
+(65, 1, '2433.994.001', 'Pembayaran Gaji dan Tunjangan', '1', '2'),
+(66, 1, '2433.994.002.A', 'Pengadaan Toga/Pakaian Kerja Supir/Pesuruh/ Perawan/Dokter/Satpam/Tenaga Teknis Lainnya', '1', '2'),
+(67, 1, '2433.994.002.C', 'Operasional Perkantoran dan Pimpinan (Rapat Koordinasi)', '1', '2'),
+(68, 1, '2433.994.002.', 'Perawatan Gedung Kantor', '1', '2'),
+(69, 1, '2433.994.002.E', 'Perawatan Rumah Negara', '1', '2'),
+(70, 1, '2433.994.002.G', 'Perawatan Sarana Gedung', '1', '2'),
+(71, 1, '2433.994.002.H', 'Perawatan Kendaraan Bermotor Roda 4/Roda 6/ Roda 10', '1', '2'),
+(72, 1, '2433.994.002.I', 'Perawatan Kendaraan Bermotor Roda 2', '1', '2'),
+(73, 1, '2433.994.002.K', 'Langganan Daya dan Jasa', '1', '2'),
+(74, 1, '2433.994.002.L', 'Jasa Keamanan dan Kebersihan', '1', '2'),
+(75, 1, '2433.994.002.M', 'Jasa Pos / Giro / Sertifikat', '1', '2'),
+(76, 1, '2433.994.002.N', 'Pertemuan dan Penerimaan Delegasi/Misi/Tamu', '1', '2'),
+(77, 1, '2433.994.002.P', 'Keperluan Perkantoran', '1', '2'),
+(78, 1, '2433.996.001.114', 'Pengadaan Alat Studio dan Komunikasi', '1', '2'),
+(79, 1, '2433.996.002.114', 'Pengadaan Alat Pengolah Data', '1', '2'),
+(80, 1, '2433.997.001.114', 'Pengadaan Mebelair', '1', '2'),
+(81, 1, '2433.998.001.056', 'Peningkatan / Pembangunan Prasarana dan Sarana Internal Kementerian PU', '1', '2');
 
 -- --------------------------------------------------------
 
@@ -2709,7 +2712,8 @@ CREATE TABLE IF NOT EXISTS `panjar` (
   `id_header` int(11) NOT NULL DEFAULT '0',
   `penerima` int(11) DEFAULT NULL,
   `deskripsi_panjar` text,
-  PRIMARY KEY (`id`,`id_header`)
+  PRIMARY KEY (`id`,`id_header`),
+  UNIQUE KEY `id_header` (`id_header`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -2999,11 +3003,11 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
 
 INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `id_pegawai`, `alamat`, `email`, `username`, `password`, `telp`) VALUES
 (9, 1, 10, 'baleendah', 'ti.abdilah@gmail.com', 'opik123', '0cc175b9c0f1b6a831c399e269772661', '098234'),
-(10, 1, 0, '', '', 'operator', '0cc175b9c0f1b6a831c399e269772661', ''),
-(12, 3, 0, '', '', 'esselon 3', '0cc175b9c0f1b6a831c399e269772661', ''),
-(13, 2, 0, '', '', 'esselon 4', '0cc175b9c0f1b6a831c399e269772661', ''),
-(14, 4, 0, '', '', 'asisten satker', '0cc175b9c0f1b6a831c399e269772661', ''),
-(15, 5, 0, '', '', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '');
+(10, 1, 49, '-', '-', 'operator', '0cc175b9c0f1b6a831c399e269772661', '1234'),
+(12, 3, 63, '-', '-', 'esselon 3', '0cc175b9c0f1b6a831c399e269772661', '1234'),
+(13, 2, 40, '-', '-', 'esselon 4', '0cc175b9c0f1b6a831c399e269772661', '1234'),
+(14, 4, 17, '-', '-', 'asisten satker', '0cc175b9c0f1b6a831c399e269772661', '1234'),
+(15, 5, 72, '-', '-', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '12345');
 
 -- --------------------------------------------------------
 

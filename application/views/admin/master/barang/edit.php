@@ -22,7 +22,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpKodeBarang">Kode Barang</label>
                 <div class="controls">
-                    <input type="text" id="inpKodeBarang" name="inpKodeBarang" value="<?php echo $row->kode_barang ?>">
+                    <input type="text" id="inpKodeBarang" name="inpKodeBarang" disabled="disabled" value="<?php echo $row->kode_barang ?>">
                 </div>
             </div>
             <div class="control-group">

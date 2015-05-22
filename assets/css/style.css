@@ -84,7 +84,8 @@ textarea {
 }
 
 .navbar .nav a {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: bold;
 }
 .navbar .nav>li>a { color:#fff !important;}
 .navbar .brand {

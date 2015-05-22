@@ -7,12 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
             </a>
-            <a class="brand" href="<?php echo base_url() ?>">e-satker</a>
+            <a class="brand" href="<?php echo base_url() ?>">ESatker</a>
             <div class="nav-collapse">
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="<?php echo base_url() ?>">
-                            <i class="icon-list"></i>&nbsp;Seranai Tugas
+                            <i class="icon-home"></i>&nbsp;Beranda
                         </a>
                     </li>
                     <li class="dropdown">
@@ -73,8 +73,8 @@
                 <ul class="nav pull-right">
                     <li class="not_link dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> 
-                            <?php echo $this->session->userdata('username') . ' [' . $this->session->userdata('role') . ']' ?> 
+                            <i class="icon-user"></i>&nbsp;
+                            <?php echo $this->session->userdata('username') . ' [' . $this->session->userdata('kode_role') . '] - '.$this->session->userdata('kode_unit') ?> 
                             <b class="caret"></b>
 
                         </a>
@@ -96,9 +96,9 @@
 <!-- subnavbar -->
 <div class="subnavbar">
     <div class="container">
-        <!--<center>-->
-            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner.png" />
-        <!--</center>-->
+        <center>
+            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner copy.png" />
+        </center>
         <!--/container-->  
     </div>
 </div>

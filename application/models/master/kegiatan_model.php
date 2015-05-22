@@ -22,8 +22,13 @@ class Kegiatan_model extends CI_Model {
         
         $sub = $this->subquery->start_subquery('select');
         $sub->select('nama_unit')->from('unit');
-        $sub->where('kegiatan.kode_unit = unit.id');
+        $sub->where('kegiatan.id_unit = unit.id');
         $this->subquery->end_subquery('nama_unit');
+        
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('kode_unit')->from('unit');
+        $sub->where('kegiatan.id_unit = unit.id');
+        $this->subquery->end_subquery('kode_unit');
         
         $sub = $this->subquery->start_subquery('select');
         $sub->select('nama')->from('pegawai');
@@ -51,7 +56,7 @@ class Kegiatan_model extends CI_Model {
 
     public function add($data) {
         $data = array(
-            'kode_unit' => $data['kode_unit'],
+            'id_unit' => $data['id_unit'],
             'kode_kegiatan' => $data['kode_kegiatan'],
             'nama_kegiatan' => $data['nama_kegiatan'],
             'koordinator' => $data['koordinator'],
@@ -62,7 +67,7 @@ class Kegiatan_model extends CI_Model {
 
     public function edit($id, $data) {
         $data = array(
-            'kode_unit' => $data['kode_unit'],
+            'id_unit' => $data['id_unit'],
             'kode_kegiatan' => $data['kode_kegiatan'],
             'nama_kegiatan' => $data['nama_kegiatan'],
             'koordinator' => $data['koordinator'],

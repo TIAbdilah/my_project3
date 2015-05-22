@@ -26,7 +26,7 @@
                 foreach ($list_data as $row) {
                     echo "<tr>"
                     . "<td>" . $no . "</td>"
-                    . "<td>" . $row->nama_unit . " </td>"
+                    . "<td><a href=\"#\" title=\"".$row->nama_unit."\">".$row->kode_unit."</a> </td>"
                     . "<td>" . $row->kode_kegiatan . "</td>"
                     . "<td>" . $row->nama_kegiatan . "</td>"
                     . "<td>" . $row->nama_koordinator . "</td>"

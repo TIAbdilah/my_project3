@@ -9,6 +9,8 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+require_once(APPPATH . 'controllers/common/counter.php');
+
 class Barang extends CI_Controller {
 
     public function __construct() {
@@ -51,7 +53,7 @@ class Barang extends CI_Controller {
 
     public function process($action, $id = null) {
 
-        $data['kode_barang'] = $this->input->post('inpKodeBarang');
+//        $data['kode_barang'] = $this->input->post('inpKodeBarang');
         $data['nama_barang'] = $this->input->post('inpNamaBarang');
         $data['satuan'] = $this->input->post('inpSatuan');
         $data['pagu_harga'] = $this->input->post('inpPaguHarga');
@@ -59,6 +61,33 @@ class Barang extends CI_Controller {
         $data['tipe_barang'] = $this->input->post('inpTipeBarang');
         $data['merek_barang'] = $this->input->post('inpMerekBarang');
         $data['spesifikasi'] = $this->input->post('inpSpesifikasi');
+
+        $prefix = '';
+        switch ($data['kode_jenis_barang']) {
+            case 'ATK, Bahan Komputer, dan Bahan Dokumentasi': $prefix = 'ATK';
+                break;
+            case 'Bahan Bangunan' : $prefix = 'BBG';
+                break;
+            case 'Bahan Bantu Pengujian' : $prefix = 'BBP';
+                break;
+            case 'Bahan Kimia': $prefix = 'BKI';
+                break;
+            case 'Bahan Maket': $prefix = 'BMK';
+                break;
+            case 'Bahan Pembuatan Model': $prefix = 'BPM';
+                break;
+            case 'Biaya Konsumsi / Jamuan Rapat': $prefix = 'BKJ';
+                break;
+            case 'Fotocopy dan Penjilidan': $prefix = 'FDJ';
+                break;
+            case 'Penyelenggaraan': $prefix = 'PLG';
+                break;
+        }
+
+        $this->counter = new Counter();
+        $pattern = $prefix;
+        $counter = $this->counter->generateId($pattern);
+        $data['kode_barang'] = $prefix . $counter;
 
         if ($action == 'add') {
             $this->barang_model->add($data);
