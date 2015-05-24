@@ -21,7 +21,8 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="<?php echo site_url('master/pegawai') ?>">Pegawai</a></li>    
-                            <li><a href="<?php echo site_url('master/narasumber') ?>">Narasumber</a></li>
+                            <li><a href="<?php echo site_url('master/narasumber') ?>">Narasumber</a></li>                            
+                            <li><a href="<?php echo site_url('master/barang') ?>">Barang</a></li>               
                             <li><a href="<?php echo site_url('master/unit') ?>">Unit</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo site_url('master/anggaran') ?>">Anggaran</a></li>                        
@@ -29,15 +30,13 @@
                             <li><a href="<?php echo site_url('master/kegiatan') ?>">Kegiatan</a></li>
                             <li class="divider"></li>
                             <li><a href="<?php echo site_url('master/kota_tujuan') ?>">Kota Tujuan</a></li>
-                            <li><a href="<?php echo site_url('master/biaya_akomodasi') ?>">Uang Harian</a></li>
+                            <li><a href="<?php echo site_url('master/biaya_akomodasi') ?>">Biaya Uang Harian</a></li>
                             <li><a href="<?php echo site_url('master/biaya_penginapan') ?>">Biaya Penginapan</a></li>
                             <li><a href="<?php echo site_url('master/biaya_sewa') ?>">Biaya Sewa</a></li>
                             <li><a href="<?php echo site_url('master/biaya_tiket') ?>">Biaya Tiket</a></li>
                             <li><a href="<?php echo site_url('master/biaya_transport_dlm_kota') ?>">Biaya Transportasi Dalam Kota</a></li>
                             <li><a href="<?php echo site_url('master/biaya_diklat') ?>">Biaya Diklat</a></li>
                             <li><a href="<?php echo site_url('master/biaya_representatif') ?>">Biaya Representatif</a></li>
-                            <li class="divider"></li>
-                            <li><a href="<?php echo site_url('master/barang') ?>">Barang</a></li>               
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -96,9 +95,12 @@
 <!-- subnavbar -->
 <div class="subnavbar">
     <div class="container">
-        <center>
-            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner copy.png" />
-        </center>
+        <!--<center>-->
+            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner.png" />
+            <span class="pull-right">
+                <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner-right.png" />
+            </span>            
+        <!--</center>-->
         <!--/container-->  
     </div>
 </div>
