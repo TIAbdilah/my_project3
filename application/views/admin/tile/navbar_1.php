@@ -74,7 +74,7 @@
                     <li class="not_link dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-user"></i>&nbsp;
-                            <?php echo $this->session->userdata('username') . ' [' . $this->session->userdata('kode_role') . '] - '.$this->session->userdata('kode_unit') ?> 
+                            <?php echo $this->session->userdata('username') . ' [' . $this->session->userdata('kode_role') . ']'?> 
                             <b class="caret"></b>
 
                         </a>
