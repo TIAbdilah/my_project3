@@ -31,6 +31,8 @@ class Detail_pengajuan_barang_model extends CI_Model {
     public function select_by_id($id) {
         $query = 'select pd.*, '
                 . '(select k1.nama_barang from barang k1 where k1.id = pd.id_barang) as nama_barang, '
+                . '(select k1.spesifikasi from barang k1 where k1.id = pd.id_barang) as spesifikasi, '
+                . '(select k1.merek_barang from barang k1 where k1.id = pd.id_barang) as merek_barang, '
                 . '(select k1.pagu_harga from barang k1 where k1.id = pd.id_barang) as pagu_harga, '
                 . '(select k1.satuan from barang k1 where k1.id = pd.id_barang) as satuan '
                 . 'from detail_pengajuan_barang pd '
@@ -39,7 +41,7 @@ class Detail_pengajuan_barang_model extends CI_Model {
     }
 
     public function select_by_field($field, $keyword) {
-        return $this->db->get_where('biaya_sewa', array($field => $keyword));
+        return $this->db->get_where('detail_pengajuan_barang', array($field => $keyword));
     }
 
     public function add($data) {
@@ -63,7 +65,7 @@ class Detail_pengajuan_barang_model extends CI_Model {
     }
 
     public function delete($id) {
-        $this->db->delete('pengajuan_barang', array('id' => $id));
+        $this->db->delete('detail_pengajuan_barang', array('id' => $id));
     }
 
     public function format_date_to_sql($str) {

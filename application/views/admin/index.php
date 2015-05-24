@@ -83,6 +83,13 @@
         <script src="<?php echo base_url() . '/assets/' ?>js/fnFakeRowspan.js"></script>
 
         <script type="text/javascript" language="javascript" class="init">
+            $(document).on("click", "#editDetailBarang", function () {
+                var par = $(this).data('id');
+                $("#inIdDetailBarang").val(par);
+                // As pointed out in comments, 
+                // it is superfluous to have to manually call the modal.
+                // $('#addBookDialog').modal('show');
+           });
             var noCommas = $('#outTotalDetail').text().replace(/,/g, ''),
             asANumber = +noCommas;
             $('#inTotalDetail').val(asANumber);
@@ -683,8 +690,11 @@
                         dataType: "json",
                         success: function(data) {
                             $("#inSatuanBarang").val(data[0]);
+                            $("#lblSatuanBarang").text(data[0]);
                             $("#inHargaBarang").val(data[1]);
+                            $("#lblHargaBarang").text(addCommas(data[1]));
                             $("#inTipeBarang").val(data[2]);
+                            $("#lblTipeBarang").text(data[2]);
                             $("#inMerk").val(data[3]);
                         }
                     });

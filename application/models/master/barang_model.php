@@ -24,7 +24,7 @@ class Barang_model extends CI_Model {
     }
 
     public function select_by_field($field, $keyword) {
-        return $this->db->get_where('barang', array($field => $keyword));
+        return $this->db->order_by('nama_barang', 'ASC')->get_where('barang', array($field => $keyword));
     }
 
     public function add($data) {
@@ -34,7 +34,7 @@ class Barang_model extends CI_Model {
             'satuan' => $data['satuan'],
             'pagu_harga' => $data['pagu_harga'],
             'kode_jenis_barang' => $data['kode_jenis_barang'],
-            'tipe_barang' => $data['tipe_barang'],
+            'tipe_barang' => $data['tipe_barang'],  
             'merek_barang' => $data['merek_barang'],
             'spesifikasi' => $data['spesifikasi']
         );

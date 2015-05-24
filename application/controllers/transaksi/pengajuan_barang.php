@@ -73,19 +73,14 @@ class Pengajuan_barang extends CI_Controller {
         $data['list_data'] = $this->detail_pengajuan_barang_model->select_by_id($id)->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
-//        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
+        if (empty($data['data']->kode_jenis_barang)) {
+            $data['SIList_barang'] = $this->barang_model->select_all()->result();
+        } else {
+            $data['SIList_barang'] = $this->barang_model->select_by_field('kode_jenis_barang', $data['data']->kode_jenis_barang)->result();
+        }
+
         $this->load->view('admin/index', $data);
     }
-
-//    public function add() {
-//        $data['title'] = $this->title_page;
-//        $data['page'] = 'admin/transaksi/pengajuan_barang/add';
-//        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
-//        $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
-//        $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
-//        $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
-//        $this->load->view('admin/index', $data);
-//    }
 
     public function add() {
         $data['title'] = $this->title_page;
@@ -114,6 +109,7 @@ class Pengajuan_barang extends CI_Controller {
         $data['id_anggaran'] = $this->input->post('inIdAnggaran');
         $data['maksud_kegiatan'] = $this->input->post('inMaksudKegiatan');
         $data['tanggal_pengajuan'] = $this->input->post('inTanggalPengajuan');
+        $data['kode_jenis_barang'] = $this->input->post('inKodeJenisBarang');
 
         $data['nomor_pengajuan'] = '-';
         $data['status_approval'] = '0';
@@ -145,7 +141,7 @@ class Pengajuan_barang extends CI_Controller {
                 $this->counter = new Counter();
                 $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y') . "-" . "BARANG";
                 $counter = $this->counter->generateId($pattern);
-                $subcounter = substr($counter, 0,6);
+                $subcounter = substr($counter, 0, 6);
                 $data['nomor_pengajuan'] = $subcounter . "/BARANG/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
                 $data['tanggal_approval'] = date('Y-m-d');
                 $this->pengajuan_barang_model->update_no_spt($id_header, $data);

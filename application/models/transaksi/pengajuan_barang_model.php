@@ -54,6 +54,7 @@ class Pengajuan_barang_model extends CI_Model {
             'maksud_kegiatan' => $data['maksud_kegiatan'],
             'nomor_pengajuan' => $data['nomor_pengajuan'],
             'status_approval' => $data['status_approval'],
+            'kode_jenis_barang' => $data['kode_jenis_barang'],
             'tanggal_pengajuan' => $this->format_date_to_sql($data['tanggal_pengajuan'])
         );
         $this->db->insert('pengajuan_barang', $data);
@@ -65,6 +66,7 @@ class Pengajuan_barang_model extends CI_Model {
             'maksud_kegiatan' => $data['maksud_kegiatan'],
             'nomor_pengajuan' => $data['nomor_pengajuan'],
             'status_approval' => $data['status_approval'],
+            'kode_jenis_barang' => $data['kode_jenis_barang'],
             'tanggal_pengajuan' => $this->format_date_to_sql($data['tanggal_pengajuan'])
         );
         $this->db->update('pengajuan_barang', $data, "id = " . $id);
