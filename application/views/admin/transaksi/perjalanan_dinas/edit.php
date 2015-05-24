@@ -1,7 +1,8 @@
 <?php
-    function format_date($string){
-        return substr($string, 8, 2).'-'.substr($string, 5, 2).'-'.substr($string, 0, 4);
-    }
+
+function format_date($string) {
+    return substr($string, 8, 2) . '-' . substr($string, 5, 2) . '-' . substr($string, 0, 4);
+}
 ?>
 
 <!-- widget-header -->
@@ -10,7 +11,7 @@
         <h3>Edit Data </h3>
     </div>           
     <div class="widget-content" style="padding: 10px;">
-        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/perjalanan_dinas/process/edit/'.$data->id) ?>" method="POST">            
+        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/perjalanan_dinas/process/edit/' . $data->id) ?>" method="POST">            
             <div class="control-group">
                 <label class="control-label" for="inpIdAnggaran">Anggaran</label>
                 <div class="controls" >
@@ -18,7 +19,9 @@
                         <option>--Anggaran--</option>
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
-                            echo "<option value=\"" . $row_1->id . "\"" . set_select('inpIdAnggaran', $row_1->id, $row_1->id == $data->id_anggaran) . ">" . $row_1->kode_kegiatan . " - " . $row_1->nama_kegiatan . "</option>";
+                            if ($row_1->id_unit == $this->session->userdata('kode_unit')) {
+                                echo "<option value=\"" . $row_1->id . "\"" . set_select('inpIdAnggaran', $row_1->id, $row_1->id == $data->id_anggaran) . ">" . $row_1->kode_kegiatan . " - " . $row_1->nama_kegiatan . " - " . $row_1->jenis_belanja .  "</option>";
+                            }
                         }
                         ?>
                     </select>
@@ -27,20 +30,20 @@
             <div class="control-group">
                 <label class="control-label" for="inpMaksudPerjalanan">Maksud Perjalanan</label>
                 <div class="controls">
-                    <textarea name="inpMaksudPerjalanan" class="input-xxlarge" rows="2"><?php echo $data->maksud_perjalanan?></textarea>
+                    <textarea name="inpMaksudPerjalanan" class="input-xxlarge" rows="2"><?php echo $data->maksud_perjalanan ?></textarea>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inpJumlahTujuan">Jumlah Kota Tujuan</label>
                 <div class="controls">
                     <label class="radio inline">
-                        <input type="radio" name="inpJumlahTujuan" id="optionsRadios1" value="1" <?php echo set_radio('inpJumlahTujuan', 1, $data->jumlah_tujuan == 1)?>>1 Kota
+                        <input type="radio" name="inpJumlahTujuan" id="optionsRadios1" value="1" <?php echo set_radio('inpJumlahTujuan', 1, $data->jumlah_tujuan == 1) ?>>1 Kota
                     </label>
                     <label class="radio inline">                                                
-                        <input type="radio" name="inpJumlahTujuan" id="optionsRadios2" value="2" <?php echo set_radio('inpJumlahTujuan', 2, $data->jumlah_tujuan == 2)?>>2 Kota
+                        <input type="radio" name="inpJumlahTujuan" id="optionsRadios2" value="2" <?php echo set_radio('inpJumlahTujuan', 2, $data->jumlah_tujuan == 2) ?>>2 Kota
                     </label>
                     <label class="radio inline">
-                        <input type="radio" name="inpJumlahTujuan"  id="optionsRadios3" value="3" <?php echo set_radio('inpJumlahTujuan', 3, $data->jumlah_tujuan == 3)?>>3 Kota
+                        <input type="radio" name="inpJumlahTujuan"  id="optionsRadios3" value="3" <?php echo set_radio('inpJumlahTujuan', 3, $data->jumlah_tujuan == 3) ?>>3 Kota
                     </label>
                 </div>
             </div>
@@ -49,16 +52,16 @@
                 <div class="controls">
                     <div id="divs1">
                         <div class="div1">
-                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat1" value="<?php echo format_date($data->jadwal_berangkat_1)?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat1" value="<?php echo format_date($data->jadwal_berangkat_1) ?>">
                         </div>
                         <div class="div2">
-                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat21" value="<?php echo format_date($data->jadwal_berangkat_1)?>">
-                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat22" value="<?php echo format_date($data->jadwal_berangkat_2)?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat21" value="<?php echo format_date($data->jadwal_berangkat_1) ?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat22" value="<?php echo format_date($data->jadwal_berangkat_2) ?>">
                         </div>
                         <div class="div3">
-                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat31" value="<?php echo format_date($data->jadwal_berangkat_1)?>">
-                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat32" value="<?php echo format_date($data->jadwal_berangkat_2)?>">
-                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat33" value="<?php echo format_date($data->jadwal_berangkat_3)?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat31" value="<?php echo format_date($data->jadwal_berangkat_1) ?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat32" value="<?php echo format_date($data->jadwal_berangkat_2) ?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalBerangkat33" value="<?php echo format_date($data->jadwal_berangkat_3) ?>">
                         </div>
                     </div>
                 </div>
@@ -68,16 +71,16 @@
                 <div class="controls">
                     <div id="divs2">
                         <div class="div1">
-                            <input type="text" class="inpTanggal" name="inpJadwalPulang1" value="<?php echo format_date($data->jadwal_pulang_1)?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalPulang1" value="<?php echo format_date($data->jadwal_pulang_1) ?>">
                         </div>
                         <div class="div2">
-                            <input type="text" class="inpTanggal" name="inpJadwalPulang21" value="<?php echo format_date($data->jadwal_pulang_1)?>">
-                            <input type="text" class="inpTanggal" name="inpJadwalPulang22" value="<?php echo format_date($data->jadwal_pulang_2)?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalPulang21" value="<?php echo format_date($data->jadwal_pulang_1) ?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalPulang22" value="<?php echo format_date($data->jadwal_pulang_2) ?>">
                         </div>
                         <div class="div3">
-                            <input type="text" class="inpTanggal" name="inpJadwalPulang31" value="<?php echo format_date($data->jadwal_pulang_1)?>">
-                            <input type="text" class="inpTanggal" name="inpJadwalPulang32" value="<?php echo format_date($data->jadwal_pulang_2)?>">
-                            <input type="text" class="inpTanggal" name="inpJadwalPulang33" value="<?php echo format_date($data->jadwal_pulang_3)?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalPulang31" value="<?php echo format_date($data->jadwal_pulang_1) ?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalPulang32" value="<?php echo format_date($data->jadwal_pulang_2) ?>">
+                            <input type="text" class="inpTanggal" name="inpJadwalPulang33" value="<?php echo format_date($data->jadwal_pulang_3) ?>">
                         </div>
                     </div>
                 </div>

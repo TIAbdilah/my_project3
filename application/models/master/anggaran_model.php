@@ -31,7 +31,7 @@ class Anggaran_model extends CI_Model {
                 . "order by kode_kegiatan, kode_akun";
         return $this->db->query($sql);
     }
-    
+
     public function select_all_perjalanan() {
         //return $this->db->get('anggaran');
 
@@ -39,6 +39,7 @@ class Anggaran_model extends CI_Model {
                 . ", (select k.nama_kegiatan from kegiatan k where k.id = a.id_kegiatan) as nama_kegiatan "
                 . ", (select k.kode_kegiatan from kegiatan k where k.id = a.id_kegiatan) as kode_kegiatan "
                 . ", (select ak.kode_akun from akun ak where ak.id = a.id_akun) as kode_akun "
+                . ", (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) as id_unit "
                 . ", (select ak.jenis_belanja from akun ak where ak.id = a.id_akun) as jenis_belanja "
                 . ", (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran) as biaya "
                 . ", (a.pagu - (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran)) as sisa "
@@ -66,7 +67,7 @@ class Anggaran_model extends CI_Model {
                 . "from anggaran a "
                 . "where 1 = 1 ";
         if ($param['id_unit']) {
-            $sql = $sql . "and (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) = " . $param['id_unit']." ";
+            $sql = $sql . "and (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) = " . $param['id_unit'] . " ";
         }
         $sql = $sql . "group by id "
                 . "order by kode_kegiatan, kode_akun";

@@ -13,7 +13,9 @@
                         <option>No. SPT</option>
                         <?php
                         foreach ($SIList_perjadin as $row) {
-                            echo "<option value=\"" . $row->id . "\">" . $row->no_spt . "</option>";
+                            if ($row->id_unit == $this->session->userdata('kode_unit')) {
+                                echo "<option value=\"" . $row->id . "\">" . $row->no_spt . "</option>";
+                            }
                         }
                         ?>
                     </select>

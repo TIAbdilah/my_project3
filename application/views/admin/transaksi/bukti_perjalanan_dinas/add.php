@@ -8,7 +8,7 @@ function format_date($string) {
 <!-- widget-header -->
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>Add Bukti Perjalanan Dinas</h3>
+        <h3>Add Bukti Perjalanan Dinas untuk <?php echo "<u>".$data_pegawai->nama."</u>" ." di Kota "."<u>".$kota_tujuan."</u>" ?> </h3>
     </div>           
     <div class="widget-content" style="padding: 10px;">
         <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/bukti_perjalanan_dinas/process/add') ?>" method="POST">

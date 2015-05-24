@@ -26,6 +26,10 @@ class Detail_perjalanan_dinas extends CI_Controller {
         $this->is_logged_in();
     }
 
+    public function cleanCommas($string) {
+        return str_replace(',', '', $string);
+    }
+
     public function index() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/detail_perjalanan_dinas/list';
@@ -72,7 +76,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaUangHarian1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangHarian1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangHarian1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -82,7 +86,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inPenginapan1');
             $data['jenis_penginapan'] = $this->input->post('inJenisPenginapan1');
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangPenginapan1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangPenginapan1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -92,7 +96,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama1');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 //transport utama pulang
@@ -104,7 +108,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama2');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -114,10 +118,10 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['jenis_biaya'] = 'transport_pendukung';
             $data['kota_asal'] = NULL;
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
-            ;
+            
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalTransportPendukung');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportPendukung'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -127,7 +131,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalRepresentatif1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalRepresentatif1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -137,7 +141,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalDiklat1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalDiklat1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -147,7 +151,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalSewa1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalSewa1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -158,7 +162,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             ;
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalPengeluaranRiil'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
         } else if ($jml_tujuan == 2) {
@@ -173,7 +177,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaUangHarian1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangHarian1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangHarian1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -183,7 +187,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inPenginapan1');
             $data['jenis_penginapan'] = $this->input->post('inJenisPenginapan1');
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangPenginapan1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangPenginapan1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -193,7 +197,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama1');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -205,7 +209,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalTransportPendukung');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportPendukung'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -215,7 +219,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalRepresentatif1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalRepresentatif1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -225,7 +229,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalDiklat1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalDiklat1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -235,7 +239,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalSewa1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalSewa1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -245,7 +249,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalPengeluaranRiil'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -262,7 +266,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaUangHarian2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangHarian2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangHarian2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -272,7 +276,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inPenginapan2');
             $data['jenis_penginapan'] = $this->input->post('inJenisPenginapan2');
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangPenginapan2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangPenginapan2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -282,7 +286,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama2');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -296,7 +300,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama3');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -306,7 +310,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalRepresentatif2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalRepresentatif2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -316,7 +320,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalDiklat2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalDiklat2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -326,7 +330,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalSewa2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalSewa2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -336,7 +340,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalPengeluaranRiil2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -346,7 +350,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalTransportPendukung2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportPendukung2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
         } else if ($jml_tujuan == 3) {
@@ -361,7 +365,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaUangHarian1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangHarian1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangHarian1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -371,7 +375,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inPenginapan1');
             $data['jenis_penginapan'] = $this->input->post('inJenisPenginapan1');
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangPenginapan1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangPenginapan1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -381,7 +385,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama1');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -393,7 +397,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalTransportPendukung');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportPendukung'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -403,7 +407,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalRepresentatif1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalRepresentatif1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -413,7 +417,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalDiklat1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalDiklat1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -423,7 +427,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalSewa1');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalSewa1'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -433,7 +437,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan1');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalPengeluaranRiil'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -450,7 +454,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaUangHarian2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangHarian2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangHarian2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -460,7 +464,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inPenginapan2');
             $data['jenis_penginapan'] = $this->input->post('inJenisPenginapan2');
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangPenginapan2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangPenginapan2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -470,7 +474,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama2');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -480,7 +484,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalRepresentatif2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalRepresentatif2'));
             $this->detail_perjalanan_dinas_model->add($data);
 
 
@@ -490,7 +494,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalDiklat2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalDiklat2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -500,7 +504,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalSewa2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalSewa2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -511,7 +515,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalPengeluaranRiil2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -521,7 +525,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan2');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalTransportPendukung2');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportPendukung2'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
             //------------------------------------------------------INSERT DATA KETIGA---------------------------------------------------------------
@@ -537,7 +541,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaUangHarian3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangHarian3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangHarian3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -547,7 +551,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inPenginapan3');
             $data['jenis_penginapan'] = $this->input->post('inJenisPenginapan3');
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalUangPenginapan3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalUangPenginapan3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -557,7 +561,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama3');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 //transport utama pulang
@@ -569,7 +573,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan4');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = $this->input->post('idJenisTransportUtama4');
-            $data['biaya'] = $this->input->post('inSubtotalTransportUtama4');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportUtama4'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -579,7 +583,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalRepresentatif3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalRepresentatif3'));
             $this->detail_perjalanan_dinas_model->add($data);
 
             //insert biaya diklat
@@ -588,7 +592,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalDiklat3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalDiklat3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -598,7 +602,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalSewa3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalSewa3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -608,7 +612,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalPengeluaranRiil3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalPengeluaranRiil3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
 
@@ -618,7 +622,7 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['kota_tujuan'] = $this->input->post('inKotaTujuan3');
             $data['jenis_penginapan'] = NULL;
             $data['jenis_kendaraan'] = NULL;
-            $data['biaya'] = $this->input->post('inSubtotalTransportPendukung3');
+            $data['biaya'] = $this->cleanCommas($this->input->post('inSubtotalTransportPendukung3'));
 //            print_r($data);echo '<br>';
             $this->detail_perjalanan_dinas_model->add($data);
         }

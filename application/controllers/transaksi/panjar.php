@@ -36,7 +36,8 @@ class Panjar extends CI_Controller {
         $data['page'] = 'admin/transaksi/panjar/view';
         $data['data'] = $this->panjar_model->select_by_id($id)->row();        
         $data['data_perjadin'] = $this->perjalanan_dinas_model->select_by_id($data['data']->id_header)->row();
-        $data['list_detail_panjar'] = $this->detail_panjar_model->select_by_field($data['data']->id)->result();
+        $id_param=$data['data']->id;
+        $data['list_detail_panjar'] = $this->detail_panjar_model->select_by_field(array('id_panjar'=>$id_param))->result();
         $data['format_date'] = new Format_date();
         $this->load->view('admin/index', $data);
     }

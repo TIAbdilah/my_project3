@@ -201,7 +201,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalUangHarian1").attr("value", data[0] * $('#inLamaHari').val());
+                            $("#inSubtotalUangHarian1").attr("value", addCommas(data[0] * $('#inLamaHari').val()));
                         }
                     });
                 });
@@ -214,7 +214,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalUangHarian2").attr("value", data[0] * $('#inLamaHari').val());
+                            $("#inSubtotalUangHarian2").attr("value", addCommas(data[0] * $('#inLamaHari').val()));
                         }
                     });
                 });
@@ -227,7 +227,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalUangHarian3").attr("value", data[0] * $('#inLamaHari').val());
+                            $("#inSubtotalUangHarian3").attr("value", addCommas(data[0] * $('#inLamaHari').val()));
                         }
                     });
                 });
@@ -240,7 +240,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalRepresentatif1").attr("value", data[0]);
+                            $("#inSubtotalRepresentatif1").attr("value", addCommas(data[0]));
                         }
                     });
                 });
@@ -253,7 +253,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalRepresentatif2").attr("value", data[0]);
+                            $("#inSubtotalRepresentatif2").attr("value", addCommas(data[0]));
                         }
                     });
                 });
@@ -266,7 +266,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalRepresentatif3").attr("value", data[0]);
+                            $("#inSubtotalRepresentatif3").attr("value", addCommas(data[0]));
                         }
                     });
                 });
@@ -278,7 +278,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalDiklat1").attr("value", data[0] * $('#inLamaHari').val());
+                            $("#inSubtotalDiklat1").attr("value", addCommas(data[0] * $('#inLamaHari').val()));
                         }
                     });
                 });
@@ -290,7 +290,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalDiklat2").attr("value", data[0] * $('#inLamaHari').val());
+                            $("#inSubtotalDiklat2").attr("value", addCommas(data[0] * $('#inLamaHari').val()));
                         }
                     });
                 });
@@ -302,7 +302,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalDiklat3").attr("value", data[0] * $('#inLamaHari').val());
+                            $("#inSubtotalDiklat3").attr("value", addCommas(data[0] * $('#inLamaHari').val()));
                         }
                     });
                 });
@@ -330,7 +330,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalUangPenginapan1").attr("value", data[0] * ($('#inLamaHari').val() - 1));
+                            $("#inSubtotalUangPenginapan1").attr("value", addCommas(data[0] * ($('#inLamaHari').val() - 1)));
                         }
                     });
                 });
@@ -344,7 +344,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalUangPenginapan2").attr("value", data[0] * ($('#inLamaHari').val() - 1));
+                            $("#inSubtotalUangPenginapan2").attr("value", addCommas(data[0] * ($('#inLamaHari').val() - 1)));
                         }
                     });
                 });
@@ -358,7 +358,7 @@
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
-                            $("#inSubtotalUangPenginapan3").attr("value", data[0] * ($('#inLamaHari').val() - 1));
+                            $("#inSubtotalUangPenginapan3").attr("value", addCommas(data[0] * ($('#inLamaHari').val() - 1)));
                         }
                     });
                 });
@@ -411,7 +411,7 @@
                             kota_tujuan: $('#inKotaTujuan1').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inSubtotalTransportUtama1").val(data);
+                            $("#inSubtotalTransportUtama1").val(addCommas(data));
                         }
                     });
                 });
@@ -424,7 +424,7 @@
                             kota_tujuan: $('#inKotaTujuan2').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inSubtotalTransportUtama2").val(data);
+                            $("#inSubtotalTransportUtama2").val(addCommas(data));
                         }
                     });
                 });
@@ -437,7 +437,7 @@
                             kota_tujuan: $('#inKotaTujuan3').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inSubtotalTransportUtama3").val(data);
+                            $("#inSubtotalTransportUtama3").val(addCommas(data));
                         }
                     });
                 });
@@ -450,7 +450,7 @@
                             kota_tujuan: $('#inKotaTujuan4').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inSubtotalTransportUtama4").val(data);
+                            $("#inSubtotalTransportUtama4").val(addCommas(data));
                         }
                     });
                 });
@@ -462,7 +462,7 @@
                             kota_tujuan: $('#inKotaTujuan1').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inSubtotalSewa1").val(data);
+                            $("#inSubtotalSewa1").val(addCommas(data));
                         }
                     });
                 });
@@ -474,7 +474,7 @@
                             kota_tujuan: $('#inKotaTujuan2').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inSubtotalSewa2").val(data);
+                            $("#inSubtotalSewa2").val(addCommas(data));
                         }
                     });
                 });
@@ -486,39 +486,39 @@
                             kota_tujuan: $('#inKotaTujuan3').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inSubtotalSewa3").val(data);
+                            $("#inSubtotalSewa3").val(addCommas(data));
                         }
                     });
                 });
                 $("#inTransPendukung").keyup(function() {
 
                     var total = $('#inTransPendukung').val();
-                    $('#inSubtotalTransportPendukung').val(total);
+                    $('#inSubtotalTransportPendukung').val(addCommas(total));
                 });
                 $("#inTransPendukung").blur(function() {
 
                     var total = $('#inTransPendukung').val();
-                    $('#inSubtotalTransportPendukung').val(total);
+                    $('#inSubtotalTransportPendukung').val(addCommas(total));
                 });
                 $("#inTransPendukung2").keyup(function() {
 
                     var total = $('#inTransPendukung2').val();
-                    $('#inSubtotalTransportPendukung2').val(total);
+                    $('#inSubtotalTransportPendukung2').val(addCommas(total));
                 });
                 $("#inTransPendukung2").blur(function() {
 
                     var total = $('#inTransPendukung2').val();
-                    $('#inSubtotalTransportPendukung2').val(total);
+                    $('#inSubtotalTransportPendukung2').val(addCommas(total));
                 });
                 $("#inTransPendukung3").keyup(function() {
 
                     var total = $('#inTransPendukung3').val();
-                    $('#inSubtotalTransportPendukung3').val(total);
+                    $('#inSubtotalTransportPendukung3').val(addCommas(total));
                 });
                 $("#inTransPendukung3").blur(function() {
 
                     var total = $('#inTransPendukung3').val();
-                    $('#inSubtotalTransportPendukung3').val(total);
+                    $('#inSubtotalTransportPendukung3').val(addCommas(total));
                 });
                 $("#inTransPendukung").keyup(function() {
 
@@ -559,32 +559,32 @@
                 $("#inPengeluaranRiil").keyup(function() {
 
                     var total = $('#inPengeluaranRiil').val();
-                    $('#inSubtotalPengeluaranRiil').val(total);
+                    $('#inSubtotalPengeluaranRiil').val(addCommas(total));
                 });
                 $("#inPengeluaranRiil").blur(function() {
 
                     var total = $('#inPengeluaranRiil').val();
-                    $('#inSubtotalPengeluaranRiil').val(total);
+                    $('#inSubtotalPengeluaranRiil').val(addCommas(total));
                 });
                 $("#inPengeluaranRiil2").keyup(function() {
 
                     var total = $('#inPengeluaranRiil2').val();
-                    $('#inSubtotalPengeluaranRiil2').val(total);
+                    $('#inSubtotalPengeluaranRiil2').val(addCommas(total));
                 });
                 $("#inPengeluaranRiil2").blur(function() {
 
                     var total = $('#inPengeluaranRiil2').val();
-                    $('#inSubtotalPengeluaranRiil2').val(total);
+                    $('#inSubtotalPengeluaranRiil2').val(addCommas(total));
                 });
                 $("#inPengeluaranRiil3").keyup(function() {
 
                     var total = $('#inPengeluaranRiil3').val();
-                    $('#inSubtotalPengeluaranRiil3').val(total);
+                    $('#inSubtotalPengeluaranRiil3').val(addCommas(total));
                 });
                 $("#inPengeluaranRiil3").blur(function() {
 
                     var total = $('#inPengeluaranRiil3').val();
-                    $('#inSubtotalPengeluaranRiil3').val(total);
+                    $('#inSubtotalPengeluaranRiil3').val(addCommas(total));
                 });
                 $("#inPengeluaranRiil").keyup(function() {
 
@@ -622,6 +622,9 @@
 
                     });
                 });
+                
+                
+                
                 $("#inNamaPegawai").change(function() {
 
                     $.ajax({
