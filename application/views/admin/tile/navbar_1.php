@@ -37,6 +37,7 @@
                             <li><a href="<?php echo site_url('master/biaya_transport_dlm_kota') ?>">Biaya Transportasi Dalam Kota</a></li>
                             <li><a href="<?php echo site_url('master/biaya_diklat') ?>">Biaya Diklat</a></li>
                             <li><a href="<?php echo site_url('master/biaya_representatif') ?>">Biaya Representatif</a></li>
+                            <li><a href="<?php echo site_url('master/biaya_narasumber') ?>">Biaya Narasumber</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -48,7 +49,8 @@
                             <li><a href="<?php echo base_url() ?>transaksi/panjar">Uang Muka Perjalanan Dinas</a></li>                        
                             <!--<li><a href="<?php echo base_url() ?>transaksi/bukti_perjalanan_dinas">Bukti Perjalanan Dinas</a></li>-->
                             <!--<li><a href="<?php echo base_url() ?>transaksi/pengeluaran_riil">Pengeluaran Riil</a></li>-->
-                            <li><a href="<?php echo base_url() ?>transaksi/pengajuan_barang">Barang/Jasa</a></li>
+                            <li><a href="<?php echo base_url() ?>transaksi/pengajuan_barang">Barang</a></li>
+                            <li><a href="<?php echo base_url() ?>transaksi/pengajuan_jasa">Jasa</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

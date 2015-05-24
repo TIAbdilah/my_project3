@@ -52,7 +52,14 @@ function format_date($string) {
             <div class="control-group">
                 <label class="control-label" for="inpJabatan">Jabatan</label>
                 <div class="controls">
-                    <input type="text" id="inpJabatan" name="inpJabatan" value="<?php echo $row->jabatan ?>">
+                    <select class="input-xlarge" name="inpJabatan">
+                        <option>Jabatan</option>
+                        <?php
+                        foreach ($SIList_biaya_narasumber as $row_5) {
+                            echo "<option value=\"" . $row_5->id . "\">" . $row_5->jabatan . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="control-group">

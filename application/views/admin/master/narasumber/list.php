@@ -33,7 +33,7 @@
                     . "<td>" . $row->golongan . "</td>"
                     . "<td>" . $row->tingkat . "</td>"
                     . "<td>" . $row->institusi . "</td>"
-                    . "<td>" . $row->jabatan . "</td>"
+                    . "<td>" . $row->nama_jabatan . "</td>"
                     . "<td>" . $row->kepakaran . "</td>"
                     . "<td class=\"td-actions\">"
                     . "<a title=\"Edit\" href=\"" . site_url('master/narasumber/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"

@@ -47,7 +47,14 @@
             <div class="control-group">
                 <label class="control-label" for="inpJabatan">Jabatan</label>
                 <div class="controls">
-                    <input type="text" id="inpJabatan" name="inpJabatan" placeholder="Jabatan">
+                    <select class="input-xlarge" name="inpJabatan">
+                        <option>Jabatan</option>
+                        <?php
+                        foreach ($SIList_biaya_narasumber as $row) {
+                            echo "<option value=\"" . $row->id . "\">" . $row->jabatan . "</option>";
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
             <div class="control-group">
