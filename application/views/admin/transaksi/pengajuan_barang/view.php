@@ -12,7 +12,6 @@
                 <td width="12%"><strong>Nomor Pengajuan</strong></td>
                 <td valign="top" width="50%">:&nbsp;<?php echo $data->nomor_pengajuan ?></td>
                 <td valign="top" width="40%" rowspan="6">
-
                     <form action="<?php echo site_url('transaksi/pengajuan_barang/update_status/' . $data->id) ?>" method="POST">            
                         <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
                         <input type="hidden" name="inpStatus" value="<?php echo $data->status_approval ?>" />

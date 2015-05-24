@@ -47,7 +47,6 @@ class Detail_pengajuan_barang_model extends CI_Model {
     public function add($data) {
         $data = array(
             'id_pengajuan_barang' => $data['id_pengajuan_barang'],
-            'id_jenis_barang' => $data['id_jenis_barang'],
             'id_barang' => $data['id_barang'],
             'jumlah' => $data['jumlah']
         );
@@ -57,7 +56,6 @@ class Detail_pengajuan_barang_model extends CI_Model {
     public function edit($id, $data) {
         $data = array(
             'id_pengajuan_barang' => $data['id_pengajuan_barang'],
-            'id_jenis_barang' => $data['id_jenis_barang'],
             'id_barang' => $data['id_barang'],
             'jumlah' => $data['jumlah']
         );

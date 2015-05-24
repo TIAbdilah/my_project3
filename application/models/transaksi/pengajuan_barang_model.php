@@ -27,7 +27,7 @@ class Pengajuan_barang_model extends CI_Model {
     }
 
     public function select_by_id($id) {
-        $query = 'select pb.*, a1.* '
+        $query = 'select a1.*,pb.*  '
                 . 'from pengajuan_barang pb, '
                 . '(select a.id, k.nama_kegiatan, k.kode_kegiatan, k.id_unit, ak.jenis_belanja '
                 . 'from anggaran a, kegiatan k, akun ak '
