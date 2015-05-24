@@ -59,6 +59,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="<?php echo site_url('report/rekap_perdin_pegawai/view') ?>">Rekap Perjalanan Dinas</a></li>
+                            <li><a href="<?php echo site_url('report/rekap_pembuktian/view') ?>">Rekap Pembuktian Perjalanan Dinas</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

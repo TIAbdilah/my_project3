@@ -8,7 +8,8 @@
 
         <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a href="#ppd">Pengajuan Perjalanan Dinas</a></li>
-            <li><a href="#pbj">Pengajuan Barang dan Jasa</a></li>
+            <li><a href="#pb">Pengajuan Barang</a></li>
+            <li><a href="#pj">Pengajuan Jasa</a></li>
         </ul>
 
         <div class="tab-content">
@@ -55,7 +56,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="pbj">
+            <div class="tab-pane" id="pb">
                 <table id="example11" class="table table-striped table-bordered">
                     <thead>
                         <tr>
@@ -96,6 +97,34 @@
                                 $no++;
                             }
                         }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="pj">
+                <table id="example111" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="5%"> No</th>
+                            <th width="15%"> No Pengajuan</th>
+                            <th width="20%"> Kegiatan</th>
+                            <th width="15%"> Tanggal</th>
+                            <th width="15%"> Jumlah Biaya</th>
+                            <th width="10%"> Status</th>
+                            <th width="30%" class="td-actions">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        echo "<tr>"
+                        . "<td></td>"
+                        . "<td></td>"
+                        . "<td></td>"
+                        . "<td></td>"
+                        . "<td></td>"
+                        . "<td></td>"
+                        . "<td></td>"
+                        . "</tr>";
                         ?>
                     </tbody>
                 </table>

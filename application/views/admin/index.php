@@ -173,6 +173,9 @@
                 $('#example11').dataTable({
                     info: false
                 });
+                $('#example111').dataTable({
+                    info: false
+                });
 
                 $('.inpTanggal').datepicker({
                     format: "dd-mm-yyyy",
