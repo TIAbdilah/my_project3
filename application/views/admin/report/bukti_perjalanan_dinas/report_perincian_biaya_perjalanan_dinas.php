@@ -71,6 +71,7 @@
         <?php
         $no = 1;
         $total_biaya = 0;
+        $tgl_entri = "";
         foreach ($list_data_bukti as $data) {
             if ($data->jumlah_bukti != 0) {
                 echo "<tr>"
@@ -108,6 +109,7 @@
                 . "</tr>";
                 $no++;
                 $total_biaya += $data->biaya;
+                $tgl_entri = $data->tgl_entri_bukti;
             }
         }
         ?>
@@ -132,7 +134,7 @@
                 NIP. 1996806122007011004<br>
             </td>
             <td align="center" width="50%"> 
-                Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?><br>
+                Bandung, <?php echo $format_date->format_date_dfy($tgl_entri) ?><br>
                 Yang melakukan perjalanan,<br>
                 <br>
                 <br>

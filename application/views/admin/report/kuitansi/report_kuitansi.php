@@ -60,8 +60,10 @@
             <td><div align="center">:</div></td>
             <?php
             $total = 0;
+            $tanggal_entri = "";
             foreach ($data_kuitansi as $data) {
                 $total += $data->biaya;
+                $tanggal_entri = $data->tgl_entri_bukti;
             }
             ?>
             <td>Rp. <?php echo number_format($total) ?></td>
@@ -97,7 +99,7 @@
                 NIP. 196806122007011004
             </td>
             <td v-align="top" align="center" width="30%"> 
-                Bandung, <?php echo $format_date->format_date_dfy($data_header->tanggal_approval) ?><br>
+                Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
                 Yang menerima,<br>
                 <br>
                 <br><br><br>

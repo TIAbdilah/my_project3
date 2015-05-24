@@ -39,6 +39,7 @@
         <?php
         $no = 1;
         $total_riil = 0;
+        $tanggal_entri = "";
         foreach ($list_data_bukti_riil as $data) {
             if (!empty($data->nomor_bukti)) {
                 echo "<tr>"
@@ -47,6 +48,7 @@
                 . "<td align=\"right\">".number_format($data->jumlah_bukti)."</td>"
                 . "</tr>";
                 $no++;
+                $tanggal_entri=$data->tgl_entri_bukti;
                 $total_riil += $data->jumlah_bukti;
             }
             
@@ -80,7 +82,7 @@
                 <br>
 
             </td>
-            <td align="center" width="50%"><p>Bandung, <?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?><br>
+            <td align="center" width="50%"><p>Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
                     Yang melakukan perjalanan,<br>
                     <br>
                 </p>
