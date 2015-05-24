@@ -15,6 +15,7 @@ class Narasumber extends CI_Controller {
         parent::__construct();
         $this->load->model('master/narasumber_model');
         $this->load->model('master/listcode_model');
+        $this->load->model('master/biaya_narasumber_model');
         $this->load->model('master/unit_model');
         $this->is_logged_in();
     }
@@ -40,6 +41,7 @@ class Narasumber extends CI_Controller {
         $data['SIList_tingkat'] = $this->listcode_model->select_by_field('list_name','Tingkat')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
+        $data['SIList_biaya_narasumber'] = $this->biaya_narasumber_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -51,6 +53,7 @@ class Narasumber extends CI_Controller {
         $data['SIList_tingkat'] = $this->listcode_model->select_by_field('list_name','Tingkat')->result();
         $data['SIList_statusPegawai'] = $this->listcode_model->select_by_field('list_name','Status Pegawai')->result();
         $data['SIList_unit'] = $this->unit_model->select_all()->result();
+        $data['SIList_biaya_narasumber'] = $this->biaya_narasumber_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
