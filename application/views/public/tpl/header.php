@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
             </a>
-            <a class="brand" href="<?php echo base_url() ?>">e-satker</a>
+            <a class="brand" href="<?php echo base_url() ?>">ESatker</a>
         </div>
         <!-- /container --> 
     </div>
@@ -19,7 +19,7 @@
 <div class="subnavbar">
     <div class="container">
         <center>
-            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner.png" />
+            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner copy.png" />
         </center>
         <!--/container-->  
     </div>

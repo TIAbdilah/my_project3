@@ -16,9 +16,9 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_all() {
-        $query = "select pd.*, a1.nama_kegiatan, a1.jenis_belanja "
+        $query = "select pd.*, a1.* "
                 . "from perjalanan_dinas pd, "
-                . "(select a.id, k.nama_kegiatan, ak.jenis_belanja "
+                . "(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja "
                 . "from anggaran a, kegiatan k, akun ak "
                 . "where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 "
                 . "where pd.id_anggaran = a1.id "
@@ -41,9 +41,9 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        $query = "select pd.*, a1.nama_kegiatan, a1.jenis_belanja "
+        $query = "select pd.*, a1.* "
                 . "from perjalanan_dinas pd, "
-                . "(select a.id, k.nama_kegiatan, ak.jenis_belanja "
+                . "(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja "
                 . "from anggaran a, kegiatan k, akun ak "
                 . "where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 "
                 . "where pd.id_anggaran = a1.id "

@@ -20,6 +20,7 @@ class Panjar_model extends CI_Model {
                 . ", (select pd.no_spt from perjalanan_dinas pd where pd.id = pj.id_header) as no_spt "
                 . ", (select p.nama from pegawai p where p.id = pj.penerima) as nama_penerima "
                 . ", (select sum(dpj.jumlah) from detail_panjar dpj where dpj.id_panjar = pj.id group by dpj.id_panjar) as jumlah "
+                . ", (select k.id_unit from kegiatan k where k.id = (select a.id_kegiatan from anggaran a where a.id =(select pd1.id_anggaran from perjalanan_dinas pd1 where pd1.id = pj.id_header))) as id_unit "
                 . "from panjar pj";
         return $this->db->query($sql);
     }

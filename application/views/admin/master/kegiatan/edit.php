@@ -13,7 +13,7 @@
                         <option>Unit</option>
                         <?php
                         foreach ($SIList_unit as $row_1) {
-                            echo "<option value=\"" . $row_1->id . "\"".set_select('inpKodeUnit', $row_1->id, $row_1->id == $row->kode_unit).">" . $row_1->kode_unit . " - " . $row_1->nama_unit . "</option>";
+                            echo "<option value=\"" . $row_1->id . "\"".set_select('inpKodeUnit', $row_1->id, $row_1->id == $row->id_unit).">" . $row_1->kode_unit . " - " . $row_1->nama_unit . "</option>";
                         }
                         ?>
                     </select>

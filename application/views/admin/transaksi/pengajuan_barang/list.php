@@ -24,27 +24,29 @@
                 <?php
                 $no = 1;
                 foreach ($list_data as $row) {
-                    echo "<tr>"
-                    . "<td>" . $no . "</td>"
-                    . "<td>" . $row->nomor_pengajuan . " </td>"
-                    . "<td>" . $row->nama_kegiatan . "</td>"
-                    . "<td>" . $row->maksud_kegiatan . "</td>"
-                    . "<td>" . $row->tanggal_pengajuan . "</td>"
-                    . "<td>" . $status_approval[$row->status_approval] . "</td>"
-                    . "<td class=\"td-actions\">";
-                    
-                    if ($row->status_approval == 5 && $this->session->userdata('role') == 'operator') {
-                        echo "<a title=\"Report (Nota Dinas)\" href=\"" . site_url('report/nota_dinas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
-                        echo "<a title=\"Report (Daftar Detail Barang)\" href=\"" . site_url('report/daftar_detail_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                    if ($row->id_unit == $this->session->userdata('kode_unit')) {
+                        echo "<tr>"
+                        . "<td>" . $no . "</td>"
+                        . "<td>" . $row->nomor_pengajuan . " </td>"
+                        . "<td>" . $row->nama_kegiatan . "</td>"
+                        . "<td>" . $row->maksud_kegiatan . "</td>"
+                        . "<td>" . $row->tanggal_pengajuan . "</td>"
+                        . "<td>" . $status_approval[$row->status_approval] . "</td>"
+                        . "<td class=\"td-actions\">";
+
+                        if ($row->status_approval == 5 && $this->session->userdata('role') == 'operator') {
+                            echo "<a title=\"Report (Nota Dinas)\" href=\"" . site_url('report/nota_dinas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                            echo "<a title=\"Report (Daftar Detail Barang)\" href=\"" . site_url('report/daftar_detail_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                        }
+                        echo "<a title=\"View\" href=\"" . site_url('transaksi/pengajuan_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
+                        if ($row->status_approval == 0 && $this->session->userdata('role') == 'operator') {
+                            echo "<a title=\"Edit\" href=\"" . site_url('transaksi/pengajuan_barang/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>";
+                            echo "<a title=\"Delete\" href=\"" . site_url('transaksi/pengajuan_barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>";
+                        }
+                        echo "</td>"
+                        . "</tr>";
+                        $no++;
                     }
-                    echo "<a title=\"View\" href=\"" . site_url('transaksi/pengajuan_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
-                    if ($row->status_approval == 0 && $this->session->userdata('role') == 'operator') {
-                        echo "<a title=\"Edit\" href=\"" . site_url('transaksi/pengajuan_barang/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>";
-                        echo "<a title=\"Delete\" href=\"" . site_url('transaksi/pengajuan_barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>";
-                    }
-                    echo "</td>"
-                    . "</tr>";
-                    $no++;
                 }
                 ?>
             </tbody>

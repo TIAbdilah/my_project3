@@ -3,6 +3,8 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+require_once(APPPATH . 'controllers/common/array_custom.php');
+
 class Login extends CI_Controller {
 
     function __construct() {
@@ -14,8 +16,7 @@ class Login extends CI_Controller {
         if ($this->session->userdata('is_login')) {
             redirect('admin/home');
         } else {
-            $data['title'] = "Login | e-satker";
-            
+            $data['title'] = "Login | e-satker";            
             $this->load->view('public/login', $data);
         }
     }
@@ -35,15 +36,13 @@ class Login extends CI_Controller {
                 $row = $this->users_model->select_by_field('username', $username)->row();        
                 $sessionData['username'] = $row->username;
                 $sessionData['role'] = $row->nama_role;
+                $array_custom = new Array_custom();
+                $sessionData['kode_role'] = $array_custom->kode_role[$row->id_jenis_pengguna];
+                $sessionData['kode_unit'] = $row->kode_unit;
                 $sessionData['is_login'] = TRUE;
 
                 $this->session->set_userdata($sessionData);
                 redirect('admin/home');
-//                if ($this->session->userdata('id_jenis_pengguna') == 1) {
-//                    redirect('admin/homes');
-//                } else {
-//                    redirect('admin/homes');
-//                }
             } else {
                 $this->session->set_flashdata('message', 'Login Gagal!, username atau password salah ' . $this->session->userdata('id_jenis_pengguna'));
 //                redirect('login', $data);
