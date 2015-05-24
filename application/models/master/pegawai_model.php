@@ -22,6 +22,10 @@ class Pegawai_model extends CI_Model {
         $sub->select('nama_unit')->from('unit');
         $sub->where('pegawai.kode_unit = unit.id');
         $this->subquery->end_subquery('nama_unit');
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('kode_unit')->from('unit');
+        $sub->where('pegawai.kode_unit = unit.id');
+        $this->subquery->end_subquery('kode_unit');
         $this->db->from('pegawai');
         $this->db->where('narasumber', 0);
         $this->db->order_by('nama');
