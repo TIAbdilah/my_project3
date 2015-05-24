@@ -15,10 +15,11 @@ require_once(APPPATH . 'controllers/common/format_date.php');
 class Nota_dinas extends CI_Controller {
 
     var $title_page = "e-satker | Nota Dinas";
-    
+
     function __construct() {
         parent::__construct();
         $this->load->model('transaksi/pengajuan_barang_model');
+        $this->load->model('transaksi/detail_pengajuan_barang_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/panjar_model');
         $this->is_logged_in();
@@ -27,6 +28,7 @@ class Nota_dinas extends CI_Controller {
     public function view($id_header) {
         $data['title'] = $this->title_page;
         $data['data_report'] = $this->pengajuan_barang_model->select_by_id($id_header)->row();
+        $data['data_report_2'] = $this->detail_pengajuan_barang_model->select_by_id($id_header)->result();
         $data['curency'] = new Number_to_word_ind();
         $data['format_date'] = new Format_date();
         $data['id_header'] = $id_header;
@@ -37,11 +39,14 @@ class Nota_dinas extends CI_Controller {
 
     public function print_report($id_header) {
         $this->load->helper('to_pdf');
+        
         $data['data_report'] = $this->pengajuan_barang_model->select_by_id($id_header)->row();
+        $data['data_report_2'] = $this->detail_pengajuan_barang_model->select_by_id($id_header)->result();
+        
         $html = $this->load->view('admin/report/nota_dinas/report_nota_dinas', $data, TRUE);
-        pdf_create($html, "potrait", "Nota Dinas ".date('mdy'), true);
+        pdf_create($html, "potrait", "Nota Dinas " . date('mdy'), true);
     }
-    
+
     public function is_logged_in() {
         if ($this->session->userdata('role') == '') {
             redirect('login');

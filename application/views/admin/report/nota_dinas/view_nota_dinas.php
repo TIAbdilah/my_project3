@@ -11,7 +11,7 @@
     </div>
     <div class="widget-content" style="padding: 10px;"><br>
         <?php $this->load->view($report_page) ?>
-    </div>>
-
+        
+    </div>
     <!-- /widget-content --> 
 </div>

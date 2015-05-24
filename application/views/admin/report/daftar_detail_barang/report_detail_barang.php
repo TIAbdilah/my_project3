@@ -20,7 +20,7 @@
             <?php
             $no = 1;
             $total = 0;
-            foreach ($data_report as $row) {
+            foreach ($data_report_2 as $row) {
                 $subtotal = $row->jumlah * $row->pagu_harga;
 
                 echo "<tr>"
