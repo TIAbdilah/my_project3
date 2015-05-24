@@ -85,14 +85,27 @@ class Detail_pengajuan_barang extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {
-       $data['title'] = $this->title_page;
+    public function edit($id, $kodejenis) {
+        $data['title'] = $this->title_page;
+        $data['id_detail_barang'] = $this->input->post('inIdDetailBarang');
         $data['page'] = 'admin/transaksi/detail_pengajuan_barang/edit';
-        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
+        
+        $param = array(
+            'id' => $id
+        );
+        if (strpos($kodejenis, '%20') !== false) {
+            $x = explode('%20', $kodejenis);
+            $y = $x[0] . ' ' . $x[1];
+        } else {
+            $y = $kodejenis;
+        }
+        $data['data'] = $this->detail_pengajuan_barang_model->select_by_field('id', $id)->row();
+
+        print_r($data);
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
         $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();
-        $this->load->view('admin/index', $data);
+//        $this->load->view('admin/index', $data);
     }
 
     public function process($action, $id = null) {
@@ -112,8 +125,8 @@ class Detail_pengajuan_barang extends CI_Controller {
     }
 
     public function delete($id) {
-        $this->perjalanan_dinas_model->delete($id);
-        redirect('transaksi/perjalanan_dinas');
+        $this->detail_pengajuan_barang_model->delete($id);
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     // tambahan

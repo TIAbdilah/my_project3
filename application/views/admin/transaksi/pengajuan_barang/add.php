@@ -45,6 +45,19 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="inKodeJenisBarang">Jenis Barang</label>
+                <div class="controls">
+                    <select class="input-xlarge" name="inKodeJenisBarang" id="inKodeJenisBarang">
+                        <option>Jenis Barang</option>
+                        <?php
+                        foreach ($SIList_jenisBarang as $row) {
+                            echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>    
+            <div class="control-group">
                 <label class="control-label" for="inMaksudKegiatan">Maksud Kegiatan</label>
                 <div class="controls">
                     <textarea name="inMaksudKegiatan" id="inMaksudKegiatan" class="input-xxlarge" rows="2"></textarea>
@@ -56,7 +69,6 @@
                     <input type="text" class="inpTanggal" id="inTanggalPengajuan" name="inTanggalPengajuan"/>
                 </div>
             </div>
-
             <div class="control-group">
                 <div class="controls">  
                     <button type="submit" class="btn">Simpan</button>

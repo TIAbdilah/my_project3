@@ -49,6 +49,19 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="inKodeJenisBarang">Jenis Barang</label>
+                <div class="controls">
+                    <select class="input-xlarge" name="inKodeJenisBarang" id="inKodeJenisBarang">
+                        <option>Jenis Barang</option>
+                        <?php
+                        foreach ($SIList_jenisBarang as $row) {
+                            echo "<option value=\"" . $row->list_item . "\"".set_select('inKodeJenisBarang', $row->list_item, $row->list_item == $data->kode_jenis_barang).">" . $row->list_item . "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>    
+            <div class="control-group">
                 <label class="control-label" for="inMaksudKegiatan">Maksud Kegiatan</label>
                 <div class="controls">
                     <textarea name="inMaksudKegiatan" id="inMaksudKegiatan" class="input-xxlarge" rows="2"><?php echo $data->maksud_kegiatan ?></textarea>
