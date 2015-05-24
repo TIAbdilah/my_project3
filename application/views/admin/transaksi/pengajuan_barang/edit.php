@@ -1,7 +1,8 @@
 <?php
-    function format_date($string){
-        return substr($string, 8, 2).'-'.substr($string, 5, 2).'-'.substr($string, 0, 4);
-    }
+
+function format_date($string) {
+    return substr($string, 8, 2) . '-' . substr($string, 5, 2) . '-' . substr($string, 0, 4);
+}
 ?>
 <!-- widget-header -->
 <div class="widget widget-table action-table">
@@ -10,7 +11,7 @@
     </div>           
     <div class="widget-content" style="padding: 10px;">
 
-        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/pengajuan_barang/process/edit/'.$data->id) ?>" method="POST">            
+        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/pengajuan_barang/process/edit/' . $data->id) ?>" method="POST">            
             <div class="control-group">
                 <label class="control-label" for="nomorPengajuan">Nomor Pengajuan</label>
                 <div class="controls">
@@ -24,7 +25,9 @@
                         <option>--Anggaran--</option>
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
-                            echo "<option value=\"" . $row_1->id . "\"" . set_select('inIdAnggaran', $row_1->id, $row_1->id == $data->id_anggaran) . ">" . $row_1->kode_kegiatan . " - "  . $row_1->nama_kegiatan . "</option>";
+                            if ($row_1->id_unit == $this->session->userdata('kode_unit')) {
+                                echo "<option value=\"" . $row_1->id . "\"" . set_select('inIdAnggaran', $row_1->id, $row_1->id == $data->id_anggaran) . ">" . $row_1->kode_kegiatan . " - " . $row_1->nama_kegiatan . "</option>";
+                            }
                         }
                         ?>
                     </select>
@@ -55,7 +58,7 @@
                         <option>Jenis Barang</option>
                         <?php
                         foreach ($SIList_jenisBarang as $row) {
-                            echo "<option value=\"" . $row->list_item . "\"".set_select('inKodeJenisBarang', $row->list_item, $row->list_item == $data->kode_jenis_barang).">" . $row->list_item . "</option>";
+                            echo "<option value=\"" . $row->list_item . "\"" . set_select('inKodeJenisBarang', $row->list_item, $row->list_item == $data->kode_jenis_barang) . ">" . $row->list_item . "</option>";
                         }
                         ?>
                     </select>

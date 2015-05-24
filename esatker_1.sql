@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 22, 2015 at 11:35 PM
--- Server version: 5.1.37
--- PHP Version: 5.3.0
+-- Host: 127.0.0.1
+-- Generation Time: May 24, 2015 at 09:59 AM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -41,11 +42,6 @@ CREATE TABLE IF NOT EXISTS `akomodasi_perjalanan` (
   `biaya_taksi` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `akomodasi_perjalanan`
---
-
 
 -- --------------------------------------------------------
 
@@ -609,11 +605,6 @@ CREATE TABLE IF NOT EXISTS `approval` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `approval`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -711,11 +702,6 @@ CREATE TABLE IF NOT EXISTS `biaya` (
   `biaya` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `biaya`
---
-
 
 -- --------------------------------------------------------
 
@@ -1794,25 +1780,47 @@ INSERT INTO `detail_panjar` (`id`, `id_panjar`, `id_pegawai`, `jumlah`) VALUES
 CREATE TABLE IF NOT EXISTS `detail_pengajuan_barang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pengajuan_barang` int(11) NOT NULL,
-  `id_jenis_barang` varchar(50) NOT NULL,
   `id_barang` int(11) NOT NULL,
   `jumlah` int(15) DEFAULT NULL,
   `subtotal` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `detail_pengajuan_barang`
 --
 
-INSERT INTO `detail_pengajuan_barang` (`id`, `id_pengajuan_barang`, `id_jenis_barang`, `id_barang`, `jumlah`, `subtotal`) VALUES
-(1, 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 1, 20000, 0),
-(2, 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 1, 30000, 0),
-(3, 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 1, 34, 0),
-(4, 3, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 1, 2, 0),
-(5, 4, 'Bahan Bangunan', 5, 23, 0),
-(7, 4, 'Bahan Bangunan', 1, 2, 0),
-(8, 5, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 2, 10, NULL);
+INSERT INTO `detail_pengajuan_barang` (`id`, `id_pengajuan_barang`, `id_barang`, `jumlah`, `subtotal`) VALUES
+(1, 2, 1, 20000, 0),
+(2, 2, 1, 30000, 0),
+(3, 2, 1, 34, 0),
+(4, 3, 1, 2, 0),
+(5, 4, 5, 23, 0),
+(7, 4, 1, 2, 0),
+(8, 5, 2, 10, NULL),
+(9, 2, 47, 20, NULL),
+(10, 2, 14, 0, NULL),
+(11, 2, 0, 0, NULL),
+(12, 2, 15, 20, NULL),
+(13, 2, 6, 1, NULL),
+(14, 2, 4, 3, NULL),
+(15, 2, 4, 9, NULL),
+(16, 2, 9, 9, NULL),
+(17, 2, 18, 8, NULL),
+(18, 2, 2, 8, NULL),
+(19, 378, 4, 2, NULL),
+(20, 378, 10, 2, NULL),
+(21, 378, 9, 3, NULL),
+(22, 378, 2, 3, NULL),
+(23, 378, 2, 3, NULL),
+(24, 378, 11, 3, NULL),
+(25, 378, 7, 5, NULL),
+(26, 378, 12, 3, NULL),
+(27, 378, 11, 4, NULL),
+(28, 378, 8, 5, NULL),
+(29, 378, 4, 0, NULL),
+(30, 4, 2, 4, NULL),
+(31, 4, 2, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -2138,11 +2146,6 @@ CREATE TABLE IF NOT EXISTS `golongan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `golongan`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2155,11 +2158,6 @@ CREATE TABLE IF NOT EXISTS `jenis_barang` (
   `nama_barang` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `jenis_barang`
---
-
 
 -- --------------------------------------------------------
 
@@ -2321,11 +2319,6 @@ CREATE TABLE IF NOT EXISTS `koordinator` (
   `penanggung_jawab` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `koordinator`
---
-
 
 -- --------------------------------------------------------
 
@@ -2696,11 +2689,6 @@ CREATE TABLE IF NOT EXISTS `pajak` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `pajak`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -2960,24 +2948,26 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
   `nomor_pengajuan` varchar(50) NOT NULL,
   `id_anggaran` int(11) NOT NULL,
   `maksud_kegiatan` text,
+  `kode_jenis_barang` varchar(100) NOT NULL,
   `tanggal_pengajuan` date DEFAULT NULL,
   `status_approval` int(2) NOT NULL,
   `status_penolakan` int(2) DEFAULT NULL,
   `tanggal_pembuatan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tanggal_approval` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `pengajuan_barang`
 --
 
-INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
-(1, '-', 2, 'transaksi pengajuan barang', '0000-00-00', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(2, '-', 2, 'transaksi', '2015-05-05', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(3, '-', 2, 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(4, '002/BARANG/SATKER/LP/V/2015', 378, 'pengadaan barang untuk pers', '2015-05-20', 5, 0, '0000-00-00 00:00:00', '2015-05-17'),
-(5, '003/BARANG/SATKER/LP/V/2015', 4, 'Pengadaan ATK dan Bahan Komputer', '2015-05-19', 5, 0, '2015-05-18 15:51:30', '2015-05-18');
+INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `maksud_kegiatan`, `kode_jenis_barang`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
+(1, '-', 2, 'transaksi pengajuan barang', '', '0000-00-00', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
+(2, '-', 2, 'transaksi', '', '2015-05-05', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
+(3, '-', 2, 'asdasdalsdaslkdnaslndlasd', '', '2015-05-09', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
+(4, '002/BARANG/SATKER/LP/V/2015', 378, 'pengadaan barang untuk pers', '', '2015-05-20', 5, 0, '0000-00-00 00:00:00', '2015-05-17'),
+(5, '003/BARANG/SATKER/LP/V/2015', 4, 'Pengadaan ATK dan Bahan Komputer', '', '2015-05-19', 5, 0, '2015-05-18 08:51:30', '2015-05-18'),
+(6, '-', 1, 'm', 'ATK, Bahan Komputer, dan Bahan Dokumentasi', '2015-05-24', 0, NULL, '2015-05-24 07:18:16', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -3036,7 +3026,7 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `kota_tujuan_3` varchar(25) DEFAULT NULL,
   `status_diklat` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `perjalanan_dinas`
@@ -3056,12 +3046,13 @@ INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `tanggal_pem
 (13, '004/SPPD/SATKER/LP/V/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '3', 1, 'studi banding ke denpasar (diklat)', '2015-05-14', '0000-00-00', '0000-00-00', '2015-05-15', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
 (14, '005/SPPD/SATKER/LP/V/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '2', 2, 'jalan-jalan 2 kota tujuan', '2015-05-08', '2015-05-09', '0000-00-00', '2015-05-09', '2015-05-10', '0000-00-00', '1', '2', NULL, 0),
 (15, '006/SPPD/SATKER/LP/V/2015', '0000-00-00', '0000-00-00 00:00:00', '5', 0, '2', 3, 'asdf asdf asdasasas asf', '2015-05-08', '2015-05-09', '2015-05-10', '2015-05-09', '2015-05-10', '2015-05-11', '1', '2', '3', 0),
-(16, '-', '0000-00-00', '2015-05-10 11:57:18', '1', 0, '377', 1, 'maksud', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
-(17, '010/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-10 12:00:52', '5', 0, '378', 1, 'maksud lagi', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 0),
-(18, '011/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 16:02:33', '5', 0, '380', 1, 'maksud perjalanan 1 untuk studi banding ke denpasar', '2015-05-19', '0000-00-00', '0000-00-00', '2015-05-20', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
-(19, '012/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 16:38:23', '5', 0, '216', 2, 'testing perjalanan dinas 2 tujuan', '2015-05-20', '2015-05-21', '0000-00-00', '2015-05-21', '2015-05-22', '0000-00-00', '3', '1', NULL, 1),
-(20, '013/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 17:26:17', '5', 0, '277', 3, 'testing dua untuk tiga tujuan perjalanan dinas', '2015-05-19', '2015-05-20', '2015-05-21', '2015-05-20', '2015-05-21', '2015-05-22', '2', '3', '7', 1),
-(21, '014/SPPD/SATKER/LP/V/2015', '2015-05-18', '2015-05-18 16:17:59', '5', 0, '15', 2, 'Survei Lapangan Lokasi Penerapan Teknologi Pengalahan Air Minum', '2015-05-18', '2015-05-20', '0000-00-00', '2015-05-20', '2015-05-23', '0000-00-00', '2', '12', NULL, 0);
+(16, '-', '0000-00-00', '2015-05-10 04:57:18', '1', 0, '377', 1, 'maksud', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
+(17, '010/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-10 05:00:52', '5', 0, '378', 1, 'maksud lagi', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 0),
+(18, '011/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 09:02:33', '5', 0, '380', 1, 'maksud perjalanan 1 untuk studi banding ke denpasar', '2015-05-19', '0000-00-00', '0000-00-00', '2015-05-20', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
+(19, '012/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 09:38:23', '5', 0, '216', 2, 'testing perjalanan dinas 2 tujuan', '2015-05-20', '2015-05-21', '0000-00-00', '2015-05-21', '2015-05-22', '0000-00-00', '3', '1', NULL, 1),
+(20, '013/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 10:26:17', '5', 0, '277', 3, 'testing dua untuk tiga tujuan perjalanan dinas', '2015-05-19', '2015-05-20', '2015-05-21', '2015-05-20', '2015-05-21', '2015-05-22', '2', '3', '7', 1),
+(21, '014/SPPD/SATKER/LP/V/2015', '2015-05-18', '2015-05-18 09:17:59', '5', 0, '15', 2, 'Survei Lapangan Lokasi Penerapan Teknologi Pengalahan Air Minum', '2015-05-18', '2015-05-20', '0000-00-00', '2015-05-20', '2015-05-23', '0000-00-00', '2', '12', NULL, 0),
+(22, '-', '0000-00-00', '2015-05-24 07:16:37', '0', 0, '7', 1, 'maksud satu', '2015-05-24', '0000-00-00', '0000-00-00', '2015-05-25', '0000-00-00', '0000-00-00', '1', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -3170,11 +3161,6 @@ CREATE TABLE IF NOT EXISTS `transportasi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `transportasi`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -3218,18 +3204,13 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   PRIMARY KEY (`id_user_role`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Dumping data for table `user_role`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `view_realisasi_anggaran`
 --
 CREATE TABLE IF NOT EXISTS `view_realisasi_anggaran` (
-`id_anggaran` varbinary(25)
+`id_anggaran` varchar(25)
 ,`nomor` varchar(50)
 ,`biaya` double
 );

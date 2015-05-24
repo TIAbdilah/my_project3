@@ -90,9 +90,7 @@ class Detail_pengajuan_barang extends CI_Controller {
         $data['id_detail_barang'] = $this->input->post('inIdDetailBarang');
         $data['page'] = 'admin/transaksi/detail_pengajuan_barang/edit';
         
-        $param = array(
-            'id' => $id
-        );
+        
         if (strpos($kodejenis, '%20') !== false) {
             $x = explode('%20', $kodejenis);
             $y = $x[0] . ' ' . $x[1];
@@ -114,6 +112,7 @@ class Detail_pengajuan_barang extends CI_Controller {
         $data['id_barang'] = $this->input->post('inNamaBarang');
         $data['jumlah'] = $this->input->post('inJumlah');
 
+//        print_r($data);
 
         if ($action == 'add') {
             $this->detail_pengajuan_barang_model->add($data);
@@ -121,7 +120,6 @@ class Detail_pengajuan_barang extends CI_Controller {
             $this->detail_pengajuan_barang_model->edit($id, $data);
         }
         redirect($_SERVER['HTTP_REFERER']);
-//        redirect('transaksi/pengajuan_barang');
     }
 
     public function delete($id) {

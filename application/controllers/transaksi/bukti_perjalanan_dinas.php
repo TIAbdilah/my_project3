@@ -25,6 +25,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         parent::__construct();
         $this->load->model('transaksi/bukti_perjalanan_dinas_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
+        $this->load->model('master/pegawai_model');
         $this->is_logged_in();
     }
 
@@ -42,6 +43,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
         $data['id_header'] = $id_header;
         $data['id_pegawai'] = $id_pegawai;
         $data['jumlah_tujuan'] = $jumlah_tujuan;
+        $data['data_pegawai'] =  $this->pegawai_model->select_by_id($id_pegawai)->row();
         if (strpos($kota_tujuan, '%20') !== false) {
             $x = explode('%20', $kota_tujuan);
             $y = $x[0] . ' ' . $x[1];
@@ -49,7 +51,7 @@ class Bukti_perjalanan_dinas extends CI_Controller {
             $y = $kota_tujuan;
         }
         $data['kota_tujuan'] = $y;
-
+        
         $data['data_detail'] = $this->bukti_perjalanan_dinas_model->select_biaya_from_detail($id_header, $id_pegawai, $y)->row();
         $this->load->view('admin/index', $data);
     }
