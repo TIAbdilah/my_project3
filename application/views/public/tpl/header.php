@@ -18,9 +18,12 @@
 <!-- subnavbar -->
 <div class="subnavbar">
     <div class="container">
-        <center>
-            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner copy.png" />
-        </center>
+        <!--<center>-->
+            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner.png" />
+            <span class="pull-right">
+                <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner-right.png" />
+            </span>       
+        <!--</center>-->
         <!--/container-->  
     </div>
 </div>
