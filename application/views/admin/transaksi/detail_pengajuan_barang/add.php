@@ -1,13 +1,19 @@
 
 <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengajuan_barang/process/add') ?>" method="POST">
     <input type="hidden" id="inIdHeader" name="inIdHeader" value="<?php echo $data->id ?>"/>
-    <table border="0" style="width: 50%">        
-
+    <table class="table table-bordered" border="0" style="width: 50%">        
+        <thead>
+            <tr>
+                <th>nama barang</th>
+                <th>satuan</th>
+                <th>harga satuan</th>
+                <th>jumlah</th>
+            </tr>
+        </thead>
         <tbody>
-            <tr>   
-                <td><label style="min-width: 140px">Nama Barang</label></td>
+            <tr>
                 <td>
-                    <select class="input-xxlarge" name="inNamaBarang" id="inNamaBarang">
+                    <select class="input-large" name="inNamaBarang" id="inNamaBarang">
                         <option value="">-Pilih-</option>
                         <?php
                         foreach ($SIList_barang as $row) {
@@ -23,36 +29,19 @@
                         }
                         ?>
                     </select>
-                </td> 
-<!--                <td><label>Merk</label></td>
-                <td>
-                    <input type="text" id="inMerk" name="inMerk"/>
-                </td>-->
-                <td><label><b>Satuan:&nbsp;</b> </label></td>
+                </td>
                 <td>
                     <label id="lblSatuanBarang" name="lblSatuanBarang" style="min-width: 50px"></label>
                 </td>
-                <td><label><b>Harga:&nbsp;</b></label></td>
                 <td>
                     <label id="lblHargaBarang" name="lblHargaBarang" style="min-width: 50px"></label>
                 </td>
-                <td><label><b>Tipe:&nbsp;</b></label></td>
-                <td>
-                    <label id="lblTipeBarang" name="lblTipeBarang" style="min-width: 50px"></label>
-                </td>
-            </tr>
-
-            <tr>
-                <td><label>Jumlah</label></td>
                 <td>
                     <input type="text" id="inJumlah" name="inJumlah" class="input-mini"/>
                 </td>
             </tr>
 
-            <tr>
-                <td>&nbsp;</td>
-                <td colspan="5" align="left"><input type="submit" class="btn btn-success" value=" + Tambahkan Barang Ke Dalam List"/></td>
-            </tr>
         </tbody>
     </table>
+    <input type="submit" class="btn btn-success" value=" + Tambahkan Barang Ke Dalam List"/>
 </form>
