@@ -58,7 +58,13 @@
         <tr>
             <td>Tanggal</td>
             <td><div align="center">:</div></td>
-            <td><?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?></td>
+            <?php
+            $tgl_app = $data_perjalanan_dinas->tanggal_approval;
+            if ($tgl_app == '0000-00-00') {
+                $tgl_app = date('Y-m-d');
+            }
+            ?>
+            <td><?php echo $format_date->format_date_dfy($tgl_app) ?></td>
         </tr>
     </table>
     <table style="width:100%;border-collapse: collapse" border="1">
@@ -133,6 +139,11 @@
                 Drajat Subuhri<br>
                 NIP. 1996806122007011004<br>
             </td>
+            <?php
+            if (empty($tgl_entri)) {
+                $tgl_entri = date('Y-m-d');
+            }
+            ?>
             <td align="center" width="50%"> 
                 Bandung, <?php echo $format_date->format_date_dfy($tgl_entri) ?><br>
                 Yang melakukan perjalanan,<br>
