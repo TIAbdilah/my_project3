@@ -35,20 +35,73 @@
                     . "<td>" . $row->satuan . "</td>"
                     . "<td>" . number_format($row->pagu_harga) . "</td>"
                     . "<td>" . number_format($subtotal) . "</td>"
-                    . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"#editDetail\" role=\"button\" id=\"editDetailBarang\" data-toggle=\"modal\" data-id=\"$row->id\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
-                    . "<a title=\"Delete\" href=\"" . site_url('transaksi/detail_pengajuan_barang/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>
-                                                </td>"
-                    . "</tr>";
-                    $no++;
-                    $total = $total + $subtotal;
-                }
-                ?>
-                <tr>
-                    <th colspan="5">Total</th>
-                    <th id="outTotalDetailBarang"><?php echo number_format($total) ?></th>
-                    <th></th>
-                </tr>
+                    . "<td class=\"td-actions\">";
+                    ?>
+
+                <a title = "Edit" href = "#addDetail<?php echo $row->id ?>" class = "btn btn-mini btn-warning" data-toggle = "modal"><i class = "btn-icon-only icon-pencil"></i></a>
+                <a title="Delete" href=" <?php echo site_url('transaksi/detail_pengajuan_barang/delete/' . $row->id) ?>" class="btn btn-danger btn-mini"><i class="btn-icon-only icon-remove"></i></a>
+                <div id = "addDetail<?php echo $row->id ?>" class = "modal hide fade modal-admin " tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true">
+                    <div class = "modal-header">
+                        <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">×</button>
+                        <h3 id = "myModalLabel">Edit Barang</h3>
+                    </div>
+                    <div class = "modal-body">
+
+                        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengajuan_barang/process/edit/'.$row->id) ?>" method="POST">
+                            <input type="hidden" id="inIdHeader" name="inIdHeader" value="<?php echo $data->id ?>"/>
+                            <?php // print_r($row) ?>
+                            <table class="table table-bordered" border="0" style="width: 70%">        
+                                <thead>
+                                    <tr>
+                                        <th>Nama Barang</th>
+                                        <th>Satuan</th>
+                                        <th>Harga Satuan</th>
+                                        <th>Jumlah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <select class="input-large" name="inNamaBarang" id="inNamaBarang">
+                                                <option value="">-Pilih-</option>
+                                                <?php
+                                                foreach ($SIList_barang as $row_1) {
+                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang', $row_1->id, $row_1->id == $row->id) . ">" . $row_1->nama_barang . "</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <label class="clblSatuanBarang" name="clblSatuanBarang" style="min-width: 50px"></label>
+                                        </td>
+                                        <td>
+                                            <label class="clblHargaBarang" name="clblHargaBarang" style="min-width: 50px"></label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="inJumlah" name="inJumlah" class="input-mini" value="<?php echo $row->jumlah ?>"/>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <input type="submit" class="btn btn-success" value=" Simpan "/>
+                        </form>
+
+
+                    </div>
+                </div>
+                <?php
+                echo "</td>"
+                . "</tr>";
+                $total = $total + $subtotal;
+                $no++;
+            }
+            ?>
+            <tr>
+                <th colspan="5">Total</th>
+                <th id="outTotalDetailBarang"><?php echo number_format($total) ?></th>
+                <th></th>
+            </tr>
             </tbody>
 
         </table>

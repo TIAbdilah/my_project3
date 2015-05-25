@@ -57,42 +57,73 @@
                     . "<td>" . number_format($jumlah_honor) . "</td>"
                     . "<td>" . number_format($pph) . "</td>"
                     . "<td>" . number_format($jumlah_bersih) . "</td>"
-                    . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"#editDetail\" role=\"button\" id=\"editDetailBarang\" data-toggle=\"modal\" data-id=\"$row->id\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
-                    . "<a title=\"Delete\" href=\"" . site_url('transaksi/detail_pengajuan_honorarium/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>
-                                                </td>"
-                    . "</tr>";
-                    $no++;
-                    $total_jumlah_bersih = $total_jumlah_bersih + $jumlah_bersih;
-                    $total_pph = $total_pph + $pph;
-                    $total_honor = $total_honor + $jumlah_honor;
-                }
-                ?>
-                <tr>
-                    <th colspan="6">Jumlah</th>
-                    <th><?php echo number_format($total_honor) ?></th>
-                    <th><?php echo number_format($total_pph) ?></th>
-                    <th id="outTotalDetailBarang"><?php echo number_format($total_jumlah_bersih) ?></th>
-                    <th></th>
-                </tr>
+                    . "<td class=\"td-actions\">";
+                    ?>
+
+                <a title = "Edit" href = "#addDetail<?php echo $row->id ?>" class = "btn btn-mini btn-warning" data-toggle = "modal"><i class = "btn-icon-only icon-pencil"></i></a>
+                <a title="Delete" href=" <?php echo site_url('transaksi/detail_pengajuan_honorarium/delete/' . $row->id) ?>" class="btn btn-danger btn-mini"><i class="btn-icon-only icon-remove"></i></a>
+                <div id = "addDetail<?php echo $row->id ?>" class = "modal hide fade modal-admin " tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true">
+                    <div class = "modal-header">
+                        <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">×</button>
+                        <h3 id = "myModalLabel">Edit Honorarium</h3>
+                    </div>
+                    <div class = "modal-body">
+
+
+                        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengajuan_honorarium/process/edit/' . $row->id) ?>" method="POST">
+                            <input type="hidden" id="inIdHeader" name="inIdHeader" value="<?php echo $data->id ?>"/>
+                            <table class="table " border="0" style="width: 70%">        
+                                <thead>
+                                    <tr>
+                                        <th>Nama Narasumber</th>
+                                        <th>Jumlah Jam</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <select class="input-xxlarge" name="inNamaNarasumber" id="inNamaNarasumber">
+                                                <option value="">-Pilih-</option>
+                                                <?php
+                                                foreach ($SIList_narasumber as $row_1) {
+                                                    echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaNarasumber', $row_1->id, $row_1->id == $row->id_narasumber) . ">" . $row_1->nama . "</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="inJumlah" name="inJumlah" class="input-small" value="<?php echo $row->jumlah?>"/>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <input type="submit" class="btn btn-success" value=" Simpan "/>
+                        </form>
+
+
+
+                    </div>
+                </div>
+                <?php
+                echo "</td>"
+                . "</tr>";
+                $total_jumlah_bersih = $total_jumlah_bersih + $jumlah_bersih;
+                $total_pph = $total_pph + $pph;
+                $total_honor = $total_honor + $jumlah_honor;
+            }
+            ?>
+            <tr>
+                <th colspan="6">Jumlah</th>
+                <th><?php echo number_format($total_honor) ?></th>
+                <th><?php echo number_format($total_pph) ?></th>
+                <th id="outTotalDetailBarang"><?php echo number_format($total_jumlah_bersih) ?></th>
+                <th></th>
+            </tr>
             </tbody>
 
         </table>
-        <span class="pull-right">
-            <!--<a href="#editDetail" role="button" data-toggle="modal">edit detail barang</a>-->
 
-            <div id="editDetail" class="modal hide fade modal-admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">Alasan Penolakan Pengajuan</h3>
-                </div>
-                <div class="modal-body">
-                    <?php
-                    $this->load->view('admin/transaksi/detail_pengajuan_barang/edit');
-                    ?>
-                </div>
-            </div>
-        </span>
     </div>
     <!-- /widget-content --> 
 </div>
