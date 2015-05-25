@@ -44,8 +44,8 @@
                             . "<td>" . $row->koordinator . "</td>"
                             . "<td>" . $row->penanggung_jawab . "</td>"
                             . "<td class=\"td-actions\">"
-//                            . "<a title=\"Edit\" href=\"" . site_url('master/kegiatan/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
-//                            . "<a title=\"Delete\" href=\"" . site_url('master/kegiatan/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>
+                            . "<a title=\"Edit\" href=\"" . site_url('common/temp_kegiatan/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
+                            . "<a title=\"Delete\" href=\"" . site_url('common/temp_kegiatan/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                             . "</td>"
                             . "</tr>";
                             $no++;
@@ -73,8 +73,8 @@
                             . "<td>" . $row->kode_akun . " </td>"
                             . "<td>" . $row->jenis_belanja . "</td>"
                             . "<td class=\"td-actions\">"
-//                            . "<a title=\"Edit\" href=\"" . site_url('master/akun/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
-//                            . "<a title=\"Delete\" href=\"" . site_url('master/akun/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
+                            . "<a title=\"Edit\" href=\"" . site_url('common/temp_akun/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
+                            . "<a title=\"Delete\" href=\"" . site_url('common/temp_akun/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                             . "</td>"
                             . "</tr>";
                             $no++;
@@ -99,18 +99,18 @@
                         <?php
                         $no = 1;
                         foreach ($list_data_anggaran as $row) {
-                                echo "<tr>"
-                                . "<td>" . $no . "</td>"
-                                . "<td>" . $row->kode_kegiatan . " - " . $row->nama_kegiatan . " </td>"
-                                . "<td>" . $row->kode_akun . "</td>"
-                                . "<td>" . $row->jenis_belanja . "</td>"
-                                . "<td class=\"dt-body-right\">" . number_format($row->pagu) . "</td>"
-                                . "<td class=\"td-actions\">"
-//                        . "<a title=\"Edit\" href=\"" . site_url('master/anggaran/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
-//                        . "<a title=\"Delete\" href=\"" . site_url('master/anggaran/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
-                                . "</td>"
-                                . "</tr>";
-                                $no++;
+                            echo "<tr>"
+                            . "<td>" . $no . "</td>"
+                            . "<td>" . $row->kode_kegiatan . " - " . $row->nama_kegiatan . " </td>"
+                            . "<td>" . $row->kode_akun . "</td>"
+                            . "<td>" . $row->jenis_belanja . "</td>"
+                            . "<td class=\"dt-body-right\">" . number_format($row->pagu) . "</td>"
+                            . "<td class=\"td-actions\">"
+                            . "<a title=\"Edit\" href=\"" . site_url('common/temp_anggaran/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
+                            . "<a title=\"Delete\" href=\"" . site_url('common/temp_anggaran/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
+                            . "</td>"
+                            . "</tr>";
+                            $no++;
                         }
                         ?>
                     </tbody>
