@@ -29,14 +29,13 @@ class Detail_pengajuan_honorarium_model extends CI_Model {
 //    }
 
     public function select_by_id($id) {
-        $query = 'select pd.*, '
-                . '(select k1.nama_barang from barang k1 where k1.id = pd.id_barang) as nama_barang, '
-                . '(select k1.spesifikasi from barang k1 where k1.id = pd.id_barang) as spesifikasi, '
-                . '(select k1.merek_barang from barang k1 where k1.id = pd.id_barang) as merek_barang, '
-                . '(select k1.pagu_harga from barang k1 where k1.id = pd.id_barang) as pagu_harga, '
-                . '(select k1.satuan from barang k1 where k1.id = pd.id_barang) as satuan '
-                . 'from detail_pengajuan_honorarium pd '
-                . 'where pd.id_pengajuan_barang = ' . $id;
+        $query = 'select ph.*, '
+                . '(select p.nama from pegawai p where p.id = ph.id_narasumber) as narasumber, '
+                . '(select bn.jabatan from biaya_narasumber bn where id=(select p.jabatan from pegawai p where p.id = ph.id_narasumber)) as jabatan, '
+                . '(select bn.biaya from biaya_narasumber bn where id=(select p.jabatan from pegawai p where p.id = ph.id_narasumber)) as honor, '
+                . '(select p.golongan from pegawai p where p.id = ph.id_narasumber) as golongan '
+                . 'from detail_pengajuan_honorarium ph '
+                . 'where ph.id_pengajuan_honorarium = ' . $id;
         return $this->db->query($query);
     }
 
@@ -46,8 +45,8 @@ class Detail_pengajuan_honorarium_model extends CI_Model {
 
     public function add($data) {
         $data = array(
-            'id_pengajuan_barang' => $data['id_pengajuan_barang'],
-            'id_barang' => $data['id_barang'],
+            'id_pengajuan_honorarium' => $data['id_pengajuan_honorarium'],
+            'id_narasumber' => $data['id_narasumber'],
             'jumlah' => $data['jumlah']
         );
         $this->db->insert('detail_pengajuan_honorarium', $data);
@@ -55,8 +54,8 @@ class Detail_pengajuan_honorarium_model extends CI_Model {
 
     public function edit($id, $data) {
         $data = array(
-            'id_pengajuan_barang' => $data['id_pengajuan_barang'],
-            'id_barang' => $data['id_barang'],
+            'id_pengajuan_honorarium' => $data['id_pengajuan_honorarium'],
+            'id_narasumber' => $data['id_narasumber'],
             'jumlah' => $data['jumlah']
         );
         $this->db->update('detail_pengajuan_honorarium', $data, "id = " . $id);

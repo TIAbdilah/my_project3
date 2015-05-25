@@ -44,6 +44,7 @@ class Pengajuan_honorarium extends CI_Controller {
         $this->load->model('transaksi/detail_pengajuan_honorarium_model');
         $this->load->model('master/anggaran_model');
         $this->load->model('master/pegawai_model');
+        $this->load->model('master/narasumber_model');
         $this->load->model('master/kota_tujuan_model');
         $this->load->model('master/listcode_model');
         $this->load->model('master/biaya_akomodasi_model');
@@ -70,12 +71,7 @@ class Pengajuan_honorarium extends CI_Controller {
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['list_data'] = $this->detail_pengajuan_honorarium_model->select_by_id($id)->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
-        $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
-        if (empty($data['data']->kode_jenis_barang)) {
-            $data['SIList_barang'] = $this->barang_model->select_all()->result();
-        } else {
-            $data['SIList_barang'] = $this->barang_model->select_by_field('kode_jenis_barang', $data['data']->kode_jenis_barang)->result();
-        }
+        $data['SIList_narasumber'] = $this->narasumber_model->select_all()->result();
 
         $this->load->view('admin/index', $data);
     }
@@ -134,7 +130,7 @@ class Pengajuan_honorarium extends CI_Controller {
                 $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y') . "-" . "BARANG";
                 $counter = $this->counter->generateId($pattern);
                 $subcounter = substr($counter, 0, 6);
-                $data['nomor_pengajuan'] = $subcounter . "/BARANG/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
+                $data['nomor_pengajuan'] = $subcounter . "/KPTS/SATKER/Lp/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
                 $data['tanggal_approval'] = date('Y-m-d');
                 $this->pengajuan_honorarium_model->update_no_spt($id_header, $data);
                 $data['status_penolakan'] = 0;
@@ -164,8 +160,6 @@ class Pengajuan_honorarium extends CI_Controller {
             }
         }
     }
-
-    
 
 }
 

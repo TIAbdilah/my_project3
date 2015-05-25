@@ -108,8 +108,7 @@ class Detail_pengajuan_honorarium extends CI_Controller {
 
     public function process($action, $id = null) {
         $data['id_pengajuan_honorarium'] = $this->input->post('inIdHeader');
-        $data['id_jenis_barang'] = $this->input->post('inKodeJenisBarang');
-        $data['id_barang'] = $this->input->post('inNamaBarang');
+        $data['id_narasumber'] = $this->input->post('inNamaNarasumber');
         $data['jumlah'] = $this->input->post('inJumlah');
 
 //        print_r($data);

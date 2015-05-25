@@ -17,7 +17,7 @@ function format_date($string) {
                 <td width="12%"><strong>Nomor Pengajuan</strong></td>
                 <td valign="top" width="50%">:&nbsp;<?php echo $data->nomor_pengajuan ?></td>
                 <td valign="top" width="40%" rowspan="6">
-                    <form action="<?php echo site_url('transaksi/pengajuan_barang/update_status/' . $data->id) ?>" method="POST">            
+                    <form action="<?php echo site_url('transaksi/pengajuan_honorarium/update_status/' . $data->id) ?>" method="POST">            
                         <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
                         <input type="hidden" name="inpStatus" value="<?php echo $data->status_approval ?>" />
                         <input type="hidden" name="inTotalDetailBarang" id="inTotalDetailBarang" />
@@ -75,12 +75,11 @@ function format_date($string) {
 
     <?php if ($this->session->userdata('role') == 'operator') { ?>
         <div class="widget-content" style="padding: 10px;">        
-            <?php $this->load->view('admin/transaksi/detail_pengajuan_barang/add') ?> 
+            <?php $this->load->view('admin/transaksi/detail_pengajuan_honorarium/add') ?> 
         </div>
     <?php } ?>
     <div class="widget-content" style="padding: 10px;">        
-        <?php $this->load->view('admin/transaksi/detail_pengajuan_barang/list') ?> 
+        <?php $this->load->view('admin/transaksi/detail_pengajuan_honorarium/list') ?> 
     </div>
 </div>
-<!-- /widget-header --> 
-
+<!-- /widget-header -->

@@ -36,7 +36,7 @@
 
                         if ($row->status_approval == 5 && $this->session->userdata('role') == 'operator') {
                             echo "<a title=\"Report (Nota Dinas)\" href=\"" . site_url('report/nota_dinas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
-                            echo "<a title=\"Report (Daftar Detail Barang)\" href=\"" . site_url('report/daftar_detail_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
+//                            echo "<a title=\"Report (Daftar Detail Barang)\" href=\"" . site_url('report/daftar_detail_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
                         }
                         echo "<a title=\"View\" href=\"" . site_url('transaksi/pengajuan_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
                         if ($row->status_approval == 0 && $this->session->userdata('role') == 'operator') {
