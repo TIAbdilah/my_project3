@@ -697,8 +697,10 @@
                         success: function(data) {
                             $("#inSatuanBarang").val(data[0]);
                             $("#lblSatuanBarang").text(data[0]);
+                            $(".clblSatuanBarang").text(data[0]);
                             $("#inHargaBarang").val(data[1]);
                             $("#lblHargaBarang").text(addCommas(data[1]));
+                            $(".clblHargaBarang").text(addCommas(data[1]));
                             $("#inTipeBarang").val(data[2]);
                             $("#lblTipeBarang").text(data[2]);
                             $("#inMerk").val(data[3]);
