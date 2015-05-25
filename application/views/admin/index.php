@@ -717,7 +717,6 @@
                             $("#inKodeKegiatan").val(data[0]);
                             $("#inAkun").val(data[1]);
                             $("#inPagu").val(addCommas(data[2]));
-
                         }
                     });
                 });
