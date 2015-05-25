@@ -27,7 +27,7 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_id($id) {
-        $query = 'select pd.*, a1.nama_kegiatan, a1.jenis_belanja, a1.kode_kegiatan, a1.kode_akun, '
+        $query = 'select  a1.nama_kegiatan, a1.jenis_belanja, a1.kode_kegiatan, a1.kode_akun, pd.*,'
                 . '(select k1.nama_kota from kota_tujuan k1 where k1.id = pd.kota_tujuan_1) as nama_kota_tujuan_1, '
                 . '(select k2.nama_kota from kota_tujuan k2 where k2.id = pd.kota_tujuan_2) as nama_kota_tujuan_2, '
                 . '(select k3.nama_kota from kota_tujuan k3 where k3.id = pd.kota_tujuan_3) as nama_kota_tujuan_3 '

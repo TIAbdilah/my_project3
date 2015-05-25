@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2015 at 08:19 PM
+-- Generation Time: May 25, 2015 at 05:35 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -1769,7 +1769,7 @@ INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
 (1, 'IV-2015', 5),
 (2, 'asdf12', 4),
 (3, 'V-2015', 14),
-(4, 'V-2015-BARANG', 3),
+(4, 'V-2015-BARANG', 4),
 (5, 'BBG', 3);
 
 -- --------------------------------------------------------
@@ -1784,7 +1784,7 @@ CREATE TABLE IF NOT EXISTS `detail_panjar` (
   `id_pegawai` int(11) DEFAULT NULL,
   `jumlah` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `detail_panjar`
@@ -1792,7 +1792,8 @@ CREATE TABLE IF NOT EXISTS `detail_panjar` (
 
 INSERT INTO `detail_panjar` (`id`, `id_panjar`, `id_pegawai`, `jumlah`) VALUES
 (1, 2, 13, 6000000),
-(3, 2, 48, 3000000);
+(3, 2, 48, 3000000),
+(5, 4, 31, 240000);
 
 -- --------------------------------------------------------
 
@@ -1831,55 +1832,24 @@ INSERT INTO `detail_pengajuan_barang` (`id`, `id_pengajuan_barang`, `id_jenis_ba
 
 CREATE TABLE IF NOT EXISTS `detail_pengajuan_honorarium` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pengajuan_barang` int(11) NOT NULL,
-  `id_barang` int(11) NOT NULL,
+  `id_pengajuan_honorarium` int(11) NOT NULL,
+  `id_narasumber` int(11) NOT NULL,
   `jumlah` int(15) DEFAULT NULL,
   `subtotal` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `detail_pengajuan_honorarium`
 --
 
-INSERT INTO `detail_pengajuan_honorarium` (`id`, `id_pengajuan_barang`, `id_barang`, `jumlah`, `subtotal`) VALUES
-(1, 2, 1, 20000, 0),
-(2, 2, 1, 30000, 0),
-(3, 2, 1, 34, 0),
-(4, 3, 1, 2, 0),
-(5, 4, 5, 23, 0),
-(7, 4, 1, 2, 0),
-(8, 5, 2, 10, NULL),
-(9, 2, 47, 20, NULL),
-(10, 2, 14, 0, NULL),
-(11, 2, 0, 0, NULL),
-(12, 2, 15, 20, NULL),
-(13, 2, 6, 1, NULL),
-(14, 2, 4, 3, NULL),
-(15, 2, 4, 9, NULL),
-(16, 2, 9, 9, NULL),
-(17, 2, 18, 8, NULL),
-(18, 2, 2, 8, NULL),
-(19, 378, 4, 2, NULL),
-(20, 378, 10, 2, NULL),
-(21, 378, 9, 3, NULL),
-(22, 378, 2, 3, NULL),
-(23, 378, 2, 3, NULL),
-(24, 378, 11, 3, NULL),
-(25, 378, 7, 5, NULL),
-(26, 378, 12, 3, NULL),
-(27, 378, 11, 4, NULL),
-(28, 378, 8, 5, NULL),
-(29, 378, 4, 0, NULL),
-(30, 4, 2, 4, NULL),
-(31, 4, 2, 3, NULL),
-(32, 1, 41, 3, NULL),
-(33, 1, 42, 4, NULL),
-(34, 7, 41, 2, NULL),
-(35, 7, 13, 4, NULL),
-(36, 6, 54, 2, NULL),
-(37, 6, 10, 2, NULL),
-(38, 6, 41, 5, NULL);
+INSERT INTO `detail_pengajuan_honorarium` (`id`, `id_pengajuan_honorarium`, `id_narasumber`, `jumlah`, `subtotal`) VALUES
+(39, 4, 195, 2, NULL),
+(41, 4, 196, 4, NULL),
+(42, 5, 195, 4, NULL),
+(43, 5, 196, 7, NULL),
+(44, 6, 195, 23, NULL),
+(45, 6, 196, 5, NULL);
 
 -- --------------------------------------------------------
 
@@ -2761,14 +2731,15 @@ CREATE TABLE IF NOT EXISTS `panjar` (
   `deskripsi_panjar` text,
   PRIMARY KEY (`id`,`id_header`),
   UNIQUE KEY `id_header` (`id_header`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `panjar`
 --
 
 INSERT INTO `panjar` (`id`, `id_header`, `penerima`, `deskripsi_panjar`) VALUES
-(2, 21, 180, 'sasasasasasasas');
+(2, 21, 180, 'sasasasasasasas'),
+(4, 15, 180, 'Deskripsi');
 
 -- --------------------------------------------------------
 
@@ -3007,6 +2978,7 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nomor_pengajuan` varchar(50) NOT NULL,
   `id_anggaran` int(11) NOT NULL,
+  `kode_jenis_barang` varchar(100) NOT NULL,
   `maksud_kegiatan` text,
   `tanggal_pengajuan` date DEFAULT NULL,
   `status_approval` int(2) NOT NULL,
@@ -3020,12 +2992,12 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
 -- Dumping data for table `pengajuan_barang`
 --
 
-INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
-(1, '-', 2, 'transaksi pengajuan barang', '0000-00-00', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(2, '-', 2, 'transaksi', '2015-05-05', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(3, '-', 2, 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(4, '002/BARANG/SATKER/LP/V/2015', 378, 'pengadaan barang untuk pers', '2015-05-20', 5, 0, '0000-00-00 00:00:00', '2015-05-17'),
-(5, '003/BARANG/SATKER/LP/V/2015', 4, 'Pengadaan ATK dan Bahan Komputer', '2015-05-19', 5, 0, '2015-05-18 15:51:30', '2015-05-18');
+INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `kode_jenis_barang`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
+(1, '-', 2, '', 'transaksi pengajuan barang', '0000-00-00', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
+(2, '-', 2, '', 'transaksi', '2015-05-05', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
+(3, '-', 2, '', 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
+(4, '002/BARANG/SATKER/LP/V/2015', 378, '', 'pengadaan barang untuk pers', '2015-05-20', 5, 0, '0000-00-00 00:00:00', '2015-05-17'),
+(5, '003/BARANG/SATKER/LP/V/2015', 4, '', 'Pengadaan ATK dan Bahan Komputer', '2015-05-19', 5, 0, '2015-05-18 15:51:30', '2015-05-18');
 
 -- --------------------------------------------------------
 
@@ -3045,14 +3017,16 @@ CREATE TABLE IF NOT EXISTS `pengajuan_honorarium` (
   `tanggal_pembuatan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tanggal_approval` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `pengajuan_honorarium`
 --
 
 INSERT INTO `pengajuan_honorarium` (`id`, `nomor_pengajuan`, `id_anggaran`, `kegiatan`, `acara`, `periode_pembayaran`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
-(4, '', 2, '23q4ewrwwerewr445', 'waearwawre', '1931-04-22', 0, NULL, '2015-05-24 16:34:36', '0000-00-00');
+(4, '004/KPTS/SATKER/Lp/V/2015', 2, 'Diseminasi dan Sosial Artifial Intelligence', 'Rencana Pelaksanaan Kegiatan Pengkajian Ruang', '1931-04-22', 5, 0, '2015-05-24 16:34:36', '2015-05-25'),
+(5, '', 18, 'makan makan lagi', 'bermalam', '2015-05-25', 1, 0, '2015-05-25 00:40:09', '0000-00-00'),
+(6, '', 1, 'Diseminasi Buatan', 'Rencana Penganggaran Diseminasi', '2015-05-27', 0, NULL, '2015-05-25 02:31:10', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -3086,7 +3060,7 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
   `password` varchar(50) NOT NULL,
   `telp` varchar(15) NOT NULL,
   PRIMARY KEY (`id_pengguna`,`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `pengguna`
@@ -3098,7 +3072,8 @@ INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `id_pegawai`, `alama
 (12, 3, 63, '-', '-', 'esselon 3', '0cc175b9c0f1b6a831c399e269772661', '1234'),
 (13, 2, 40, '-', '-', 'esselon 4', '0cc175b9c0f1b6a831c399e269772661', '1234'),
 (14, 4, 17, '-', '-', 'asisten satker', '0cc175b9c0f1b6a831c399e269772661', '1234'),
-(15, 5, 72, '-', '-', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '12345');
+(15, 5, 72, '-', '-', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '12345'),
+(16, 5, 53, 'garut', '1', 'ai123', '0cc175b9c0f1b6a831c399e269772661', '');
 
 -- --------------------------------------------------------
 
