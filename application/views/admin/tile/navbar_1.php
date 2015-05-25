@@ -67,6 +67,7 @@
                             <i class="icon-cogs"></i>&nbsp;Utilitas <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
+                            <li><a href="<?php echo site_url('common/import_anggaran') ?>">Import Anggaran</a></li>         
                             <li><a href="<?php echo site_url('master/users') ?>">Pengguna</a></li>         
                             <li><a href="<?php echo site_url('master/role') ?>">Role</a></li> 
                         </ul>
@@ -78,7 +79,6 @@
                             <i class="icon-user"></i>&nbsp;
                             <?php echo $this->session->userdata('username') . ' [' . $this->session->userdata('kode_role') . ']'?> 
                             <b class="caret"></b>
-
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo base_url() ?>login/process_logout">Logout</a></li>
