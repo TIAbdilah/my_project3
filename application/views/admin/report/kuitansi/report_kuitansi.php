@@ -99,11 +99,17 @@
                 NIP. 196806122007011004
             </td>
             <td v-align="top" align="center" width="30%"> 
+                <?php 
+                    if(empty($tanggal_entri)){
+                        $tanggal_entri = date('Y-m-d');
+                    }
+                ?>
                 Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
                 Yang menerima,<br>
                 <br>
                 <br><br><br>
-                <?php echo $data_pegawai->nama ?>
+                <?php echo $data_pegawai->nama ?></br>
+                NIP. <?php echo $data_pegawai->nip ?>
             </td>
         </tr>
     </table>

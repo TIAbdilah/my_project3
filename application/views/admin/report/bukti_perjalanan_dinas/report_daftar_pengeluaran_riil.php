@@ -28,7 +28,13 @@
             <td><?php echo $data_pegawai->jabatan ?></td>
         </tr>
     </table>
-    <p>berdasarkan Surat Perintah Perjalanan Dinas (SPPD) Nomor <strong><?php echo $data_perjalanan_dinas->no_spt ?></strong> tanggal, <strong><?php echo $format_date->format_date_dfy($data_perjalanan_dinas->tanggal_approval) ?></strong> dengan ini kami menyatakan dengan sesungguhnya bahwa :</p>
+    <?php
+    $tgl_app = $data_perjalanan_dinas->tanggal_approval;
+    if ($tgl_app == '0000-00-00') {
+        $tgl_app = date('Y-m-d');
+    }
+    ?>
+    <p>berdasarkan Surat Perintah Perjalanan Dinas (SPPD) Nomor <strong><?php echo $data_perjalanan_dinas->no_spt ?></strong> tanggal, <strong><?php echo $format_date->format_date_dfy($tgl_app) ?></strong> dengan ini kami menyatakan dengan sesungguhnya bahwa :</p>
     <p>1. Biaya transport pegawai dan/atau biaya penginapan di bawah ini yang tidak dapat diperoleh bukti-bukti pengeluarannya, meliputi :</p>
     <table style="width:100%;border-collapse: collapse" border="1">
         <tr>
@@ -43,21 +49,20 @@
         foreach ($list_data_bukti_riil as $data) {
             if (!empty($data->nomor_bukti)) {
                 echo "<tr>"
-                . "<td>".$no."</td>"
-                . "<td>".$data->nomor_bukti."</td>"
-                . "<td align=\"right\">".number_format($data->jumlah_bukti)."</td>"
+                . "<td>" . $no . "</td>"
+                . "<td>" . $data->nomor_bukti . "</td>"
+                . "<td align=\"right\">" . number_format($data->jumlah_bukti) . "</td>"
                 . "</tr>";
                 $no++;
-                $tanggal_entri=$data->tgl_entri_bukti;
+                $tanggal_entri = $data->tgl_entri_bukti;
                 $total_riil += $data->jumlah_bukti;
             }
-            
         }
         ?>
         <tr>
             <td>&nbsp;</td>
             <td><div align="center">Jumlah (Rp)</div></td>
-            <td align="right"><?php echo number_format($total_riil)?></td>
+            <td align="right"><?php echo number_format($total_riil) ?></td>
         </tr>
     </table>
 
@@ -82,6 +87,11 @@
                 <br>
 
             </td>
+            <?php
+            if (empty($tanggal_entri)) {
+                $tanggal_entri = date('Y-m-d');
+            }
+            ?>
             <td align="center" width="50%"><p>Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
                     Yang melakukan perjalanan,<br>
                     <br>
