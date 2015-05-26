@@ -3,7 +3,7 @@
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Anggaran</h3>
         <span class="pull-right" style="margin-right: 10px;">
-            <a title="(Report) Realisasi Anggaran" href="<?php echo site_url('report/realisasi_anggaran/print_report_1') ?>"><button class="btn">Cetak Report</button></a>
+            <a title="(Report) Realisasi Anggaran" href="<?php echo site_url('report/realisasi_anggaran/view') ?>"><button class="btn">Cetak Report</button></a>
             <a href="<?php echo site_url('master/anggaran/add') ?>"><button class="btn">Tambah Data</button></a>
         </span>
     </div>

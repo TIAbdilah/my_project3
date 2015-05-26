@@ -4,21 +4,36 @@
             <thead>
                 <tr>
                     <th width="3%"> No </th>
-                    <th width="38%"> Kegiatan</th>
-                    <th width="10%"> Kode Kegiatan</th>
-                    <th width="5%"> Kode Akun</th>
+                    <th width="25%"> Kegiatan</th>
+                    <th width="12%"> Kode Kegiatan</th>
+                    <th width="7%"> Kode Akun</th>
                     <th width="15%"> Akun</th>
-                    <th width="8%"> Pagu</th>
-                    <th width="8%"> Realisasi</th>
-                    <th width="8%"> Sisa</th>
-                    <th width="5%"> Tahun</th>
+                    <th width="9%"> Pagu</th>
+                    <th width="9%"> Realisasi</th>
+                    <th width="9%"> Sisa</th>
+                    <th width="6%"> Tahun</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = 1;
+                $total_pagu = 0;
+                $total_biaya = 0;
+                $total_sisa = 0;
                 $nama_kegiatan = '';
                 foreach ($list_data as $row) {
+                    if ($row->nama_kegiatan != $nama_kegiatan && $nama_kegiatan != '') {
+                        echo "<tr>"
+                        . "<th colspan=\"5\" align=\"center\">Total</th>"
+                        . "<th align=\"right\">" . number_format($total_pagu) . "</th>"
+                        . "<th align=\"right\">" . number_format($total_biaya) . "</th>"
+                        . "<th align=\"right\">" . number_format($total_sisa) . "</th>"
+                        . "<th>&nbsp;</th>"
+                        . "</tr>";
+                        $total_pagu = 0;
+                        $total_biaya = 0;
+                        $total_sisa = 0;
+                    }
                     echo "<tr>";
                     if ($row->nama_kegiatan != $nama_kegiatan) {
                         echo "<td>" . $no . "</td>"
@@ -36,7 +51,17 @@
                     . "<td align=\"center\">" . $row->tahun_anggaran . "</td>"
                     . "</tr>";
                     $nama_kegiatan = $row->nama_kegiatan;
+                    $total_pagu += $row->pagu;
+                    $total_biaya += $row->biaya;
+                    $total_sisa += $row->sisa;
                 }
+                echo "<tr>"
+                . "<th colspan=\"5\" align=\"center\">Total</th>"
+                . "<th align=\"right\">" . number_format($total_pagu) . "</th>"
+                . "<th align=\"right\">" . number_format($total_biaya) . "</th>"
+                . "<th align=\"right\">" . number_format($total_sisa) . "</th>"
+                . "<th>&nbsp;</th>"
+                . "</tr>";
                 ?>
             </tbody>
         </table>

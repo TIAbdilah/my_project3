@@ -20,7 +20,7 @@ class Realisasi_anggaran extends CI_Controller {
     }
 
     public function view() {
-        $data['list_data'] = $this->anggaran_model->select_all()->result();
+        $data['list_data'] = $this->anggaran_model->select_by_field(array('id_unit' => $this->session->userdata('kode_unit')))->result();
         $this->load->view('admin/report/realisasi_anggaran/report_realisasi_anggaran', $data);
     }
 

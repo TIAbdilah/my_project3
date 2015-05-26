@@ -1,16 +1,16 @@
-
 <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengajuan_honorarium/process/add') ?>" method="POST">
     <input type="hidden" id="inIdHeader" name="inIdHeader" value="<?php echo $data->id ?>"/>
-    <table class="table " border="0" style="width: 50%">        
+    <table class="table table-bordered" style="width: 100%">        
         <thead>
             <tr>
                 <th>Nama Narasumber</th>
                 <th>Jumlah Jam</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>
+                <td align="center">
                     <select class="input-xxlarge" name="inNamaNarasumber" id="inNamaNarasumber">
                         <option value="">-Pilih-</option>
                         <?php
@@ -20,12 +20,13 @@
                         ?>
                     </select>
                 </td>
-                <td>
+                <td align="center">
                     <input type="text" id="inJumlah" name="inJumlah" class="input-small"/>
                 </td>
+                <td align="center">
+                    <input type="submit" class="btn btn-success" value=" + Tambahkan Narasumber Ke Dalam List"/>
+                </td>
             </tr>
-
         </tbody>
     </table>
-    <input type="submit" class="btn btn-success" value=" + Tambahkan Narasumber Ke Dalam List"/>
 </form>

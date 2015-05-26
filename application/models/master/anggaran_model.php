@@ -16,8 +16,6 @@ class Anggaran_model extends CI_Model {
     }
 
     public function select_all() {
-        //return $this->db->get('anggaran');
-
         $sql = "select a.* "
                 . ", (select k.nama_kegiatan from kegiatan k where k.id = a.id_kegiatan) as nama_kegiatan "
                 . ", (select k.kode_kegiatan from kegiatan k where k.id = a.id_kegiatan) as kode_kegiatan "
@@ -27,24 +25,6 @@ class Anggaran_model extends CI_Model {
                 . ", (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran) as biaya "
                 . ", (a.pagu - (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran)) as sisa "
                 . "from anggaran a "
-                . "group by id "
-                . "order by kode_kegiatan, kode_akun";
-        return $this->db->query($sql);
-    }
-
-    public function select_all_perjalanan() {
-        //return $this->db->get('anggaran');
-
-        $sql = "select a.* "
-                . ", (select k.nama_kegiatan from kegiatan k where k.id = a.id_kegiatan) as nama_kegiatan "
-                . ", (select k.kode_kegiatan from kegiatan k where k.id = a.id_kegiatan) as kode_kegiatan "
-                . ", (select ak.kode_akun from akun ak where ak.id = a.id_akun) as kode_akun "
-                . ", (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) as id_unit "
-                . ", (select ak.jenis_belanja from akun ak where ak.id = a.id_akun) as jenis_belanja "
-                . ", (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran) as biaya "
-                . ", (a.pagu - (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran)) as sisa "
-                . "from anggaran a "
-                . "where a.id_akun in (select ak.id from akun ak where ak.jenis_belanja like '%Perjalanan%')  "
                 . "group by id "
                 . "order by kode_kegiatan, kode_akun";
         return $this->db->query($sql);
@@ -55,7 +35,6 @@ class Anggaran_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-//        return $this->db->get_where('anggaran', array($field => $keyword));
         $sql = "select a.* "
                 . ", (select k.nama_kegiatan from kegiatan k where k.id = a.id_kegiatan) as nama_kegiatan "
                 . ", (select k.kode_kegiatan from kegiatan k where k.id = a.id_kegiatan) as kode_kegiatan "
@@ -66,8 +45,11 @@ class Anggaran_model extends CI_Model {
                 . ", (a.pagu - (select sum(v1.biaya) from view_realisasi_anggaran v1 where v1.id_anggaran = a.id and v1.nomor <> '-' group by v1.id_anggaran)) as sisa "
                 . "from anggaran a "
                 . "where 1 = 1 ";
-        if ($param['id_unit']) {
+        if (!empty($param['id_unit'])) {
             $sql = $sql . "and (select k.id_unit from kegiatan k where k.id = a.id_kegiatan) = " . $param['id_unit'] . " ";
+        }
+        if (!empty($param['kata_kunci'])) {
+            $sql = $sql."and a.id_akun in (select ak.id from akun ak where ak.jenis_belanja like '%".$param['kata_kunci']."%')  ";
         }
         $sql = $sql . "group by id "
                 . "order by kode_kegiatan, kode_akun";
