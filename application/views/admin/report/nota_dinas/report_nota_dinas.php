@@ -76,15 +76,28 @@
         </td>
         </tr>
     </table>
-    
+
     <?php
     for ($i = 0; $i < 20; $i++) {
         echo "<br>";
     }
     ?>
+
     <center>
         <h3>Belanja Barang</h3>
     </center>
+        <table style="width:100%">
+        <tr>
+            <td width="20%">Nomor</td>
+            <td>: <?php echo $data_report->nomor_pengajuan ?></td>
+            <td><?php echo $data_report->kode_kegiatan; ?></td>
+        </tr>
+        <tr>
+            <td width="20%">Tanggal</td>
+            <td>: <?php echo date('d M Y') ?></td>
+            <td></td>
+        </tr>
+    </table>
     <table border="1" style="width: 100%; border-collapse: collapse">
         <thead>
             <tr>
