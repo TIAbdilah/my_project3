@@ -19,10 +19,10 @@
 <div class="subnavbar">
     <div class="container">
         <!--<center>-->
-            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner.png" />
-            <span class="pull-right">
+            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner1.png" />
+<!--            <span class="pull-right">
                 <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner-right.png" />
-            </span>       
+            </span>       -->
         <!--</center>-->
         <!--/container-->  
     </div>
