@@ -22,7 +22,7 @@ class Counter extends CI_Controller {
         echo $this->generateId($pattern);
     }
 
-    public function generateId($pattern) {
+    public function generateId($pattern, $long = null) {
         $crt = '';
         $check = $this->counter_model->select_by_field('pattern', $pattern)->num_rows();
         if ($check == 0) {
@@ -34,21 +34,34 @@ class Counter extends CI_Controller {
             $id = $counter->id;
             $data['pattern'] = $pattern;
             $data['counter'] = $counter->counter + 1;
-            $this->counter_model->edit($id,$data);
+            $this->counter_model->edit($id, $data);
         }
 
         $counter = $this->counter_model->select_by_field('pattern', $pattern)->row();
-        if (strlen($counter->counter) == 1) {
-            $ctr = "00" . $counter->counter;
-        } else if (strlen($counter->counter) == 2) {
-            $ctr = "0" . $counter->counter;
+        if ($long == 4) {
+            if (strlen($counter->counter) == 1) {
+                $ctr = "000" . $counter->counter;
+            } else if (strlen($counter->counter) == 2) {
+                $ctr = "00" . $counter->counter;
+            } else if (strlen($counter->counter) == 3) {
+                $ctr = "0" . $counter->counter;
+            } else {
+                $ctr = $counter->counter;
+            }
         } else {
-            $ctr = $counter->counter;
+            if (strlen($counter->counter) == 1) {
+                $ctr = "00" . $counter->counter;
+            } else if (strlen($counter->counter) == 2) {
+                $ctr = "0" . $counter->counter;
+            } else {
+                $ctr = $counter->counter;
+            }
         }
+
 
         return $ctr;
     }
-    
+
     public function is_logged_in() {
         if ($this->session->userdata('role') == '') {
             redirect('login');

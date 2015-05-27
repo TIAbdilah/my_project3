@@ -10,7 +10,7 @@
                 <label class="control-label" for="inpKotaAsal">Kota Asal</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpKotaAsal">
-                        <option>Kota Asal</option>
+                        <option>Pilih Kota Asal</option>
                         <?php
                         foreach ($SIList_kota as $row_1) {
                             echo "<option value=\"" . $row_1->nama_kota . "\"".set_select('inpKotaAsal', $row_1->nama_kota, $row_1->nama_kota == $row->kota_asal).">" . $row_1->nama_kota . "</option>";
@@ -23,7 +23,7 @@
                 <label class="control-label" for="inpKotaTujuan">Kota Tujuan</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpKotaTujuan">
-                        <option>Kota Tujuan</option>
+                        <option>Pilih Kota Tujuan</option>
                         <?php
                         foreach ($SIList_kota as $row_2) {
                             echo "<option value=\"" . $row_2->nama_kota . "\"".set_select('inpKotaTujuan', $row_2->nama_kota, $row_2->nama_kota == $row->kota_tujuan).">" . $row_2->nama_kota . "</option>";
@@ -36,7 +36,7 @@
                 <label class="control-label" for="inpJenisKendaraan">Jenis Kendaraan</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpJenisKendaraan">
-                        <option>Jenis Kendaraan</option>
+                        <option>Pilih Jenis Kendaraan</option>
                         <?php
                         foreach ($SIList_jenisKendaraan as $row_3) {
                             echo "<option value=\"" . $row_3->list_item . "\"".set_select('inpJenisKendaraan', $row_3->list_item, $row_3->list_item == $row->jenis_kendaraan).">" . $row_3->list_item . "</option>";

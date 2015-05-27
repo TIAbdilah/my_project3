@@ -35,9 +35,7 @@
             Mengetahui/menyetujui<br>
             <strong>An. Kepala Satuan Kerja</strong><br>
             Pejabat Pembuat Komitmen,<br>
-            <br>
-            <br>
-            <br>
+            <br><br><br><br>
             <strong><u>Iwan Suprijanto, ST, MT</u></strong><br>
             NIP: 197109301998031001 
         </td>
@@ -45,9 +43,7 @@
             <br>
             Setuju Bayar<br>
             Bendahara Pengeluaran,<br>
-            <br>
-            <br>
-            <br>
+            <br><br><br><br>
             <strong><u>Drajat Subuhri</u></strong><br>
             NIP. 1983200423042023201<br>
         </td>
@@ -55,10 +51,8 @@
             <br>
             Bandung, <?php echo $format_date->format_date_dfy($data_header->tanggal_approval) ?><br>
             Yang menerima,<br>
-            <br>
-            <br>
-            <br>
-            <strong><?php echo $data_panjar->nama_penerima ?></strong><br>
+            <br><br><br><br>
+            <strong><u><?php echo $data_panjar->nama_penerima ?></u></strong><br>
             NIP.&nbsp;<?php echo $data_panjar->nip_penerima?>
         </td>
     </tr>

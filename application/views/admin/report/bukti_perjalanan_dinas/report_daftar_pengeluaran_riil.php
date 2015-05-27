@@ -68,39 +68,29 @@
 
     <p>2. Jumlah urang tersebut pada angka 1 di atas benar-benar dikeluarkan untuk pelaksanaan perjalanan dinas dimaksud dan apabila di kemudian hari terdapat kelebihan atas pembayaran, kami bersedia untuk menyetorkan kelebihan tersebut ke Kas Negara.</p>
     <p>&nbsp;</p>
-    <p>Demikian pernyataan ini kami buat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.<br>
-
-    </p>
+    <p>Demikian pernyataan ini kami buat dengan sebenarnya, untuk dipergunakan sebagaimana mestinya.</p>
+    <br>
     <table style="width: 100%">
         <tr>
-            <td align="center" width="50%"><br>
-                <br>
-                <p>Mengetahui/menyetujui<br>
-                    An. Kepala Satuan Kerja<br>
-                    Pejabat Pembuat Komitmen,</p>
-
-                <p>&nbsp;</p>
-                <p><br>
-                    Iwan Suprijanto, ST, MT<br>
-                    NIP: 197109301998031001 </p>
-                <br>
-                <br>
-
+            <td align="center" width="50%">
+                Mengetahui/menyetujui<br>
+                An. Kepala Satuan Kerja<br>
+                <br><br><br><br>
+        <u><strong>Iwan Suprijanto, ST, MT</strong></u><br>
+                NIP: 197109301998031001<br>
             </td>
             <?php
             if (empty($tanggal_entri)) {
                 $tanggal_entri = date('Y-m-d');
             }
             ?>
-            <td align="center" width="50%"><p>Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
-                    Yang melakukan perjalanan,<br>
-                    <br>
-                </p>
-                <p>&nbsp;</p>
-                <p><?php echo $data_pegawai->nama ?></p>
-                <p>NIP. <?php echo $data_pegawai->nip ?><br>
-                    <br>
-                </p></td>
+            <td align="center" width="50%">
+                Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
+                Yang melakukan perjalanan,<br>
+                <br><br><br><br>
+            <u><strong><?php echo $data_pegawai->nama ?></strong></u><br>
+                NIP. <?php echo $data_pegawai->nip ?><br>
+            </td>
         </tr>
     </table>
 </body>

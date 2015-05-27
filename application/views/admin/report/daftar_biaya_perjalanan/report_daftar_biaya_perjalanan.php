@@ -108,9 +108,7 @@
             <td align="center" width="50%">
                 KPPN Bandung II<br>
                 Kepala Seksi Pencairan Dana<br>
-                <br>
-                <br>
-                <br>
+                <br><br><br><br>
                 ________________________<br>
                 NIP:<?php for ($i = 0; $i < 50; $i++) {
                 echo "&nbsp;";
@@ -119,10 +117,8 @@
             <td align="center" width="50%">
                 Bandung, <?php echo $format_date->format_date_dfy($data_header->tanggal_approval) ?><br>
                 PEJABAT PEMBUAT KOMITMEN<br>
-                <br>
-                <br>
-                <br>
-        <u>Iwan Suprijanto, ST, MT</u><br>
+                <br><br><br><br>
+        <u><strong>Iwan Suprijanto, ST, MT</strong></u><br>
         NIP: 197109301998031001    
         </td>
         </tr>

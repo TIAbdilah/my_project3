@@ -10,7 +10,7 @@
                 <label class="control-label" for="inpKodeUnit">Unit</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpKodeUnit">
-                        <option>Unit</option>
+                        <option>Pilih Unit</option>
                         <?php
                         foreach ($SIList_unit as $row_1) {
                             echo "<option value=\"" . $row_1->id . "\"".set_select('inpKodeUnit', $row_1->id, $row_1->id == $row->id_unit).">" . $row_1->kode_unit . " - " . $row_1->nama_unit . "</option>";
@@ -35,7 +35,7 @@
                 <label class="control-label" for="inpKoordinator">Koordinator</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpKoordinator">
-                        <option>Koordinator</option>
+                        <option>Pilih Koordinator</option>
                         <?php
                         foreach ($SIList_pegawai as $row_2) {
                             echo "<option value=\"" . $row_2->id . "\"".set_select('inpKoordinator', $row_2->id, $row_2->id == $row->koordinator).">" . $row_2->nama . "</option>";
@@ -48,7 +48,7 @@
                 <label class="control-label" for="inpPenanggungJawab">Penanggung Jawab</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpPenanggungJawab">
-                        <option>Penanggung Jawab</option>
+                        <option>Pilih Penanggung Jawab</option>
                         <?php
                         foreach ($SIList_pegawai as $row_3) {
                             echo "<option value=\"" . $row_3->id . "\"".set_select('inpPenanggungJawab', $row_3->id, $row_3->id == $row->penanggung_jawab).">" . $row_3->nama . "</option>";

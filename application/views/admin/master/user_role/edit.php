@@ -10,7 +10,7 @@
                 <label class="control-label" for="inpNamaKota">Nama Kota</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpNamaKota">
-                        <option>Nama Kota</option>
+                        <option>Pilih Nama Kota</option>
                         <?php
                         foreach ($SIList_kota as $row_1) {
                             echo "<option value=\"" . $row_1->nama_kota . "\"".set_select('inpNamaKota', $row_1->nama_kota, $row_1->nama_kota == $row->kota_asal).">" . $row_1->nama_kota . "</option>";
