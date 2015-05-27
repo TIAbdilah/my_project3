@@ -1,6 +1,18 @@
+<div class="widget-content" style="padding: 10px;">
+    <ul class="nav nav-tabs" id="myTab">
+        <li class="active"><a href="#a">Tambah Data Barang</a></li>
+        <li><a href="#b">Detail Header</a></li>
+    </ul>
 
-
-
+    <div class="tab-content">
+        <div class="tab-pane active" id="a">
+            <h1>cau1</h1>
+        </div>
+        <div class="tab-pane" id="b">
+            <h1>cau2</h1>
+        </div>
+    </div>
+</div>
 <!-- widget-header -->
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>

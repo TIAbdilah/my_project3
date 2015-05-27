@@ -41,6 +41,15 @@ class Bukti_perjalanan_dinas_model extends CI_Model {
         return $query->num_rows();
     }
     
+    public function ceknum($id_header, $id_pegawai) {
+        $sql = "select * "
+                . "from bukti_perjalanan_dinas "
+                . "where id_header = " . $id_header . " "
+                . "and id_pegawai = " . $id_pegawai . " ";
+        $query = $this->db->query($sql);
+        return $query->num_rows();
+    }
+    
     public function select_biaya_from_detail($id_header, $id_pegawai, $kota_tujuan) {
         $sql = "select "
                 . "(select p1.nama from pegawai p1 where p1.id = d.id_pegawai) as nama_pegawai "

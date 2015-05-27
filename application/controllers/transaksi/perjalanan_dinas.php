@@ -46,6 +46,7 @@ class Perjalanan_dinas extends CI_Controller {
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('transaksi/detail_perjalanan_dinas_model');
         $this->load->model('transaksi/komentar_model');
+        $this->load->model('transaksi/bukti_perjalanan_dinas_model');
         $this->load->model('master/anggaran_model');
         $this->load->model('master/pegawai_model');
         $this->load->model('master/kota_tujuan_model');
@@ -84,6 +85,15 @@ class Perjalanan_dinas extends CI_Controller {
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
         $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
         $data['status_diklat'] = $this->status_diklat;
+        if (!empty($data['list_data_detail'])) {
+            $id_header = $data['list_data_detail'][0]->id_header;
+            $id_pegawai = $data['list_data_detail'][0]->id_pegawai;
+            if ($this->ceknum($id_header, $id_pegawai) > 0) {
+                $data['show_report'] = true;
+            } else {
+                $data['show_report'] = false;
+            }
+        }
         $this->load->view('admin/index', $data);
     }
 
@@ -165,6 +175,11 @@ class Perjalanan_dinas extends CI_Controller {
     public function delete($id) {
         $this->perjalanan_dinas_model->delete($id);
         redirect('transaksi/perjalanan_dinas');
+    }
+
+    public function ceknum($id_header, $id_pegawai) {
+
+        return $this->bukti_perjalanan_dinas_model->ceknum($id_header, $id_pegawai);
     }
 
     // tambahan
