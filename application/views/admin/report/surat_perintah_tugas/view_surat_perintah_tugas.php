@@ -8,7 +8,7 @@
         <form class="bs-docs-example form-inline" action="<?php echo site_url('report/surat_perintah_tugas/view/'.$data->id) ?>" method="POST">
             <strong>Tampilkan berdasarkan unit : </strong>
             <select name="inpIdUnit">                                                
-                <option></option>
+                <option>Pilih Unit</option>
                 <?php
                 $nm_unit = '';
                 foreach ($SIList_unit as $row_1) {

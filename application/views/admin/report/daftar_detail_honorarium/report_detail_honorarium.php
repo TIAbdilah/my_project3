@@ -14,68 +14,65 @@ foreach ($data_report as $row) {
 ?>
 <html>
     <body>
-
+        <table style="width: 100%">
+            <tr>
+                <td align="center">
+                    <strong>D A F T A R</strong><br>
+                    <strong>PEMBAYARAN HONORARIUM NARA SUMBER</strong><br>
+                    <strong>PROSEDING DISEMINASI, SOSIALISASI DAN PELATIHAN</strong><br>
+                    <strong>KODE : <?php echo $data->kode_kegiatan ?></strong><br><br>
+                    <strong>KEGIATAN :</strong><br>
+                    <strong><?php echo $data->kegiatan ?></strong>
+                </td>
+            </tr>
+        </table>
     <center>
-        <h3>D A F T A R</h3><br>
-        <b>PEMBAYARAN HONORARIUM NARA SUMBER</b><br>
-        <b>PROSEDING DISEMINASI, SOSIALISASI DAN PELATIHAN</b><br>
-        <b>KODE : <?php echo $data->kode_kegiatan ?></b><br><br>
-        <b>KEGIATAN :</b><br>
-        <b><?php echo $data->kegiatan ?></b>
-    </center>
-    <center>
-        <table border="0" style="width: 70%; border-collapse: collapse; ">
-            <thead>
-                <tr>
-                    <th width="30%"></th>
-                    <th width="70%"></th>
-                </tr>
-            </thead>
+        <table border="0" style="alignment-adjust: central;width: 70%; border-collapse: collapse; ">           
             <tbody>
                 <tr>
-                    <td>Jumlah</td>
-                    <td>Rp. <?php echo number_format($total_honor) ?></td>
+                    <td width="30%">Jumlah</td>
+                    <td width="70%">:&nbsp;Rp. <?php echo number_format($total_honor) ?></td>
                 </tr>
                 <tr>
                     <td>Dengan Huruf</td>
-                    <td><?php echo $curency->convertCurrencyToWords($total_honor) ?></td>
+                    <td>:&nbsp;<?php echo $curency->convertCurrencyToWords($total_honor) ?></td>
                 </tr>
                 <tr>
                     <td>Berdasarkan</td>
-                    <td>SK Kepala Satuan Kerja Pusat Penelitian dan Pengembangan Permukiman</td>
+                    <td>:&nbsp;SK Kepala Satuan Kerja Pusat Penelitian dan Pengembangan Permukiman</td>
                 </tr>
                 <tr>
                     <td>Nomor</td>
-                    <td><?php echo $data->nomor_pengajuan ?></td>
+                    <td>:&nbsp;<?php echo $data->nomor_pengajuan ?></td>
                 </tr>
                 <tr>
                     <td>Tanggal</td>
-                    <td></td>
+                    <td>:&nbsp;<?php echo $format_date->format_date_dfy($data->tanggal_pembuatan) ?></td>
                 </tr>
                 <tr>
                     <td>Agenda</td>
-                    <td><?php echo $data->acara ?></td>
+                    <td>:&nbsp;<?php echo $data->acara ?></td>
                 </tr>
                 <tr>
                     <td>Periode Pembayaran</td>
-                    <td><?php echo format_date($data->periode_pembayaran) ?></td>
+                    <td>:&nbsp;<?php echo $format_date->format_date_dfy($data->periode_pembayaran) ?></td>
                 </tr>
+                <tr><td>&nbsp;</td></tr>
             </tbody>
         </table>
     </center>
     <table border="1" style="width: 100%; border-collapse: collapse">
         <thead>
-
             <tr>
                 <th width="2%">No</th>
-                <th width="12%">Nama</th>
-                <th width="3%">Gol</th>
-                <th width="6%">Jabatan/Instansi</th>
-                <th width="2%">Jumlah Jam</th>
-                <th width="6%">Besar Honor Per Jam</th>
-                <th width="6%">Jumlah(Rp.)</th>
-                <th width="6%">Potongan PPh Pasal 21 (Rp.)</th>
-                <th width="6%">Jumlah Bersih Yang Diterima (Rp.)</th>
+                <th width="18%">Nama</th>
+                <th width="5%">Gol</th>
+                <th width="16%">Jabatan/Instansi</th>
+                <th width="4%">Jumlah Jam</th>
+                <th width="9%">Besar Honor Per Jam</th>
+                <th width="9%">Jumlah(Rp.)</th>
+                <th width="9%">Potongan PPh Pasal 21 (Rp.)</th>
+                <th width="9%">Jumlah Bersih Yang Diterima (Rp.)</th>
                 <th width="6%">Tanda Tangan</th>
             </tr>
         </thead>
@@ -100,18 +97,16 @@ foreach ($data_report as $row) {
                     $pph = 0;
                 }
                 $jumlah_bersih = $jumlah_honor - $pph;
-
-
                 echo "<tr>"
                 . "<td>" . $no . "</td>"
                 . "<td>" . $row->narasumber . "</td>"
-                . "<td>" . $row->golongan . "</td>"
+                . "<td align=\"center\">" . $row->golongan . "</td>"
                 . "<td>" . $row->jabatan . "</td>"
-                . "<td>" . $row->jumlah . "</td>"
-                . "<td>" . number_format($row->honor) . "</td>"
-                . "<td>" . number_format($jumlah_honor) . "</td>"
-                . "<td>" . number_format($pph) . "</td>"
-                . "<td>" . number_format($jumlah_bersih) . "</td>"
+                . "<td align=\"center\">" . $row->jumlah . "</td>"
+                . "<td align=\"right\">" . number_format($row->honor) . "</td>"
+                . "<td align=\"right\">" . number_format($jumlah_honor) . "</td>"
+                . "<td align=\"right\">" . number_format($pph) . "</td>"
+                . "<td align=\"right\">" . number_format($jumlah_bersih) . "</td>"
                 . "<td>" . "<br><br><br>" . "</td>"
                 . "</tr>";
                 $no++;
@@ -130,46 +125,36 @@ foreach ($data_report as $row) {
         </tbody>
 
     </table>
+    <br>
     <table style="width: 100%">
         <tr>
             <td align="center" width="30%">
-
-               MENGETAHUI/MENYETUJUI,<br>
+                <br>
+                MENGETAHUI/MENYETUJUI,<br>
                 PEJABAT PEMBUAT KOMITMEN, <br>
-                <br>
-                <br>
-                <br>
-                <br>
-        <u><strong>Iwan Suprijanto, ST, MT</strong></u><br>
-        NIP. 19710930 199803 1 01
-        <br>
-        </td>
-
-        <td align="center" width="30%">
-
-            &nbsp;<br>
-            BENDAHARA, <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        <u><strong>Drajat Subuhri</strong></u><br>
-        NIP. 19680612 200701 1 004
-        <br>
-        </td>
-
-        <td align="center" width="30%">
-
-            Bandung, <?php echo $format_date->format_date_dfy(date('Y-m-d')) ?><br>
-            MENGETAHUI TELAH DIBAYARKAN <br>
-            KEPADA YANG BERHAK<br>
-            <br>
-            <br>
-            <br>
-        <u><strong>Beben Sugiarti</strong></u><br>
-        NIP. 
-        <br>
-        </td>
+                <br><br><br><br>
+                <strong><u>Iwan Suprijanto, ST, MT</u></strong><br>
+                NIP. 19710930199803101
+            </td>
+            <td align="center" width="30%">
+                <br><br>
+                BENDAHARA, <br>
+                <br><br><br><br>
+                <strong><u>Drajat Subuhri</u></strong><br>
+                NIP. 196806122007011004
+            </td>
+            <td align="center" width="30%">
+                Bandung, <?php echo $format_date->format_date_dfy($data->periode_pembayaran) ?><br>
+                MENGETAHUI TELAH DIBAYARKAN <br>
+                KEPADA YANG BERHAK<br>
+                <br><br><br><br>
+                <strong><u>Beben Sugiarti</u></strong><br>
+                NIP.<?php
+                for ($i = 0; $i < 30; $i++) {
+                    echo "&nbsp;";
+                }
+                ?> 
+            </td>
         </tr>
     </table>
 </body>

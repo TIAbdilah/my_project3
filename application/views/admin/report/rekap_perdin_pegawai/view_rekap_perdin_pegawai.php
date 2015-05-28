@@ -9,6 +9,7 @@
             Bulan&nbsp;<?php echo $array_custom->select_item_bulan('inpBulan') ?>
             Tahun&nbsp;
             <select name="inpTahun">
+                <option>Pilih Tahun</option>
                 <?php
                 for ($i = 2015; $i < 2020; $i++) {
                     echo "<option value=\"" . $i . "\">" . $i . "</option>";

@@ -78,8 +78,11 @@
         $no = 1;
         $total_biaya = 0;
         $tgl_entri = "";
+        $total_rill = 0;
         foreach ($list_data_bukti as $data) {
-            if ($data->jumlah_bukti != 0) {
+            if (strpos($data->jenis_biaya, 'riil') !== FALSE) {
+                $total_rill += $data->jumlah_bukti;
+            } elseif ($data->jumlah_bukti != 0) {
                 echo "<tr>"
                 . "<td align=\"center\">" . $no . "</td>";
                 echo "<td>";
@@ -109,8 +112,8 @@
                         echo "Biaya pengeluaran riil di kota " . $data->kota_tujuan;
                         break;
                 }
-                echo"</td>";
-                echo "<td align=\"right\">" . number_format($data->jumlah_bukti) . "</td>"
+                echo "</td>"
+                . "<td align=\"right\">" . number_format($data->jumlah_bukti) . "</td>"
                 . "<td>&nbsp;</td>"
                 . "</tr>";
                 $no++;
@@ -119,7 +122,12 @@
             }
         }
         ?>
-
+        <tr>
+            <td align="center"><?php echo $no; ?></td>
+            <td>Biaya pengeluaran riil</td>
+            <td align="right"><?php echo number_format($total_rill) ?></td>
+            <td>&nbsp;</td>
+        </tr>
         <tr>
             <td colspan="2"><div align="right">Jumlah :</div></td>
             <td align="right">Rp. <?php echo number_format($total_biaya) ?></td>
@@ -131,12 +139,10 @@
     <table style="width: 100%">
         <tr>
             <td align="center" width="50%"> 
+                <br>
                 Bendahara Pengeluaran,<br>
-                <br>
-                <br>
-                <br>
-                <br>
-                Drajat Subuhri<br>
+                <br><br><br><br>
+        <u><strong>Drajat Subuhri</strong></u><br>
                 NIP. 1996806122007011004<br>
             </td>
             <?php
@@ -147,10 +153,8 @@
             <td align="center" width="50%"> 
                 Bandung, <?php echo $format_date->format_date_dfy($tgl_entri) ?><br>
                 Yang melakukan perjalanan,<br>
-                <br>
-                <br>
-                <br>
-                <?php echo $data_pegawai->nama ?><br>
+                <br><br><br><br>
+        <u><strong><?php echo $data_pegawai->nama ?></strong></u><br>
                 NIP.&nbsp;<?php echo $data_pegawai->nip ?><br>
             </td>
         </tr>
@@ -199,11 +203,8 @@
             <td align="center" width="50%"><br>
                 An. Kepala Satuan Kerja<br>
                 Pejabat Pembuat Komitmen<br>
-                <br>
-                <br>
-                <br>
-                <br>
-                Iwan Suprijanto, ST, MT<br>
+                <br><br><br><br>
+        <u><strong>Iwan Suprijanto, ST, MT</strong></u><br>
                 NIP: 197109301998031001
             </td>
         </tr>

@@ -19,8 +19,13 @@
             <td>Perihal</td>
             <td>: Perintah Perjalanan Tugas</td>
         </tr>
+        <tr>
+            <td colspan="2" style="border-bottom: solid #000 1px">&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
     </table>
-    <hr>
     Harap dibuat SURAT PERINTAH PERJALANAN DINAS (SPPD) untuk :<br>
     <ol>
         <?php
@@ -37,15 +42,15 @@
             <td valign="top" width="30%">Tujuan Perjalanan Dinas ke</td>
             <td valign="top" width="3%">:</td>
             <td>
-                    <?php
-                    if ($data->jumlah_tujuan == 1) {
-                        echo $data->nama_kota_tujuan_1;
-                    } else if ($data->jumlah_tujuan == 2) {
-                        echo $data->nama_kota_tujuan_1 . ' / ' . $data->nama_kota_tujuan_2;
-                    } else if ($data->jumlah_tujuan == 3) {
-                        echo $data->nama_kota_tujuan_1 . ' / ' . $data->nama_kota_tujuan_2 . ' / ' . $data->nama_kota_tujuan_3;
-                    }
-                    ?>
+                <?php
+                if ($data->jumlah_tujuan == 1) {
+                    echo $data->nama_kota_tujuan_1;
+                } else if ($data->jumlah_tujuan == 2) {
+                    echo $data->nama_kota_tujuan_1 . ' / ' . $data->nama_kota_tujuan_2;
+                } else if ($data->jumlah_tujuan == 3) {
+                    echo $data->nama_kota_tujuan_1 . ' / ' . $data->nama_kota_tujuan_2 . ' / ' . $data->nama_kota_tujuan_3;
+                }
+                ?>
             </td>
         </tr>
         <tr>
@@ -87,51 +92,45 @@
             <td valign="top">Kendaraan</td>
             <td valign="top">:</td>
             <td>
-                <?php 
+                <?php
                 $kendaraan = '';
                 foreach ($list_data_kendaraan as $data_ken) {
-                    if($kendaraan != $data_ken->jenis_kendaraan){
-                        if($kendaraan == ''){
+                    if ($kendaraan != $data_ken->jenis_kendaraan) {
+                        if ($kendaraan == '') {
                             echo $data_ken->jenis_kendaraan;
                         } else {
-                            echo ','.$data_ken->jenis_kendaraan;
+                            echo ',' . $data_ken->jenis_kendaraan;
                         }
                     }
                     $kendaraan = $data_ken->jenis_kendaraan;
                 }
-                        
                 ?>
             </td>
         </tr>
         <tr>
             <td valign="top">Pembebanan Biaya</td>
             <td valign="top">:</td>
-            <td><?php echo $data->kode_kegiatan.".".$data->kode_akun?></td>
+            <td><?php echo $data->kode_kegiatan . "." . $data->kode_akun ?></td>
         </tr>
     </table><br><br>
     <table style="width: 100%">
         <tr>
             <td align="center" width="50%">
+                <br>
                 Mengetahui/Menyetujui<br>
                 Kepala <?php echo $data_unit->nama_unit ?><br>
-                <br>
-                <br>
-                <br>
-                <br>
-        <u><?php echo $data_unit->nama_pegawai ?><br></u>
-                NIP:&nbsp;<?php echo $data_unit->nip_pegawai?>
-            </td>
-            <td align="center" width="50%">
-                Bandung, <?php echo $format_date->format_date_dfy($data->tanggal_approval)?><br>
-                An. Kepala Satuan Kerja<br>
-                Pejabat Pembuat Komitmen<br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <br><br><br><br>
+        <u><strong><?php echo $data_unit->nama_pegawai ?></strong></u><br>
+        NIP:&nbsp;<?php echo $data_unit->nip_pegawai ?>
+        </td>
+        <td align="center" width="50%">
+            Bandung, <?php echo $format_date->format_date_dfy($data->tanggal_approval) ?><br>
+            An. Kepala Satuan Kerja<br>
+            Pejabat Pembuat Komitmen<br>
+            <br><br><br><br>
         <u><strong>Iwan Suprijanto, ST, MT</strong></u><br>
-                NIP: 197109301998031001
-            </td>
+        NIP: 197109301998031001
+        </td>
         </tr>
     </table>
 </body>

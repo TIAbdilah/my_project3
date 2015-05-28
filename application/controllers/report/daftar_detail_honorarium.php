@@ -41,6 +41,7 @@ class Daftar_detail_honorarium extends CI_Controller {
     public function print_report($id_header) {
         $this->load->helper('to_pdf');
         $data['curency'] = new Number_to_word_ind();
+        $data['format_date'] = new Format_date();
         $data['data'] = $this->pengajuan_honorarium_model->select_by_id($id_header)->row();
         $data['data_report'] = $this->detail_pengajuan_honorarium_model->select_by_id($id_header)->result();
         $html = $this->load->view('admin/report/daftar_detail_honorarium/report_detail_honorarium', $data, TRUE);

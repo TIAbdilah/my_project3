@@ -10,7 +10,7 @@
                 <label class="control-label" for="inpNamaKota">Nama Provinsi</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpNamaKota">
-                        <option>Nama Provinsi</option>
+                        <option>Pilih Nama Provinsi</option>
                         <?php
                         foreach ($SIList_kota as $row_1) {
                             echo "<option value=\"" . $row_1->nama_provinsi . "\"".set_select('inpNamaKota', $row_1->nama_provinsi, $row_1->nama_provinsi == $row->nama_kota).">" . $row_1->nama_provinsi . "</option>";
@@ -23,7 +23,7 @@
                 <label class="control-label" for="inpStatusPegawai">Status Pegawai</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpStatusPegawai">
-                        <option>Status Pegawai</option>
+                        <option>Pilih Status Pegawai</option>
                         <?php
                         foreach ($SIList_statusPegawai as $row_2) {
                             echo "<option value=\"" . $row_2->list_item . "\"".set_select('inpStatusPegawai', $row_2->list_item, $row_2->list_item == $row->status_pegawai).">" . $row_2->list_item . "</option>";

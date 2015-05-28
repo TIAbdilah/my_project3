@@ -86,7 +86,7 @@ class Barang extends CI_Controller {
 
         $this->counter = new Counter();
         $pattern = $prefix;
-        $counter = $this->counter->generateId($pattern);
+        $counter = $this->counter->generateId($pattern, 4);
         $data['kode_barang'] = $prefix . $counter;
 
         if ($action == 'add') {

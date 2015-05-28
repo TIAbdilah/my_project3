@@ -10,7 +10,7 @@
                 <label class="control-label" for="inpIdJenisPengguna">Role</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpIdJenisPengguna">
-                        <option>Jenis Pengguna</option>
+                        <option>Pilih Jenis Pengguna</option>
                         <?php
                         foreach ($SIList_role as $row) {
                             echo "<option value=\"" . $row->id_role . "\">" . $row->nama_role . "</option>";
@@ -23,7 +23,7 @@
                 <label class="control-label" for="inpIdPegawai">Nama Pegawai</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpIdPegawai">
-                        <option>Nama  Pegawai</option>
+                        <option>Pilih Nama  Pegawai</option>
                         <?php
                         foreach ($SIList_pegawai as $row_1) {
                             echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama . "</option>";

@@ -87,15 +87,15 @@
                 An. Kepala Satuan Kerja<br>
                 Pejabat Pembuat Komitmen<br>
                 <br><br><br>
-                Iwan Suprijanto, ST, MT<br>
+        <u><strong>Iwan Suprijanto, ST, MT</strong></u><br>
                 NIP: 197109301998031001                
             </td>
             <td v-align="top" align="center" width="30%"> 
-                Bendahara Pengeluaran,<br>
+                <br>  
                 <br>
-                <br>
-                <br><br><br>
-                Drajat Subuhri<br>
+                Bendahara Pengeluaran,<br>                
+                <br><br><br><br>
+        <u><strong>Drajat Subuhri</strong></u><br>
                 NIP. 196806122007011004
             </td>
             <td v-align="top" align="center" width="30%"> 
@@ -104,11 +104,11 @@
                         $tanggal_entri = date('Y-m-d');
                     }
                 ?>
-                Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
-                Yang menerima,<br>
                 <br>
-                <br><br><br>
-                <?php echo $data_pegawai->nama ?></br>
+                Bandung, <?php echo $format_date->format_date_dfy($tanggal_entri) ?><br>
+                Yang menerima,<br>                 
+                <br><br><br><br>
+        <u><strong><?php echo $data_pegawai->nama ?></strong></u></br>
                 NIP. <?php echo $data_pegawai->nip ?>
             </td>
         </tr>
