@@ -110,7 +110,7 @@ class Perjalanan_dinas extends CI_Controller {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/perjalanan_dinas/edit';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
-        $data['SIList_anggaran'] = $this->anggaran_model->select_all_perjalanan()->result();
+        $data['SIList_anggaran'] = $this->anggaran_model->select_by_field(array('kata_kunci' => 'Perjalanan'))->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
