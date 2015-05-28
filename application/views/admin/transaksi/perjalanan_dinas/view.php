@@ -8,10 +8,10 @@ function format_date($string) {
 <!-- widget-header -->
 <div class="widget widget-table action-table">
     <?php
-                if ($this->session->flashdata('bukti') != ''):
-                    echo $this->session->flashdata('bukti');
-                endif;
-                ?>
+    if ($this->session->flashdata('bukti') != ''):
+        echo $this->session->flashdata('bukti');
+    endif;
+    ?>
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>View Data </h3>
     </div>           
@@ -65,7 +65,7 @@ function format_date($string) {
             </tr>
             <tr>
                 <td><strong>Diklat</strong></td>
-                <td valign="top">:&nbsp;<?php echo $status_diklat[$data->status_diklat] ?></td>
+                <td valign="top">:&nbsp;<?php echo $array_custom->status_diklat[$data->status_diklat] ?></td>
             </tr>
             <tr>
                 <td><strong>Jumlah Kota Tujuan</strong></td>
