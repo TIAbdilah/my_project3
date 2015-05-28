@@ -10,6 +10,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 require_once(APPPATH . 'controllers/common/counter.php');
+require_once(APPPATH . 'controllers/common/number_operations.php');
 
 class Perjalanan_dinas extends CI_Controller {
 
@@ -100,7 +101,7 @@ class Perjalanan_dinas extends CI_Controller {
     public function add() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/perjalanan_dinas/add';
-        $data['SIList_anggaran'] = $this->anggaran_model->select_by_field(array('kata_kunci'=>'Perjalanan'))->result();
+        $data['SIList_anggaran'] = $this->anggaran_model->select_by_field(array('kata_kunci' => 'Perjalanan'))->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
@@ -477,40 +478,44 @@ class Perjalanan_dinas extends CI_Controller {
     }
 
     public function hitungTotal() {
+        $this->num_op = new Number_operations();
         //uang harian
-        $param1 = $this->input->post('a', TRUE);
-        $param12 = $this->input->post('a2', TRUE);
-        $param13 = $this->input->post('a3', TRUE);
+        $param1 = $this->num_op->cleanCommas($this->input->post('a', TRUE));
+        $param12 = $this->num_op->cleanCommas($this->input->post('a2', TRUE));
+        $param13 = $this->num_op->cleanCommas($this->input->post('a3', TRUE));
         //penginapaan
-        $param2 = $this->input->post('b', TRUE);
-        $param22 = $this->input->post('b2', TRUE);
-        $param23 = $this->input->post('b3', TRUE);
+        $param2 = $this->num_op->cleanCommas($this->input->post('b', TRUE));
+        $param22 = $this->num_op->cleanCommas($this->input->post('b2', TRUE));
+        $param23 = $this->num_op->cleanCommas($this->input->post('b3', TRUE));
         //transport utama
-        $param3 = $this->input->post('c', TRUE);
-        $param32 = $this->input->post('c2', TRUE);
-        $param33 = $this->input->post('c3', TRUE);
-        $param34 = $this->input->post('c4', TRUE);
+        $param3 = $this->num_op->cleanCommas($this->input->post('c', TRUE));
+        $param32 = $this->num_op->cleanCommas($this->input->post('c2', TRUE));
+        $param33 = $this->num_op->cleanCommas($this->input->post('c3', TRUE));
+        $param34 = $this->num_op->cleanCommas($this->input->post('c4', TRUE));
         //transport pendukung
-        $param4 = $this->input->post('d', TRUE);
-        $param42 = $this->input->post('d2', TRUE);
-        $param43 = $this->input->post('d3', TRUE);
+        $param4 = $this->num_op->cleanCommas($this->input->post('d', TRUE));
+        $param42 = $this->num_op->cleanCommas($this->input->post('d2', TRUE));
+        $param43 = $this->num_op->cleanCommas($this->input->post('d3', TRUE));
         //pengeluaran riil
-        $param5 = $this->input->post('e', TRUE);
-        $param52 = $this->input->post('e2', TRUE);
-        $param53 = $this->input->post('e3', TRUE);
+        $param5 = $this->num_op->cleanCommas($this->input->post('e', TRUE));
+        $param52 = $this->num_op->cleanCommas($this->input->post('e2', TRUE));
+        $param53 = $this->num_op->cleanCommas($this->input->post('e3', TRUE));
         //representatif
-        $param6 = $this->input->post('f', TRUE);
-        $param62 = $this->input->post('f2', TRUE);
-        $param63 = $this->input->post('f3', TRUE);
+        $param6 = $this->num_op->cleanCommas($this->input->post('f', TRUE));
+        $param62 = $this->num_op->cleanCommas($this->input->post('f2', TRUE));
+        $param63 = $this->num_op->cleanCommas($this->input->post('f3', TRUE));
         //diklat
-        $param7 = $this->input->post('g', TRUE);
-        $param72 = $this->input->post('g2', TRUE);
-        $param73 = $this->input->post('g3', TRUE);
+        $param7 = $this->num_op->cleanCommas($this->input->post('g', TRUE));
+        $param72 = $this->num_op->cleanCommas($this->input->post('g2', TRUE));
+        $param73 = $this->num_op->cleanCommas($this->input->post('g3', TRUE));
         //sewa
-        $param8 = $this->input->post('h', TRUE);
-        $param82 = $this->input->post('h2', TRUE);
-        $param83 = $this->input->post('h3', TRUE);
-        echo $param1 + $param12 + $param13 + $param2 + $param22 + $param23 + $param3 + $param32 + $param33 + $param34 + $param4 + $param42 + $param43 + $param5 + $param52 + $param53 + $param6 + $param62 + $param63 + $param7 + $param72 + $param73 + $param8 + $param82 + $param83;
+        $param8 = $this->num_op->cleanCommas($this->input->post('h', TRUE));
+        $param82 = $this->num_op->cleanCommas($this->input->post('h2', TRUE));
+        $param83 = $this->num_op->cleanCommas($this->input->post('h3', TRUE));
+        $grandtotal= $param1 + $param12 + $param13 + $param2 + $param22 + $param23 + $param3 + $param32 + $param33 + $param34 + $param4 + $param42 + $param43 + $param5 + $param52 + $param53 + $param6 + $param62 + $param63 + $param7 + $param72 + $param73 + $param8 + $param82 + $param83;
+    
+        echo $grandtotal;
+        
     }
 
     public function dayBetweenTwoDates() {

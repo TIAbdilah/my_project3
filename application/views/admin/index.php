@@ -554,7 +554,7 @@
                             h3: $('#inSubtotalSewa3').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inTotalBiaya").val(data);
+                            $("#inTotalBiaya").val(addCommas(data));
                         }
 
                     });
@@ -620,7 +620,7 @@
                             h3: $('#inSubtotalSewa3').val()},
                         type: "POST",
                         success: function(data) {
-                            $("#inTotalBiaya").val(data);
+                            $("#inTotalBiaya").val(addCommas(data));
                         }
 
                     });
@@ -707,7 +707,19 @@
                         }
                     });
                 });
+                $(".inNamaBarang2").change(function() {
 
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/getDetailBarang",
+                        data: {id: $(this).val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $(".clblSatuanBarang").text(data[0]);
+                            $(".clblHargaBarang").text(addCommas(data[1]));
+                        }
+                    });
+                });
                 $("#inIdAnggaran").change(function() {
 
                     $.ajax({

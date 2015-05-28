@@ -160,7 +160,7 @@ foreach ($data_report as $row) {
 
         <td align="center" width="30%">
 
-            Bandung, <?php echo date('d M y') ?><br>
+            Bandung, <?php echo $format_date->format_date_dfy(date('Y-m-d')) ?><br>
             MENGETAHUI TELAH DIBAYARKAN <br>
             KEPADA YANG BERHAK<br>
             <br>
