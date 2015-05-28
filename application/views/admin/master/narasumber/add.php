@@ -22,7 +22,7 @@
                 <label class="control-label" for="inpGolongan">Golongan</label>
                 <div class="controls">
                     <select name="inpGolongan">
-                        <option>Golongan</option>
+                        <option>Pilih Golongan</option>
                         <?php
                         foreach ($SIList_golongan as $row) {
                             echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
@@ -35,7 +35,7 @@
                 <label class="control-label" for="inpTingkat">Tingkat</label>
                 <div class="controls">
                     <select name="inpTingkat">
-                        <option>Tingkat</option>
+                        <option>Pilih Tingkat</option>
                         <?php
                         foreach ($SIList_tingkat as $row) {
                             echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
@@ -48,7 +48,7 @@
                 <label class="control-label" for="inpJabatan">Jabatan</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpJabatan">
-                        <option>Jabatan</option>
+                        <option>Pilih Jabatan</option>
                         <?php
                         foreach ($SIList_biaya_narasumber as $row) {
                             echo "<option value=\"" . $row->id . "\">" . $row->jabatan . "</option>";
@@ -73,7 +73,7 @@
                 <label class="control-label" for="inpStatus">Status</label>
                 <div class="controls">
                     <select name="inpStatus">
-                        <option>Status</option>
+                        <option>Pilih Status</option>
                         <?php
                         foreach ($SIList_statusPegawai as $row) {
                             echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
@@ -86,7 +86,7 @@
                 <label class="control-label" for="inpKodeUnit">Nama Unit</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpKodeUnit">
-                        <option>Unit</option>
+                        <option>Pilih Unit</option>
                         <?php
                         foreach ($SIList_unit as $row) {
                             echo "<option value=\"" . $row->id . "\">" . $row->kode_unit . " - " . $row->nama_unit . "</option>";

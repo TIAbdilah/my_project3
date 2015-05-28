@@ -83,7 +83,7 @@
                                     <tr>
                                         <td>
                                             <select class="input-xxlarge" name="inNamaNarasumber" id="inNamaNarasumber">
-                                                <option value="">-Pilih-</option>
+                                                <option>Pilih Narasumber</option>
                                                 <?php
                                                 foreach ($SIList_narasumber as $row_1) {
                                                     echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaNarasumber', $row_1->id, $row_1->id == $row->id_narasumber) . ">" . $row_1->nama . "</option>";

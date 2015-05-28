@@ -27,7 +27,7 @@ function format_date($string) {
                 <label class="control-label" for="inpGolongan">Golongan</label>
                 <div class="controls">
                     <select name="inpGolongan">
-                        <option>Golongan</option>
+                        <option>Pilih Golongan</option>
                         <?php
                         foreach ($SIList_golongan as $row_3) {
                             echo "<option value=\"" . $row_3->list_item . "\"".set_select('inpGolongan', $row_3->list_item, $row_3->list_item == $row->golongan).">" . $row_3->list_item . "</option>";
@@ -40,7 +40,7 @@ function format_date($string) {
                 <label class="control-label" for="inpTingkat">Tingkat</label>
                 <div class="controls">
                     <select name="inpTingkat">
-                        <option>Tingkat</option>
+                        <option>Pilih Tingkat</option>
                         <?php
                         foreach ($SIList_tingkat as $row_4) {
                             echo "<option value=\"" . $row_4->list_item . "\"".set_select('inpTingkat', $row_4->list_item, $row_4->list_item == $row->tingkat).">" . $row_4->list_item . "</option>";
@@ -53,7 +53,7 @@ function format_date($string) {
                 <label class="control-label" for="inpJabatan">Jabatan</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpJabatan">
-                        <option>Jabatan</option>
+                        <option>Pilih Jabatan</option>
                         <?php
                         foreach ($SIList_biaya_narasumber as $row_5) {
                             echo "<option value=\"" . $row_5->id . "\">" . $row_5->jabatan . "</option>";
@@ -78,7 +78,7 @@ function format_date($string) {
                 <label class="control-label" for="inpStatus">Status</label>
                 <div class="controls">
                     <select name="inpStatus">
-                        <option>Status</option>
+                        <option>Pilih Status</option>
                         <?php
                         foreach ($SIList_statusNarasumber as $row_2) {
                             echo "<option value=\"" . $row_2->list_item . "\"".set_select('inpStatus', $row_2->list_item, $row_2->list_item == $row->status).">" . $row_2->list_item . "</option>";
@@ -91,7 +91,7 @@ function format_date($string) {
                 <label class="control-label" for="inpKodeUnit">Nama Unit</label>
                 <div class="controls">
                     <select name="inpKodeUnit" class="input-xlarge">                                                
-                        <option></option>
+                        <option>Pilih Unit</option>
                         <?php
                         foreach ($SIList_unit as $row_1) {
                             echo "<option value=\"" . $row_1->id . "\"" . set_select('inpKodeUnit', $row_1->id, $row_1->id == $row->kode_unit) . ">" . $row_1->kode_unit." - ".$row_1->nama_unit. "</option>";

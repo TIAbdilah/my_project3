@@ -16,7 +16,7 @@ class Barang_model extends CI_Model {
     }
 
     public function select_all() {
-        return $this->db->get('barang');
+        return $this->db->order_by('nama_barang', 'ASC')->get('barang');
     }
 
     public function select_by_id($id) {

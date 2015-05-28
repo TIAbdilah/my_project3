@@ -22,7 +22,7 @@ function format_date($string) {
                 <label class="control-label" for="inIdAnggaran">Anggaran</label>
                 <div class="controls" >
                     <select class="input-xxlarge" name="inIdAnggaran" id="inIdAnggaran"> 
-                        <option>--Anggaran--</option>
+                        <option>Pilih Anggaran</option>
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
                             if ($row_1->id_unit == $this->session->userdata('kode_unit')) {
@@ -55,7 +55,7 @@ function format_date($string) {
                 <label class="control-label" for="inKodeJenisBarang">Jenis Barang</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inKodeJenisBarang" id="inKodeJenisBarang">
-                        <option>Jenis Barang</option>
+                        <option>Pilih Jenis Barang</option>
                         <?php
                         foreach ($SIList_jenisBarang as $row) {
                             echo "<option value=\"" . $row->list_item . "\"" . set_select('inKodeJenisBarang', $row->list_item, $row->list_item == $data->kode_jenis_barang) . ">" . $row->list_item . "</option>";

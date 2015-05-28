@@ -38,7 +38,7 @@
                     . "<td class=\"td-actions\">";
                     ?>
 
-                <a title = "Edit" href = "#addDetail<?php echo $row->id ?>" class = "btn btn-mini btn-warning" data-toggle = "modal"><i class = "btn-icon-only icon-pencil"></i></a>
+                <!--<a title = "    Edit" href = "#addDetail<?php echo $row->id ?>" class = "btn btn-mini btn-warning" data-toggle = "modal"><i class = "btn-icon-only icon-pencil"></i></a>-->
                 <a title="Delete" href=" <?php echo site_url('transaksi/detail_pengajuan_barang/delete/' . $row->id) ?>" class="btn btn-danger btn-mini"><i class="btn-icon-only icon-remove"></i></a>
                 <div id = "addDetail<?php echo $row->id ?>" class = "modal hide fade modal-admin " tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true">
                     <div class = "modal-header">
@@ -47,7 +47,7 @@
                     </div>
                     <div class = "modal-body">
 
-                        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengajuan_barang/process/edit/'.$row->id) ?>" method="POST">
+                        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengajuan_barang/process/edit/' . $row->id) ?>" method="POST">
                             <input type="hidden" id="inIdHeader" name="inIdHeader" value="<?php echo $data->id ?>"/>
                             <?php // print_r($row) ?>
                             <table class="table table-bordered" border="0" style="width: 70%">        
@@ -62,11 +62,20 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <select class="input-large" name="inNamaBarang" id="inNamaBarang">
-                                                <option value="">-Pilih-</option>
+                                            <select class="input-large" name="inNamaBarang2" class="inNamaBarang2">
+                                                <option>Pilih Nama Barang</option>
+
                                                 <?php
                                                 foreach ($SIList_barang as $row_1) {
-                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang', $row_1->id, $row_1->id == $row->id) . ">" . $row_1->nama_barang . "</option>";
+                                                    if (empty($row_1->merek_barang) && empty($row_1->spesifikasi)) {
+                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . "</option>";
+                                                    } else if (empty($row_1->merek_barang)) {
+                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->spesifikasi . "</option>";
+                                                    } else if (empty($row_1->spesifikasi)) {
+                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->merek_barang . "</option>";
+                                                    } else {
+                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->merek_barang . " - " . $row_1->spesifikasi . "</option>";
+                                                    }
                                                 }
                                                 ?>
                                             </select>

@@ -270,7 +270,7 @@ class Pengajuan_barang extends CI_Controller {
         $param2 = $this->input->post('kota_tujuan', TRUE);
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param, $param2);
         $output = null;
-        $output = "<option value=''>Pilih</option>";
+        $output = "<option>Pilih Transport</option>";
         if ($data['transport']) {
             foreach ($data['transport'] as $row) {
                 $output .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
@@ -288,7 +288,7 @@ class Pengajuan_barang extends CI_Controller {
 
         $data['barang'] = $this->barang_model->populateBarang($param1);
         $output1 = null;
-        $output1 = "<option value=''>Pilih</option>";
+        $output1 = "<option>Pilih Barang</option>";
         if ($data['barang']) {
             foreach ($data['barang'] as $row) {
                 $output1 .= "<option value='" . $row->id . "'>" . $row->nama_barang . "</option>";

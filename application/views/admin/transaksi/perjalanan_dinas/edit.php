@@ -16,7 +16,7 @@ function format_date($string) {
                 <label class="control-label" for="inpIdAnggaran">Anggaran</label>
                 <div class="controls" >
                     <select class="input-xxlarge" name="inpIdAnggaran" id="inpIdAnggaran"> 
-                        <option>--Anggaran--</option>
+                        <option>Pilih Anggaran</option>
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
                             if ($row_1->id_unit == $this->session->userdata('kode_unit')) {
@@ -91,7 +91,7 @@ function format_date($string) {
                     <div id="divs3">
                         <div class="div1">
                             <select  name="inpKotaTujuan1" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_1) {
                                     echo "<option value=\"" . $row_1->id . "\"" . set_select('inpKotaTujuan1', $row_1->id, $row_1->id == $data->kota_tujuan_1) . ">" . $row_1->nama_kota . "</option>";
@@ -101,7 +101,7 @@ function format_date($string) {
                         </div>
                         <div class="div2">
                             <select  name="inpKotaTujuan21" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_1) {
                                     echo "<option value=\"" . $row_1->id . "\"" . set_select('inpKotaTujuan21', $row_1->id, $row_1->id == $data->kota_tujuan_1) . ">" . $row_1->nama_kota . "</option>";
@@ -109,7 +109,7 @@ function format_date($string) {
                                 ?>
                             </select>
                             <select  name="inpKotaTujuan22" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_2) {
                                     echo "<option value=\"" . $row_2->id . "\"" . set_select('inpKotaTujuan22', $row_2->id, $row_2->id == $data->kota_tujuan_2) . ">" . $row_2->nama_kota . "</option>";
@@ -119,7 +119,7 @@ function format_date($string) {
                         </div>
                         <div class="div3">
                             <select  name="inpKotaTujuan31" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_1) {
                                     echo "<option value=\"" . $row_1->id . "\"" . set_select('inpKotaTujuan31', $row_1->id, $row_1->id == $data->kota_tujuan_1) . ">" . $row_1->nama_kota . "</option>";
@@ -127,7 +127,7 @@ function format_date($string) {
                                 ?>
                             </select>
                             <select  name="inpKotaTujuan32" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_2) {
                                     echo "<option value=\"" . $row_2->id . "\"" . set_select('inpKotaTujuan32', $row_2->id, $row_2->id == $data->kota_tujuan_2) . ">" . $row_2->nama_kota . "</option>";
@@ -135,7 +135,7 @@ function format_date($string) {
                                 ?>
                             </select>
                             <select  name="inpKotaTujuan33" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_3) {
                                     echo "<option value=\"" . $row_3->id . "\"" . set_select('inpKotaTujuan33', $row_3->id, $row_3->id == $data->kota_tujuan_3) . ">" . $row_3->nama_kota . "</option>";
