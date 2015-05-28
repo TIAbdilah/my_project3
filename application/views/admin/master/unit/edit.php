@@ -22,7 +22,7 @@
                 <label class="control-label" for="inpKepala">Kepala Unit</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpKepala">
-                        <option>Kepala</option>
+                        <option>Pilih Kepala</option>
                         <?php
                         foreach ($SIList_pegawai as $row_1) {
                             echo "<option value=\"" . $row_1->id . "\"" . set_select('inpKepala', $row_1->id, $row_1->id == $row->kepala) . ">" . $row_1->nama . "</option>";

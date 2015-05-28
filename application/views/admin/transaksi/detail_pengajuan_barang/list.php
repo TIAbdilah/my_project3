@@ -63,7 +63,7 @@
                                     <tr>
                                         <td>
                                             <select class="input-large" name="inNamaBarang2" class="inNamaBarang2">
-                                                <option value="">-Pilih-</option>
+                                                <option>Pilih Nama Barang</option>
 
                                                 <?php
                                                 foreach ($SIList_barang as $row_1) {

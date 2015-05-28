@@ -79,7 +79,7 @@ class Pengajuan_honorarium extends CI_Controller {
     public function add() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/pengajuan_honorarium/add';
-        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
+        $data['SIList_anggaran'] = $this->anggaran_model->select_by_field(array('kata_kunci' => 'jasa profesi'))->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -88,7 +88,7 @@ class Pengajuan_honorarium extends CI_Controller {
         $data['page'] = 'admin/transaksi/pengajuan_honorarium/edit';
         $data['data'] = $this->pengajuan_honorarium_model->select_by_id($id)->row();
         $data['anggaran'] = $this->anggaran_model->getDetailAnggaran2($data['data']->id)->row();
-        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
+        $data['SIList_anggaran'] = $this->anggaran_model->select_by_field(array('kata_kunci' => 'jasa profesi'))->result();
         $this->load->view('admin/index', $data);
     }
 

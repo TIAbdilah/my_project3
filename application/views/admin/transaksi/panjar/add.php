@@ -10,7 +10,7 @@
                 <label class="control-label" for="inpHeader">No. SPT</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpIdHeader">
-                        <option>No. SPT</option>
+                        <option>Pilih No. SPT</option>
                         <?php
                         foreach ($SIList_perjadin as $row) {
                             if ($row->id_unit == $this->session->userdata('kode_unit')) {
@@ -25,7 +25,7 @@
                 <label class="control-label" for="inpPenerima">Penerima</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpPenerima">
-                        <option>Nama Pegawai</option>
+                        <option>Pilih Nama Pegawai</option>
                         <?php
                         foreach ($SIList_pegawai as $row_1) {
                             echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama . "</option>";

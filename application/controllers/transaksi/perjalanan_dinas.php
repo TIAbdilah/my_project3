@@ -347,7 +347,7 @@ class Perjalanan_dinas extends CI_Controller {
 
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param, $param2);
         $output1 = null;
-        $output1 = "<option value=''>Pilih</option>";
+        $output1 = "<option>Pilih Transport</option>";
         if ($data['transport']) {
             foreach ($data['transport'] as $row) {
                 $output1 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
@@ -360,7 +360,7 @@ class Perjalanan_dinas extends CI_Controller {
 
         $data['transport2'] = $this->biaya_tiket_model->populateTransport($param3, $param4);
         $output2 = null;
-        $output2 = "<option value=''>Pilih</option>";
+        $output2 = "<option>Pilih  Transport</option>";
         if ($data['transport2']) {
             foreach ($data['transport2'] as $row) {
                 $output2 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
@@ -373,7 +373,7 @@ class Perjalanan_dinas extends CI_Controller {
 
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param5, $param6);
         $output3 = null;
-        $output3 = "<option value=''>Pilih</option>";
+        $output3 = "<option>Pilih Transport</option>";
         if ($data['transport']) {
             foreach ($data['transport'] as $row) {
                 $output3 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
@@ -386,7 +386,7 @@ class Perjalanan_dinas extends CI_Controller {
 
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param5, $param6);
         $output4 = null;
-        $output4 = "<option value=''>Pilih</option>";
+        $output4 = "<option>Pilih Transport</option>";
         if ($data['transport']) {
             foreach ($data['transport'] as $row) {
                 $output4 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
@@ -408,7 +408,7 @@ class Perjalanan_dinas extends CI_Controller {
 
         $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param1);
         $output1 = null;
-        $output1 = "<option value=''>Pilih</option>";
+        $output1 = "<option>Pilih Sewa</option>";
         if ($data['transportsewa']) {
             foreach ($data['transportsewa'] as $row) {
                 $output1 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
@@ -421,7 +421,7 @@ class Perjalanan_dinas extends CI_Controller {
 
         $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
         $output2 = null;
-        $output2 = "<option value=''>Pilih</option>";
+        $output2 = "<option>Pilih Sewa</option>";
         if ($data['transportsewa']) {
             foreach ($data['transportsewa'] as $row) {
                 $output2 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";
@@ -434,7 +434,7 @@ class Perjalanan_dinas extends CI_Controller {
 
         $data['transportsewa'] = $this->biaya_sewa_model->populateSewa($param2);
         $output3 = null;
-        $output3 = "<option value=''>Pilih</option>";
+        $output3 = "<option>Pilih Sewa</option>";
         if ($data['transportsewa']) {
             foreach ($data['transportsewa'] as $row) {
                 $output3 .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";

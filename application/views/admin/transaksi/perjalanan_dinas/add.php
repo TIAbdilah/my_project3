@@ -10,7 +10,7 @@
                 <label class="control-label" for="inpIdAnggaran">Anggaran</label>
                 <div class="controls" >
                     <select class="input-xxlarge" name="inpIdAnggaran" id="inpIdAnggaran"> 
-                        <option>--Anggaran--</option>
+                        <option>Pilih Anggaran</option>
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
                             if ($row_1->id_unit == $this->session->userdata('kode_unit')) {
@@ -91,7 +91,7 @@
                     <div id="divs3">
                         <div class="div1">
                             <select  name="inpKotaTujuan1" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_1) {
                                     echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama_kota . "</option>";
@@ -101,7 +101,7 @@
                         </div>
                         <div class="div2">
                             <select  name="inpKotaTujuan21" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_1) {
                                     echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama_kota . "</option>";
@@ -109,7 +109,7 @@
                                 ?>
                             </select>
                             <select  name="inpKotaTujuan22" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_2) {
                                     echo "<option value=\"" . $row_2->id . "\">" . $row_2->nama_kota . "</option>";
@@ -119,7 +119,7 @@
                         </div>
                         <div class="div3">
                             <select  name="inpKotaTujuan31" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_1) {
                                     echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama_kota . "</option>";
@@ -127,7 +127,7 @@
                                 ?>
                             </select>
                             <select  name="inpKotaTujuan32" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_2) {
                                     echo "<option value=\"" . $row_2->id . "\">" . $row_2->nama_kota . "</option>";
@@ -135,7 +135,7 @@
                                 ?>
                             </select>
                             <select  name="inpKotaTujuan33" id="inpKotaTujuan">
-                                <option>--Nama Kota--</option>
+                                <option>Pilih Nama Kota</option>
                                 <?php
                                 foreach ($SIList_kota_tujuan as $row_3) {
                                     echo "<option value=\"" . $row_3->id . "\">" . $row_3->nama_kota . "</option>";

@@ -12,7 +12,7 @@
                 <td><label>Nama Pegawai</label></td>
                 <td colspan="2">
                     <select class="input-xlarge" name="inNamaPegawai" id="inNamaPegawai">
-                        <option value="">Pilih</option>
+                        <option>Pilih Pegawai</option>
                         <?php
                         foreach ($SIList_pegawai as $row) {
                             echo "<option value=\"" . $row->id . "\">" . $row->nama . "</option>";
@@ -62,7 +62,7 @@
                 <td><input type="text" placeholder="Di" id="inPenginapan1" name="inPenginapan1" value="<?php echo $data->nama_kota_tujuan_1 ?>"/></td>
                 <td>
                     <select class="input" name="inJenisPenginapan1" id="inJenisPenginapan1">
-                        <option value="">Pilih</option>
+                        <option>Pilih Penginapan</option>
                         <?php
                         foreach ($SIList_jenisPenginapan as $row) {
                             echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";

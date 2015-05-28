@@ -15,7 +15,7 @@
             <tr>
                 <td align="center">
                     <select class="input-xxlarge" name="inNamaBarang" id="inNamaBarang">
-                        <option value="">-Pilih-</option>
+                        <option>Pilih Nama Barang</option>
                         <?php
                         foreach ($SIList_barang as $row) {
                             if (empty($row->merek_barang) && empty($row->spesifikasi)) {

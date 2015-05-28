@@ -12,7 +12,7 @@
             <tr>
                 <td align="center">
                     <select class="input-xxlarge" name="inNamaNarasumber" id="inNamaNarasumber">
-                        <option value="">-Pilih-</option>
+                        <option>Pilih Narasumber</option>
                         <?php
                         foreach ($SIList_narasumber as $row) {
                             echo "<option value=\"" . $row->id . "\">" . $row->nama . "</option>";

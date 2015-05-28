@@ -230,7 +230,7 @@ class Detail_pengajuan_honorarium extends CI_Controller {
         $param2 = $this->input->post('kota_tujuan', TRUE);
         $data['transport'] = $this->biaya_tiket_model->populateTransport($param, $param2);
         $output = null;
-        $output = "<option value=''>Pilih</option>";
+        $output = "<option>Pilih Transport</option>";
         if ($data['transport']) {
             foreach ($data['transport'] as $row) {
                 $output .= "<option value='" . $row->jenis_kendaraan . "'>" . $row->jenis_kendaraan . "</option>";

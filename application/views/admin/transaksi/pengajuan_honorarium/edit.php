@@ -22,7 +22,7 @@ function format_date($string) {
                 <label class="control-label" for="inIdAnggaran">Anggaran</label>
                 <div class="controls" >
                     <select class="input-xxlarge" name="inIdAnggaran" id="inIdAnggaran"> 
-                        <option>--Anggaran--</option>
+                        <option>Pilih Anggaran</option>
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
                             if ($row_1->id_unit == $this->session->userdata('kode_unit')) {
