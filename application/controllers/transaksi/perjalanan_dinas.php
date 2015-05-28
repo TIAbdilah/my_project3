@@ -11,6 +11,7 @@ if (!defined('BASEPATH'))
 
 require_once(APPPATH . 'controllers/common/counter.php');
 require_once(APPPATH . 'controllers/common/number_operations.php');
+require_once(APPPATH . 'controllers/common/array_custom.php');
 
 class Perjalanan_dinas extends CI_Controller {
    
