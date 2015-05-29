@@ -17,10 +17,9 @@
                 ?>
             </select>&nbsp;
             <button type="submit" class="btn">Tampilkan</button>  
-
         </form>        
         <?php
-        if (!empty($month) && !empty($year)) {
+        if (!empty($month) && !empty($year) && $this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
             ?>
             <a href="<?php echo site_url('report/rekap_pembuktian/print_report/' . $month . '/' . $year) ?>">
                 <button class="btn">Cetak</button>

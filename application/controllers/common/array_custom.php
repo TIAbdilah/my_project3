@@ -92,7 +92,7 @@ class Array_custom extends CI_Controller {
         $str = "";
         $list_bl = $this->list_bulan();
         $str = $str . "<select name=\"" . $name . "\" class=\"" . $class . "\" id=\"" . $id . "\">"
-                . "<option>Pilih Bulan</option>";
+                . "<option value=\"\">Pilih Bulan</option>";
         for ($i = 0; $i < 12; $i++) {
             $nbl = $i + 1;
             $str = $str . "<option value=\"" . $nbl . "\">" . $list_bl[$i]['str_bulan'] . "</option>";

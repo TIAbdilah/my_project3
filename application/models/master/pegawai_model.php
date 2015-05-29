@@ -38,7 +38,11 @@ class Pegawai_model extends CI_Model {
     }
 
     public function select_by_field($field, $keyword) {
-        return $this->db->get_where('pegawai', array($field => $keyword));
+        $this->db->select('*');
+        $this->db->from('pegawai');
+        $this->db->where(array($field => $keyword));
+        $this->db->order_by('nama');                
+        return $this->db->get();
     }
 
     public function add($data) {
