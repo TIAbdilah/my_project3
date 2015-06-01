@@ -4,7 +4,10 @@
         <h3>List Data Import Anggaran</h3>
         <span class="pull-right" style="margin-right: 10px;">
             <a href="<?php echo site_url('common/import_anggaran/import_excel') ?>"><button class="btn">Import Data</button></a>
-        </span>        
+        </span>     
+        <span class="pull-right" style="margin-right: 10px;">
+            <a href="<?php echo site_url('common/import_anggaran/write_to_master') ?>"><button class="btn">Rewrite Data</button></a>
+        </span> 
         <span class="pull-right" style="margin-right: 10px;">
             <a href="<?php echo site_url('common/import_anggaran/truncate_table') ?>"><button class="btn">Truncate Data</button></a>
         </span>

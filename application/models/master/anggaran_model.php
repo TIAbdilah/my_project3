@@ -55,13 +55,16 @@ class Anggaran_model extends CI_Model {
                 . "order by kode_kegiatan, kode_akun";
         return $this->db->query($sql);
     }
+    
+    public function select_by_field_1($param = array()) {
+        return $this->db->get_where('anggaran', $param);
+    }
 
     public function add($data) {
         $data = array(
             'id_kegiatan' => $data['id_kegiatan'],
             'id_akun' => $data['id_akun'],
             'pagu' => $data['pagu'],
-            'sisa' => $data['sisa'],
             'tahun_anggaran' => $data['tahun_anggaran']
         );
         $this->db->insert('anggaran', $data);
@@ -72,7 +75,6 @@ class Anggaran_model extends CI_Model {
             'id_kegiatan' => $data['id_kegiatan'],
             'id_akun' => $data['id_akun'],
             'pagu' => $data['pagu'],
-            'sisa' => $data['sisa'],
             'tahun_anggaran' => $data['tahun_anggaran']
         );
         $this->db->update('anggaran', $data, "id = " . $id);
