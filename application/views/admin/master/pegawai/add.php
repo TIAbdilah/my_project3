@@ -22,7 +22,7 @@
                 <label class="control-label" for="inpGolongan">Golongan</label>
                 <div class="controls">
                     <select name="inpGolongan">
-                        <option>Pilih Golongan</option>
+                        <option value="-">Pilih Golongan</option>
                         <?php
                         foreach ($SIList_golongan as $row) {
                             echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";
@@ -35,7 +35,8 @@
                 <label class="control-label" for="inpTingkat">Tingkat</label>
                 <div class="controls">
                     <select name="inpTingkat">
-                        <option>Pilih Tingkat</option>
+                        <option value="-">Pilih Tingkat</option>
+                        <option value="-">-</option>
                         <?php
                         foreach ($SIList_tingkat as $row) {
                             echo "<option value=\"" . $row->list_item . "\">" . $row->list_item . "</option>";

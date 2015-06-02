@@ -10,17 +10,10 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 require_once(APPPATH . 'controllers/common/counter.php');
+require_once(APPPATH . 'controllers/common/array_custom.php');
 
 class Pengajuan_honorarium extends CI_Controller {
 
-    var $status_approval = array(
-        '0' => 'baru dibuat',
-        '1' => 'menunggu verifikasi esselon 4',
-        '2' => 'menunggu verifikasi esselon 3',
-        '3' => 'menunggu verifikasi asisten satker',
-        '4' => 'menunggu verifikasi PPK',
-        '5' => 'lengkap'
-    );
     var $bulan_romawi = array(
         '01' => 'I',
         '02' => 'II',
@@ -55,9 +48,13 @@ class Pengajuan_honorarium extends CI_Controller {
 
     public function index() {
         $data['title'] = $this->title_page;
-        $data['page'] = 'admin/transaksi/pengajuan_honorarium/list';
+        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+            $data['page'] = 'admin/transaksi/pengajuan_honorarium/list_filter';
+        } else {
+            $data['page'] = 'admin/transaksi/pengajuan_honorarium/list';
+        }
         $data['list_data'] = $this->pengajuan_honorarium_model->select_all()->result();
-        $data['status_approval'] = $this->status_approval;
+        $data['array_custom'] = new Array_custom();
         $this->load->view('admin/index', $data);
     }
 

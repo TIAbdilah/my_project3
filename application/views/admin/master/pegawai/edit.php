@@ -27,7 +27,7 @@ function format_date($string) {
                 <label class="control-label" for="inpGolongan">Golongan</label>
                 <div class="controls">
                     <select name="inpGolongan">
-                        <option>Pilih Golongan</option>
+                        <option value="-">Pilih Golongan</option>
                         <?php
                         foreach ($SIList_golongan as $row_3) {
                             echo "<option value=\"" . $row_3->list_item . "\"".set_select('inpGolongan', $row_3->list_item, $row_3->list_item == $row->golongan).">" . $row_3->list_item . "</option>";
@@ -40,7 +40,8 @@ function format_date($string) {
                 <label class="control-label" for="inpTingkat">Tingkat</label>
                 <div class="controls">
                     <select name="inpTingkat">
-                        <option>Pilih Tingkat</option>
+                        <option value="-">Pilih Tingkat</option>                        
+                        <option value="-" <?php echo set_select('inpTingkat', '-', '-' == $row->tingkat)?>>-</option>
                         <?php
                         foreach ($SIList_tingkat as $row_4) {
                             echo "<option value=\"" . $row_4->list_item . "\"".set_select('inpTingkat', $row_4->list_item, $row_4->list_item == $row->tingkat).">" . $row_4->list_item . "</option>";

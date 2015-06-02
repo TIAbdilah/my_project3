@@ -23,7 +23,8 @@
             <tbody>
                 <?php
                 $no = 1;
-                foreach ($list_data as $row) {                    
+                foreach ($list_data as $row) {
+                    if ($row->id_unit == $this->session->userdata('kode_unit')) {
                         echo "<tr>"
                         . "<td>" . $no . "</td>"
                         . "<td>" . $row->nomor_pengajuan . " </td>"
@@ -45,6 +46,7 @@
                         echo "</td>"
                         . "</tr>";
                         $no++;
+                    }
                 }
                 ?>
             </tbody>

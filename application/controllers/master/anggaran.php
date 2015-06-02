@@ -10,7 +10,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Anggaran extends CI_Controller {
-    
+
     public function __construct() {
         parent::__construct();
         $this->load->model('master/anggaran_model');
@@ -19,21 +19,25 @@ class Anggaran extends CI_Controller {
         $this->is_logged_in();
     }
 
-    public function index() {   
+    public function index() {
         $data['title'] = "e-satker | Anggaran";
-        $data['page'] = 'admin/master/anggaran/list';
+        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+            $data['page'] = 'admin/master/anggaran/list_filter';
+        } else {
+            $data['page'] = 'admin/master/anggaran/list';
+        }
         $data['list_data'] = $this->anggaran_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
 
-    public function view($id) { 
+    public function view($id) {
         $data['title'] = "e-satker | Anggaran";
         $data['page'] = 'admin/master/anggaran/view';
         $data['row'] = $this->anggaran_model->select_by_id($id)->row();
         $this->load->view('admin/index', $data);
     }
 
-    public function add() {        
+    public function add() {
         $data['title'] = "e-satker | Anggaran";
         $data['page'] = 'admin/master/anggaran/add';
         $data['SIList_akun'] = $this->akun_model->select_all()->result();
@@ -41,10 +45,10 @@ class Anggaran extends CI_Controller {
         $this->load->view('admin/index', $data);
     }
 
-    public function edit($id) {        
+    public function edit($id) {
         $data['title'] = "e-satker | Anggaran";
         $data['page'] = 'admin/master/anggaran/edit';
-        $data['row'] = $this->anggaran_model->select_by_id($id)->row(); 
+        $data['row'] = $this->anggaran_model->select_by_id($id)->row();
         $data['SIList_akun'] = $this->akun_model->select_all()->result();
         $data['SIList_kegiatan'] = $this->kegiatan_model->select_all()->result();
         $this->load->view('admin/index', $data);
@@ -71,13 +75,13 @@ class Anggaran extends CI_Controller {
         $this->anggaran_model->delete($id);
         redirect('master/anggaran');
     }
-    
+
     public function is_logged_in() {
         if ($this->session->userdata('role') == '') {
             redirect('login');
         }
     }
-    
+
 }
 
 ?>

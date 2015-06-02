@@ -23,28 +23,26 @@
                 <?php
                 $no = 1;
                 foreach ($list_data as $row) {
-                    if ($row->id_unit == $this->session->userdata('kode_unit')) {
-                        echo "<tr>"
-                        . "<td>" . $no . "</td>"
-                        . "<td>" . $row->no_spt . " </td>"
-                        . "<td>" . $row->nama_kegiatan . "</td>"
-                        . "<td>" . $row->maksud_perjalanan . "</td>"
-                        . "<td>" . $status[$row->status] . "</td>"
-                        . "<td class=\"td-actions\">";
+                    echo "<tr>"
+                    . "<td>" . $no . "</td>"
+                    . "<td>" . $row->no_spt . " </td>"
+                    . "<td>" . $row->nama_kegiatan . "</td>"
+                    . "<td>" . $row->maksud_perjalanan . "</td>"
+                    . "<td>" . $array_custom->status[$row->status] . "</td>"
+                    . "<td class=\"td-actions\">";
 
-                        if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
-                            echo "<a title=\"Report (Surat Perintah Tugas)\" target=\"_blank\" href=\"" . site_url('report/surat_perintah_tugas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
-                            echo "<a title=\"Report (Daftar Biaya Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/daftar_biaya_perjalanan/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
-                        }
-                        echo "<a title=\"View\" href=\"" . site_url('transaksi/perjalanan_dinas/view/' . $row->id . '/' . $row->jumlah_tujuan) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
-                        if ($row->status == 0 && $this->session->userdata('role') == 'operator') {
-                            echo "<a title=\"Edit\" href=\"" . site_url('transaksi/perjalanan_dinas/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>";
-                            echo "<a title=\"Delete\" href=\"" . site_url('transaksi/perjalanan_dinas/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>";
-                        }
-                        echo "</td>"
-                        . "</tr>";
-                        $no++;
+                    if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
+                        echo "<a title=\"Report (Surat Perintah Tugas)\" target=\"_blank\" href=\"" . site_url('report/surat_perintah_tugas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
+                        echo "<a title=\"Report (Daftar Biaya Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/daftar_biaya_perjalanan/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>";
                     }
+                    echo "<a title=\"View\" href=\"" . site_url('transaksi/perjalanan_dinas/view/' . $row->id . '/' . $row->jumlah_tujuan) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>";
+                    if ($row->status == 0 && $this->session->userdata('role') == 'operator') {
+                        echo "<a title=\"Edit\" href=\"" . site_url('transaksi/perjalanan_dinas/edit/' . $row->id) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>";
+                        echo "<a title=\"Delete\" href=\"" . site_url('transaksi/perjalanan_dinas/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>";
+                    }
+                    echo "</td>"
+                    . "</tr>";
+                    $no++;
                 }
                 ?>
             </tbody>

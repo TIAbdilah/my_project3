@@ -18,6 +18,7 @@ class Rekap_perdin_pegawai extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->model('master/pegawai_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('report/rekap_perdin_pegawai_model');
         $this->is_logged_in();
@@ -28,14 +29,19 @@ class Rekap_perdin_pegawai extends CI_Controller {
         $year = $this->input->post('inpTahun');
         $data['title'] = $this->title_page;
         $data['array_custom'] = new Array_custom();
-        if (!empty($month) && !empty($year)) {
+        if ($year != "" && $month != "") {
             $data['month'] = $month;
             $data['year'] = $year;
             $param = array(
                 'bulan' => $month,
                 'tahun' => $year
             );
-            $data['list_data'] = $this->rekap_perdin_pegawai_model->select_by_field($param)->result();
+            $data['list_data_perjalanan'] = $this->rekap_perdin_pegawai_model->select_by_field($param)->result();
+            if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+                $data['list_data'] = $this->pegawai_model->select_by_field('kode_unit', $this->session->userdata('kode_unit'))->result();
+            } else {
+                $data['list_data'] = $this->pegawai_model->select_all()->result();
+            }
             $data['page'] = 'admin/report/rekap_perdin_pegawai/view_rekap_perdin_pegawai';
             $data['report_page'] = 'admin/report/rekap_perdin_pegawai/report_rekap_perdin_pegawai';
             $this->load->view('admin/index', $data);
@@ -55,7 +61,12 @@ class Rekap_perdin_pegawai extends CI_Controller {
             'bulan' => $month,
             'tahun' => $year
         );
-        $data['list_data'] = $this->rekap_perdin_pegawai_model->select_by_field($param)->result();
+        $data['list_data_perjalanan'] = $this->rekap_perdin_pegawai_model->select_by_field($param)->result();
+        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+            $data['list_data'] = $this->pegawai_model->select_by_field('kode_unit', $this->session->userdata('kode_unit'))->result();
+        } else {
+            $data['list_data'] = $this->pegawai_model->select_all()->result();
+        }
         $html = $this->load->view('admin/report/rekap_perdin_pegawai/report_rekap_perdin_pegawai', $data, TRUE);
         pdf_create($html, "landscape", "Rekap Perjalanan Dinas " . date('mdy'), true);
     }

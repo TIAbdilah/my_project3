@@ -26,7 +26,11 @@ class Panjar extends CI_Controller {
 
     public function index() {
         $data['title'] = $this->title_page;
-        $data['page'] = 'admin/transaksi/panjar/list';
+        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+            $data['page'] = 'admin/transaksi/panjar/list_filter';
+        } else {
+            $data['page'] = 'admin/transaksi/panjar/list';
+        }
         $data['list_data'] = $this->panjar_model->select_all()->result();
         $this->load->view('admin/index', $data);
     }
@@ -34,10 +38,10 @@ class Panjar extends CI_Controller {
     public function view($id) {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/panjar/view';
-        $data['data'] = $this->panjar_model->select_by_id($id)->row();        
+        $data['data'] = $this->panjar_model->select_by_id($id)->row();
         $data['data_perjadin'] = $this->perjalanan_dinas_model->select_by_id($data['data']->id_header)->row();
-        $id_param=$data['data']->id;
-        $data['list_detail_panjar'] = $this->detail_panjar_model->select_by_field(array('id_panjar'=>$id_param))->result();
+        $id_param = $data['data']->id;
+        $data['list_detail_panjar'] = $this->detail_panjar_model->select_by_field(array('id_panjar' => $id_param))->result();
         $data['format_date'] = new Format_date();
         $this->load->view('admin/index', $data);
     }
@@ -45,8 +49,8 @@ class Panjar extends CI_Controller {
     public function add() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/panjar/add';
-        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();        
-        $data['SIList_perjadin'] = $this->perjalanan_dinas_model->select_by_field(array('status'=>5))->result();
+        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
+        $data['SIList_perjadin'] = $this->perjalanan_dinas_model->select_by_field(array('status' => 5))->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -54,8 +58,8 @@ class Panjar extends CI_Controller {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/panjar/edit';
         $data['data'] = $this->panjar_model->select_by_id($id)->row();
-        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();        
-        $data['SIList_perjadin'] = $this->perjalanan_dinas_model->select_by_field(array('status'=>5))->result();
+        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
+        $data['SIList_perjadin'] = $this->perjalanan_dinas_model->select_by_field(array('status' => 5))->result();
         $this->load->view('admin/index', $data);
     }
 
@@ -66,14 +70,14 @@ class Panjar extends CI_Controller {
         $data['deskripsi_panjar'] = $this->input->post('inpDeskripsiPanjar');
 
         if ($action == 'add') {
-            $this->panjar_model->add($data);            
-            $panjar = $this->panjar_model->select_by_field(array('id_header'=>$data['id_header']))->row();
+            $this->panjar_model->add($data);
+            $panjar = $this->panjar_model->select_by_field(array('id_header' => $data['id_header']))->row();
             $id = $panjar->id;
         } else {
             $this->panjar_model->edit($id, $data);
         }
 
-        redirect('transaksi/panjar/view/'.$id);
+        redirect('transaksi/panjar/view/' . $id);
     }
 
     public function delete($id) {

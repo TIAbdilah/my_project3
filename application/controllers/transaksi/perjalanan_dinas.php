@@ -11,21 +11,10 @@ if (!defined('BASEPATH'))
 
 require_once(APPPATH . 'controllers/common/counter.php');
 require_once(APPPATH . 'controllers/common/number_operations.php');
+require_once(APPPATH . 'controllers/common/array_custom.php');
 
 class Perjalanan_dinas extends CI_Controller {
-
-    var $status = array(
-        '0' => 'baru dibuat',
-        '1' => 'menunggu verifikasi esselon 4',
-        '2' => 'menunggu verifikasi esselon 3',
-        '3' => 'menunggu verifikasi asisten satker',
-        '4' => 'menunggu verifikasi PPK',
-        '5' => 'lengkap'
-    );
-    var $status_diklat = array(
-        '0' => 'Tidak',
-        '1' => 'Ya',
-    );
+   
     var $bulan_romawi = array(
         '01' => 'I',
         '02' => 'II',
@@ -63,9 +52,13 @@ class Perjalanan_dinas extends CI_Controller {
 
     public function index() {
         $data['title'] = $this->title_page;
-        $data['page'] = 'admin/transaksi/perjalanan_dinas/list';
+        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+            $data['page'] = 'admin/transaksi/perjalanan_dinas/list_filter';
+        } else {
+            $data['page'] = 'admin/transaksi/perjalanan_dinas/list';
+        }
         $data['list_data'] = $this->perjalanan_dinas_model->select_all()->result();
-        $data['status'] = $this->status;
+        $data['array_custom'] = new Array_custom();
         $this->load->view('admin/index', $data);
     }
 
@@ -85,7 +78,7 @@ class Perjalanan_dinas extends CI_Controller {
         $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
         $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
-        $data['status_diklat'] = $this->status_diklat;
+        $data['array_custom'] = new Array_custom();
         if (!empty($data['list_data_detail'])) {
             $id_header = $data['list_data_detail'][0]->id_header;
             $id_pegawai = $data['list_data_detail'][0]->id_pegawai;

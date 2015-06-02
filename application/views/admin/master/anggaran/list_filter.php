@@ -27,6 +27,7 @@
                 <?php
                 $no = 1;
                 foreach ($list_data as $row) {
+                    if ($row->id_unit == $this->session->userdata('kode_unit')) {
                         echo "<tr>"
                         . "<td>" . $no . "</td>"
                         . "<td>" . $row->kode_kegiatan . " - " . $row->nama_kegiatan ." </td>"
@@ -42,7 +43,8 @@
                         . "<a title=\"Delete\" href=\"" . site_url('master/anggaran/delete/' . $row->id) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                         . "</td>"
                         . "</tr>";
-                        $no++;                    
+                        $no++;
+                    }
                 }
                 ?>
             </tbody>

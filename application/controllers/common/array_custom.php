@@ -25,7 +25,7 @@ class Array_custom extends CI_Controller {
         4 => 'AST',
         5 => 'PPK',
     );
-    var $status = array(
+    var $status, $status_approval = array(
         '0' => 'baru dibuat',
         '1' => 'menunggu verifikasi esselon 4',
         '2' => 'menunggu verifikasi esselon 3',
@@ -92,7 +92,7 @@ class Array_custom extends CI_Controller {
         $str = "";
         $list_bl = $this->list_bulan();
         $str = $str . "<select name=\"" . $name . "\" class=\"" . $class . "\" id=\"" . $id . "\">"
-                . "<option>Pilih Bulan</option>";
+                . "<option value=\"\">Pilih Bulan</option>";
         for ($i = 0; $i < 12; $i++) {
             $nbl = $i + 1;
             $str = $str . "<option value=\"" . $nbl . "\">" . $list_bl[$i]['str_bulan'] . "</option>";
