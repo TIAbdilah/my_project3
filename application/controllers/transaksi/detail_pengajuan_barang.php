@@ -109,7 +109,7 @@ class Detail_pengajuan_barang extends CI_Controller {
     public function process($action, $id = null) {
         $data['id_pengajuan_barang'] = $this->input->post('inIdHeader');
         $data['id_jenis_barang'] = $this->input->post('inKodeJenisBarang');
-        $data['id_barang'] = $this->input->post('inNamaBarang');
+        $data['id_barang'] = $this->input->post('inIdBarang');
         $data['jumlah'] = $this->input->post('inJumlah');
 
 //        print_r($data);

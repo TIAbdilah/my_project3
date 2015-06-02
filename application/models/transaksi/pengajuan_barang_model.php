@@ -44,7 +44,10 @@ class Pengajuan_barang_model extends CI_Model {
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pd.id_anggaran = a1.id '
-                . 'and pd.status_approval ='.$param2['status_approval'];
+                . 'and pd.status_approval =' . $param2['status_approval'];
+        if (!empty($param2['status_penolakan'])) {
+            $query = $query . " and pd.status_penolakan = " . $param2['status_penolakan'] . " ";
+        }
         return $this->db->query($query);
     }
 
@@ -55,7 +58,8 @@ class Pengajuan_barang_model extends CI_Model {
             'nomor_pengajuan' => $data['nomor_pengajuan'],
             'status_approval' => $data['status_approval'],
             'kode_jenis_barang' => $data['kode_jenis_barang'],
-            'tanggal_pengajuan' => $this->format_date_to_sql($data['tanggal_pengajuan'])
+            'tanggal_pengajuan' => $this->format_date_to_sql($data['tanggal_pengajuan']),
+            'status_penolakan' => 0
         );
         $this->db->insert('pengajuan_barang', $data);
     }

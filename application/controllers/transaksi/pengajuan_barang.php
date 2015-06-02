@@ -73,10 +73,25 @@ class Pengajuan_barang extends CI_Controller {
         $data['list_data'] = $this->detail_pengajuan_barang_model->select_by_id($id)->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
+
         if (empty($data['data']->kode_jenis_barang)) {
             $data['SIList_barang'] = $this->barang_model->select_all()->result();
         } else {
-            $data['SIList_barang'] = $this->barang_model->select_by_field('kode_jenis_barang', $data['data']->kode_jenis_barang)->result();
+            $param2 = array(
+                'kode_jenis_barang' => $data['data']->kode_jenis_barang,
+                'head_nama_barang' => '1'
+            );
+            $data['SIList_barang'] = $this->barang_model->select_by_field($param2)->result();
+            $param3 = array(
+                'kode_jenis_barang' => $data['data']->kode_jenis_barang,
+                'head_merek_barang' => '1'
+            );
+            $data['SIList_merekbarang'] = $this->barang_model->select_by_field($param3)->result();
+            $param4 = array(
+                'kode_jenis_barang' => $data['data']->kode_jenis_barang,
+                'head_spesifikasi' => '1'
+            );
+            $data['SIList_spesifikasi'] = $this->barang_model->select_by_field($param4)->result();
         }
 
         $this->load->view('admin/index', $data);
@@ -175,21 +190,22 @@ class Pengajuan_barang extends CI_Controller {
 
     //tambahan untuk ajax
     public function getDetailBarang() {
-        $id = $this->input->post('id', TRUE);
-        $data['data'] = $this->barang_model->getDetailBarang($id);
+        $param1 = $this->input->post('nama_barang', TRUE);
+        $param2 = $this->input->post('merek_barang', TRUE);
+        $param3 = $this->input->post('spesifikasi', TRUE);
+
+
+        $data['data'] = $this->barang_model->getDetailBarang($param1, $param2, $param3);
         $output1 = null;
         $output2 = null;
         $output3 = null;
-        $output4 = null;
         foreach ($data['data'] as $row) {
             $output1 .=$row->satuan;
             $arr[0] = $output1;
             $output2 .=$row->pagu_harga;
             $arr[1] = $output2;
-            $output3 .=$row->tipe_barang;
+            $output3 .=$row->id;
             $arr[2] = $output3;
-            $output4 .=$row->merek_barang;
-            $arr[3] = $output4;
         }
         echo json_encode($arr);
     }
@@ -298,9 +314,42 @@ class Pengajuan_barang extends CI_Controller {
             }
             $arr[0] = $output1;
         } else {
-            $output1 .= "<option value=''>- Master Biaya Sewa Belum Diisi -</option>";
+            $output1 .= "<option value=''>Master Barang Belum Diisi</option>";
             $arr[0] = $output1;
         }
+        echo json_encode($arr);
+    }
+
+    public function populateFromNamaBarang() {
+        $param1 = $this->input->post('nama_barang', TRUE);
+
+
+        $data['barang'] = $this->barang_model->populateMerek($param1);
+        $output1 = null;
+        $output1 = "<option>Pilih Merek Barang</option>";
+        if ($data['barang']) {
+            foreach ($data['barang'] as $row) {
+                $output1 .= "<option value='" . $row->merek_barang . "'>" . $row->merek_barang . "</option>";
+            }
+            $arr[0] = $output1;
+        } else {
+            $output1 .= "<option value=''>Master Barang Belum Lengkap</option>";
+            $arr[0] = $output1;
+        }
+
+        $data['barang'] = $this->barang_model->populateSpesifikasi($param1);
+        $output2 = null;
+        $output2 = "<option>Pilih Spesifikasi</option>";
+        if ($data['barang']) {
+            foreach ($data['barang'] as $row) {
+                $output2 .= "<option value='" . $row->spesifikasi . "'>" . $row->spesifikasi . "</option>";
+            }
+            $arr[1] = $output2;
+        } else {
+            $output2 .= "<option value=''>Master Barang Belum Lengkap</option>";
+            $arr[1] = $output2;
+        }
+
         echo json_encode($arr);
     }
 

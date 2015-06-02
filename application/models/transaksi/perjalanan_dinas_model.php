@@ -36,7 +36,7 @@ class Perjalanan_dinas_model extends CI_Model {
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pd.id_anggaran = a1.id '
-                . 'and pd.id = '.$id;
+                . 'and pd.id = ' . $id;
         return $this->db->query($query);
     }
 
@@ -47,8 +47,15 @@ class Perjalanan_dinas_model extends CI_Model {
                 . "from anggaran a, kegiatan k, akun ak "
                 . "where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 "
                 . "where pd.id_anggaran = a1.id "
-                . "and pd.status = ".$param['status']." "
-                . "order by tanggal_approval";
+                . "and pd.status = " . $param['status'] . " ";
+
+
+        if (!empty($param['status_penolakan'])) {
+            $query = $query . " and pd.status_penolakan = " . $param['status_penolakan'] . " ";
+        }
+//        print_r($query);
+
+        $query = $query . " order by tanggal_approval";
         return $this->db->query($query);
     }
 
@@ -68,7 +75,8 @@ class Perjalanan_dinas_model extends CI_Model {
             'jadwal_pulang_3' => $this->format_date_to_sql($data['jadwal_pulang_3']),
             'kota_tujuan_1' => $data['kota_tujuan_1'],
             'kota_tujuan_2' => $data['kota_tujuan_2'],
-            'kota_tujuan_3' => $data['kota_tujuan_3']
+            'kota_tujuan_3' => $data['kota_tujuan_3'],
+            'status_penolakan' => 0
         );
         $this->db->insert('perjalanan_dinas', $data);
     }
@@ -85,7 +93,7 @@ class Perjalanan_dinas_model extends CI_Model {
             'jadwal_berangkat_2' => $this->format_date_to_sql($data['jadwal_berangkat_2']),
             'jadwal_berangkat_3' => $this->format_date_to_sql($data['jadwal_berangkat_3']),
             'jadwal_pulang_1' => $this->format_date_to_sql($data['jadwal_pulang_1']),
-            'jadwal_pulang_2' => $this->format_date_to_sql($data['jadwal_pulang_2']),            
+            'jadwal_pulang_2' => $this->format_date_to_sql($data['jadwal_pulang_2']),
             'jadwal_pulang_3' => $this->format_date_to_sql($data['jadwal_pulang_3']),
             'kota_tujuan_1' => $data['kota_tujuan_1'],
             'kota_tujuan_2' => $data['kota_tujuan_2'],
@@ -107,7 +115,7 @@ class Perjalanan_dinas_model extends CI_Model {
         );
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }
-    
+
     public function update_status_penolakan($id, $data) {
         $data = array(
             'status_penolakan' => $data['status_penolakan']
@@ -123,18 +131,18 @@ class Perjalanan_dinas_model extends CI_Model {
         $this->db->update('perjalanan_dinas', $data, "id = " . $id);
     }
 
-    
     public function get_jumlah_tujuan($id) {
         $sql = "select jumlah_tujuan from perjalanan_dinas where id=" . $id;
         $query = $this->db->query($sql);
         return $query->row_array();
     }
-    
-    public function format_date_to_sql($str){        
-        return substr($str, 6, 4).'-'.substr($str, 3, 2).'-'.substr($str, 0, 2);
+
+    public function format_date_to_sql($str) {
+        return substr($str, 6, 4) . '-' . substr($str, 3, 2) . '-' . substr($str, 0, 2);
     }
-    
-    public function get_biaya_total(){
+
+    public function get_biaya_total() {
         $sql = 'SELECT id_header, sum(biaya) as total_biaya  FROM `detail_perjalanan_dinas` group by id_header';
     }
+
 }

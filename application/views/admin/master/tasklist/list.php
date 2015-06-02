@@ -1,4 +1,12 @@
-
+<?php if ($perjalanan_dinas_ditolak) { ?>
+    <div class="alert alert-danger" role="alert" align="center"><B>ADA PENGAJUAN PERJALANAN DINAS YANG DITOLAK</B></div>
+<?php } ?>
+<?php if ($barang_ditolak) { ?>
+    <div class="alert alert-danger" role="alert" align="center"><B>ADA PENGAJUAN BARANG YANG DITOLAK</B></div>
+<?php } ?>
+<?php if ($honorarium_ditolak) { ?>
+    <div class="alert alert-danger" role="alert" align="center"><B>ADA PENGAJUAN HONORARIUM YANG DITOLAK</B></div>
+<?php } ?>
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Seranai Tugas</h3>
@@ -66,6 +74,7 @@
                             <th width="15%"> Maksud Kegiatan</th>
                             <th width="15%"> Tanggal Pengajuan</th>
                             <th width="10%"> Status</th>
+                            <th width="10%"> Status Penolakan</th>
                             <th width="30%" class="td-actions">&nbsp;</th>
                         </tr>
                     </thead>
@@ -81,6 +90,7 @@
                                 . "<td>" . $row->maksud_kegiatan . "</td>"
                                 . "<td>" . $row->tanggal_pengajuan . "</td>"
                                 . "<td>" . $status_approval[$row->status_approval] . "</td>"
+                                . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";
 
                                 if ($row->status_approval == 5 && $this->session->userdata('role') == 'operator') {
@@ -102,7 +112,7 @@
                 </table>
             </div>
             <div class="tab-pane" id="pj">
-                                <table id="example111" class="table table-striped table-bordered">
+                <table id="example111" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th width="5%"> No</th>
@@ -111,6 +121,7 @@
                             <th width="15%"> Nama Kegiatan</th>
                             <th width="15%"> Periode Pembayaran</th>
                             <th width="10%"> Status</th>
+                            <th width="10%"> Status Penolakan</th>
                             <th width="30%" class="td-actions">&nbsp;</th>
                         </tr>
                     </thead>
@@ -126,6 +137,7 @@
                                 . "<td>" . $row->kegiatan . "</td>"
                                 . "<td>" . $row->periode_pembayaran . "</td>"
                                 . "<td>" . $status_approval[$row->status_approval] . "</td>"
+                                . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";
 
                                 if ($row->status_approval == 5 && $this->session->userdata('role') == 'operator') {

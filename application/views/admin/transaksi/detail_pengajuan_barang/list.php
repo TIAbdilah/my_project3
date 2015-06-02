@@ -67,15 +67,15 @@
 
                                                 <?php
                                                 foreach ($SIList_barang as $row_1) {
-                                                    if (empty($row_1->merek_barang) && empty($row_1->spesifikasi)) {
-                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . "</option>";
-                                                    } else if (empty($row_1->merek_barang)) {
-                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->spesifikasi . "</option>";
-                                                    } else if (empty($row_1->spesifikasi)) {
-                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->merek_barang . "</option>";
-                                                    } else {
-                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->merek_barang . " - " . $row_1->spesifikasi . "</option>";
-                                                    }
+//                                                    if (empty($row_1->merek_barang) && empty($row_1->spesifikasi)) {
+//                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . "</option>";
+//                                                    } else if (empty($row_1->merek_barang)) {
+//                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->spesifikasi . "</option>";
+//                                                    } else if (empty($row_1->spesifikasi)) {
+//                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->merek_barang . "</option>";
+//                                                    } else {
+//                                                        echo "<option value=\"" . $row_1->id . "\"" . set_select('inNamaBarang2', $row_1->id, $row_1->id == $row->id_barang) . ">" . $row_1->nama_barang . " - " . $row_1->merek_barang . " - " . $row_1->spesifikasi . "</option>";
+//                                                    }
                                                 }
                                                 ?>
                                             </select>

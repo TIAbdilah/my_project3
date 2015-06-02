@@ -34,6 +34,7 @@ class Pengajuan_honorarium_model extends CI_Model {
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pb.id_anggaran = a1.id '
                 . 'and pb.id = ' . $id;
+
         return $this->db->query($query);
     }
 
@@ -44,7 +45,10 @@ class Pengajuan_honorarium_model extends CI_Model {
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pd.id_anggaran = a1.id '
-                . 'and pd.status_approval ='.$param2['status_approval'];
+                . 'and pd.status_approval =' . $param2['status_approval'];
+        if (!empty($param2['status_penolakan'])) {
+            $query = $query . " and pd.status_penolakan = " . $param2['status_penolakan'] . " ";
+        }
         return $this->db->query($query);
     }
 
@@ -53,7 +57,8 @@ class Pengajuan_honorarium_model extends CI_Model {
             'id_anggaran' => $data['id_anggaran'],
             'kegiatan' => $data['kegiatan'],
             'acara' => $data['acara'],
-            'periode_pembayaran' => $this->format_date_to_sql($data['periode_pembayaran'])
+            'periode_pembayaran' => $this->format_date_to_sql($data['periode_pembayaran']),
+            'status_penolakan' => 0
         );
         $this->db->insert('pengajuan_honorarium', $data);
     }
