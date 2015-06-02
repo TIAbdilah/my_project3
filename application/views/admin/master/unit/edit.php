@@ -15,7 +15,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpNamaUnit">Nama Unit</label>
                 <div class="controls">
-                    <input type="text" id="inpNamaUnit" name="inpNamaUnit" value="<?php echo $row->nama_unit ?>">
+                    <input type="text" id="inpNamaUnit" class="input-xxlarge" name="inpNamaUnit" value="<?php echo $row->nama_unit ?>">
                 </div>
             </div>
             <div class="control-group">
