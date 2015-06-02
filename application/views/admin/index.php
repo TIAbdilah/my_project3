@@ -626,7 +626,22 @@
                     });
                 });
                 
+                $("#inNamaPengajuanBarang").change(function() {
+//alert($('#inNamaPengajuanBarang').val());
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/populateFromNamaBarang",
+                        data: {
+                            nama_barang: $('#inNamaPengajuanBarang').val()},
+                        type: "POST",
+                        dataType: "json",
+                        success: function(data) {
+                            $("#inMerekBarang").html(data[0]);
+                            $("#inSpesifikasi").html(data[1]);
+                        }
+                    });
+                });
                 
+//                end of working ajax
                 
                 $("#inNamaPegawai").change(function() {
 
@@ -687,11 +702,12 @@
                         }
                     });
                 });
-                $("#inNamaBarang").change(function() {
-
+                $("#inSpesifikasi").change(function() {
                     $.ajax({
                         url: "<?php echo base_url(); ?>transaksi/pengajuan_barang/getDetailBarang",
-                        data: {id: $(this).val()},
+                        data: {nama_barang: $('#inNamaPengajuanBarang').val(),
+                                merek_barang: $('#inMerekBarang').val(),
+                                spesifikasi: $('#inSpesifikasi').val()},
                         type: "POST",
                         dataType: "json",
                         success: function(data) {
@@ -701,9 +717,7 @@
                             $("#inHargaBarang").val(data[1]);
                             $("#lblHargaBarang").text(addCommas(data[1]));
                             $(".clblHargaBarang").text(addCommas(data[1]));
-                            $("#inTipeBarang").val(data[2]);
-                            $("#lblTipeBarang").text(data[2]);
-                            $("#inMerk").val(data[3]);
+                            $("#inIdBarang").val(data[2]);
                         }
                     });
                 });

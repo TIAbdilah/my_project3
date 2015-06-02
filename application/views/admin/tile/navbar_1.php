@@ -50,6 +50,7 @@
                             <!--<li><a href="<?php echo base_url() ?>transaksi/bukti_perjalanan_dinas">Bukti Perjalanan Dinas</a></li>-->
                             <!--<li><a href="<?php echo base_url() ?>transaksi/pengeluaran_riil">Pengeluaran Riil</a></li>-->
                             <li><a href="<?php echo base_url() ?>transaksi/pengajuan_barang">Barang</a></li>
+                            <li><a href="<?php echo base_url() ?>transaksi/pengadaan_barang">Uang Pengadaan Barang</a></li>
                             <li><a href="<?php echo base_url() ?>transaksi/pengajuan_honorarium">Honorarium</a></li>
                         </ul>
                     </li>

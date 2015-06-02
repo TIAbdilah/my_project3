@@ -34,6 +34,27 @@ class Home extends CI_Controller {
         $data['status'] = $array_custom->status;
         $data['status_penolakan'] = $array_custom->status_penolakan;
         $data['status_approval'] = $array_custom->status;
+        $data['cek_perjalanan_dinas_ditolak'] = $this->perjalanan_dinas_model->select_by_field(array('status' => $array_custom->int_role[$role], 'status_penolakan' => '1'))->result();
+        if (!empty($data['cek_perjalanan_dinas_ditolak'])) {
+            $data['perjalanan_dinas_ditolak'] = true;
+        } else {
+            $data['perjalanan_dinas_ditolak'] = false;
+        }
+
+        $data['cek_barang_ditolak'] = $this->pengajuan_barang_model->select_by_field(array('status_approval' => $array_custom->int_role[$role], 'status_penolakan' => '1'))->result();
+        if (!empty($data['cek_barang_ditolak'])) {
+            $data['barang_ditolak'] = true;
+        } else {
+            $data['barang_ditolak'] = false;
+        }
+
+        $data['cek_honorarium_ditolak'] = $this->pengajuan_honorarium_model->select_by_field(array('status_approval' => $array_custom->int_role[$role], 'status_penolakan' => '1'))->result();
+        if (!empty($data['cek_honorarium_ditolak'])) {
+            $data['honorarium_ditolak'] = true;
+        } else {
+            $data['honorarium_ditolak'] = false;
+        }
+
         $this->load->view('admin/index', $data);
     }
 
