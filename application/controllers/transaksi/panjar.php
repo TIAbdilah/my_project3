@@ -49,7 +49,7 @@ class Panjar extends CI_Controller {
     public function add() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/panjar/add';
-        $data['SIList_pegawai'] = $this->pegawai_model->select_all()->result();
+        $data['SIList_pegawai'] = $this->pegawai_model->select_by_field('tingkat','Esselon IV')->result();
         $data['SIList_perjadin'] = $this->perjalanan_dinas_model->select_by_field(array('status' => 5))->result();
         $this->load->view('admin/index', $data);
     }

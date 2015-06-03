@@ -3,7 +3,7 @@
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Uang Muka Perjalanan Dinas</h3>
         <span class="pull-right" style="margin-right: 10px;">
-            <a href="<?php echo site_url('transaksi/panjar/add') ?>" role="button" class="btn">Tambah Pengajuan Perjalanan Dinas</a>
+            <a href="<?php echo site_url('transaksi/panjar/add') ?>" role="button" class="btn">Tambah Data</a>
         </span>
     </div>
     <!-- /widget-header -->
