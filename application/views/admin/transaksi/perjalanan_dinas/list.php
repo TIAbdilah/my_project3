@@ -28,7 +28,7 @@
                     . "<td>" . $row->no_spt . " </td>"
                     . "<td>" . $row->nama_kegiatan . "</td>"
                     . "<td>" . $row->maksud_perjalanan . "</td>"
-                    . "<td>" . $array_custom->status[$row->status] . "</td>"
+                    . "<td>" . $array_custom->status_approval[$row->status] . "</td>"
                     . "<td class=\"td-actions\">";
 
                     if ($row->status == 5 && $this->session->userdata('role') == 'operator') {

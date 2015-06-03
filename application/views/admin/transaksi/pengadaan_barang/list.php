@@ -15,7 +15,7 @@
                     <th width="15%"> No SPT</th>
                     <th width="20%"> Penerima</th>
                     <th width="30%"> Deskripsi</th>
-                    <!--<th width="10%"> Jumlah Uang Muka</th>-->
+                    <th width="10%"> Jumlah Uang Muka</th>
                     <th width="15%" class="td-actions">&nbsp;</th>
                 </tr>
             </thead>
@@ -26,10 +26,10 @@
                     if ($row->id_unit == $this->session->userdata('kode_unit')) {
                         echo "<tr>"
                         . "<td>" . $no . "</td>"
-                        . "<td>" . $row->id_header . "</td>"
-                        . "<td>" . $row->penerima . "</td>"
+                        . "<td>" . $row->no_spt . "</td>"
+                        . "<td>" . $row->nama_penerima . "</td>"
                         . "<td>" . $row->deskripsi_pengadaan_barang . "</td>"
-//                        . "<td>" . number_format($row->jumlah) . "</td>"
+                        . "<td>" . number_format($row->jumlah) . "</td>"
                         . "<td class=\"td-actions\">"
                         . "<a title=\"Report (Uang Muka Perjalanan Dinas)\" target=\"_blank\" href=\"" . site_url('report/pengadaan_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-print\"></i></a>"
                         . "<a title=\"View\" href=\"" . site_url('transaksi/pengadaan_barang/view/' . $row->id) . "\" class=\"btn btn-mini btn-success\"><i class=\"btn-icon-only icon-file\"></i></a>"

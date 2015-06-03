@@ -3,12 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2015 at 03:16 PM
+-- Generation Time: Jun 02, 2015 at 04:07 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `esatker_1`
@@ -1799,6 +1805,27 @@ INSERT INTO `detail_panjar` (`id`, `id_panjar`, `id_pegawai`, `jumlah`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `detail_pengadaan_barang`
+--
+
+CREATE TABLE IF NOT EXISTS `detail_pengadaan_barang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pengadaan_barang` int(11) DEFAULT NULL,
+  `id_barang` int(11) DEFAULT NULL,
+  `jumlah` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `detail_pengadaan_barang`
+--
+
+INSERT INTO `detail_pengadaan_barang` (`id`, `id_pengadaan_barang`, `id_barang`, `jumlah`) VALUES
+(4, 2, 2, 2000000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `detail_pengajuan_barang`
 --
 
@@ -1810,7 +1837,7 @@ CREATE TABLE IF NOT EXISTS `detail_pengajuan_barang` (
   `jumlah` int(15) DEFAULT NULL,
   `subtotal` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `detail_pengajuan_barang`
@@ -1825,7 +1852,9 @@ INSERT INTO `detail_pengajuan_barang` (`id`, `id_pengajuan_barang`, `id_jenis_ba
 (7, 4, 'Bahan Bangunan', 1, 2, 0),
 (8, 5, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 2, 10, NULL),
 (14, 1, '', 17, 2, NULL),
-(15, 1, '', 42, 1, NULL);
+(15, 1, '', 42, 1, NULL),
+(16, 1, '', 14, 2, NULL),
+(17, 8, '', 14, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -2316,7 +2345,7 @@ CREATE TABLE IF NOT EXISTS `komentar` (
   `komentar` text NOT NULL,
   `id_pegawai` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `komentar`
@@ -2344,7 +2373,10 @@ INSERT INTO `komentar` (`id`, `id_header`, `username`, `komentar`, `id_pegawai`)
 (19, '16', 'esselon 4', '', NULL),
 (20, '16', 'esselon 4', '', NULL),
 (21, '16', 'esselon 4', 'tolak', NULL),
-(22, '18', 'esselon 4', 'tambahkan pegawai yang ikut sert', NULL);
+(22, '18', 'esselon 4', 'tambahkan pegawai yang ikut sert', NULL),
+(23, '22', 'esselon 4', 'isi', NULL),
+(24, '8', 'esselon 4', 'dsfa', NULL),
+(25, '6', 'esselon 4', 'ihi', NULL);
 
 -- --------------------------------------------------------
 
@@ -2743,15 +2775,17 @@ CREATE TABLE IF NOT EXISTS `panjar` (
   `deskripsi_panjar` text,
   PRIMARY KEY (`id`,`id_header`),
   UNIQUE KEY `id_header` (`id_header`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `panjar`
 --
 
 INSERT INTO `panjar` (`id`, `id_header`, `penerima`, `deskripsi_panjar`) VALUES
-(2, 21, 180, 'sasasasasasasas'),
-(4, 15, 180, 'Deskripsi');
+(2, 5, 180, 'tahu tempe'),
+(4, 15, 180, 'Deskripsi'),
+(6, 1, 180, 'Deskripsi'),
+(7, 10, 180, 'Deskripsi');
 
 -- --------------------------------------------------------
 
@@ -2983,6 +3017,28 @@ INSERT INTO `pegawai` (`id`, `nip`, `nama`, `golongan`, `jabatan`, `tgl_lahir`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengadaan_barang`
+--
+
+CREATE TABLE IF NOT EXISTS `pengadaan_barang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_header` int(11) NOT NULL DEFAULT '0',
+  `penerima` int(11) DEFAULT NULL,
+  `deskripsi_pengadaan_barang` text,
+  PRIMARY KEY (`id`,`id_header`),
+  UNIQUE KEY `id_header` (`id_header`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `pengadaan_barang`
+--
+
+INSERT INTO `pengadaan_barang` (`id`, `id_header`, `penerima`, `deskripsi_pengadaan_barang`) VALUES
+(2, 5, 10, 'tahu tempe');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pengajuan_barang`
 --
 
@@ -2998,18 +3054,21 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
   `tanggal_pembuatan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tanggal_approval` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `pengajuan_barang`
 --
 
 INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `kode_jenis_barang`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
-(1, '-', 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'transaksi pengajuan barang', '0000-00-00', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(2, '-', 2, 'Bahan Bangunan', 'transaksi', '2015-05-05', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(3, '-', 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0, NULL, '0000-00-00 00:00:00', '0000-00-00'),
-(4, '002/BARANG/SATKER/LP/V/2015', 378, '', 'pengadaan barang untuk pers', '2015-05-20', 5, 0, '0000-00-00 00:00:00', '2015-05-17'),
-(5, '003/BARANG/SATKER/LP/V/2015', 4, '', 'Pengadaan ATK dan Bahan Komputer', '2015-05-19', 5, 0, '2015-05-18 15:51:30', '2015-05-18');
+(1, '-', 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'transaksi pengajuan barang', '0000-00-00', 0, 0, '0000-00-00 00:00:00', '0000-00-00'),
+(2, '-', 2, 'Bahan Bangunan', 'transaksi', '2015-05-05', 0, 0, '0000-00-00 00:00:00', '0000-00-00'),
+(3, '-', 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0, 0, '0000-00-00 00:00:00', '0000-00-00'),
+(4, '002/BARANG/SATKER/LP/V/2015', 378, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'pengadaan barang untuk pers', '2015-05-20', 5, 0, '0000-00-00 00:00:00', '2015-05-17'),
+(5, '003/BARANG/SATKER/LP/V/2015', 4, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'Pengadaan ATK dan Bahan Komputer', '2015-05-19', 5, 0, '2015-05-18 15:51:30', '2015-05-18'),
+(6, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'ke enam', '2015-06-02', 0, 0, '2015-06-02 07:25:53', '0000-00-00'),
+(7, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', '12', '2015-06-29', 0, 0, '2015-06-02 07:28:33', '0000-00-00'),
+(8, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'test status', '2015-06-02', 0, 1, '2015-06-02 07:31:15', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -3038,7 +3097,7 @@ CREATE TABLE IF NOT EXISTS `pengajuan_honorarium` (
 INSERT INTO `pengajuan_honorarium` (`id`, `nomor_pengajuan`, `id_anggaran`, `kegiatan`, `acara`, `periode_pembayaran`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
 (4, '004/KPTS/SATKER/Lp/V/2015', 2, 'Diseminasi dan Sosial Artifial Intelligence', 'Rencana Pelaksanaan Kegiatan Pengkajian Ruang', '1931-04-22', 5, 0, '2015-05-24 16:34:36', '2015-05-25'),
 (5, '', 18, 'makan makan lagi', 'bermalam', '2015-05-25', 1, 0, '2015-05-25 00:40:09', '0000-00-00'),
-(6, '', 6, 'Diseminasi Buatan', 'Rencana Penganggaran Diseminasi', '2015-05-27', 0, NULL, '2015-05-25 02:31:10', '0000-00-00');
+(6, '', 6, 'Diseminasi Buatan', 'Rencana Penganggaran Diseminasi', '2015-05-27', 0, 1, '2015-05-25 02:31:10', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -3140,7 +3199,7 @@ INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `tanggal_pem
 (19, '012/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 16:38:23', '5', 0, '216', 2, 'testing perjalanan dinas 2 tujuan', '2015-05-20', '2015-05-21', '0000-00-00', '2015-05-21', '2015-05-22', '0000-00-00', '3', '1', NULL, 1),
 (20, '013/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 17:26:17', '5', 0, '277', 3, 'testing dua untuk tiga tujuan perjalanan dinas', '2015-05-19', '2015-05-20', '2015-05-21', '2015-05-20', '2015-05-21', '2015-05-22', '2', '3', '7', 1),
 (21, '014/SPPD/SATKER/LP/V/2015', '2015-05-18', '2015-05-18 16:17:59', '5', 0, '15', 2, 'Survei Lapangan Lokasi Penerapan Teknologi Pengalahan Air Minum', '2015-05-18', '2015-05-20', '0000-00-00', '2015-05-20', '2015-05-23', '0000-00-00', '2', '12', NULL, 0),
-(22, '-', '0000-00-00', '2015-05-28 01:40:33', '0', 0, '7', 1, 'makan', '2015-05-28', '0000-00-00', '0000-00-00', '2015-05-30', '0000-00-00', '0000-00-00', '1', NULL, NULL, 1);
+(22, '-', '0000-00-00', '2015-05-28 01:40:33', '0', 1, '7', 1, 'makan', '2015-05-28', '0000-00-00', '0000-00-00', '2015-05-30', '0000-00-00', '0000-00-00', '1', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -3354,3 +3413,7 @@ CREATE TABLE IF NOT EXISTS `view_realisasi_anggaran` (
 DROP TABLE IF EXISTS `view_realisasi_anggaran`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_realisasi_anggaran` AS select (select `pb`.`id_anggaran` AS `id_anggaran` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) AS `id_anggaran`,(select `pb`.`nomor_pengajuan` AS `nomor_pengajuan` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) AS `nomor`,sum(((select `b`.`pagu_harga` AS `pagu_harga` from `barang` `b` where (`b`.`id` = `db`.`id_barang`)) * `db`.`jumlah`)) AS `biaya` from `detail_pengajuan_barang` `db` group by (select `pb`.`id_anggaran` AS `id_anggaran` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) union select (select `pd`.`id_anggaran` AS `id_anggaran` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`)) AS `id_anggaran`,(select `pd`.`no_spt` AS `no_spt` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`)) AS `nomor`,sum(`dpd`.`biaya`) AS `biaya` from `detail_perjalanan_dinas` `dpd` group by (select `pd`.`id_anggaran` AS `id_anggaran` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`));
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

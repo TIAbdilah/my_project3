@@ -17,6 +17,9 @@ class Pengadaan_barang_model extends CI_Model {
 
     public function select_all() {
         $sql = "select pj.* "
+                . ", (select pd.nomor_pengajuan from pengajuan_barang pd where pd.id = pj.id_header) as no_spt "
+                . ", (select p.nama from pegawai p where p.id = pj.penerima) as nama_penerima "
+                . ", (select sum(dpj.jumlah) from detail_pengadaan_barang dpj where dpj.id_pengadaan_barang = pj.id group by dpj.id_pengadaan_barang) as jumlah "
                 . ", (select k.id_unit from kegiatan k where k.id = (select a.id_kegiatan from anggaran a where a.id =(select pd1.id_anggaran from perjalanan_dinas pd1 where pd1.id = pj.id_header))) as id_unit "
                 . "from pengadaan_barang pj";
         return $this->db->query($sql);

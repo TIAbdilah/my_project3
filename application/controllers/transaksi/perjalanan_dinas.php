@@ -59,6 +59,8 @@ class Perjalanan_dinas extends CI_Controller {
         }
         $data['list_data'] = $this->perjalanan_dinas_model->select_all()->result();
         $data['array_custom'] = new Array_custom();
+//                print_r($data['array_custom']);
+
         $this->load->view('admin/index', $data);
     }
 
