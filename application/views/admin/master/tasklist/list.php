@@ -44,7 +44,7 @@
                                 . "<td>" . $row->no_spt . " </td>"
                                 . "<td>" . $row->nama_kegiatan . " - " . $row->jenis_belanja . " </td>"
                                 . "<td>" . $row->maksud_perjalanan . "</td>"
-                                . "<td>" . $status[$row->status] . "</td>"
+                                . "<td>" . $status_approval[$row->status] . "</td>"
                                 . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";
                                 if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
@@ -89,7 +89,7 @@
                                 . "<td>" . $row->nama_kegiatan . "</td>"
                                 . "<td>" . $row->maksud_kegiatan . "</td>"
                                 . "<td>" . $row->tanggal_pengajuan . "</td>"
-                                . "<td>" . $status_approval[$row->status_approval] . "</td>"
+                                . "<td>" . $status[$row->status_approval] . "</td>"
                                 . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";
 
@@ -136,7 +136,7 @@
                                 . "<td>" . $row->nama_kegiatan . "</td>"
                                 . "<td>" . $row->kegiatan . "</td>"
                                 . "<td>" . $row->periode_pembayaran . "</td>"
-                                . "<td>" . $status_approval[$row->status_approval] . "</td>"
+                                . "<td>" . $status[$row->status_approval] . "</td>"
                                 . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";
 

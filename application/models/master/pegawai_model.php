@@ -33,6 +33,25 @@ class Pegawai_model extends CI_Model {
         return $this->db->get();
     }
 
+    public function select_all_tidak_dinas() {
+       
+        $this->db->select('*');
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('nama_unit')->from('unit');
+        $sub->where('pegawai.kode_unit = unit.id');
+        $this->subquery->end_subquery('nama_unit');
+        $sub = $this->subquery->start_subquery('select');
+        $sub->select('kode_unit')->from('unit');
+        $sub->where('pegawai.kode_unit = unit.id');
+        $this->subquery->end_subquery('kode_unit');
+        $this->db->from('pegawai');
+        $this->db->where('narasumber', 0);
+        $this->db->where('flag', 0);
+        $this->db->order_by('nama');
+
+        return $this->db->get();
+    }
+
     public function select_by_id($id) {
         return $this->db->get_where('pegawai', array('id' => $id, 'narasumber' => 0));
     }
@@ -94,6 +113,13 @@ class Pegawai_model extends CI_Model {
         
      public function format_date_to_sql($str){        
         return substr($str, 6, 4).'-'.substr($str, 3, 2).'-'.substr($str, 0, 2);
+    }
+
+    public function update_flag($id, $data) {
+        $data = array(
+            'flag' => $data['flag']
+        );
+        $this->db->update('pegawai', $data, "id = " . $id);
     }
 
 }

@@ -10,18 +10,18 @@ Bootstrap Admin Template by EGrappler.com
 
 body {
     background: #f9f6f1;
-    font: 13px/1.7em 'Open Sans';
+    font: 13px/1.7em 'Open sans';
 }
 
 p { 
-    font: 13px/1.7em 'Open Sans'; 	
+    font: 13px/1.7em 'Open sans'; 	
 }
 
 input,
 button,
 select,
 textarea {
-    font-family: 'Open Sans';
+    font-family: 'Open sans';
 }
 
 .dropdown .dropdown-menu {
@@ -72,7 +72,7 @@ textarea {
 .navbar-inner {
     padding: 7px 0;
 
-    background: #00ba8b !important;
+    background: brown !important;
 
     -moz-border-radius: 0;
     -webkit-border-radius: 0;

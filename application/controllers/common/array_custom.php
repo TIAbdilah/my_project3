@@ -25,7 +25,15 @@ class Array_custom extends CI_Controller {
         4 => 'AST',
         5 => 'PPK',
     );
-    var $status, $status_approval = array(
+    var $status = array(
+        '0' => 'baru dibuat',
+        '1' => 'menunggu verifikasi esselon 4',
+        '2' => 'menunggu verifikasi esselon 3',
+        '3' => 'menunggu verifikasi asisten satker',
+        '4' => 'menunggu verifikasi PPK',
+        '5' => 'lengkap'
+    );
+    var $status_approval = array(
         '0' => 'baru dibuat',
         '1' => 'menunggu verifikasi esselon 4',
         '2' => 'menunggu verifikasi esselon 3',

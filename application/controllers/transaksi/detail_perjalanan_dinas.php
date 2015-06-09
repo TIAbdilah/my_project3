@@ -69,6 +69,8 @@ class Detail_perjalanan_dinas extends CI_Controller {
             $data['tgl_berangkat'] = $this->input->post('inTglBerangkat');
             $data['tgl_pulang'] = $this->input->post('inTglPulang');
             $data['id_pegawai'] = $this->input->post('inNamaPegawai');
+            $data2['flag'] = 1;
+            $this->pegawai_model->update_flag($data['id_pegawai'],$data2);
 
             //insert biaya akomodasi
             $data['jenis_biaya'] = 'harian';
@@ -632,7 +634,10 @@ class Detail_perjalanan_dinas extends CI_Controller {
 
     public function delete($id_header, $id_pegawai) {
         $this->detail_perjalanan_dinas_model->delete($id_header, $id_pegawai);
-        redirect('transaksi/perjalanan_dinas');
+        $data2['flag'] = 0;
+        $this->pegawai_model->update_flag($id_pegawai, $data2);
+        // redirect('transaksi/perjalanan_dinas');
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function is_logged_in() {
