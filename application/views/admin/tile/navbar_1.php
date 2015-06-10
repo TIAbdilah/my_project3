@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span> 
             </a>
-            <a class="brand" href="<?php echo base_url() ?>">ESatker</a>
+            <a class="brand" href="<?php echo base_url() ?>">e-Satker</a>
             <div class="nav-collapse">
                 <ul class="nav navbar-nav">
                     <li>
@@ -100,7 +100,7 @@
 <div class="subnavbar">
     <div class="container">
         <!--<center>-->
-            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner1.png" />
+            <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner2.png" />
 <!--            <span class="pull-right">
                 <img height="5%" src="<?php echo base_url() . '/assets/' ?>img/banner-right.png" />
             </span>            -->

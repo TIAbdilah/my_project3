@@ -84,8 +84,8 @@ function add_zero($x) {
             foreach ($list_data as $data) {
                 ?>
                 <tr>
-                    <td><?php echo $no ?></td>
-                    <td><?php echo $data->nama ?></td>                    
+                    <td width="3%" align="center"><?php echo $no ?></td>
+                    <td width="26%" ><?php echo $data->nama ?></td>
                     <?php
                     $jml = 0;
                     for ($i = 1; $i <= $int_day; $i++) {
@@ -102,7 +102,7 @@ function add_zero($x) {
                             $color = '#70ed39';
                             $jml += 1;
                         }
-                        echo "<td  style=\"background-color:" . $color . "\"></td>";
+                        echo "<td width=\"2%\" style=\"background-color:" . $color . "\">&nbsp;</td>";
                     }
                     ?>
                     <td align="center"><?php echo $jml; ?></td>

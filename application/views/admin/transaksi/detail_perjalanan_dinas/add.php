@@ -151,7 +151,7 @@
                 <td><input type="text" placeholder="Total" id="inTotalBiaya" name="inTotalBiaya"/></td>
             </tr>
             <tr>
-                <td colspan="6" align="center"><input type="submit" value="Simpan"/></td>
+                <td colspan="6" align="center"><input type="submit" value="Proses"/></td>
             </tr>
         </tbody>
     </table>
