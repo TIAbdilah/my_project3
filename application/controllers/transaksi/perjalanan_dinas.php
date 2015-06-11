@@ -14,7 +14,7 @@ require_once(APPPATH . 'controllers/common/number_operations.php');
 require_once(APPPATH . 'controllers/common/array_custom.php');
 
 class Perjalanan_dinas extends CI_Controller {
-   
+
     var $bulan_romawi = array(
         '01' => 'I',
         '02' => 'II',
@@ -78,7 +78,20 @@ class Perjalanan_dinas extends CI_Controller {
         }
         // print_r($data['list_data_detail']);
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
-        $data['SIList_pegawai'] = $this->pegawai_model->select_all_tidak_dinas()->result();
+
+        //filtering pegawai
+        //$data['SIList_pegawai'] = $this->pegawai_model->select_all_tidak_dinas()->result(); //lagi di cek
+        $tgl_berangkat = $data['data']->jadwal_berangkat_1;
+        $tgl_pulang = $data['data']->jadwal_pulang_1;
+        if ($data['data']->jadwal_pulang_2 != '0000-00-00' && $data['data']->jadwal_pulang_2 != null) {
+            $tgl_pulang = $data['data']->jadwal_pulang_2;
+        }
+        if ($data['data']->jadwal_pulang_3 != '0000-00-00' && $data['data']->jadwal_pulang_3 != null) {
+            $tgl_pulang = $data['data']->jadwal_pulang_3;
+        }
+        $pegawai_sedang_perjadin = $this->marking_list_perjadin($tgl_berangkat, $tgl_pulang);
+        $data['SIList_pegawai'] = $this->pegawai_model->select_pegawai_tidak_perjadin($pegawai_sedang_perjadin)->result();
+
         $data['SIList_jenisPenginapan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Penginapan')->result();
         $data['SIList_jenisKendaraan'] = $this->listcode_model->select_by_field('list_name', 'Jenis Kendaraan')->result();
         $data['array_custom'] = new Array_custom();
@@ -172,6 +185,50 @@ class Perjalanan_dinas extends CI_Controller {
     public function delete($id) {
         $this->perjalanan_dinas_model->delete($id);
         redirect('transaksi/perjalanan_dinas');
+    }
+
+    public function marking_list_perjadin($tgl_berangkat, $tgl_pulang) {
+
+        $list_data = $this->pegawai_model->select_pegawai_sedang_perjadin()->result();
+
+        $i_ar = 0;
+        $arr_peg = array();
+        foreach ($list_data as $data) {
+
+            //inisilisasi 'tgl berangkat' dan 'tgl pulang'
+            $t_ber = strtotime($data->berangkat);
+            $t_pul = strtotime($data->pulang_1);
+            if ($data->pulang_2 != '0000-00-00' && $data->pulang_2 != null) {
+                $t_pul = strtotime($data->pulang_2);
+            }
+            if ($data->pulang_3 != '0000-00-00' && $data->pulang_3 != null) {
+                $t_pul = strtotime($data->pulang_3);
+            }
+
+            //cek tanggal 
+            $month = substr($tgl_berangkat, 5, 2);
+            $year = substr($tgl_berangkat, 0, 4);
+            $tb = substr($tgl_berangkat, 8, 2);
+            if (substr($tb, 0, 1) == '0') {
+                $tb = str_replace('0', '', $tb);
+            }
+            $tp = substr($tgl_pulang, 8, 2);
+            if (substr($tp, 0, 1) == '0') {
+                $tp = str_replace('0', '', $tp);
+            }
+
+            for ($i = $tb; $i <= $tp; $i++) {
+                $tgl = strtotime($year . "-" . $month . "-" . $i);
+                $day = date('D', $tgl);
+                if ($t_ber <= $tgl && $tgl <= $t_pul) {
+                    $arr_peg[$i_ar] = $data->nama_pegawai;
+                    $i_ar++;
+                }
+            }
+        }
+
+//        print_r($arr_peg);
+        return $arr_peg;
     }
 
     public function ceknum($id_header, $id_pegawai) {
@@ -508,10 +565,9 @@ class Perjalanan_dinas extends CI_Controller {
         $param8 = $this->num_op->cleanCommas($this->input->post('h', TRUE));
         $param82 = $this->num_op->cleanCommas($this->input->post('h2', TRUE));
         $param83 = $this->num_op->cleanCommas($this->input->post('h3', TRUE));
-        $grandtotal= $param1 + $param12 + $param13 + $param2 + $param22 + $param23 + $param3 + $param32 + $param33 + $param34 + $param4 + $param42 + $param43 + $param5 + $param52 + $param53 + $param6 + $param62 + $param63 + $param7 + $param72 + $param73 + $param8 + $param82 + $param83;
-    
+        $grandtotal = $param1 + $param12 + $param13 + $param2 + $param22 + $param23 + $param3 + $param32 + $param33 + $param34 + $param4 + $param42 + $param43 + $param5 + $param52 + $param53 + $param6 + $param62 + $param63 + $param7 + $param72 + $param73 + $param8 + $param82 + $param83;
+
         echo $grandtotal;
-        
     }
 
     public function dayBetweenTwoDates() {
