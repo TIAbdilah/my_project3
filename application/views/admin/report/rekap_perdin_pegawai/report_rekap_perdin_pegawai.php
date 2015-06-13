@@ -1,12 +1,3 @@
-<?php
-
-function add_zero($x) {
-    if (strlen($x) == 1) {
-        $x = "0" . $x;
-    }
-    return $x;
-}
-?>
 <html>
     <body>
         <table style="width: 100%">
@@ -15,7 +6,11 @@ function add_zero($x) {
                     <strong>Matrik SPD Pegawai Puslitbang Permukiman</strong><br>
                     Bulan:
                     <?php
-                    $bl = add_zero($month);
+                    if (strlen($month) == 1) {
+                        $bl = "0" . $month;
+                    } else {
+                        $bl = $month;
+                    }                    
                     echo "<strong>" . $array_custom->bulan[$bl] . " " . $year . "</strong>"
                     ?><br>
                     <strong>Bidang Program dan Kerjasama</strong>
@@ -23,43 +18,7 @@ function add_zero($x) {
             </tr>
         </table>
         <br><br>
-
-        <!--testing-->
-        <?php
-        //inisialisasi array
-        $dt_peg = array();
-        foreach ($list_data as $data) {
-            $tgl_pegawai = array_fill(1, 31, 0);
-            $dt_peg[$data->nama] = $tgl_pegawai;
-        }
-
-        //updating array
-        foreach ($list_data_perjalanan as $data) {
-
-            //inisilisasi 'tgl berangkat' dan 'tgl pulang'
-            $t_ber = strtotime($data->berangkat);
-            $t_pul = strtotime($data->pulang_1);
-            if ($data->pulang_2 != '0000-00-00' && $data->pulang_2 != null) {
-                $t_pul = strtotime($data->pulang_2);
-            }
-            if ($data->pulang_3 != '0000-00-00' && $data->pulang_3 != null) {
-                $t_pul = strtotime($data->pulang_3);
-            }
-
-            //cek tanggal 
-            $int_day = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-            for ($i = 1; $i <= $int_day; $i++) {
-                $tgl = strtotime($year . "-" . $month . "-" . $i);
-                $day = date('D', $tgl);
-                if ($t_ber <= $tgl && $tgl <= $t_pul) {
-                    $dt_peg[$data->nama_pegawai][$i] = 1;
-                }
-            }
-        }
-//        print_r($dt_peg) . '<br>';
-        ?>
-        <!--end testing-->
-
+        
         <table style="width: 100%;border-collapse: collapse" border="1" >
             <tr>
                 <td rowspan="2" width="3%" align="center">No</td>
@@ -84,8 +43,8 @@ function add_zero($x) {
             foreach ($list_data as $data) {
                 ?>
                 <tr>
-                    <td><?php echo $no ?></td>
-                    <td><?php echo $data->nama ?></td>                    
+                    <td width="3%" align="center"><?php echo $no ?></td>
+                    <td width="26%" ><?php echo $data->nama ?></td>
                     <?php
                     $jml = 0;
                     for ($i = 1; $i <= $int_day; $i++) {
@@ -102,7 +61,7 @@ function add_zero($x) {
                             $color = '#70ed39';
                             $jml += 1;
                         }
-                        echo "<td  style=\"background-color:" . $color . "\"></td>";
+                        echo "<td width=\"2%\" style=\"background-color:" . $color . "\">&nbsp;</td>";
                     }
                     ?>
                     <td align="center"><?php echo $jml; ?></td>

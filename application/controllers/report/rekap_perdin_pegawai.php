@@ -42,6 +42,7 @@ class Rekap_perdin_pegawai extends CI_Controller {
             } else {
                 $data['list_data'] = $this->pegawai_model->select_all()->result();
             }
+            $data['dt_peg'] = $this->generate_list_pegawai($data['list_data'], $data['list_data_perjalanan'], $month, $year);
             $data['page'] = 'admin/report/rekap_perdin_pegawai/view_rekap_perdin_pegawai';
             $data['report_page'] = 'admin/report/rekap_perdin_pegawai/report_rekap_perdin_pegawai';
             $this->load->view('admin/index', $data);
@@ -67,8 +68,42 @@ class Rekap_perdin_pegawai extends CI_Controller {
         } else {
             $data['list_data'] = $this->pegawai_model->select_all()->result();
         }
+        $data['dt_peg'] = $this->generate_list_pegawai($data['list_data'], $data['list_data_perjalanan'], $month, $year);
         $html = $this->load->view('admin/report/rekap_perdin_pegawai/report_rekap_perdin_pegawai', $data, TRUE);
         pdf_create($html, "landscape", "Rekap Perjalanan Dinas " . date('mdy'), true);
+    }
+    
+    public function generate_list_pegawai($list_data = array(), $list_data_perjalanan = array(), $month, $year){
+        $dt_peg = array();
+        foreach ($list_data as $data) {
+            $tgl_pegawai = array_fill(1, 31, 0);
+            $dt_peg[$data->nama] = $tgl_pegawai;
+        }
+        
+        foreach ($list_data_perjalanan as $data) {
+
+            //inisilisasi 'tgl berangkat' dan 'tgl pulang'
+            $t_ber = strtotime($data->berangkat);
+            $t_pul = strtotime($data->pulang_1);
+            if ($data->pulang_2 != '0000-00-00' && $data->pulang_2 != null) {
+                $t_pul = strtotime($data->pulang_2);
+            }
+            if ($data->pulang_3 != '0000-00-00' && $data->pulang_3 != null) {
+                $t_pul = strtotime($data->pulang_3);
+            }
+
+            //cek tanggal 
+            $int_day = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+            for ($i = 1; $i <= $int_day; $i++) {
+                $tgl = strtotime($year . "-" . $month . "-" . $i);
+                $day = date('D', $tgl);
+                if ($t_ber <= $tgl && $tgl <= $t_pul) {
+                    $dt_peg[$data->nama_pegawai][$i] = 1;
+                }
+            }
+        }
+        
+        return $dt_peg;
     }
 
     public function is_logged_in() {

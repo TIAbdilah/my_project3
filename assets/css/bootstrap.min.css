@@ -2706,8 +2706,8 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
         -moz-border-radius:5px;*/
 }
 .navbar .nav>li>a:hover {
-    background-color: #00E0A7;
-    color: #ABD0BC;
+    background-color: #D47A5E;
+    color: #843923;
     text-decoration: none;
     line-height: 8px;
     border-radius:5px;
