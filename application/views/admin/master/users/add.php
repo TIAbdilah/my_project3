@@ -1,10 +1,15 @@
-
+<?php
+    if ($this->session->flashdata('passwordsalah') != ''):
+        echo $this->session->flashdata('passwordsalah');
+    endif;
+    ?>
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>Add Data</h3>
     </div>
     <!-- /widget-header -->
     <div class="widget-content"><br>
+    
         <form class="bs-docs-example form-horizontal" action="<?php echo site_url('master/users/process/add') ?>" method="POST">
             <div class="control-group">
                 <label class="control-label" for="inpIdJenisPengguna">Role</label>
@@ -54,6 +59,12 @@
                 <label class="control-label" for="inpPassword">Password</label>
                 <div class="controls">
                     <input type="password" id="inpPassword" name="inpPassword" placeholder="Password">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inpPassword2">Konfirmasi Password</label>
+                <div class="controls">
+                    <input type="password" id="inpPassword2" name="inpPassword2" placeholder="Ketik Lagi Password">
                 </div>
             </div>
             <div class="control-group">

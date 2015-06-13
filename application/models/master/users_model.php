@@ -34,7 +34,11 @@ class Users_model extends CI_Model {
     }
     
     public function checkUser($username, $password){
-        return $this->db->get_where('pengguna', array('username' => $username, 'password' => md5($password)));
+        return $this->db->get_where('pengguna', array('username' => $username, 'password' => md5($password), 'status_aktivasi' => 0));
+    }
+
+    public function checkActivatedUser($username, $password){
+        return $this->db->get_where('pengguna', array('username' => $username, 'password' => md5($password), 'status_aktivasi' => 1));
     }
 
     public function select_all() {
@@ -115,6 +119,20 @@ class Users_model extends CI_Model {
             'username' => $data['username'],
             'password' => md5($data['password']),
             'telp' => $data['telp']
+        );
+        $this->db->update('pengguna', $data, "id_pengguna = " . $id);
+    }
+
+    public function activate($id, $data) {
+        $data = array(
+            'status_aktivasi' => $data['status_aktivasi']
+        );
+        $this->db->update('pengguna', $data, "id_pengguna = " . $id);
+    }
+
+    public function deactivate($id, $data) {
+        $data = array(
+            'status_aktivasi' => $data['status_aktivasi']
         );
         $this->db->update('pengguna', $data, "id_pengguna = " . $id);
     }

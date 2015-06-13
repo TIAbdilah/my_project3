@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2015 at 09:08 AM
+-- Generation Time: Jun 13, 2015 at 11:30 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -1879,7 +1879,7 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `jenis_penginapan` varchar(25) DEFAULT NULL,
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `biaya` int(11) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=418 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=436 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_perjalanan_dinas`
@@ -2170,24 +2170,15 @@ INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_ber
 (397, 13, 21, '2015-05-23', '2015-05-23', 'sewa', NULL, 'Surabaya', NULL, NULL, 200000),
 (398, 13, 21, '2015-05-23', '2015-05-23', 'riil', NULL, 'Surabaya', NULL, NULL, 150000),
 (399, 13, 21, '2015-05-23', '2015-05-23', 'transport_pendukung', NULL, 'Surabaya', NULL, NULL, 200000),
-(400, 180, 22, '2015-05-28', '2015-05-30', 'harian', NULL, 'Banda Aceh', NULL, NULL, 1080000),
-(401, 180, 22, '2015-05-28', '2015-05-30', 'penginapan', NULL, 'Banda Aceh', 'Hotel', NULL, 820000),
-(402, 180, 22, '2015-05-28', '2015-05-30', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pesawat', 1500000),
-(403, 180, 22, '2015-05-30', '2015-05-30', 'transport_utama', 'Banda Aceh', 'Bandung', NULL, 'Pesawat', 175000),
-(404, 180, 22, '2015-05-28', '2015-05-30', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 1300000),
-(405, 180, 22, '2015-05-28', '2015-05-30', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
-(406, 180, 22, '2015-05-28', '2015-05-30', 'diklat', NULL, 'Banda Aceh', NULL, NULL, 420000),
-(407, 180, 22, '2015-05-28', '2015-05-30', 'sewa', NULL, 'Banda Aceh', NULL, NULL, 400000),
-(408, 180, 22, '2015-05-28', '2015-05-30', 'riil', NULL, 'Banda Aceh', NULL, NULL, 1400000),
-(409, 10, 22, '2015-05-28', '2015-05-30', 'harian', NULL, 'Banda Aceh', NULL, NULL, 1080000),
-(410, 10, 22, '2015-05-28', '2015-05-30', 'penginapan', NULL, 'Banda Aceh', 'Pilih Penginapan', NULL, 0),
-(411, 10, 22, '2015-05-28', '2015-05-30', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pilih Transport', 0),
-(412, 10, 22, '2015-05-30', '2015-05-30', 'transport_utama', 'Banda Aceh', 'Bandung', NULL, 'Pilih Transport', 0),
-(413, 10, 22, '2015-05-28', '2015-05-30', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 0),
-(414, 10, 22, '2015-05-28', '2015-05-30', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
-(415, 10, 22, '2015-05-28', '2015-05-30', 'diklat', NULL, 'Banda Aceh', NULL, NULL, 420000),
-(416, 10, 22, '2015-05-28', '2015-05-30', 'sewa', NULL, 'Banda Aceh', NULL, NULL, 0),
-(417, 10, 22, '2015-05-28', '2015-05-30', 'riil', NULL, 'Banda Aceh', NULL, NULL, 0);
+(433, 10, 22, '2015-05-28', '2015-05-30', 'diklat', NULL, 'Banda Aceh', NULL, NULL, 420000),
+(432, 10, 22, '2015-05-28', '2015-05-30', 'representatif', NULL, 'Banda Aceh', NULL, NULL, 0),
+(431, 10, 22, '2015-05-28', '2015-05-30', 'transport_pendukung', NULL, 'Banda Aceh', NULL, NULL, 0),
+(430, 10, 22, '2015-05-30', '2015-05-30', 'transport_utama', 'Banda Aceh', 'Bandung', NULL, 'Pilih Transport', 0),
+(429, 10, 22, '2015-05-28', '2015-05-30', 'transport_utama', 'Bandung', 'Banda Aceh', NULL, 'Pilih Transport', 0),
+(428, 10, 22, '2015-05-28', '2015-05-30', 'penginapan', NULL, 'Banda Aceh', 'Pilih Penginapan', NULL, 0),
+(427, 10, 22, '2015-05-28', '2015-05-30', 'harian', NULL, 'Banda Aceh', NULL, NULL, 1080000),
+(435, 10, 22, '2015-05-28', '2015-05-30', 'riil', NULL, 'Banda Aceh', NULL, NULL, 0),
+(434, 10, 22, '2015-05-28', '2015-05-30', 'sewa', NULL, 'Banda Aceh', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -3099,21 +3090,27 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
   `email` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `telp` varchar(15) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+  `telp` varchar(15) NOT NULL,
+  `status_aktivasi` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `id_pegawai`, `alamat`, `email`, `username`, `password`, `telp`) VALUES
-(9, 1, 10, 'baleendah', 'ti.abdilah@gmail.com', 'opik123', '0cc175b9c0f1b6a831c399e269772661', '098234'),
-(10, 1, 49, '-', '-', 'operator', '0cc175b9c0f1b6a831c399e269772661', '1234'),
-(12, 3, 63, '-', '-', 'esselon 3', '0cc175b9c0f1b6a831c399e269772661', '1234'),
-(13, 2, 40, '-', '-', 'esselon 4', '0cc175b9c0f1b6a831c399e269772661', '1234'),
-(14, 4, 17, '-', '-', 'asisten satker', '0cc175b9c0f1b6a831c399e269772661', '1234'),
-(15, 5, 72, '-', '-', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '12345'),
-(16, 5, 53, 'garut', '1', 'ai123', '0cc175b9c0f1b6a831c399e269772661', '');
+INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `id_pegawai`, `alamat`, `email`, `username`, `password`, `telp`, `status_aktivasi`) VALUES
+(9, 1, 10, 'baleendah', 'ti.abdilah@gmail.com', 'opik123', '0cc175b9c0f1b6a831c399e269772661', '098234', 1),
+(10, 1, 49, '-', '-', 'operator', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
+(12, 3, 63, '-', '-', 'esselon 3', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
+(13, 2, 40, '-', '-', 'esselon 4', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
+(14, 4, 17, '-', '-', 'asisten satker', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
+(15, 5, 72, '-', '-', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '12345', 1),
+(16, 5, 53, 'garut', '1', 'ai123', '0cc175b9c0f1b6a831c399e269772661', '', 0),
+(17, 1, 77, '', '', 'anggi', '0cc175b9c0f1b6a831c399e269772661', '', 1),
+(18, 1, 53, '', '', 'ai', '0cc175b9c0f1b6a831c399e269772661', '', 0),
+(19, 1, 66, '', '', 'ajun', '0cc175b9c0f1b6a831c399e269772661', '', 0),
+(20, 1, 123, '', '', 'arip', '0cc175b9c0f1b6a831c399e269772661', '', 0),
+(21, 7, 184, '', '', 'super admin', '0cc175b9c0f1b6a831c399e269772661', '', 1);
 
 -- --------------------------------------------------------
 
@@ -3178,7 +3175,7 @@ INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `tanggal_pem
 CREATE TABLE IF NOT EXISTS `role` (
   `id_role` int(11) NOT NULL,
   `nama_role` varchar(25) DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `role`
@@ -3189,7 +3186,8 @@ INSERT INTO `role` (`id_role`, `nama_role`) VALUES
 (2, 'esselon 4'),
 (3, 'esselon 3'),
 (4, 'asisten satker'),
-(5, 'ppk');
+(5, 'ppk'),
+(7, 'super admin');
 
 -- --------------------------------------------------------
 
@@ -3763,7 +3761,7 @@ ALTER TABLE `detail_pengajuan_honorarium`
 -- AUTO_INCREMENT for table `detail_perjalanan_dinas`
 --
 ALTER TABLE `detail_perjalanan_dinas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=418;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=436;
 --
 -- AUTO_INCREMENT for table `golongan`
 --
@@ -3838,7 +3836,7 @@ ALTER TABLE `pengajuan_jasa`
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `perjalanan_dinas`
 --
@@ -3848,7 +3846,7 @@ ALTER TABLE `perjalanan_dinas`
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `temp_akun`
 --

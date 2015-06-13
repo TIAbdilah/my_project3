@@ -12,14 +12,15 @@
             <thead>
                 <tr>
                     <th width="5%"> No </th>
-                    <th> ID Jenis Pengguna</th>
+                    <th width="10%"> ID Jenis Pengguna</th>
                     <th> Nama</th>
                     <th> NIP</th>
                     <th> Alamat</th>
                     <th> Email</th>
                     <th> Username</th>
                     <th> Telp</th>
-                    <th class="td-actions"> </th>
+                    <th> Aktif</th>
+                    <th  width="15%"> </th>
                 </tr>
             </thead>
             <tbody>
@@ -35,8 +36,14 @@
                     . "<td>" . $row->email . "</td>"
                     . "<td>" . $row->username . "</td>"
                     . "<td>" . $row->telp . "</td>"
-                    . "<td class=\"td-actions\">"
-                    . "<a title=\"Edit\" href=\"" . site_url('master/users/edit/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
+                    . "<td>" . $array_custom->status_aktivasi[$row->status_aktivasi] . "</td>"
+                    . "<td class=\"td-actions\">";
+                    if(!$row->status_aktivasi){
+                    echo "<a title=\"Aktifkan\" href=\"" . site_url('master/users/activate/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>";
+                    } else {
+                        echo "<a title=\"Non Aktifkan\" href=\"" . site_url('master/users/deactivate/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-remove-sign\"> </i></a>";
+                    }
+                    echo "<a title=\"Edit\" href=\"" . site_url('master/users/edit/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
                     . "<a title=\"Delete\" href=\"" . site_url('master/users/delete/' . $row->id_pengguna) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
                             . "</td>"
                     . "</tr>";

@@ -15,6 +15,9 @@
                             <i class="icon-home"></i>&nbsp;Beranda
                         </a>
                     </li>
+                    <?php if(($this->session->userdata('role')=='asisten satker') || ($this->session->userdata('role')=='ppk') || ($this->session->userdata('role')=='super admin')) {?>
+                    
+                    
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="icon-list-alt"></i>&nbsp;Master <span class="caret"></span>
@@ -40,6 +43,7 @@
                             <li><a href="<?php echo site_url('master/biaya_narasumber') ?>">Biaya Narasumber</a></li>
                         </ul>
                     </li>
+                    <?php } ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="icon-folder-open"></i>&nbsp;Pengajuan <span class="caret"></span>
@@ -63,6 +67,7 @@
                             <li><a href="<?php echo site_url('report/rekap_pembuktian/view') ?>">Rekap Pembuktian Perjalanan Dinas</a></li>
                         </ul>
                     </li>
+                    <?php if(($this->session->userdata('role')=='asisten satker') || ($this->session->userdata('role')=='ppk') || ($this->session->userdata('role')=='super admin')) {?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="icon-cogs"></i>&nbsp;Utilitas <span class="caret"></span>
@@ -73,6 +78,7 @@
                             <li><a href="<?php echo site_url('master/role') ?>">Role</a></li> 
                         </ul>
                     </li>
+                    <?php } ?>
                 </ul>
                 <ul class="nav pull-right">
                     <li class="not_link dropdown">

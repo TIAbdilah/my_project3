@@ -12,8 +12,8 @@
             <thead>
                 <tr>
                     <th width="5%"> No </th>
-                    <th> Nama Role</th>
-                    <th class="td-actions"> </th>
+                    <th width="80%"> Nama Role</th>
+                    <th class="td-actions" width="5%"> </th>
                 </tr>
             </thead>
             <tbody>

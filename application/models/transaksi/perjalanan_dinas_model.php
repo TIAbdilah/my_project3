@@ -53,7 +53,7 @@ class Perjalanan_dinas_model extends CI_Model {
         if (!empty($param['status_penolakan'])) {
             $query = $query . " and pd.status_penolakan = " . $param['status_penolakan'] . " ";
         }
-//        print_r($query);
+       // print_r($query);
 
         $query = $query . " order by tanggal_approval";
         return $this->db->query($query);

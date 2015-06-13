@@ -31,11 +31,20 @@
 
                 <form action="<?php echo base_url('login/process_login'); ?>" method="post">
 
-                    <h1>Member Login</h1>		
+                    <h1>Login</h1>		
 
                     <div class="login-fields">
                         <div class="alert alert-info">
-                            <p>Please provide your details</p>
+                            <?php
+                            if ($this->session->flashdata('berhasil') != ''):
+                                echo $this->session->flashdata('berhasil');
+                            endif;
+                            ?>
+                            <?php
+                            if ($this->session->flashdata('message') != ''):
+                                echo $this->session->flashdata('message');
+                            endif;
+                            ?>
                             <span class="alert-error"><?php echo validation_errors(); ?></span>
                         </div>
 
@@ -58,11 +67,13 @@
                             <label class="choice" for="Field">Keep me signed in</label>
                         </span>
 
-                        <button class="button btn btn-success btn-large">Sign In</button>
+                        <button class="button btn btn-success btn-large">Masuk</button>
 
                     </div> <!-- .actions -->
 
                 </form>
+                        <a href="<?php echo base_url('login/signup');?>"><button class="button btn btn-success btn-large">Daftar</button></a>
+
 
             </div> <!-- /content -->
 

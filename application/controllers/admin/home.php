@@ -40,6 +40,7 @@ class Home extends CI_Controller {
         } else {
             $data['perjalanan_dinas_ditolak'] = false;
         }
+        // print_r($data['perjalanan_dinas_ditolak']);
 
         $data['cek_barang_ditolak'] = $this->pengajuan_barang_model->select_by_field(array('status_approval' => $array_custom->int_role[$role], 'status_penolakan' => '1'))->result();
         if (!empty($data['cek_barang_ditolak'])) {

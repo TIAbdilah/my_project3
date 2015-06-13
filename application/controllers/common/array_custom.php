@@ -33,6 +33,10 @@ class Array_custom extends CI_Controller {
         '4' => 'menunggu verifikasi PPK',
         '5' => 'lengkap'
     );
+    var $status_aktivasi = array(
+        '0' => 'tidak aktif',
+        '1' => 'aktif'
+    );
     var $status_approval = array(
         '0' => 'baru dibuat',
         '1' => 'menunggu verifikasi esselon 4',
