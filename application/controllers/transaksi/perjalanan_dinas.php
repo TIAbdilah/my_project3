@@ -187,6 +187,23 @@ class Perjalanan_dinas extends CI_Controller {
         redirect('transaksi/perjalanan_dinas');
     }
 
+    public function rentang1() {
+        $a = 4;
+        $b = 7;
+        $x = 1;
+        $y = 5;
+
+        if (
+                (($x <= $a && $x <= $b) && ($y >= $a && $y <= $b)) ||
+                (($x >= $a && $x <= $b) && ($y >= $a && $y <= $b)) ||
+                (($x >= $a && $x <= $b) && ($y >= $a && $y >= $b))
+        ) {
+            echo 'Ya';
+        } else {
+            echo 'Tidak';
+        }
+    }
+
     public function marking_list_perjadin($tgl_berangkat, $tgl_pulang) {
 
         $list_data = $this->pegawai_model->select_pegawai_sedang_perjadin()->result();
@@ -205,25 +222,16 @@ class Perjalanan_dinas extends CI_Controller {
                 $t_pul = strtotime($data->pulang_3);
             }
 
-            //cek tanggal 
-            $month = substr($tgl_berangkat, 5, 2);
-            $year = substr($tgl_berangkat, 0, 4);
-            $tb = substr($tgl_berangkat, 8, 2);
-            if (substr($tb, 0, 1) == '0') {
-                $tb = str_replace('0', '', $tb);
-            }
-            $tp = substr($tgl_pulang, 8, 2);
-            if (substr($tp, 0, 1) == '0') {
-                $tp = str_replace('0', '', $tp);
-            }
-
-            for ($i = $tb; $i <= $tp; $i++) {
-                $tgl = strtotime($year . "-" . $month . "-" . $i);
-                $day = date('D', $tgl);
-                if ($t_ber <= $tgl && $tgl <= $t_pul) {
-                    $arr_peg[$i_ar] = $data->nama_pegawai;
-                    $i_ar++;
-                }
+            //cek irisan tanggal
+            $tb = strtotime($tgl_berangkat);
+            $tp = strtotime($tgl_pulang);
+            if (
+                    (($tb <= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp <= $t_pul)) ||
+                    (($tb >= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp <= $t_pul)) ||
+                    (($tb >= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp >= $t_pul))
+            ) {
+                $arr_peg[$i_ar] = $data->nama_pegawai;
+                $i_ar++;                
             }
         }
 
