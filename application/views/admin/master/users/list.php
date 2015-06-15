@@ -39,12 +39,12 @@
                     . "<td>" . $array_custom->status_aktivasi[$row->status_aktivasi] . "</td>"
                     . "<td class=\"td-actions\">";
                     if(!$row->status_aktivasi){
-                    echo "<a title=\"Aktifkan\" href=\"" . site_url('master/users/activate/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-ok\"> </i></a>";
+                    echo "<a title=\"Aktifkan\" href=\"" . site_url('master/users/activate/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-primary\"><i class=\"btn-icon-only icon-ok\"></i></a>";
                     } else {
-                        echo "<a title=\"Non Aktifkan\" href=\"" . site_url('master/users/deactivate/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-remove-sign\"> </i></a>";
+                        echo "<a title=\"Non Aktifkan\" href=\"" . site_url('master/users/deactivate/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-inverse\"><i class=\"btn-icon-only icon-remove-sign\"></i></a>";
                     }
-                    echo "<a title=\"Edit\" href=\"" . site_url('master/users/edit/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"> </i></a>"
-                    . "<a title=\"Delete\" href=\"" . site_url('master/users/delete/' . $row->id_pengguna) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"> </i></a>"
+                    echo "<a title=\"Edit\" href=\"" . site_url('master/users/edit/' . $row->id_pengguna) . "\" class=\"btn btn-mini btn-warning\"><i class=\"btn-icon-only icon-pencil\"></i></a>"
+                    . "<a title=\"Delete\" href=\"" . site_url('master/users/delete/' . $row->id_pengguna) . "\" class=\"btn btn-danger btn-mini\"><i class=\"btn-icon-only icon-remove\"></i></a>"
                             . "</td>"
                     . "</tr>";
                     $no++;
