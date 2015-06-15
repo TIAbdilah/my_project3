@@ -62,17 +62,13 @@
 
                     <div class="login-actions">
 
-                        <span class="login-checkbox">
-                            <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-                            <label class="choice" for="Field">Keep me signed in</label>
-                        </span>
 
                         <button class="button btn btn-success btn-large">Masuk</button>
 
                     </div> <!-- .actions -->
 
                 </form>
-                        <a href="<?php echo base_url('login/signup');?>"><button class="button btn btn-success btn-large">Daftar</button></a>
+                        
 
 
             </div> <!-- /content -->
@@ -82,7 +78,7 @@
 
 
         <div class="login-extra">
-            <a href="#">Reset Password</a>
+            <a href="<?php echo base_url('login/signup');?>">Daftarkan Akun</a>
         </div> <!-- /login-extra -->
 
 
