@@ -19,6 +19,7 @@ class Rekap_perdin_pegawai extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('master/pegawai_model');
+        $this->load->model('master/unit_model');
         $this->load->model('transaksi/perjalanan_dinas_model');
         $this->load->model('report/rekap_perdin_pegawai_model');
         $this->is_logged_in();
@@ -27,9 +28,18 @@ class Rekap_perdin_pegawai extends CI_Controller {
     public function view() {
         $month = $this->input->post('inpBulan');
         $year = $this->input->post('inpTahun');
+        $unit = $this->input->post('inpUnit');
         $data['title'] = $this->title_page;
         $data['array_custom'] = new Array_custom();
-        if ($year != "" && $month != "") {
+        $data['SIList_unit'] = $this->unit_model->select_all()->result();
+        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+            $data['kode_unit'] = $this->session->userdata('kode_unit');
+            $data['page'] = 'admin/report/rekap_perdin_pegawai/view_rekap_perdin_pegawai';
+        } else {
+            $data['kode_unit'] = $unit;
+            $data['page'] = 'admin/report/rekap_perdin_pegawai/view_rekap_perdin_pegawai_1';
+        }
+        if ($year != "" && $month != "" && $data['kode_unit'] != "") {
             $data['month'] = $month;
             $data['year'] = $year;
             $param = array(
@@ -37,23 +47,18 @@ class Rekap_perdin_pegawai extends CI_Controller {
                 'tahun' => $year
             );
             $data['list_data_perjalanan'] = $this->rekap_perdin_pegawai_model->select_by_field($param)->result();
-            if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
-                $data['list_data'] = $this->pegawai_model->select_by_field('kode_unit', $this->session->userdata('kode_unit'))->result();
-            } else {
-                $data['list_data'] = $this->pegawai_model->select_all()->result();
-            }
+            $data['list_data'] = $this->pegawai_model->select_by_field('kode_unit', $data['kode_unit'])->result();
+            $data['data_unit'] = $this->unit_model->select_by_id($data['kode_unit'])->row();
             $data['dt_peg'] = $this->generate_list_pegawai($data['list_data'], $data['list_data_perjalanan'], $month, $year);
-            $data['page'] = 'admin/report/rekap_perdin_pegawai/view_rekap_perdin_pegawai';
             $data['report_page'] = 'admin/report/rekap_perdin_pegawai/report_rekap_perdin_pegawai';
             $this->load->view('admin/index', $data);
         } else {
-            $data['page'] = 'admin/report/rekap_perdin_pegawai/view_rekap_perdin_pegawai';
             $data['report_page'] = 'admin/report/blank';
             $this->load->view('admin/index', $data);
         }
     }
 
-    public function print_report($month, $year) {
+    public function print_report($month, $year, $unit) {
         $this->load->helper('to_pdf');
         $data['array_custom'] = new Array_custom();
         $data['month'] = $month;
@@ -63,23 +68,19 @@ class Rekap_perdin_pegawai extends CI_Controller {
             'tahun' => $year
         );
         $data['list_data_perjalanan'] = $this->rekap_perdin_pegawai_model->select_by_field($param)->result();
-        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
-            $data['list_data'] = $this->pegawai_model->select_by_field('kode_unit', $this->session->userdata('kode_unit'))->result();
-        } else {
-            $data['list_data'] = $this->pegawai_model->select_all()->result();
-        }
+        $data['list_data'] = $this->pegawai_model->select_by_field('kode_unit', $unit)->result();
         $data['dt_peg'] = $this->generate_list_pegawai($data['list_data'], $data['list_data_perjalanan'], $month, $year);
         $html = $this->load->view('admin/report/rekap_perdin_pegawai/report_rekap_perdin_pegawai', $data, TRUE);
         pdf_create($html, "landscape", "Rekap Perjalanan Dinas " . date('mdy'), true);
     }
-    
-    public function generate_list_pegawai($list_data = array(), $list_data_perjalanan = array(), $month, $year){
+
+    public function generate_list_pegawai($list_data = array(), $list_data_perjalanan = array(), $month, $year) {
         $dt_peg = array();
         foreach ($list_data as $data) {
             $tgl_pegawai = array_fill(1, 31, 0);
             $dt_peg[$data->nama] = $tgl_pegawai;
         }
-        
+
         foreach ($list_data_perjalanan as $data) {
 
             //inisilisasi 'tgl berangkat' dan 'tgl pulang'
@@ -102,7 +103,7 @@ class Rekap_perdin_pegawai extends CI_Controller {
                 }
             }
         }
-        
+
         return $dt_peg;
     }
 

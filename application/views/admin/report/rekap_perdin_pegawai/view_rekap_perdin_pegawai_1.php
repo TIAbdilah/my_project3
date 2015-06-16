@@ -6,13 +6,22 @@
     <!-- /widget-header -->
     <div class="widget-content" style="padding: 10px;"><br>
         <form class="bs-docs-example form-inline" action="<?php echo site_url('report/rekap_perdin_pegawai/view/') ?>" method="POST">
-            Bulan&nbsp;<?php echo $array_custom->select_item_bulan('inpBulan') ?>
+            Bulan&nbsp;<?php echo $array_custom->select_item_bulan('inpBulan') ?>&nbsp;
             Tahun&nbsp;
             <select name="inpTahun">
                 <option value="">Pilih Tahun</option>
                 <?php
                 for ($i = 2015; $i < 2020; $i++) {
                     echo "<option value=\"" . $i . "\">" . $i . "</option>";
+                }
+                ?>
+            </select>&nbsp;
+            Unit&nbsp;
+            <select name="inpUnit" class="input-large">
+                <option value="">Pilih Unit</option>
+                <?php
+                foreach ($SIList_unit as $row) {
+                    echo "<option value=\"" . $row->id . "\">" . $row->nama_unit . "</option>";
                 }
                 ?>
             </select>&nbsp;

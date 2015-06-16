@@ -4,7 +4,7 @@
             <tr>
                 <td align="center">
                     <strong>Matrik SPD Pegawai Puslitbang Permukiman</strong><br>
-                    Bulan:
+                    Bulan&nbsp;
                     <?php
                     if (strlen($month) == 1) {
                         $bl = "0" . $month;
@@ -13,7 +13,8 @@
                     }                    
                     echo "<strong>" . $array_custom->bulan[$bl] . " " . $year . "</strong>"
                     ?><br>
-                    <strong>Bidang Program dan Kerjasama</strong>
+                    Unit&nbsp;
+                    <strong><?php echo $data_unit->nama_unit?></strong>
                 </td>
             </tr>
         </table>
