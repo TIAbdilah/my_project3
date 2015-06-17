@@ -28,7 +28,7 @@ class Perjalanan_dinas extends CI_Controller {
         '10' => 'X',
         '11' => 'XI',
         '12' => 'XII'
-    );
+        );
     var $title_page = "e-satker | Perjalanan Dinas";
 
     public function __construct() {
@@ -70,7 +70,7 @@ class Perjalanan_dinas extends CI_Controller {
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
         $param = array(
             'id_header' => $id
-        );
+            );
         if ($jumlah_tujuan == 3) {
             $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field_1($param)->result();
         } else {
@@ -129,6 +129,7 @@ class Perjalanan_dinas extends CI_Controller {
         $data['id_anggaran'] = $this->input->post('inpIdAnggaran');
         $data['jumlah_tujuan'] = $this->input->post('inpJumlahTujuan');
         $data['maksud_perjalanan'] = $this->input->post('inpMaksudPerjalanan');
+        $data['kode_unit'] = $this->session->userdata('kode_unit');
         if ($this->input->post('inDiklat') == 'Ya') {
             $data['status_diklat'] = '1';
         } else {
@@ -137,38 +138,57 @@ class Perjalanan_dinas extends CI_Controller {
 
         switch ($data['jumlah_tujuan']) {
             case 1 :
-                $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat1');
-                $data['jadwal_berangkat_2'] = NULL;
-                $data['jadwal_berangkat_3'] = NULL;
-                $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang1');
-                $data['jadwal_pulang_2'] = NULL;
-                $data['jadwal_pulang_3'] = NULL;
-                $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan1');
-                $data['kota_tujuan_2'] = NULL;
-                $data['kota_tujuan_3'] = NULL;
-                break;
+
+            $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat1');
+            $data['jadwal_berangkat_2'] = NULL;
+            $data['jadwal_berangkat_3'] = NULL;
+            $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang1');
+            $data['jadwal_pulang_2'] = NULL;
+            $data['jadwal_pulang_3'] = NULL;
+            $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan1');
+            $data['kota_tujuan_2'] = NULL;
+            $data['kota_tujuan_3'] = NULL;
+            if (strtotime($data['jadwal_berangkat_1']) > strtotime($data['jadwal_pulang_1'])) {
+                $this->session->set_flashdata('jadwal', '<div class="alert alert-danger" role="alert">Jadwal Pulang Tidak Boleh Lebih Cepat Daripada Jadwal Keberangkatan.</div>');
+                redirect('transaksi/perjalanan_dinas/add');
+            }else{
+                break;    
+            }
+            break;
             case 2 :
-                $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat21');
-                $data['jadwal_berangkat_2'] = $this->input->post('inpJadwalBerangkat22');
-                $data['jadwal_berangkat_3'] = NULL;
-                $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang21');
-                $data['jadwal_pulang_2'] = $this->input->post('inpJadwalPulang22');
-                $data['jadwal_pulang_3'] = NULL;
-                $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan21');
-                $data['kota_tujuan_2'] = $this->input->post('inpKotaTujuan22');
-                $data['kota_tujuan_3'] = NULL;
-                break;
+            $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat21');
+            $data['jadwal_berangkat_2'] = $this->input->post('inpJadwalBerangkat22');
+            $data['jadwal_berangkat_3'] = NULL;
+            $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang21');
+            $data['jadwal_pulang_2'] = $this->input->post('inpJadwalPulang22');
+            $data['jadwal_pulang_3'] = NULL;
+            $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan21');
+            $data['kota_tujuan_2'] = $this->input->post('inpKotaTujuan22');
+            $data['kota_tujuan_3'] = NULL;
+            if ( (strtotime($data['jadwal_berangkat_1']) > strtotime($data['jadwal_pulang_1'])) ||( (strtotime($data['jadwal_berangkat_2']) > strtotime($data['jadwal_pulang_2'])) ) || ( (strtotime($data['jadwal_pulang_1']) > strtotime($data['jadwal_berangkat_2']))) ) {
+                $this->session->set_flashdata('jadwal', '<div class="alert alert-danger" role="alert">Jadwal Pulang Tidak Boleh Lebih Cepat Daripada Jadwal Keberangkatan.</div>');
+                redirect('transaksi/perjalanan_dinas/add');
+            }else{
+                break;    
+            }
+            break;
             case 3 :
-                $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat31');
-                $data['jadwal_berangkat_2'] = $this->input->post('inpJadwalBerangkat32');
-                $data['jadwal_berangkat_3'] = $this->input->post('inpJadwalBerangkat33');
-                $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang31');
-                $data['jadwal_pulang_2'] = $this->input->post('inpJadwalPulang32');
-                $data['jadwal_pulang_3'] = $this->input->post('inpJadwalPulang33');
-                $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan31');
-                $data['kota_tujuan_2'] = $this->input->post('inpKotaTujuan32');
-                $data['kota_tujuan_3'] = $this->input->post('inpKotaTujuan33');
-                break;
+            $data['jadwal_berangkat_1'] = $this->input->post('inpJadwalBerangkat31');
+            $data['jadwal_berangkat_2'] = $this->input->post('inpJadwalBerangkat32');
+            $data['jadwal_berangkat_3'] = $this->input->post('inpJadwalBerangkat33');
+            $data['jadwal_pulang_1'] = $this->input->post('inpJadwalPulang31');
+            $data['jadwal_pulang_2'] = $this->input->post('inpJadwalPulang32');
+            $data['jadwal_pulang_3'] = $this->input->post('inpJadwalPulang33');
+            $data['kota_tujuan_1'] = $this->input->post('inpKotaTujuan31');
+            $data['kota_tujuan_2'] = $this->input->post('inpKotaTujuan32');
+            $data['kota_tujuan_3'] = $this->input->post('inpKotaTujuan33');
+            if ( (strtotime($data['jadwal_berangkat_1']) > strtotime($data['jadwal_pulang_1'])) || (strtotime($data['jadwal_berangkat_2']) > strtotime($data['jadwal_pulang_2'])) || (strtotime($data['jadwal_berangkat_3']) > strtotime($data['jadwal_pulang_3'])) || (strtotime($data['jadwal_pulang_1']) > strtotime($data['jadwal_berangkat_2'])) || (strtotime($data['jadwal_pulang_2']) > strtotime($data['jadwal_berangkat_3'])) ) {
+                $this->session->set_flashdata('jadwal', '<div class="alert alert-danger" role="alert">Jadwal Pulang Tidak Boleh Lebih Cepat Daripada Jadwal Keberangkatan.</div>');
+                redirect('transaksi/perjalanan_dinas/add');
+            }else{
+                break;    
+            }
+            break;
             default : break;
         }
         $data['no_spt'] = '-';
@@ -194,79 +214,79 @@ class Perjalanan_dinas extends CI_Controller {
         $y = 5;
 
         if (
-                (($x <= $a && $x <= $b) && ($y >= $a && $y <= $b)) ||
-                (($x >= $a && $x <= $b) && ($y >= $a && $y <= $b)) ||
-                (($x >= $a && $x <= $b) && ($y >= $a && $y >= $b))
-        ) {
+            (($x <= $a && $x <= $b) && ($y >= $a && $y <= $b)) ||
+            (($x >= $a && $x <= $b) && ($y >= $a && $y <= $b)) ||
+            (($x >= $a && $x <= $b) && ($y >= $a && $y >= $b))
+            ) {
             echo 'Ya';
-        } else {
-            echo 'Tidak';
-        }
+    } else {
+        echo 'Tidak';
     }
+}
 
-    public function marking_list_perjadin($tgl_berangkat, $tgl_pulang) {
+public function marking_list_perjadin($tgl_berangkat, $tgl_pulang) {
 
-        $list_data = $this->pegawai_model->select_pegawai_sedang_perjadin()->result();
+    $list_data = $this->pegawai_model->select_pegawai_sedang_perjadin()->result();
 
-        $i_ar = 0;
-        $arr_peg = array();
-        foreach ($list_data as $data) {
+    $i_ar = 0;
+    $arr_peg = array();
+    foreach ($list_data as $data) {
 
             //inisilisasi 'tgl berangkat' dan 'tgl pulang'
-            $t_ber = strtotime($data->berangkat);
-            $t_pul = strtotime($data->pulang_1);
-            if ($data->pulang_2 != '0000-00-00' && $data->pulang_2 != null) {
-                $t_pul = strtotime($data->pulang_2);
-            }
-            if ($data->pulang_3 != '0000-00-00' && $data->pulang_3 != null) {
-                $t_pul = strtotime($data->pulang_3);
-            }
-
-            //cek irisan tanggal
-            $tb = strtotime($tgl_berangkat);
-            $tp = strtotime($tgl_pulang);
-            if (
-                    (($tb <= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp <= $t_pul)) ||
-                    (($tb >= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp <= $t_pul)) ||
-                    (($tb >= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp >= $t_pul))
-            ) {
-                $arr_peg[$i_ar] = $data->nama_pegawai;
-                $i_ar++;                
-            }
+        $t_ber = strtotime($data->berangkat);
+        $t_pul = strtotime($data->pulang_1);
+        if ($data->pulang_2 != '0000-00-00' && $data->pulang_2 != null) {
+            $t_pul = strtotime($data->pulang_2);
+        }
+        if ($data->pulang_3 != '0000-00-00' && $data->pulang_3 != null) {
+            $t_pul = strtotime($data->pulang_3);
         }
 
+            //cek irisan tanggal
+        $tb = strtotime($tgl_berangkat);
+        $tp = strtotime($tgl_pulang);
+        if (
+            (($tb <= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp <= $t_pul)) ||
+            (($tb >= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp <= $t_pul)) ||
+            (($tb >= $t_ber && $tb <= $t_pul) && ($tp >= $t_ber && $tp >= $t_pul))
+            ) {
+            $arr_peg[$i_ar] = $data->nama_pegawai;
+        $i_ar++;                
+    }
+}
+
 //        print_r($arr_peg);
-        return $arr_peg;
-    }
+return $arr_peg;
+}
 
-    public function ceknum($id_header, $id_pegawai) {
+public function ceknum($id_header, $id_pegawai) {
 
-        return $this->bukti_perjalanan_dinas_model->ceknum($id_header, $id_pegawai);
-    }
+    return $this->bukti_perjalanan_dinas_model->ceknum($id_header, $id_pegawai);
+}
 
     // tambahan
 
-    public function update_status($id_header) {
-        $aksi = $this->input->post('inpAksi');
-        $data['tolak'] = 0;
-        $status = $this->input->post('inpStatus');
-        if ($aksi == 'Setuju' || $aksi == 'Ajukan') {
-            $data['status'] = $status + 1;
-            $this->perjalanan_dinas_model->update_status($id_header, $data);
-            if ($this->session->userdata('role') == 'ppk') {
-                $this->counter = new Counter();
-                $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
-                $counter = $this->counter->generateId($pattern);
-                $data['no_spt'] = $counter . "/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
-                $data['tanggal_approval'] = date('Y-m-d');
-                $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
-                $data['status_penolakan'] = 0;
-                $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
-            } else {
-                $data['status_penolakan'] = 0;
-                $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
-            }
-            redirect('transaksi/perjalanan_dinas');
+public function update_status($id_header) {
+    $aksi = $this->input->post('inpAksi');
+    $data['tolak'] = 0;
+    $status = $this->input->post('inpStatus');
+    if ($aksi == 'Setuju' || $aksi == 'Ajukan') {
+        $data['status'] = $status + 1;
+        $this->perjalanan_dinas_model->update_status($id_header, $data);
+        if ($this->session->userdata('role') == 'ppk') {
+            $this->counter = new Counter();
+            $pattern = $this->bulan_romawi[date('m')] . "-" . date('Y');
+            $counter = $this->counter->generateId($pattern);
+            $data['no_spt'] = $counter . "/SPPD/SATKER/LP/" . $this->bulan_romawi[date('m')] . "/" . date('Y');
+            $data['tanggal_approval'] = date('Y-m-d');
+            $this->perjalanan_dinas_model->update_no_spt($id_header, $data);
+            $data['status_penolakan'] = 0;
+            $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
+        } else {
+            $data['status_penolakan'] = 0;
+            $this->perjalanan_dinas_model->update_status_penolakan($id_header, $data);
+        }
+        redirect('transaksi/perjalanan_dinas');
         } else { //kalo ditolak
             $komen = $this->input->post("inpKomentar");
             if (empty($komen)) {
