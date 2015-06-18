@@ -1,6 +1,10 @@
-
 <!-- widget-header -->
 <div class="widget widget-table action-table">
+    <?php
+    if ($this->session->flashdata('jadwal') != ''):
+        echo $this->session->flashdata('jadwal');
+    endif;
+    ?>
     <div class="widget-header"> <i class="icon-th-list"></i>
         <h3>List Data Anggaran</h3>
     </div>           

@@ -53,6 +53,10 @@ class Perjalanan_dinas_model extends CI_Model {
         if (!empty($param['status_penolakan'])) {
             $query = $query . " and pd.status_penolakan = " . $param['status_penolakan'] . " ";
         }
+
+        if (!empty($param['kode_unit'])) {
+            $query = $query . " and pd.kode_unit = " . $param['kode_unit'] . " ";
+        }
        // print_r($query);
 
         $query = $query . " order by tanggal_approval";
@@ -76,7 +80,8 @@ class Perjalanan_dinas_model extends CI_Model {
             'kota_tujuan_1' => $data['kota_tujuan_1'],
             'kota_tujuan_2' => $data['kota_tujuan_2'],
             'kota_tujuan_3' => $data['kota_tujuan_3'],
-            'status_penolakan' => 0
+            'status_penolakan' => 0,
+            'kode_unit' => $data['kode_unit']
         );
         $this->db->insert('perjalanan_dinas', $data);
     }
