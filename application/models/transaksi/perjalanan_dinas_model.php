@@ -45,7 +45,11 @@ class Perjalanan_dinas_model extends CI_Model {
                 . "from perjalanan_dinas pd, "
                 . "(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja "
                 . "from anggaran a, kegiatan k, akun ak "
-                . "where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 "
+                . "where ak.id = a.id_akun and a.id_kegiatan = k.id ";
+        if (!empty($param['kode_unit'])) {
+            $query = $query . " and k.id_unit = " . $param['kode_unit'] . " ";
+        }
+        $query = $query . ") as a1 "
                 . "where pd.id_anggaran = a1.id "
                 . "and pd.status = " . $param['status'] . " ";
 
@@ -53,11 +57,8 @@ class Perjalanan_dinas_model extends CI_Model {
         if (!empty($param['status_penolakan'])) {
             $query = $query . " and pd.status_penolakan = " . $param['status_penolakan'] . " ";
         }
-
-        if (!empty($param['kode_unit'])) {
-            $query = $query . " and pd.kode_unit = " . $param['kode_unit'] . " ";
-        }
-       // print_r($query);
+        
+        // print_r($query);
 
         $query = $query . " order by tanggal_approval";
         return $this->db->query($query);
