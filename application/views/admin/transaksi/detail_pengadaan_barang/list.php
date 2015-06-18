@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <th width="5%"> No </th>
-                    <th> Nama Pegawai</th>
+                    <th> Nama Barang</th>
                     <th> Jumlah Uang Muka</th>
                     <th class="td-actions"> </th>
                 </tr>
@@ -20,7 +20,7 @@
                 foreach ($list_detail_pengadaan_barang as $row) {
                     echo "<tr>"
                     . "<td align=\"center\">" . $no . "</td>"
-                    . "<td>" . $row->nama_barang . " </td>"
+                    . "<td>" . $row->nama_barang.' - '.$row->merek_barang.' - '.$row->spesifikasi. " </td>"
                     . "<td align=\"right\">" . number_format($row->jumlah) . "</td>"
                     . "<td class=\"td-actions\">";
                     ?>
