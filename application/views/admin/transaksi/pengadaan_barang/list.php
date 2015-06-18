@@ -1,7 +1,7 @@
 
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>List Data Uang Muka Perjalanan Dinas</h3>
+        <h3>List Data Uang Muka Pengajuan Barang</h3>
         <span class="pull-right" style="margin-right: 10px;">
             <a href="<?php echo site_url('transaksi/pengadaan_barang/add') ?>" role="button" class="btn">Tambah Uang Pengadaan Barang</a>
         </span>
@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th width="5%"> No</th>
-                    <th width="15%"> No SPT</th>
+                    <th width="15%"> No Pengajuan</th>
                     <th width="20%"> Penerima</th>
                     <th width="30%"> Deskripsi</th>
                     <th width="10%"> Jumlah Uang Muka</th>

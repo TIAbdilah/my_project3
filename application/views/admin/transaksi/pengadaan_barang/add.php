@@ -1,16 +1,16 @@
 
 <div class="widget widget-table action-table">
     <div class="widget-header"> <i class="icon-th-list"></i>
-        <h3>Add Data</h3>
+        <h3>Add Data Pengajuan Uang Muka Barang</h3>
     </div>
     <!-- /widget-header -->
     <div class="widget-content"><br>
         <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/pengadaan_barang/process/add') ?>" method="POST">
             <div class="control-group">
-                <label class="control-label" for="inpHeader">No. SPT</label>
+                <label class="control-label" for="inpHeader">No. Pengajuan</label>
                 <div class="controls">
                     <select class="input-xlarge" name="inpIdHeader">
-                        <option>Pilih No. SPT</option>
+                        <option>Pilih No. Pengajuan</option>
                         <?php
                         foreach ($SIList_pengajuanbarang as $row) {
                             if ($row->id_unit == $this->session->userdata('kode_unit')) {

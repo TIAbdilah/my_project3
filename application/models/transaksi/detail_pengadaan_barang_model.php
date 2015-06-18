@@ -26,6 +26,8 @@ class Detail_pengadaan_barang_model extends CI_Model {
     public function select_by_field($param = array()) {
         $sql = "select d.id_barang "
                 . ", (select p.nama_barang from barang p where p.id= d.id_barang) as nama_barang "
+                . ", (select p.merek_barang from barang p where p.id= d.id_barang) as merek_barang "
+                . ", (select p.spesifikasi from barang p where p.id= d.id_barang) as spesifikasi "
                 . ", (select dpj.jumlah from detail_pengadaan_barang dpj where dpj.id_barang = d.id_barang) as jumlah "
                 . "from detail_pengajuan_barang d "
                 . "where 1 = 1 ";

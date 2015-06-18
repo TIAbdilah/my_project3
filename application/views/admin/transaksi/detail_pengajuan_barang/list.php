@@ -30,7 +30,7 @@
 
                     echo "<tr>"
                     . "<td>" . $no . "</td>"
-                    . "<td>" . $row->nama_barang . "</td>"
+                    . "<td>" . $row->nama_barang.' - '.$row->merek_barang.' - '.$row->spesifikasi. " </td>"
                     . "<td>" . number_format($row->jumlah) . "</td>"
                     . "<td>" . $row->satuan . "</td>"
                     . "<td>" . number_format($row->pagu_harga) . "</td>"

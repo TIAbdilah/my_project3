@@ -43,7 +43,11 @@ class Pengajuan_honorarium_model extends CI_Model {
                 . 'from pengajuan_honorarium pd, '
                 . '(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja '
                 . 'from anggaran a, kegiatan k, akun ak '
-                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
+                . 'where ak.id = a.id_akun and a.id_kegiatan = k.id ';
+        if (!empty($param2['kode_unit'])) {
+            $query = $query . " and k.id_unit = " . $param2['kode_unit'] . " ";
+        }
+        $query = $query . ') as a1 '
                 . 'where pd.id_anggaran = a1.id '
                 . 'and pd.status_approval =' . $param2['status_approval'];
         if (!empty($param2['status_penolakan'])) {

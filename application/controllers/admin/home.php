@@ -27,13 +27,11 @@ class Home extends CI_Controller {
         $role = $this->session->userdata('role');
 
         $array_custom = new Array_custom();
-        // if($this->session->userdata('role') == 'publik'){
-
-        // } else {
-        //     $data['list_data'] = $this->perjalanan_dinas_model->select_all()->result();
-        //     $data['list_data_barang'] = $this->pengajuan_barang_model->select_all()->result();
-        //     $data['list_data_honorarium'] = $this->pengajuan_honorarium_model->select_all()->result();            
-        // }
+if ($role == 'ppk' || $role == 'assisten satker' || $role == 'super admin') {
+            $data['page'] = 'admin/master/tasklist/list';
+        } else {
+            $data['page'] = 'admin/master/tasklist/list_filter';
+        }
         if($this->session->userdata('role') == 'publik'){
             // print_r("publik list");
             $data['page'] = 'admin/master/tasklist/list_publik';
@@ -46,10 +44,11 @@ class Home extends CI_Controller {
             $data['list_data'] = $this->perjalanan_dinas_model->select_by_field(array('status' => $array_custom->int_role[$role]))->result();
             $data['list_data_barang'] = $this->pengajuan_barang_model->select_by_field(array('status_approval' => $array_custom->int_role[$role]))->result();
             $data['list_data_honorarium'] = $this->pengajuan_honorarium_model->select_by_field(array('status_approval' => $array_custom->int_role[$role]))->result();
-        }
-        $data['status'] = $array_custom->status;
+        }        $data['status'] = $array_custom->status;
         $data['status_penolakan'] = $array_custom->status_penolakan;
         $data['status_approval'] = $array_custom->status;
+if($this->session->userdata('role') != 'publik'){        
+$data['cek_perjalanan_dinas_ditolak'] = $this->perjalanan_dinas_model->select_by_field(array('status' => $array_custom->int_role[$role], 'status_penolakan' => '1', 'kode_unit' => $this->session->userdata('kode_unit')))->result();
         if($this->session->userdata('role') != 'publik'){
             // print_r("bukan publik");
             $data['cek_perjalanan_dinas_ditolak'] = $this->perjalanan_dinas_model->select_by_field(array('status' => $array_custom->int_role[$role], 'status_penolakan' => '1', 'kode_unit' => $this->session->userdata('kode_unit')))->result();
@@ -65,7 +64,6 @@ class Home extends CI_Controller {
             } else {
                 $data['barang_ditolak'] = false;
             }
-
             $data['cek_honorarium_ditolak'] = $this->pengajuan_honorarium_model->select_by_field(array('status_approval' => $array_custom->int_role[$role], 'status_penolakan' => '1', 'kode_unit' => $this->session->userdata('kode_unit')))->result();
             if (!empty($data['cek_honorarium_ditolak'])) {
                 $data['honorarium_ditolak'] = true;
