@@ -30,7 +30,11 @@ class Home extends CI_Controller {
         $data['list_data'] = $this->perjalanan_dinas_model->select_by_field(array('status' => $array_custom->int_role[$role]))->result();
         $data['list_data_barang'] = $this->pengajuan_barang_model->select_by_field(array('status_approval' => $array_custom->int_role[$role]))->result();
         $data['list_data_honorarium'] = $this->pengajuan_honorarium_model->select_by_field(array('status_approval' => $array_custom->int_role[$role]))->result();
-        $data['page'] = 'admin/master/tasklist/list';
+        if ($role == 'ppk' || $role == 'assisten satker' || $role == 'super admin') {
+            $data['page'] = 'admin/master/tasklist/list';
+        } else {
+            $data['page'] = 'admin/master/tasklist/list_filter';
+        }
         $data['status'] = $array_custom->status;
         $data['status_penolakan'] = $array_custom->status_penolakan;
         $data['status_approval'] = $array_custom->status;

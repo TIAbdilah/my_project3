@@ -50,11 +50,11 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="<?php echo base_url() ?>transaksi/perjalanan_dinas">Perjalanan Dinas</a></li>
-                            <li><a href="<?php echo base_url() ?>transaksi/panjar">Uang Muka Perjalanan Dinas</a></li>                        
-                            <!--<li><a href="<?php echo base_url() ?>transaksi/bukti_perjalanan_dinas">Bukti Perjalanan Dinas</a></li>-->
-                            <!--<li><a href="<?php echo base_url() ?>transaksi/pengeluaran_riil">Pengeluaran Riil</a></li>-->
+                            <li><a href="<?php echo base_url() ?>transaksi/panjar">Uang Muka Perjalanan Dinas</a></li>  
+                            <li class="divider"></li>
                             <li><a href="<?php echo base_url() ?>transaksi/pengajuan_barang">Barang</a></li>
                             <li><a href="<?php echo base_url() ?>transaksi/pengadaan_barang">Uang Pengadaan Barang</a></li>
+                            <li class="divider"></li>
                             <li><a href="<?php echo base_url() ?>transaksi/pengajuan_honorarium">Honorarium</a></li>
                         </ul>
                     </li>
@@ -74,6 +74,7 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="<?php echo site_url('common/import_anggaran') ?>">Import Anggaran</a></li>         
+                            <li><a href="<?php echo site_url('master/listcode') ?>">List Code</a></li>    
                             <li><a href="<?php echo site_url('master/users') ?>">Pengguna</a></li>         
                             <li><a href="<?php echo site_url('master/role') ?>">Role</a></li> 
                         </ul>

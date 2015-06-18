@@ -16,7 +16,10 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_all() {
-        $query = "select a1.*, pd.*  "
+        $query = "select a1.*, pd.*,  "
+                . '(select k1.nama_kota from kota_tujuan k1 where k1.id = pd.kota_tujuan_1) as nama_kota_tujuan_1, '
+                . '(select k2.nama_kota from kota_tujuan k2 where k2.id = pd.kota_tujuan_2) as nama_kota_tujuan_2, '
+                . '(select k3.nama_kota from kota_tujuan k3 where k3.id = pd.kota_tujuan_3) as nama_kota_tujuan_3 '                
                 . "from perjalanan_dinas pd, "
                 . "(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja "
                 . "from anggaran a, kegiatan k, akun ak "
@@ -41,7 +44,10 @@ class Perjalanan_dinas_model extends CI_Model {
     }
 
     public function select_by_field($param = array()) {
-        $query = "select a1.*, pd.*  "
+        $query = "select a1.*, pd.*, "
+                . '(select k1.nama_kota from kota_tujuan k1 where k1.id = pd.kota_tujuan_1) as nama_kota_tujuan_1, '
+                . '(select k2.nama_kota from kota_tujuan k2 where k2.id = pd.kota_tujuan_2) as nama_kota_tujuan_2, '
+                . '(select k3.nama_kota from kota_tujuan k3 where k3.id = pd.kota_tujuan_3) as nama_kota_tujuan_3 '
                 . "from perjalanan_dinas pd, "
                 . "(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja "
                 . "from anggaran a, kegiatan k, akun ak "
