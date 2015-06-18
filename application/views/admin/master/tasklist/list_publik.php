@@ -76,7 +76,6 @@
                         <?php
                         $no = 1;
                         foreach ($list_data_barang as $row) {
-                            if ($row->id_unit == $this->session->userdata('kode_unit')) {
                                 echo "<tr>"
                                 . "<td>" . $no . "</td>"
                                 . "<td>" . $row->nomor_pengajuan . " </td>"
@@ -100,7 +99,7 @@
                                 . "</tr>";
                                 $no++;
                             }
-                        }
+                        
                         ?>
                     </tbody>
                 </table>
