@@ -73,7 +73,9 @@ class Pegawai_model extends CI_Model {
     public function select_pegawai_tidak_perjadin($param = array()) {
         $this->db->select('*');
         $this->db->from('pegawai');
+        if(!empty($param)){
         $this->db->where_not_in('nama', $param);
+        }
         $this->db->order_by('nama');
         return $this->db->get();
     }

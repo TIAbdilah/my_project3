@@ -32,7 +32,7 @@ class Perjalanan_dinas_model extends CI_Model {
                 . '(select k2.nama_kota from kota_tujuan k2 where k2.id = pd.kota_tujuan_2) as nama_kota_tujuan_2, '
                 . '(select k3.nama_kota from kota_tujuan k3 where k3.id = pd.kota_tujuan_3) as nama_kota_tujuan_3 '
                 . 'from perjalanan_dinas pd, '
-                . '(select a.id, k.nama_kegiatan, ak.jenis_belanja, k.kode_kegiatan, ak.kode_akun '
+                . '(select a.id, k.nama_kegiatan, k.id_unit, ak.jenis_belanja, k.kode_kegiatan, ak.kode_akun '
                 . 'from anggaran a, kegiatan k, akun ak '
                 . 'where ak.id = a.id_akun and a.id_kegiatan = k.id) as a1 '
                 . 'where pd.id_anggaran = a1.id '
@@ -55,7 +55,7 @@ class Perjalanan_dinas_model extends CI_Model {
         }
 
         if (!empty($param['kode_unit'])) {
-            $query = $query . " and pd.kode_unit = " . $param['kode_unit'] . " ";
+            $query = $query . " and a1.id_unit = " . $this->session->userdata('kode_unit') . " ";
         }
        // print_r($query);
 
@@ -80,8 +80,7 @@ class Perjalanan_dinas_model extends CI_Model {
             'kota_tujuan_1' => $data['kota_tujuan_1'],
             'kota_tujuan_2' => $data['kota_tujuan_2'],
             'kota_tujuan_3' => $data['kota_tujuan_3'],
-            'status_penolakan' => 0,
-            'kode_unit' => $data['kode_unit']
+            'status_penolakan' => 0
         );
         $this->db->insert('perjalanan_dinas', $data);
     }

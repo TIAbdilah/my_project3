@@ -49,8 +49,8 @@ class Pengajuan_honorarium_model extends CI_Model {
         if (!empty($param2['status_penolakan'])) {
             $query = $query . " and pd.status_penolakan = " . $param2['status_penolakan'] . " ";
         }
-         if (!empty($param2['kode_unit'])) {
-            $query = $query . " and pd.kode_unit = " . $param2['kode_unit'] . " ";
+        if (!empty($param2['kode_unit'])) {
+            $query = $query . " and a1.id_unit = " . $this->session->userdata('kode_unit') . " ";
         }
         return $this->db->query($query);
     }
@@ -60,7 +60,6 @@ class Pengajuan_honorarium_model extends CI_Model {
             'id_anggaran' => $data['id_anggaran'],
             'kegiatan' => $data['kegiatan'],
             'acara' => $data['acara'],
-            'kode_unit' => $data['kode_unit'],
             'periode_pembayaran' => $this->format_date_to_sql($data['periode_pembayaran']),
             'status_penolakan' => 0
         );

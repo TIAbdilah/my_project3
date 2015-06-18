@@ -122,7 +122,6 @@ class Pengajuan_barang extends CI_Controller {
         $data['maksud_kegiatan'] = $this->input->post('inMaksudKegiatan');
         $data['tanggal_pengajuan'] = $this->input->post('inTanggalPengajuan');
         $data['kode_jenis_barang'] = $this->input->post('inKodeJenisBarang');
-        $data['kode_unit'] = $this->session->userdata('kode_unit');
         $data['nomor_pengajuan'] = '-';
         $data['status_approval'] = '0';
         if ($action == 'add') {

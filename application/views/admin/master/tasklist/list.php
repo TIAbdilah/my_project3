@@ -1,3 +1,4 @@
+
 <?php if ($perjalanan_dinas_ditolak) { ?>
     <div class="alert alert-danger" role="alert" align="center"><B>ADA PENGAJUAN PERJALANAN DINAS YANG DITOLAK</B></div>
 <?php } ?>

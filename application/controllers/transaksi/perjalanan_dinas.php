@@ -129,7 +129,6 @@ class Perjalanan_dinas extends CI_Controller {
         $data['id_anggaran'] = $this->input->post('inpIdAnggaran');
         $data['jumlah_tujuan'] = $this->input->post('inpJumlahTujuan');
         $data['maksud_perjalanan'] = $this->input->post('inpMaksudPerjalanan');
-        $data['kode_unit'] = $this->session->userdata('kode_unit');
         if ($this->input->post('inDiklat') == 'Ya') {
             $data['status_diklat'] = '1';
         } else {
@@ -227,7 +226,6 @@ class Perjalanan_dinas extends CI_Controller {
 public function marking_list_perjadin($tgl_berangkat, $tgl_pulang) {
 
     $list_data = $this->pegawai_model->select_pegawai_sedang_perjadin()->result();
-
     $i_ar = 0;
     $arr_peg = array();
     foreach ($list_data as $data) {
@@ -255,7 +253,7 @@ public function marking_list_perjadin($tgl_berangkat, $tgl_pulang) {
     }
 }
 
-//        print_r($arr_peg);
+       // print_r($arr_peg);
 return $arr_peg;
 }
 

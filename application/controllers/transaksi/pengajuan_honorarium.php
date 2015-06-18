@@ -95,7 +95,6 @@ class Pengajuan_honorarium extends CI_Controller {
         $data['kegiatan'] = $this->input->post('inNamaKegiatan');
         $data['acara'] = $this->input->post('inAcara');
         $data['periode_pembayaran'] = $this->input->post('inPeriodePembayaran');
-        $data['kode_unit'] = $this->session->userdata('kode_unit');
         $data['nomor_pengajuan'] = '-';
         $data['status_approval'] = '0';
         if ($action == 'add') {
