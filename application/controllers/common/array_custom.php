@@ -17,7 +17,8 @@ class Array_custom extends CI_Controller {
         'esselon 3' => 2,
         'asisten satker' => 3,
         'ppk' => 4,
-        'super admin' => 7
+        'super admin' => 7,
+        'publik' => 8
     );
     var $kode_role = array(
         1 => 'OPR',
@@ -25,7 +26,8 @@ class Array_custom extends CI_Controller {
         3 => 'ES3',
         4 => 'AST',
         5 => 'PPK',
-        7 => 'SA'
+        7 => 'SA',
+        8 => 'PBK',
     );
     var $status = array(
         '0' => 'baru dibuat',

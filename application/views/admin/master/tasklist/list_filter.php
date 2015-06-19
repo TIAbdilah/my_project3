@@ -27,10 +27,11 @@
                         <tr>
                             <th width="5%"> No</th>
                             <th width="15%"> No SPT</th>
-                            <th width="25%"> Maksud</th>                    
+                            <th width="20%"> Maksud</th>                    
                             <th width="15%"> Kota Tujuan</th>
                             <th width="15%"> Tanggal</th>
-                            <th width="10%"> Status</th>
+                            <th width="7%"> Status</th>
+                            <th width="8%"> Status Penolakan</th>
                             <th width="15%" class="td-actions">&nbsp;</th>
                         </tr>
                     </thead>
@@ -58,8 +59,9 @@
                                 if ($row->jadwal_pulang_3 != '0000-00-00' && $row->jadwal_pulang_3 != null) {
                                     $pul = $row->jadwal_pulang_3;
                                 }
-                                echo "<td>" . $ber . " - " . $pul . "</td>"
+                                echo "<td class=\"dt-center\">" . $format_date->format_date_dmy($ber) . " - " . $format_date->format_date_dmy($pul) . "</td>"
                                 . "<td>" . $status_approval[$row->status] . "</td>"
+                                . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";
                                 if ($row->status == 5 && $this->session->userdata('role') == 'operator') {
                                     echo "<a title=\"Report (Surat Perintah Tugas)\" href=\"" . site_url('report/surat_perintah_tugas/view/' . $row->id) . "\" class=\"btn btn-mini btn-info\"><i class=\"btn-icon-only icon-print\"></i></a>";
@@ -102,7 +104,7 @@
                                 . "<td>" . $row->nomor_pengajuan . " </td>"
                                 . "<td>" . $row->nama_kegiatan . "</td>"
                                 . "<td>" . $row->maksud_kegiatan . "</td>"
-                                . "<td>" . $row->tanggal_pengajuan . "</td>"
+                                . "<td class=\"dt-center\">" . $format_date->format_date_dmy($row->tanggal_pengajuan) . "</td>"
                                 . "<td>" . $status[$row->status_approval] . "</td>"
                                 . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";
@@ -149,7 +151,7 @@
                                 . "<td>" . $row->nomor_pengajuan . " </td>"
                                 . "<td>" . $row->nama_kegiatan . "</td>"
                                 . "<td>" . $row->kegiatan . "</td>"
-                                . "<td>" . $row->periode_pembayaran . "</td>"
+                                . "<td class=\"dt-center\">" . $format_date->format_date_dmy($row->periode_pembayaran) . "</td>"
                                 . "<td>" . $status[$row->status_approval] . "</td>"
                                 . "<td>" . $status_penolakan[$row->status_penolakan] . "</td>"
                                 . "<td class=\"td-actions\">";

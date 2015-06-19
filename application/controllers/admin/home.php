@@ -10,6 +10,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 require_once(APPPATH . 'controllers/common/array_custom.php');
+require_once(APPPATH . 'controllers/common/format_date.php');
 
 class Home extends CI_Controller {
 
@@ -48,6 +49,7 @@ class Home extends CI_Controller {
         $data['status'] = $array_custom->status;
         $data['status_penolakan'] = $array_custom->status_penolakan;
         $data['status_approval'] = $array_custom->status;
+        $data['format_date'] = new Format_date();
 
         if($this->session->userdata('role') != 'publik'){
             // print_r("bukan publik");
