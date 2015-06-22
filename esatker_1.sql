@@ -1,13 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 15, 2015 at 11:54 AM
--- Server version: 5.1.37
--- PHP Version: 5.3.0
+-- Host: 127.0.0.1
+-- Generation Time: Jun 22, 2015 at 06:42 AM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `esatker_1`
@@ -20,11 +27,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `akun` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kode_akun` int(11) DEFAULT NULL,
-  `jenis_belanja` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+  `jenis_belanja` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `akun`
@@ -79,13 +85,12 @@ INSERT INTO `akun` (`id`, `kode_akun`, `jenis_belanja`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `anggaran` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_kegiatan` varchar(25) NOT NULL,
   `id_akun` varchar(50) NOT NULL,
   `pagu` int(15) NOT NULL,
-  `tahun_anggaran` year(4) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=468 ;
+  `tahun_anggaran` year(4) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=468 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `anggaran`
@@ -567,7 +572,7 @@ INSERT INTO `anggaran` (`id`, `id_kegiatan`, `id_akun`, `pagu`, `tahun_anggaran`
 --
 
 CREATE TABLE IF NOT EXISTS `barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kode_barang` varchar(25) NOT NULL,
   `nama_barang` varchar(50) NOT NULL,
   `satuan` varchar(10) NOT NULL,
@@ -575,9 +580,8 @@ CREATE TABLE IF NOT EXISTS `barang` (
   `kode_jenis_barang` varchar(100) NOT NULL,
   `tipe_barang` varchar(25) DEFAULT NULL,
   `merek_barang` varchar(25) DEFAULT NULL,
-  `spesifikasi` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+  `spesifikasi` text
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `barang`
@@ -649,12 +653,11 @@ INSERT INTO `barang` (`id`, `kode_barang`, `nama_barang`, `satuan`, `pagu_harga`
 --
 
 CREATE TABLE IF NOT EXISTS `biaya_akomodasi` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nama_kota` varchar(25) DEFAULT NULL,
   `status_pegawai` varchar(25) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=137 ;
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=137 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `biaya_akomodasi`
@@ -805,11 +808,10 @@ INSERT INTO `biaya_akomodasi` (`id`, `nama_kota`, `status_pegawai`, `biaya`) VAL
 --
 
 CREATE TABLE IF NOT EXISTS `biaya_diklat` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nama_provinsi` varchar(25) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `biaya_diklat`
@@ -858,11 +860,10 @@ INSERT INTO `biaya_diklat` (`id`, `nama_provinsi`, `biaya`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `biaya_narasumber` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `jabatan` varchar(50) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `biaya_narasumber`
@@ -888,12 +889,11 @@ INSERT INTO `biaya_narasumber` (`id`, `jabatan`, `biaya`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `biaya_penginapan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nama_kota` varchar(25) NOT NULL,
   `golongan` varchar(25) DEFAULT NULL,
-  `biaya` int(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=273 ;
+  `biaya` int(20) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=273 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `biaya_penginapan`
@@ -1180,12 +1180,11 @@ INSERT INTO `biaya_penginapan` (`id`, `nama_kota`, `golongan`, `biaya`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `biaya_representatif` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nama_kota` varchar(25) DEFAULT NULL,
   `tingkat` varchar(25) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `biaya_representatif`
@@ -1205,12 +1204,11 @@ INSERT INTO `biaya_representatif` (`id`, `nama_kota`, `tingkat`, `biaya`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `biaya_sewa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
   `nama_kota` varchar(25) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=103 ;
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `biaya_sewa`
@@ -1327,13 +1325,12 @@ INSERT INTO `biaya_sewa` (`id`, `jenis_kendaraan`, `nama_kota`, `biaya`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `biaya_tiket` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kota_asal` varchar(25) DEFAULT NULL,
   `kota_tujuan` varchar(25) DEFAULT NULL,
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `biaya_tiket`
@@ -1373,8 +1370,7 @@ INSERT INTO `biaya_tiket` (`id`, `kota_asal`, `kota_tujuan`, `jenis_kendaraan`, 
 CREATE TABLE IF NOT EXISTS `biaya_transport_dlm_kota` (
   `id` int(11) NOT NULL,
   `nama_kota` varchar(25) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `biaya` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -1391,7 +1387,7 @@ INSERT INTO `biaya_transport_dlm_kota` (`id`, `nama_kota`, `biaya`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `bukti_perjalanan_dinas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_pegawai` int(11) NOT NULL,
   `id_header` int(11) NOT NULL,
   `tgl_entri_bukti` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -1399,301 +1395,300 @@ CREATE TABLE IF NOT EXISTS `bukti_perjalanan_dinas` (
   `biaya` int(11) DEFAULT NULL,
   `nomor_bukti` text,
   `jumlah_bukti` int(20) DEFAULT NULL,
-  `kota_tujuan` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=537 ;
+  `kota_tujuan` varchar(25) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=537 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bukti_perjalanan_dinas`
 --
 
 INSERT INTO `bukti_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_entri_bukti`, `jenis_biaya`, `biaya`, `nomor_bukti`, `jumlah_bukti`, `kota_tujuan`) VALUES
-(224, 10, 12, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Banda Aceh'),
-(223, 10, 12, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Banda Aceh'),
-(222, 10, 12, '2015-05-25 02:17:58', 'riil_2', 0, 'sdfds', 200000, 'Banda Aceh'),
-(221, 10, 12, '2015-05-25 02:17:58', 'riil', 400000, 'riil', 200000, 'Banda Aceh'),
-(220, 10, 12, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Banda Aceh'),
-(219, 10, 12, '2015-05-25 02:17:58', 'transport_pendukung', 300000, 'dfs', 300000, 'Banda Aceh'),
-(218, 10, 12, '2015-05-25 02:17:58', 'transport_utama', 1500000, 'dsf', 1500000, 'Banda Aceh'),
-(217, 10, 12, '2015-05-25 02:17:58', 'penginapan', 1230000, 'sfds', 1230000, 'Banda Aceh'),
-(215, 10, 12, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Bandung'),
-(216, 10, 12, '2015-05-25 02:17:58', 'harian', 1440000, 'dsf', 1440000, 'Banda Aceh'),
-(214, 10, 12, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Bandung'),
-(213, 10, 12, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Bandung'),
-(212, 10, 12, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Bandung'),
-(211, 10, 12, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Bandung'),
-(210, 10, 12, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Bandung'),
-(209, 10, 12, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Bandung'),
-(208, 10, 12, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Bandung'),
-(207, 10, 12, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Bandung'),
-(206, 10, 12, '2015-05-25 02:17:58', 'riil', 0, '', 0, 'Bandung'),
-(205, 10, 12, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Bandung'),
-(204, 10, 12, '2015-05-25 02:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
-(203, 10, 12, '2015-05-25 02:17:58', 'transport_utama_2', 0, '0', 0, 'Bandung'),
-(202, 10, 12, '2015-05-25 02:17:58', 'transport_utama', 175000, 'trans', 175000, 'Bandung'),
-(201, 10, 12, '2015-05-25 02:17:58', 'penginapan', 0, '', 0, 'Bandung'),
-(200, 10, 12, '2015-05-25 02:17:58', 'harian', 0, '', 0, 'Bandung'),
-(225, 10, 12, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Banda Aceh'),
-(226, 10, 12, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Banda Aceh'),
-(227, 10, 12, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Banda Aceh'),
-(228, 10, 12, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Banda Aceh'),
-(229, 10, 12, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Banda Aceh'),
-(230, 10, 12, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Banda Aceh'),
-(231, 40, 18, '2015-05-25 02:17:58', 'harian', 960000, '1', 960000, 'Denpasar'),
-(232, 40, 18, '2015-05-25 02:17:58', 'penginapan', 904000, '121212', 904000, 'Denpasar'),
-(233, 40, 18, '2015-05-25 02:17:58', 'transport_utama', 300000, '1212', 300000, 'Denpasar'),
-(234, 40, 18, '2015-05-25 02:17:58', 'transport_pendukung', 120000, '12121', 120000, 'Denpasar'),
-(235, 40, 18, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Denpasar'),
-(236, 40, 18, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Denpasar'),
-(237, 40, 18, '2015-05-25 02:17:58', 'diklat', 380000, '12121212', 300000, 'Denpasar'),
-(238, 40, 18, '2015-05-25 02:17:58', 'riil', 220000, 'asdasdsadasdad', 120000, 'Denpasar'),
-(239, 40, 18, '2015-05-25 02:17:58', 'riil_2', 0, 'sdsdsdsd', 50000, 'Denpasar'),
-(240, 40, 18, '2015-05-25 02:17:58', 'riil_3', 0, 'dddddddd', 50000, 'Denpasar'),
-(241, 40, 18, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
-(242, 40, 18, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
-(243, 40, 18, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
-(244, 40, 18, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
-(245, 40, 18, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
-(246, 40, 18, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
-(247, 40, 18, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
-(248, 40, 18, '2015-05-25 02:17:58', 'harian', 0, '', 0, 'Bandung'),
-(249, 40, 18, '2015-05-25 02:17:58', 'penginapan', 0, '', 0, 'Bandung'),
-(250, 40, 18, '2015-05-25 02:17:58', 'transport_utama', 300000, '1213231', 300000, 'Bandung'),
-(251, 40, 18, '2015-05-25 02:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
-(252, 40, 18, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Bandung'),
-(253, 40, 18, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Bandung'),
-(254, 40, 18, '2015-05-25 02:17:58', 'diklat', 0, '', 0, 'Bandung'),
-(255, 40, 18, '2015-05-25 02:17:58', 'riil', 0, '', 0, 'Bandung'),
-(256, 40, 18, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Bandung'),
-(257, 40, 18, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Bandung'),
-(258, 40, 18, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Bandung'),
-(259, 40, 18, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Bandung'),
-(260, 40, 18, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Bandung'),
-(261, 40, 18, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Bandung'),
-(262, 40, 18, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Bandung'),
-(263, 40, 18, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Bandung'),
-(264, 40, 18, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Bandung'),
-(265, 170, 19, '2015-05-25 02:17:58', 'harian', 820000, '1', 820000, 'Pangkal Pinang'),
-(266, 170, 19, '2015-05-25 02:17:58', 'penginapan', 304000, '2', 304000, 'Pangkal Pinang'),
-(267, 170, 19, '2015-05-25 02:17:58', 'transport_utama', 175000, '3', 175000, 'Pangkal Pinang'),
-(268, 170, 19, '2015-05-25 02:17:58', 'transport_pendukung', 200000, '4', 200000, 'Pangkal Pinang'),
-(269, 170, 19, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Pangkal Pinang'),
-(270, 170, 19, '2015-05-25 02:17:58', 'sewa', 200000, '6', 200000, 'Pangkal Pinang'),
-(271, 170, 19, '2015-05-25 02:17:58', 'diklat', 320000, '5', 320000, 'Pangkal Pinang'),
-(272, 170, 19, '2015-05-25 02:17:58', 'riil', 200000, '7', 100000, 'Pangkal Pinang'),
-(273, 170, 19, '2015-05-25 02:17:58', 'riil_2', 0, '8', 100000, 'Pangkal Pinang'),
-(274, 170, 19, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Pangkal Pinang'),
-(275, 170, 19, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Pangkal Pinang'),
-(276, 170, 19, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Pangkal Pinang'),
-(277, 170, 19, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Pangkal Pinang'),
-(278, 170, 19, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Pangkal Pinang'),
-(279, 170, 19, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Pangkal Pinang'),
-(280, 170, 19, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Pangkal Pinang'),
-(281, 170, 19, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Pangkal Pinang'),
-(282, 170, 19, '2015-05-25 02:17:58', 'harian', 720000, '2', 720000, 'Banda Aceh'),
-(283, 170, 19, '2015-05-25 02:17:58', 'penginapan', 370000, '3', 370000, 'Banda Aceh'),
-(284, 170, 19, '2015-05-25 02:17:58', 'transport_utama', 300000, '4', 300000, 'Banda Aceh'),
-(285, 170, 19, '2015-05-25 02:17:58', 'transport_pendukung', 100000, '4', 100000, 'Banda Aceh'),
-(286, 170, 19, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Banda Aceh'),
-(287, 170, 19, '2015-05-25 02:17:58', 'sewa', 200000, '6', 200000, 'Banda Aceh'),
-(288, 170, 19, '2015-05-25 02:17:58', 'diklat', 280000, '5', 280000, 'Banda Aceh'),
-(289, 170, 19, '2015-05-25 02:17:58', 'riil', 100000, '9', 100000, 'Banda Aceh'),
-(290, 170, 19, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Banda Aceh'),
-(291, 170, 19, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Banda Aceh'),
-(292, 170, 19, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Banda Aceh'),
-(293, 170, 19, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Banda Aceh'),
-(294, 170, 19, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Banda Aceh'),
-(295, 170, 19, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Banda Aceh'),
-(296, 170, 19, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Banda Aceh'),
-(297, 170, 19, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Banda Aceh'),
-(298, 170, 19, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Banda Aceh'),
-(299, 170, 19, '2015-05-25 02:17:58', 'harian', 0, '', 0, 'Bandung'),
-(300, 170, 19, '2015-05-25 02:17:58', 'penginapan', 0, '', 0, 'Bandung'),
-(301, 170, 19, '2015-05-25 02:17:58', 'transport_utama', 175000, '1', 175000, 'Bandung'),
-(302, 170, 19, '2015-05-25 02:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
-(303, 170, 19, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Bandung'),
-(304, 170, 19, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Bandung'),
-(305, 170, 19, '2015-05-25 02:17:58', 'diklat', 0, '', 0, 'Bandung'),
-(306, 170, 19, '2015-05-25 02:17:58', 'riil', 0, '', 0, 'Bandung'),
-(307, 170, 19, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Bandung'),
-(308, 170, 19, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Bandung'),
-(309, 170, 19, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Bandung'),
-(310, 170, 19, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Bandung'),
-(311, 170, 19, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Bandung'),
-(312, 170, 19, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Bandung'),
-(313, 170, 19, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Bandung'),
-(314, 170, 19, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Bandung'),
-(315, 170, 19, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Bandung'),
-(433, 163, 20, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
-(432, 163, 20, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
-(431, 163, 20, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
-(430, 163, 20, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
-(429, 163, 20, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
-(426, 163, 20, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Denpasar'),
-(427, 163, 20, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Denpasar'),
-(428, 163, 20, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
-(425, 163, 20, '2015-05-25 02:17:58', 'riil', 100000, '', 0, 'Denpasar'),
-(424, 163, 20, '2015-05-25 02:17:58', 'diklat', 380000, '', 380000, 'Denpasar'),
-(423, 163, 20, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Denpasar'),
-(422, 163, 20, '2015-05-25 02:17:58', 'representatif', 300000, '', 300000, 'Denpasar'),
-(333, 163, 20, '2015-05-25 02:17:58', 'harian', 820000, '1', 820000, 'Pangkal Pinang'),
-(334, 163, 20, '2015-05-25 02:17:58', 'penginapan', 850000, '2', 850000, 'Pangkal Pinang'),
-(335, 163, 20, '2015-05-25 02:17:58', 'transport_utama', 1500000, '3', 1500000, 'Pangkal Pinang'),
-(336, 163, 20, '2015-05-25 02:17:58', 'transport_pendukung', 100000, '4', 100000, 'Pangkal Pinang'),
-(337, 163, 20, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Pangkal Pinang'),
-(338, 163, 20, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Pangkal Pinang'),
-(339, 163, 20, '2015-05-25 02:17:58', 'diklat', 320000, '32', 320000, 'Pangkal Pinang'),
-(340, 163, 20, '2015-05-25 02:17:58', 'riil', 100000, 'test', 100000, 'Pangkal Pinang'),
-(341, 163, 20, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Pangkal Pinang'),
-(342, 163, 20, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Pangkal Pinang'),
-(343, 163, 20, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Pangkal Pinang'),
-(344, 163, 20, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Pangkal Pinang'),
-(345, 163, 20, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Pangkal Pinang'),
-(346, 163, 20, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Pangkal Pinang'),
-(347, 163, 20, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Pangkal Pinang'),
-(348, 163, 20, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Pangkal Pinang'),
-(349, 163, 20, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Pangkal Pinang'),
-(350, 163, 20, '2015-05-25 02:17:58', 'harian', 1060000, '12', 1060000, 'Jakarta'),
-(351, 163, 20, '2015-05-25 02:17:58', 'penginapan', 800000, '12', 800000, 'Jakarta'),
-(352, 163, 20, '2015-05-25 02:17:58', 'transport_utama', 200000, '12', 200000, 'Jakarta'),
-(353, 163, 20, '2015-05-25 02:17:58', 'transport_pendukung', 100000, '12', 100000, 'Jakarta'),
-(354, 163, 20, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Jakarta'),
-(355, 163, 20, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Jakarta'),
-(356, 163, 20, '2015-05-25 02:17:58', 'diklat', 420000, '12', 420000, 'Jakarta'),
-(357, 163, 20, '2015-05-25 02:17:58', 'riil', 100000, '12', 100000, 'Jakarta'),
-(358, 163, 20, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Jakarta'),
-(359, 163, 20, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Jakarta'),
-(360, 163, 20, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Jakarta'),
-(361, 163, 20, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Jakarta'),
-(362, 163, 20, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Jakarta'),
-(363, 163, 20, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Jakarta'),
-(364, 163, 20, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Jakarta'),
-(365, 163, 20, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Jakarta'),
-(366, 163, 20, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Jakarta'),
-(367, 163, 20, '2015-05-25 02:17:58', 'harian', 0, '', 0, 'Bandung'),
-(368, 163, 20, '2015-05-25 02:17:58', 'penginapan', 0, '', 0, 'Bandung'),
-(369, 163, 20, '2015-05-25 02:17:58', 'transport_utama', 700000, '12313', 700000, 'Bandung'),
-(370, 163, 20, '2015-05-25 02:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
-(371, 163, 20, '2015-05-25 02:17:58', 'representatif', 0, '0', 0, 'Bandung'),
-(372, 163, 20, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Bandung'),
-(373, 163, 20, '2015-05-25 02:17:58', 'diklat', 0, '', 0, 'Bandung'),
-(374, 163, 20, '2015-05-25 02:17:58', 'riil', 0, '', 0, 'Bandung'),
-(375, 163, 20, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Bandung'),
-(376, 163, 20, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Bandung'),
-(377, 163, 20, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Bandung'),
-(378, 163, 20, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Bandung'),
-(379, 163, 20, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Bandung'),
-(380, 163, 20, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Bandung'),
-(381, 163, 20, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Bandung'),
-(382, 163, 20, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Bandung'),
-(383, 163, 20, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Bandung'),
-(421, 163, 20, '2015-05-25 02:17:58', 'transport_pendukung', 100000, '', 100000, 'Denpasar'),
-(420, 163, 20, '2015-05-25 02:17:58', 'transport_utama', 300000, '', 300000, 'Denpasar'),
-(419, 163, 20, '2015-05-25 02:17:58', 'penginapan', 1304000, '', 1304000, 'Denpasar'),
-(418, 163, 20, '2015-05-25 02:17:58', 'harian', 960000, '', 960000, 'Denpasar'),
-(434, 163, 20, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
-(435, 48, 21, '2015-05-25 02:17:58', 'harian', 1440000, '1', 1440000, 'Denpasar'),
-(436, 48, 21, '2015-05-25 02:17:58', 'penginapan', 542400, '222', 542400, 'Denpasar'),
-(437, 48, 21, '2015-05-25 02:17:58', 'transport_utama', 300000, '1211', 322250, 'Denpasar'),
-(438, 48, 21, '2015-05-25 02:17:58', 'transport_pendukung', 200000, '-', 0, 'Denpasar'),
-(439, 48, 21, '2015-05-25 02:17:58', 'representatif', 0, '-', 0, 'Denpasar'),
-(440, 48, 21, '2015-05-25 02:17:58', 'sewa', 200000, '1231231', 150000, 'Denpasar'),
-(441, 48, 21, '2015-05-25 02:17:58', 'diklat', 0, '-', 0, 'Denpasar'),
-(442, 48, 21, '2015-05-25 02:17:58', 'riil', 300000, 'ojek ', 40000, 'Denpasar'),
-(443, 48, 21, '2015-05-25 02:17:58', 'riil_2', 0, 'airport tax', 75000, 'Denpasar'),
-(444, 48, 21, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Denpasar'),
-(445, 48, 21, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
-(446, 48, 21, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
-(447, 48, 21, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
-(448, 48, 21, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
-(449, 48, 21, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
-(450, 48, 21, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
-(451, 48, 21, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
-(452, 48, 21, '2015-05-25 02:17:58', 'harian', 1230000, '123', 1230000, 'Surabaya'),
-(453, 48, 21, '2015-05-25 02:17:58', 'penginapan', 998000, '123', 998000, 'Surabaya'),
-(454, 48, 21, '2015-05-25 02:17:58', 'transport_utama', 400000, '12', 400000, 'Surabaya'),
-(455, 48, 21, '2015-05-25 02:17:58', 'transport_pendukung', 200000, '12', 200000, 'Surabaya'),
-(456, 48, 21, '2015-05-25 02:17:58', 'representatif', 0, '-', 0, 'Surabaya'),
-(457, 48, 21, '2015-05-25 02:17:58', 'sewa', 200000, '12', 200000, 'Surabaya'),
-(458, 48, 21, '2015-05-25 02:17:58', 'diklat', 0, '-', 0, 'Surabaya'),
-(459, 48, 21, '2015-05-25 02:17:58', 'riil', 300000, 'ojek ', 10000, 'Surabaya'),
-(460, 48, 21, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Surabaya'),
-(461, 48, 21, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Surabaya'),
-(462, 48, 21, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Surabaya'),
-(463, 48, 21, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Surabaya'),
-(464, 48, 21, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Surabaya'),
-(465, 48, 21, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Surabaya'),
-(466, 48, 21, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Surabaya'),
-(467, 48, 21, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Surabaya'),
-(468, 48, 21, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Surabaya'),
-(469, 48, 21, '2015-05-25 02:17:58', 'harian', 0, '', 0, 'Bandung'),
-(470, 48, 21, '2015-05-25 02:17:58', 'penginapan', 0, '', 0, 'Bandung'),
-(471, 48, 21, '2015-05-25 02:17:58', 'transport_utama', 500000, '123131', 500000, 'Bandung'),
-(472, 48, 21, '2015-05-25 02:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
-(473, 48, 21, '2015-05-25 02:17:58', 'representatif', 0, '', 0, 'Bandung'),
-(474, 48, 21, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Bandung'),
-(475, 48, 21, '2015-05-25 02:17:58', 'diklat', 0, '', 0, 'Bandung'),
-(476, 48, 21, '2015-05-25 02:17:58', 'riil', 0, '', 0, 'Bandung'),
-(477, 48, 21, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Bandung'),
-(478, 48, 21, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Bandung'),
-(479, 48, 21, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Bandung'),
-(480, 48, 21, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Bandung'),
-(481, 48, 21, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Bandung'),
-(482, 48, 21, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Bandung'),
-(483, 48, 21, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Bandung'),
-(484, 48, 21, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Bandung'),
-(485, 48, 21, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Bandung'),
-(486, 13, 21, '2015-05-25 02:17:58', 'harian', 1440000, '1', 1440000, 'Denpasar'),
-(487, 13, 21, '2015-05-25 02:17:58', 'penginapan', 1316000, '2', 1316000, 'Denpasar'),
-(488, 13, 21, '2015-05-25 02:17:58', 'transport_utama', 300000, '2', 300000, 'Denpasar'),
-(489, 13, 21, '2015-05-25 02:17:58', 'transport_pendukung', 200000, '2', 200000, 'Denpasar'),
-(490, 13, 21, '2015-05-25 02:17:58', 'representatif', 0, '-', 0, 'Denpasar'),
-(491, 13, 21, '2015-05-25 02:17:58', 'sewa', 200000, '1', 200000, 'Denpasar'),
-(492, 13, 21, '2015-05-25 02:17:58', 'diklat', 0, '-', 0, 'Denpasar'),
-(493, 13, 21, '2015-05-25 02:17:58', 'riil', 150000, 'ojek', 20000, 'Denpasar'),
-(494, 13, 21, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Denpasar'),
-(495, 13, 21, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Denpasar'),
-(496, 13, 21, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
-(497, 13, 21, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
-(498, 13, 21, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
-(499, 13, 21, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
-(500, 13, 21, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
-(501, 13, 21, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
-(502, 13, 21, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
-(503, 13, 21, '2015-05-25 02:17:58', 'harian', 1230000, '1', 1230000, 'Surabaya'),
-(504, 13, 21, '2015-05-25 02:17:58', 'penginapan', 658000, '2', 658000, 'Surabaya'),
-(505, 13, 21, '2015-05-25 02:17:58', 'transport_utama', 400000, '3', 400000, 'Surabaya'),
-(506, 13, 21, '2015-05-25 02:17:58', 'transport_pendukung', 200000, '4', 200000, 'Surabaya'),
-(507, 13, 21, '2015-05-25 02:17:58', 'representatif', 0, '-', 0, 'Surabaya'),
-(508, 13, 21, '2015-05-25 02:17:58', 'sewa', 200000, '1', 200000, 'Surabaya'),
-(509, 13, 21, '2015-05-25 02:17:58', 'diklat', 0, '-', 0, 'Surabaya'),
-(510, 13, 21, '2015-05-25 02:17:58', 'riil', 150000, 'ojek', 10000, 'Surabaya'),
-(511, 13, 21, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Surabaya'),
-(512, 13, 21, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Surabaya'),
-(513, 13, 21, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Surabaya'),
-(514, 13, 21, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Surabaya'),
-(515, 13, 21, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Surabaya'),
-(516, 13, 21, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Surabaya'),
-(517, 13, 21, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Surabaya'),
-(518, 13, 21, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Surabaya'),
-(519, 13, 21, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Surabaya'),
-(520, 13, 21, '2015-05-25 02:17:58', 'harian', 0, '', 0, 'Bandung'),
-(521, 13, 21, '2015-05-25 02:17:58', 'penginapan', 0, '', 0, 'Bandung'),
-(522, 13, 21, '2015-05-25 02:17:58', 'transport_utama', 400000, '121212', 400000, 'Bandung'),
-(523, 13, 21, '2015-05-25 02:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
-(524, 13, 21, '2015-05-25 02:17:58', 'representatif', 0, '', 0, 'Bandung'),
-(525, 13, 21, '2015-05-25 02:17:58', 'sewa', 0, '', 0, 'Bandung'),
-(526, 13, 21, '2015-05-25 02:17:58', 'diklat', 0, '', 0, 'Bandung'),
-(527, 13, 21, '2015-05-25 02:17:58', 'riil', 0, '', 0, 'Bandung'),
-(528, 13, 21, '2015-05-25 02:17:58', 'riil_2', 0, '', 0, 'Bandung'),
-(529, 13, 21, '2015-05-25 02:17:58', 'riil_3', 0, '', 0, 'Bandung'),
-(530, 13, 21, '2015-05-25 02:17:58', 'riil_4', 0, '', 0, 'Bandung'),
-(531, 13, 21, '2015-05-25 02:17:58', 'riil_5', 0, '', 0, 'Bandung'),
-(532, 13, 21, '2015-05-25 02:17:58', 'riil_6', 0, '', 0, 'Bandung'),
-(533, 13, 21, '2015-05-25 02:17:58', 'riil_7', 0, '', 0, 'Bandung'),
-(534, 13, 21, '2015-05-25 02:17:58', 'riil_8', 0, '', 0, 'Bandung'),
-(535, 13, 21, '2015-05-25 02:17:58', 'riil_9', 0, '', 0, 'Bandung'),
-(536, 13, 21, '2015-05-25 02:17:58', 'riil_10', 0, '', 0, 'Bandung');
+(224, 10, 12, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Banda Aceh'),
+(223, 10, 12, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Banda Aceh'),
+(222, 10, 12, '2015-05-24 19:17:58', 'riil_2', 0, 'sdfds', 200000, 'Banda Aceh'),
+(221, 10, 12, '2015-05-24 19:17:58', 'riil', 400000, 'riil', 200000, 'Banda Aceh'),
+(220, 10, 12, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Banda Aceh'),
+(219, 10, 12, '2015-05-24 19:17:58', 'transport_pendukung', 300000, 'dfs', 300000, 'Banda Aceh'),
+(218, 10, 12, '2015-05-24 19:17:58', 'transport_utama', 1500000, 'dsf', 1500000, 'Banda Aceh'),
+(217, 10, 12, '2015-05-24 19:17:58', 'penginapan', 1230000, 'sfds', 1230000, 'Banda Aceh'),
+(215, 10, 12, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Bandung'),
+(216, 10, 12, '2015-05-24 19:17:58', 'harian', 1440000, 'dsf', 1440000, 'Banda Aceh'),
+(214, 10, 12, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Bandung'),
+(213, 10, 12, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Bandung'),
+(212, 10, 12, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Bandung'),
+(211, 10, 12, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Bandung'),
+(210, 10, 12, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Bandung'),
+(209, 10, 12, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Bandung'),
+(208, 10, 12, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Bandung'),
+(207, 10, 12, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Bandung'),
+(206, 10, 12, '2015-05-24 19:17:58', 'riil', 0, '', 0, 'Bandung'),
+(205, 10, 12, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Bandung'),
+(204, 10, 12, '2015-05-24 19:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
+(203, 10, 12, '2015-05-24 19:17:58', 'transport_utama_2', 0, '0', 0, 'Bandung'),
+(202, 10, 12, '2015-05-24 19:17:58', 'transport_utama', 175000, 'trans', 175000, 'Bandung'),
+(201, 10, 12, '2015-05-24 19:17:58', 'penginapan', 0, '', 0, 'Bandung'),
+(200, 10, 12, '2015-05-24 19:17:58', 'harian', 0, '', 0, 'Bandung'),
+(225, 10, 12, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Banda Aceh'),
+(226, 10, 12, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Banda Aceh'),
+(227, 10, 12, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Banda Aceh'),
+(228, 10, 12, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Banda Aceh'),
+(229, 10, 12, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Banda Aceh'),
+(230, 10, 12, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Banda Aceh'),
+(231, 40, 18, '2015-05-24 19:17:58', 'harian', 960000, '1', 960000, 'Denpasar'),
+(232, 40, 18, '2015-05-24 19:17:58', 'penginapan', 904000, '121212', 904000, 'Denpasar'),
+(233, 40, 18, '2015-05-24 19:17:58', 'transport_utama', 300000, '1212', 300000, 'Denpasar'),
+(234, 40, 18, '2015-05-24 19:17:58', 'transport_pendukung', 120000, '12121', 120000, 'Denpasar'),
+(235, 40, 18, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Denpasar'),
+(236, 40, 18, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Denpasar'),
+(237, 40, 18, '2015-05-24 19:17:58', 'diklat', 380000, '12121212', 300000, 'Denpasar'),
+(238, 40, 18, '2015-05-24 19:17:58', 'riil', 220000, 'asdasdsadasdad', 120000, 'Denpasar'),
+(239, 40, 18, '2015-05-24 19:17:58', 'riil_2', 0, 'sdsdsdsd', 50000, 'Denpasar'),
+(240, 40, 18, '2015-05-24 19:17:58', 'riil_3', 0, 'dddddddd', 50000, 'Denpasar'),
+(241, 40, 18, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
+(242, 40, 18, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
+(243, 40, 18, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
+(244, 40, 18, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
+(245, 40, 18, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
+(246, 40, 18, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
+(247, 40, 18, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
+(248, 40, 18, '2015-05-24 19:17:58', 'harian', 0, '', 0, 'Bandung'),
+(249, 40, 18, '2015-05-24 19:17:58', 'penginapan', 0, '', 0, 'Bandung'),
+(250, 40, 18, '2015-05-24 19:17:58', 'transport_utama', 300000, '1213231', 300000, 'Bandung'),
+(251, 40, 18, '2015-05-24 19:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
+(252, 40, 18, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Bandung'),
+(253, 40, 18, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Bandung'),
+(254, 40, 18, '2015-05-24 19:17:58', 'diklat', 0, '', 0, 'Bandung'),
+(255, 40, 18, '2015-05-24 19:17:58', 'riil', 0, '', 0, 'Bandung'),
+(256, 40, 18, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Bandung'),
+(257, 40, 18, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Bandung'),
+(258, 40, 18, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Bandung'),
+(259, 40, 18, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Bandung'),
+(260, 40, 18, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Bandung'),
+(261, 40, 18, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Bandung'),
+(262, 40, 18, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Bandung'),
+(263, 40, 18, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Bandung'),
+(264, 40, 18, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Bandung'),
+(265, 170, 19, '2015-05-24 19:17:58', 'harian', 820000, '1', 820000, 'Pangkal Pinang'),
+(266, 170, 19, '2015-05-24 19:17:58', 'penginapan', 304000, '2', 304000, 'Pangkal Pinang'),
+(267, 170, 19, '2015-05-24 19:17:58', 'transport_utama', 175000, '3', 175000, 'Pangkal Pinang'),
+(268, 170, 19, '2015-05-24 19:17:58', 'transport_pendukung', 200000, '4', 200000, 'Pangkal Pinang'),
+(269, 170, 19, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Pangkal Pinang'),
+(270, 170, 19, '2015-05-24 19:17:58', 'sewa', 200000, '6', 200000, 'Pangkal Pinang'),
+(271, 170, 19, '2015-05-24 19:17:58', 'diklat', 320000, '5', 320000, 'Pangkal Pinang'),
+(272, 170, 19, '2015-05-24 19:17:58', 'riil', 200000, '7', 100000, 'Pangkal Pinang'),
+(273, 170, 19, '2015-05-24 19:17:58', 'riil_2', 0, '8', 100000, 'Pangkal Pinang'),
+(274, 170, 19, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Pangkal Pinang'),
+(275, 170, 19, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Pangkal Pinang'),
+(276, 170, 19, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Pangkal Pinang'),
+(277, 170, 19, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Pangkal Pinang'),
+(278, 170, 19, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Pangkal Pinang'),
+(279, 170, 19, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Pangkal Pinang'),
+(280, 170, 19, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Pangkal Pinang'),
+(281, 170, 19, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Pangkal Pinang'),
+(282, 170, 19, '2015-05-24 19:17:58', 'harian', 720000, '2', 720000, 'Banda Aceh'),
+(283, 170, 19, '2015-05-24 19:17:58', 'penginapan', 370000, '3', 370000, 'Banda Aceh'),
+(284, 170, 19, '2015-05-24 19:17:58', 'transport_utama', 300000, '4', 300000, 'Banda Aceh'),
+(285, 170, 19, '2015-05-24 19:17:58', 'transport_pendukung', 100000, '4', 100000, 'Banda Aceh'),
+(286, 170, 19, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Banda Aceh'),
+(287, 170, 19, '2015-05-24 19:17:58', 'sewa', 200000, '6', 200000, 'Banda Aceh'),
+(288, 170, 19, '2015-05-24 19:17:58', 'diklat', 280000, '5', 280000, 'Banda Aceh'),
+(289, 170, 19, '2015-05-24 19:17:58', 'riil', 100000, '9', 100000, 'Banda Aceh'),
+(290, 170, 19, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Banda Aceh'),
+(291, 170, 19, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Banda Aceh'),
+(292, 170, 19, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Banda Aceh'),
+(293, 170, 19, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Banda Aceh'),
+(294, 170, 19, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Banda Aceh'),
+(295, 170, 19, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Banda Aceh'),
+(296, 170, 19, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Banda Aceh'),
+(297, 170, 19, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Banda Aceh'),
+(298, 170, 19, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Banda Aceh'),
+(299, 170, 19, '2015-05-24 19:17:58', 'harian', 0, '', 0, 'Bandung'),
+(300, 170, 19, '2015-05-24 19:17:58', 'penginapan', 0, '', 0, 'Bandung'),
+(301, 170, 19, '2015-05-24 19:17:58', 'transport_utama', 175000, '1', 175000, 'Bandung'),
+(302, 170, 19, '2015-05-24 19:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
+(303, 170, 19, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Bandung'),
+(304, 170, 19, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Bandung'),
+(305, 170, 19, '2015-05-24 19:17:58', 'diklat', 0, '', 0, 'Bandung'),
+(306, 170, 19, '2015-05-24 19:17:58', 'riil', 0, '', 0, 'Bandung'),
+(307, 170, 19, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Bandung'),
+(308, 170, 19, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Bandung'),
+(309, 170, 19, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Bandung'),
+(310, 170, 19, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Bandung'),
+(311, 170, 19, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Bandung'),
+(312, 170, 19, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Bandung'),
+(313, 170, 19, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Bandung'),
+(314, 170, 19, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Bandung'),
+(315, 170, 19, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Bandung'),
+(433, 163, 20, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
+(432, 163, 20, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
+(431, 163, 20, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
+(430, 163, 20, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
+(429, 163, 20, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
+(426, 163, 20, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Denpasar'),
+(427, 163, 20, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Denpasar'),
+(428, 163, 20, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
+(425, 163, 20, '2015-05-24 19:17:58', 'riil', 100000, '', 0, 'Denpasar'),
+(424, 163, 20, '2015-05-24 19:17:58', 'diklat', 380000, '', 380000, 'Denpasar'),
+(423, 163, 20, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Denpasar'),
+(422, 163, 20, '2015-05-24 19:17:58', 'representatif', 300000, '', 300000, 'Denpasar'),
+(333, 163, 20, '2015-05-24 19:17:58', 'harian', 820000, '1', 820000, 'Pangkal Pinang'),
+(334, 163, 20, '2015-05-24 19:17:58', 'penginapan', 850000, '2', 850000, 'Pangkal Pinang'),
+(335, 163, 20, '2015-05-24 19:17:58', 'transport_utama', 1500000, '3', 1500000, 'Pangkal Pinang'),
+(336, 163, 20, '2015-05-24 19:17:58', 'transport_pendukung', 100000, '4', 100000, 'Pangkal Pinang'),
+(337, 163, 20, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Pangkal Pinang'),
+(338, 163, 20, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Pangkal Pinang'),
+(339, 163, 20, '2015-05-24 19:17:58', 'diklat', 320000, '32', 320000, 'Pangkal Pinang'),
+(340, 163, 20, '2015-05-24 19:17:58', 'riil', 100000, 'test', 100000, 'Pangkal Pinang'),
+(341, 163, 20, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Pangkal Pinang'),
+(342, 163, 20, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Pangkal Pinang'),
+(343, 163, 20, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Pangkal Pinang'),
+(344, 163, 20, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Pangkal Pinang'),
+(345, 163, 20, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Pangkal Pinang'),
+(346, 163, 20, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Pangkal Pinang'),
+(347, 163, 20, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Pangkal Pinang'),
+(348, 163, 20, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Pangkal Pinang'),
+(349, 163, 20, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Pangkal Pinang'),
+(350, 163, 20, '2015-05-24 19:17:58', 'harian', 1060000, '12', 1060000, 'Jakarta'),
+(351, 163, 20, '2015-05-24 19:17:58', 'penginapan', 800000, '12', 800000, 'Jakarta'),
+(352, 163, 20, '2015-05-24 19:17:58', 'transport_utama', 200000, '12', 200000, 'Jakarta'),
+(353, 163, 20, '2015-05-24 19:17:58', 'transport_pendukung', 100000, '12', 100000, 'Jakarta'),
+(354, 163, 20, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Jakarta'),
+(355, 163, 20, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Jakarta'),
+(356, 163, 20, '2015-05-24 19:17:58', 'diklat', 420000, '12', 420000, 'Jakarta'),
+(357, 163, 20, '2015-05-24 19:17:58', 'riil', 100000, '12', 100000, 'Jakarta'),
+(358, 163, 20, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Jakarta'),
+(359, 163, 20, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Jakarta'),
+(360, 163, 20, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Jakarta'),
+(361, 163, 20, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Jakarta'),
+(362, 163, 20, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Jakarta'),
+(363, 163, 20, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Jakarta'),
+(364, 163, 20, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Jakarta'),
+(365, 163, 20, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Jakarta'),
+(366, 163, 20, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Jakarta'),
+(367, 163, 20, '2015-05-24 19:17:58', 'harian', 0, '', 0, 'Bandung'),
+(368, 163, 20, '2015-05-24 19:17:58', 'penginapan', 0, '', 0, 'Bandung'),
+(369, 163, 20, '2015-05-24 19:17:58', 'transport_utama', 700000, '12313', 700000, 'Bandung'),
+(370, 163, 20, '2015-05-24 19:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
+(371, 163, 20, '2015-05-24 19:17:58', 'representatif', 0, '0', 0, 'Bandung'),
+(372, 163, 20, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Bandung'),
+(373, 163, 20, '2015-05-24 19:17:58', 'diklat', 0, '', 0, 'Bandung'),
+(374, 163, 20, '2015-05-24 19:17:58', 'riil', 0, '', 0, 'Bandung'),
+(375, 163, 20, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Bandung'),
+(376, 163, 20, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Bandung'),
+(377, 163, 20, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Bandung'),
+(378, 163, 20, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Bandung'),
+(379, 163, 20, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Bandung'),
+(380, 163, 20, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Bandung'),
+(381, 163, 20, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Bandung'),
+(382, 163, 20, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Bandung'),
+(383, 163, 20, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Bandung'),
+(421, 163, 20, '2015-05-24 19:17:58', 'transport_pendukung', 100000, '', 100000, 'Denpasar'),
+(420, 163, 20, '2015-05-24 19:17:58', 'transport_utama', 300000, '', 300000, 'Denpasar'),
+(419, 163, 20, '2015-05-24 19:17:58', 'penginapan', 1304000, '', 1304000, 'Denpasar'),
+(418, 163, 20, '2015-05-24 19:17:58', 'harian', 960000, '', 960000, 'Denpasar'),
+(434, 163, 20, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
+(435, 48, 21, '2015-05-24 19:17:58', 'harian', 1440000, '1', 1440000, 'Denpasar'),
+(436, 48, 21, '2015-05-24 19:17:58', 'penginapan', 542400, '222', 542400, 'Denpasar'),
+(437, 48, 21, '2015-05-24 19:17:58', 'transport_utama', 300000, '1211', 322250, 'Denpasar'),
+(438, 48, 21, '2015-05-24 19:17:58', 'transport_pendukung', 200000, '-', 0, 'Denpasar'),
+(439, 48, 21, '2015-05-24 19:17:58', 'representatif', 0, '-', 0, 'Denpasar'),
+(440, 48, 21, '2015-05-24 19:17:58', 'sewa', 200000, '1231231', 150000, 'Denpasar'),
+(441, 48, 21, '2015-05-24 19:17:58', 'diklat', 0, '-', 0, 'Denpasar'),
+(442, 48, 21, '2015-05-24 19:17:58', 'riil', 300000, 'ojek ', 40000, 'Denpasar'),
+(443, 48, 21, '2015-05-24 19:17:58', 'riil_2', 0, 'airport tax', 75000, 'Denpasar'),
+(444, 48, 21, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Denpasar'),
+(445, 48, 21, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
+(446, 48, 21, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
+(447, 48, 21, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
+(448, 48, 21, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
+(449, 48, 21, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
+(450, 48, 21, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
+(451, 48, 21, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
+(452, 48, 21, '2015-05-24 19:17:58', 'harian', 1230000, '123', 1230000, 'Surabaya'),
+(453, 48, 21, '2015-05-24 19:17:58', 'penginapan', 998000, '123', 998000, 'Surabaya'),
+(454, 48, 21, '2015-05-24 19:17:58', 'transport_utama', 400000, '12', 400000, 'Surabaya'),
+(455, 48, 21, '2015-05-24 19:17:58', 'transport_pendukung', 200000, '12', 200000, 'Surabaya'),
+(456, 48, 21, '2015-05-24 19:17:58', 'representatif', 0, '-', 0, 'Surabaya'),
+(457, 48, 21, '2015-05-24 19:17:58', 'sewa', 200000, '12', 200000, 'Surabaya'),
+(458, 48, 21, '2015-05-24 19:17:58', 'diklat', 0, '-', 0, 'Surabaya'),
+(459, 48, 21, '2015-05-24 19:17:58', 'riil', 300000, 'ojek ', 10000, 'Surabaya'),
+(460, 48, 21, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Surabaya'),
+(461, 48, 21, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Surabaya'),
+(462, 48, 21, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Surabaya'),
+(463, 48, 21, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Surabaya'),
+(464, 48, 21, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Surabaya'),
+(465, 48, 21, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Surabaya'),
+(466, 48, 21, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Surabaya'),
+(467, 48, 21, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Surabaya'),
+(468, 48, 21, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Surabaya'),
+(469, 48, 21, '2015-05-24 19:17:58', 'harian', 0, '', 0, 'Bandung'),
+(470, 48, 21, '2015-05-24 19:17:58', 'penginapan', 0, '', 0, 'Bandung'),
+(471, 48, 21, '2015-05-24 19:17:58', 'transport_utama', 500000, '123131', 500000, 'Bandung'),
+(472, 48, 21, '2015-05-24 19:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
+(473, 48, 21, '2015-05-24 19:17:58', 'representatif', 0, '', 0, 'Bandung'),
+(474, 48, 21, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Bandung'),
+(475, 48, 21, '2015-05-24 19:17:58', 'diklat', 0, '', 0, 'Bandung'),
+(476, 48, 21, '2015-05-24 19:17:58', 'riil', 0, '', 0, 'Bandung'),
+(477, 48, 21, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Bandung'),
+(478, 48, 21, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Bandung'),
+(479, 48, 21, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Bandung'),
+(480, 48, 21, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Bandung'),
+(481, 48, 21, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Bandung'),
+(482, 48, 21, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Bandung'),
+(483, 48, 21, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Bandung'),
+(484, 48, 21, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Bandung'),
+(485, 48, 21, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Bandung'),
+(486, 13, 21, '2015-05-24 19:17:58', 'harian', 1440000, '1', 1440000, 'Denpasar'),
+(487, 13, 21, '2015-05-24 19:17:58', 'penginapan', 1316000, '2', 1316000, 'Denpasar'),
+(488, 13, 21, '2015-05-24 19:17:58', 'transport_utama', 300000, '2', 300000, 'Denpasar'),
+(489, 13, 21, '2015-05-24 19:17:58', 'transport_pendukung', 200000, '2', 200000, 'Denpasar'),
+(490, 13, 21, '2015-05-24 19:17:58', 'representatif', 0, '-', 0, 'Denpasar'),
+(491, 13, 21, '2015-05-24 19:17:58', 'sewa', 200000, '1', 200000, 'Denpasar'),
+(492, 13, 21, '2015-05-24 19:17:58', 'diklat', 0, '-', 0, 'Denpasar'),
+(493, 13, 21, '2015-05-24 19:17:58', 'riil', 150000, 'ojek', 20000, 'Denpasar'),
+(494, 13, 21, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Denpasar'),
+(495, 13, 21, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Denpasar'),
+(496, 13, 21, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Denpasar'),
+(497, 13, 21, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Denpasar'),
+(498, 13, 21, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Denpasar'),
+(499, 13, 21, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Denpasar'),
+(500, 13, 21, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Denpasar'),
+(501, 13, 21, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Denpasar'),
+(502, 13, 21, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Denpasar'),
+(503, 13, 21, '2015-05-24 19:17:58', 'harian', 1230000, '1', 1230000, 'Surabaya'),
+(504, 13, 21, '2015-05-24 19:17:58', 'penginapan', 658000, '2', 658000, 'Surabaya'),
+(505, 13, 21, '2015-05-24 19:17:58', 'transport_utama', 400000, '3', 400000, 'Surabaya'),
+(506, 13, 21, '2015-05-24 19:17:58', 'transport_pendukung', 200000, '4', 200000, 'Surabaya'),
+(507, 13, 21, '2015-05-24 19:17:58', 'representatif', 0, '-', 0, 'Surabaya'),
+(508, 13, 21, '2015-05-24 19:17:58', 'sewa', 200000, '1', 200000, 'Surabaya'),
+(509, 13, 21, '2015-05-24 19:17:58', 'diklat', 0, '-', 0, 'Surabaya'),
+(510, 13, 21, '2015-05-24 19:17:58', 'riil', 150000, 'ojek', 10000, 'Surabaya'),
+(511, 13, 21, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Surabaya'),
+(512, 13, 21, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Surabaya'),
+(513, 13, 21, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Surabaya'),
+(514, 13, 21, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Surabaya'),
+(515, 13, 21, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Surabaya'),
+(516, 13, 21, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Surabaya'),
+(517, 13, 21, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Surabaya'),
+(518, 13, 21, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Surabaya'),
+(519, 13, 21, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Surabaya'),
+(520, 13, 21, '2015-05-24 19:17:58', 'harian', 0, '', 0, 'Bandung'),
+(521, 13, 21, '2015-05-24 19:17:58', 'penginapan', 0, '', 0, 'Bandung'),
+(522, 13, 21, '2015-05-24 19:17:58', 'transport_utama', 400000, '121212', 400000, 'Bandung'),
+(523, 13, 21, '2015-05-24 19:17:58', 'transport_pendukung', 0, '', 0, 'Bandung'),
+(524, 13, 21, '2015-05-24 19:17:58', 'representatif', 0, '', 0, 'Bandung'),
+(525, 13, 21, '2015-05-24 19:17:58', 'sewa', 0, '', 0, 'Bandung'),
+(526, 13, 21, '2015-05-24 19:17:58', 'diklat', 0, '', 0, 'Bandung'),
+(527, 13, 21, '2015-05-24 19:17:58', 'riil', 0, '', 0, 'Bandung'),
+(528, 13, 21, '2015-05-24 19:17:58', 'riil_2', 0, '', 0, 'Bandung'),
+(529, 13, 21, '2015-05-24 19:17:58', 'riil_3', 0, '', 0, 'Bandung'),
+(530, 13, 21, '2015-05-24 19:17:58', 'riil_4', 0, '', 0, 'Bandung'),
+(531, 13, 21, '2015-05-24 19:17:58', 'riil_5', 0, '', 0, 'Bandung'),
+(532, 13, 21, '2015-05-24 19:17:58', 'riil_6', 0, '', 0, 'Bandung'),
+(533, 13, 21, '2015-05-24 19:17:58', 'riil_7', 0, '', 0, 'Bandung'),
+(534, 13, 21, '2015-05-24 19:17:58', 'riil_8', 0, '', 0, 'Bandung'),
+(535, 13, 21, '2015-05-24 19:17:58', 'riil_9', 0, '', 0, 'Bandung'),
+(536, 13, 21, '2015-05-24 19:17:58', 'riil_10', 0, '', 0, 'Bandung');
 
 -- --------------------------------------------------------
 
@@ -1702,11 +1697,10 @@ INSERT INTO `bukti_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_entr
 --
 
 CREATE TABLE IF NOT EXISTS `counter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `pattern` varchar(20) NOT NULL,
-  `counter` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `counter` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `counter`
@@ -1726,12 +1720,11 @@ INSERT INTO `counter` (`id`, `pattern`, `counter`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `detail_panjar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_panjar` int(11) DEFAULT NULL,
   `id_pegawai` int(11) DEFAULT NULL,
-  `jumlah` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `jumlah` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_panjar`
@@ -1749,19 +1742,18 @@ INSERT INTO `detail_panjar` (`id`, `id_panjar`, `id_pegawai`, `jumlah`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `detail_pengadaan_barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_pengadaan_barang` int(11) DEFAULT NULL,
   `id_barang` int(11) DEFAULT NULL,
-  `jumlah` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `jumlah` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_pengadaan_barang`
 --
 
 INSERT INTO `detail_pengadaan_barang` (`id`, `id_pengadaan_barang`, `id_barang`, `jumlah`) VALUES
-(4, 2, 2, 2000000);
+(5, 2, 2, 3000000);
 
 -- --------------------------------------------------------
 
@@ -1770,14 +1762,13 @@ INSERT INTO `detail_pengadaan_barang` (`id`, `id_pengadaan_barang`, `id_barang`,
 --
 
 CREATE TABLE IF NOT EXISTS `detail_pengajuan_barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_pengajuan_barang` int(11) NOT NULL,
   `id_jenis_barang` varchar(50) NOT NULL,
   `id_barang` int(11) NOT NULL,
   `jumlah` int(15) DEFAULT NULL,
-  `subtotal` int(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+  `subtotal` int(20) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_pengajuan_barang`
@@ -1794,7 +1785,9 @@ INSERT INTO `detail_pengajuan_barang` (`id`, `id_pengajuan_barang`, `id_jenis_ba
 (14, 1, '', 17, 2, NULL),
 (15, 1, '', 42, 1, NULL),
 (16, 1, '', 14, 2, NULL),
-(17, 8, '', 14, 3, NULL);
+(17, 8, '', 14, 3, NULL),
+(18, 9, '', 14, 3, NULL),
+(19, 9, '', 15, 6, NULL);
 
 -- --------------------------------------------------------
 
@@ -1803,13 +1796,12 @@ INSERT INTO `detail_pengajuan_barang` (`id`, `id_pengajuan_barang`, `id_jenis_ba
 --
 
 CREATE TABLE IF NOT EXISTS `detail_pengajuan_honorarium` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_pengajuan_honorarium` int(11) NOT NULL,
   `id_narasumber` int(11) NOT NULL,
   `jumlah` int(15) DEFAULT NULL,
-  `subtotal` int(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+  `subtotal` int(20) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_pengajuan_honorarium`
@@ -1830,7 +1822,7 @@ INSERT INTO `detail_pengajuan_honorarium` (`id`, `id_pengajuan_honorarium`, `id_
 --
 
 CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_pegawai` int(11) NOT NULL,
   `id_header` int(11) NOT NULL,
   `tgl_berangkat` date DEFAULT NULL,
@@ -1840,9 +1832,8 @@ CREATE TABLE IF NOT EXISTS `detail_perjalanan_dinas` (
   `kota_tujuan` varchar(25) DEFAULT NULL,
   `jenis_penginapan` varchar(25) DEFAULT NULL,
   `jenis_kendaraan` varchar(25) DEFAULT NULL,
-  `biaya` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=409 ;
+  `biaya` int(11) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=409 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail_perjalanan_dinas`
@@ -2150,14 +2141,13 @@ INSERT INTO `detail_perjalanan_dinas` (`id`, `id_pegawai`, `id_header`, `tgl_ber
 --
 
 CREATE TABLE IF NOT EXISTS `kegiatan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_unit` int(11) NOT NULL,
   `kode_kegiatan` varchar(50) NOT NULL,
   `nama_kegiatan` varchar(100) NOT NULL,
   `koordinator` varchar(25) DEFAULT NULL,
-  `penanggung_jawab` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=82 ;
+  `penanggung_jawab` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kegiatan`
@@ -2253,44 +2243,47 @@ INSERT INTO `kegiatan` (`id`, `id_unit`, `kode_kegiatan`, `nama_kegiatan`, `koor
 --
 
 CREATE TABLE IF NOT EXISTS `komentar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_header` varchar(20) NOT NULL,
+  `tipe_transaksi` varchar(5) NOT NULL,
   `username` varchar(50) NOT NULL,
   `komentar` text NOT NULL,
-  `id_pegawai` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+  `id_pegawai` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `komentar`
 --
 
-INSERT INTO `komentar` (`id`, `id_header`, `username`, `komentar`, `id_pegawai`) VALUES
-(1, '1', 'admin', 'balik yu', NULL),
-(2, '1', 'admin', 'duh jelek', NULL),
-(3, '1', 'admin', 'butut', NULL),
-(4, '2', 'esselon 4', '0', NULL),
-(5, '2', 'esselon 4', 'xxxxxxxxxxxxxxxxxxxxxxxxxxx', NULL),
-(6, '5', 'esselon 4', '', NULL),
-(7, '14', 'esselon 3', 'ditolak karena dokumen belum lengkap', NULL),
-(8, '14', 'esselon 4', 'lengkapi dokumen kata esselon 3', NULL),
-(9, '5', 'esselon 4', 'ditolak angin', NULL),
-(10, '16', 'esselon 4', '', NULL),
-(11, '16', 'esselon 4', '', NULL),
-(12, '16', 'esselon 4', '', NULL),
-(13, '16', 'esselon 4', '', NULL),
-(14, '16', 'esselon 4', '', NULL),
-(15, '16', 'esselon 4', '', NULL),
-(16, '16', 'esselon 4', '', NULL),
-(17, '16', 'esselon 4', '', NULL),
-(18, '16', 'esselon 4', '', NULL),
-(19, '16', 'esselon 4', '', NULL),
-(20, '16', 'esselon 4', '', NULL),
-(21, '16', 'esselon 4', 'tolak', NULL),
-(22, '18', 'esselon 4', 'tambahkan pegawai yang ikut sert', NULL),
-(23, '22', 'esselon 4', 'isi', NULL),
-(24, '8', 'esselon 4', 'dsfa', NULL),
-(25, '6', 'esselon 4', 'ihi', NULL);
+INSERT INTO `komentar` (`id`, `id_header`, `tipe_transaksi`, `username`, `komentar`, `id_pegawai`) VALUES
+(1, '1', '', 'admin', 'balik yu', NULL),
+(2, '1', '', 'admin', 'duh jelek', NULL),
+(3, '1', '', 'admin', 'butut', NULL),
+(4, '2', '', 'esselon 4', '0', NULL),
+(5, '2', '', 'esselon 4', 'xxxxxxxxxxxxxxxxxxxxxxxxxxx', NULL),
+(6, '5', '', 'esselon 4', '', NULL),
+(7, '14', '', 'esselon 3', 'ditolak karena dokumen belum lengkap', NULL),
+(8, '14', '', 'esselon 4', 'lengkapi dokumen kata esselon 3', NULL),
+(9, '5', '', 'esselon 4', 'ditolak angin', NULL),
+(10, '16', '', 'esselon 4', '', NULL),
+(11, '16', '', 'esselon 4', '', NULL),
+(12, '16', '', 'esselon 4', '', NULL),
+(13, '16', '', 'esselon 4', '', NULL),
+(14, '16', '', 'esselon 4', '', NULL),
+(15, '16', '', 'esselon 4', '', NULL),
+(16, '16', '', 'esselon 4', '', NULL),
+(17, '16', '', 'esselon 4', '', NULL),
+(18, '16', '', 'esselon 4', '', NULL),
+(19, '16', '', 'esselon 4', '', NULL),
+(20, '16', '', 'esselon 4', '', NULL),
+(21, '16', '', 'esselon 4', 'tolak', NULL),
+(22, '18', '', 'esselon 4', 'tambahkan pegawai yang ikut sert', NULL),
+(23, '22', '', 'esselon 4', 'isi', NULL),
+(24, '8', '', 'esselon 4', 'dsfa', NULL),
+(25, '6', '', 'esselon 4', 'ihi', NULL),
+(26, '16', 'pd', 'esselon 4', 'test pd', NULL),
+(27, '16', 'pd', 'esselon 4', 'test dulu', NULL),
+(28, '1', 'b', 'esselon 4', 'tolaaakkk', NULL);
 
 -- --------------------------------------------------------
 
@@ -2299,12 +2292,11 @@ INSERT INTO `komentar` (`id`, `id_header`, `username`, `komentar`, `id_pegawai`)
 --
 
 CREATE TABLE IF NOT EXISTS `kota_tujuan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kode_wilayah` int(11) DEFAULT NULL,
   `nama_provinsi` varchar(25) DEFAULT NULL,
-  `nama_kota` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
+  `nama_kota` varchar(25) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kota_tujuan`
@@ -2353,11 +2345,10 @@ INSERT INTO `kota_tujuan` (`id`, `kode_wilayah`, `nama_provinsi`, `nama_kota`) V
 --
 
 CREATE TABLE IF NOT EXISTS `listcode` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `list_name` varchar(50) DEFAULT NULL,
-  `list_item` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=72 ;
+  `list_item` varchar(50) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `listcode`
@@ -2433,7 +2424,7 @@ INSERT INTO `listcode` (`id`, `list_name`, `list_item`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `narasumber` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nip` varchar(20) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `golongan` varchar(10) NOT NULL,
@@ -2445,9 +2436,8 @@ CREATE TABLE IF NOT EXISTS `narasumber` (
   `kriteria_pegawai` varchar(15) NOT NULL,
   `status_pendidikan` varchar(15) NOT NULL,
   `institusi` varchar(50) DEFAULT NULL,
-  `kepakaran` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=194 ;
+  `kepakaran` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `narasumber`
@@ -2655,13 +2645,11 @@ INSERT INTO `narasumber` (`id`, `nip`, `nama`, `golongan`, `jabatan`, `tgl_lahir
 --
 
 CREATE TABLE IF NOT EXISTS `panjar` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_header` int(11) NOT NULL DEFAULT '0',
   `penerima` int(11) DEFAULT NULL,
-  `deskripsi_panjar` text,
-  PRIMARY KEY (`id`,`id_header`),
-  UNIQUE KEY `id_header` (`id_header`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `deskripsi_panjar` text
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `panjar`
@@ -2680,7 +2668,7 @@ INSERT INTO `panjar` (`id`, `id_header`, `penerima`, `deskripsi_panjar`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `pegawai` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nip` varchar(20) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `golongan` varchar(10) NOT NULL,
@@ -2694,9 +2682,8 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
   `institusi` varchar(50) DEFAULT NULL,
   `kepakaran` varchar(100) DEFAULT NULL,
   `narasumber` int(1) DEFAULT NULL,
-  `tingkat` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=197 ;
+  `tingkat` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=197 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pegawai`
@@ -2907,13 +2894,11 @@ INSERT INTO `pegawai` (`id`, `nip`, `nama`, `golongan`, `jabatan`, `tgl_lahir`, 
 --
 
 CREATE TABLE IF NOT EXISTS `pengadaan_barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `id_header` int(11) NOT NULL DEFAULT '0',
   `penerima` int(11) DEFAULT NULL,
-  `deskripsi_pengadaan_barang` text,
-  PRIMARY KEY (`id`,`id_header`),
-  UNIQUE KEY `id_header` (`id_header`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `deskripsi_pengadaan_barang` text
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengadaan_barang`
@@ -2929,7 +2914,7 @@ INSERT INTO `pengadaan_barang` (`id`, `id_header`, `penerima`, `deskripsi_pengad
 --
 
 CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nomor_pengajuan` varchar(50) NOT NULL,
   `id_anggaran` int(11) NOT NULL,
   `kode_jenis_barang` varchar(100) NOT NULL,
@@ -2938,23 +2923,23 @@ CREATE TABLE IF NOT EXISTS `pengajuan_barang` (
   `status_approval` int(2) NOT NULL,
   `status_penolakan` int(2) DEFAULT NULL,
   `tanggal_pembuatan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `tanggal_approval` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `tanggal_approval` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengajuan_barang`
 --
 
 INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `kode_jenis_barang`, `maksud_kegiatan`, `tanggal_pengajuan`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
-(1, '-', 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'transaksi pengajuan barang', '0000-00-00', 0, 0, '0000-00-00 00:00:00', '0000-00-00'),
+(1, '-', 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'transaksi pengajuan barang', '0000-00-00', 0, 1, '0000-00-00 00:00:00', '0000-00-00'),
 (2, '-', 2, 'Bahan Bangunan', 'transaksi', '2015-05-05', 0, 0, '0000-00-00 00:00:00', '0000-00-00'),
 (3, '-', 2, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'asdasdalsdaslkdnaslndlasd', '2015-05-09', 0, 0, '0000-00-00 00:00:00', '0000-00-00'),
 (4, '002/BARANG/SATKER/LP/V/2015', 378, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'pengadaan barang untuk pers', '2015-05-20', 5, 0, '0000-00-00 00:00:00', '2015-05-17'),
-(5, '003/BARANG/SATKER/LP/V/2015', 4, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'Pengadaan ATK dan Bahan Komputer', '2015-05-19', 5, 0, '2015-05-18 23:51:06', '2015-05-18'),
-(6, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'ke enam', '2015-06-02', 0, 0, '2015-06-02 15:25:29', '0000-00-00'),
-(7, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', '12', '2015-06-29', 0, 0, '2015-06-02 15:28:09', '0000-00-00'),
-(8, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'test status', '2015-06-02', 0, 1, '2015-06-02 15:30:51', '0000-00-00');
+(5, '003/BARANG/SATKER/LP/V/2015', 4, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'Pengadaan ATK dan Bahan Komputer', '2015-05-19', 5, 0, '2015-05-18 16:51:06', '2015-05-18'),
+(6, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'ke enam', '2015-06-02', 0, 0, '2015-06-02 08:25:29', '0000-00-00'),
+(7, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', '12', '2015-06-29', 0, 0, '2015-06-02 08:28:09', '0000-00-00'),
+(8, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'test status', '2015-06-02', 0, 1, '2015-06-02 08:30:51', '0000-00-00'),
+(9, '-', 1, 'ATK, Bahan Komputer, dan Bahan Dokumentasi', 'test tanggal 21', '2015-06-21', 4, 0, '2015-06-21 13:35:42', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2963,7 +2948,7 @@ INSERT INTO `pengajuan_barang` (`id`, `nomor_pengajuan`, `id_anggaran`, `kode_je
 --
 
 CREATE TABLE IF NOT EXISTS `pengajuan_honorarium` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nomor_pengajuan` varchar(50) NOT NULL,
   `id_anggaran` int(11) NOT NULL,
   `kegiatan` varchar(100) DEFAULT NULL,
@@ -2972,18 +2957,17 @@ CREATE TABLE IF NOT EXISTS `pengajuan_honorarium` (
   `status_approval` int(2) NOT NULL,
   `status_penolakan` int(2) DEFAULT NULL,
   `tanggal_pembuatan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `tanggal_approval` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `tanggal_approval` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengajuan_honorarium`
 --
 
 INSERT INTO `pengajuan_honorarium` (`id`, `nomor_pengajuan`, `id_anggaran`, `kegiatan`, `acara`, `periode_pembayaran`, `status_approval`, `status_penolakan`, `tanggal_pembuatan`, `tanggal_approval`) VALUES
-(4, '004/KPTS/SATKER/Lp/V/2015', 2, 'Diseminasi dan Sosial Artifial Intelligence', 'Rencana Pelaksanaan Kegiatan Pengkajian Ruang', '1931-04-22', 5, 0, '2015-05-25 00:34:12', '2015-05-25'),
-(5, '', 18, 'makan makan lagi', 'bermalam', '2015-05-25', 1, 0, '2015-05-25 08:39:45', '0000-00-00'),
-(6, '', 6, 'Diseminasi Buatan', 'Rencana Penganggaran Diseminasi', '2015-05-27', 0, 1, '2015-05-25 10:30:46', '0000-00-00');
+(4, '004/KPTS/SATKER/Lp/V/2015', 2, 'Diseminasi dan Sosial Artifial Intelligence', 'Rencana Pelaksanaan Kegiatan Pengkajian Ruang', '1931-04-22', 5, 0, '2015-05-24 17:34:12', '2015-05-25'),
+(5, '', 18, 'makan makan lagi', 'bermalam', '2015-05-25', 1, 0, '2015-05-25 01:39:45', '0000-00-00'),
+(6, '', 6, 'Diseminasi Buatan', 'Rencana Penganggaran Diseminasi', '2015-05-27', 0, 1, '2015-05-25 03:30:46', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -2992,19 +2976,13 @@ INSERT INTO `pengajuan_honorarium` (`id`, `nomor_pengajuan`, `id_anggaran`, `keg
 --
 
 CREATE TABLE IF NOT EXISTS `pengajuan_jasa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `no_pengajuan_jasa` varchar(50) DEFAULT NULL,
   `kegiatan` varchar(100) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `status_penolakan` int(11) DEFAULT NULL,
-  `id_anggaran` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `pengajuan_jasa`
---
-
+  `id_anggaran` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -3013,7 +2991,7 @@ CREATE TABLE IF NOT EXISTS `pengajuan_jasa` (
 --
 
 CREATE TABLE IF NOT EXISTS `pengguna` (
-  `id_pengguna` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pengguna` int(11) NOT NULL,
   `id_jenis_pengguna` int(15) NOT NULL,
   `id_pegawai` int(11) NOT NULL,
   `alamat` text NOT NULL,
@@ -3021,9 +2999,8 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
   `username` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
   `telp` varchar(15) NOT NULL,
-  `status_aktivasi` int(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id_pengguna`,`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+  `status_aktivasi` int(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pengguna`
@@ -3041,7 +3018,8 @@ INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `id_pegawai`, `alama
 (18, 1, 53, '', '', 'ai', '0cc175b9c0f1b6a831c399e269772661', '', 0),
 (19, 1, 66, '', '', 'ajun', '0cc175b9c0f1b6a831c399e269772661', '', 0),
 (20, 1, 123, '', '', 'arip', '0cc175b9c0f1b6a831c399e269772661', '', 0),
-(21, 7, 184, '', '', 'super admin', '0cc175b9c0f1b6a831c399e269772661', '', 1);
+(21, 7, 184, '', '', 'super admin', '0cc175b9c0f1b6a831c399e269772661', '', 1),
+(22, 8, 184, '', '', 'publik', '0fa68ee5f86c0c345aa1b4aec7a26f39', '', 1);
 
 -- --------------------------------------------------------
 
@@ -3050,7 +3028,7 @@ INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `id_pegawai`, `alama
 --
 
 CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `no_spt` varchar(50) NOT NULL,
   `tanggal_approval` date NOT NULL,
   `tanggal_pembuatan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -3068,9 +3046,8 @@ CREATE TABLE IF NOT EXISTS `perjalanan_dinas` (
   `kota_tujuan_1` varchar(25) NOT NULL,
   `kota_tujuan_2` varchar(25) DEFAULT NULL,
   `kota_tujuan_3` varchar(25) DEFAULT NULL,
-  `status_diklat` int(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+  `status_diklat` int(1) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `perjalanan_dinas`
@@ -3082,7 +3059,7 @@ INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `tanggal_pem
 (3, '004/SPPD/SATKER/LP/IV/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '2', 1, 'sssssssssssssssssssss', '2015-04-27', NULL, NULL, '2015-04-27', NULL, NULL, '19', NULL, NULL, 1),
 (5, '009/SPPD/SATKER/LP/V/2015', '2015-05-10', '0000-00-00 00:00:00', '5', 0, '2', 1, 'studi banding ke kota jakarta', '2015-05-05', '0000-00-00', '0000-00-00', '2015-05-08', '0000-00-00', '0000-00-00', '7', NULL, NULL, 1),
 (6, '005/SPPD/SATKER/LP/IV/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '2', 1, 'studi banding jakarta 2 unit', '2015-04-30', '0000-00-00', '0000-00-00', '2015-05-02', '0000-00-00', '0000-00-00', '7', NULL, NULL, 1),
-(7, '-', '0000-00-00', '0000-00-00 00:00:00', '0', 0, '2', 2, 'dua tujuan', '2015-05-04', '2015-05-05', '0000-00-00', '2015-05-05', '2015-05-06', '0000-00-00', '3', '1', NULL, 0),
+(7, '-', '0000-00-00', '0000-00-00 00:00:00', '1', 0, '2', 2, 'dua tujuan', '2015-05-04', '2015-05-05', '0000-00-00', '2015-05-05', '2015-05-06', '0000-00-00', '3', '1', NULL, 0),
 (8, '001/SPPD/SATKER/LP/V/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '1', NULL, NULL, 1),
 (10, '002/SPPD/SATKER/LP/V/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '2', 1, 'satu tujuan', '2015-05-04', '0000-00-00', '0000-00-00', '2015-05-06', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
 (11, '-', '0000-00-00', '0000-00-00 00:00:00', '0', 0, '2', 3, 'tiga tujuan beda kota', '2015-05-04', '2015-05-05', '2015-05-06', '2015-05-05', '2015-05-06', '2015-05-08', '1', '2', '3', 1),
@@ -3090,14 +3067,14 @@ INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `tanggal_pem
 (13, '004/SPPD/SATKER/LP/V/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '3', 1, 'studi banding ke denpasar (diklat)', '2015-05-14', '0000-00-00', '0000-00-00', '2015-05-15', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
 (14, '005/SPPD/SATKER/LP/V/2015', '2015-05-08', '0000-00-00 00:00:00', '5', 0, '2', 2, 'jalan-jalan 2 kota tujuan', '2015-05-08', '2015-05-09', '0000-00-00', '2015-05-09', '2015-05-10', '0000-00-00', '1', '2', NULL, 0),
 (15, '006/SPPD/SATKER/LP/V/2015', '0000-00-00', '0000-00-00 00:00:00', '5', 0, '2', 3, 'asdf asdf asdasasas asf', '2015-05-08', '2015-05-09', '2015-05-10', '2015-05-09', '2015-05-10', '2015-05-11', '1', '2', '3', 0),
-(16, '-', '0000-00-00', '2015-05-10 19:56:54', '1', 0, '377', 1, 'maksud', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
-(17, '010/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-10 20:00:28', '5', 0, '378', 1, 'maksud lagi', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 0),
-(18, '011/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-12 00:02:09', '5', 0, '380', 1, 'maksud perjalanan 1 untuk studi banding ke denpasar', '2015-05-19', '0000-00-00', '0000-00-00', '2015-05-20', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
-(19, '012/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-12 00:37:59', '5', 0, '216', 2, 'testing perjalanan dinas 2 tujuan', '2015-05-20', '2015-05-21', '0000-00-00', '2015-05-21', '2015-05-22', '0000-00-00', '3', '1', NULL, 1),
-(20, '013/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-12 01:25:53', '5', 0, '277', 3, 'testing dua untuk tiga tujuan perjalanan dinas', '2015-05-19', '2015-05-20', '2015-05-21', '2015-05-20', '2015-05-21', '2015-05-22', '2', '3', '7', 1),
-(21, '014/SPPD/SATKER/LP/V/2015', '2015-05-18', '2015-05-19 00:17:35', '5', 0, '15', 2, 'Survei Lapangan Lokasi Penerapan Teknologi Pengalahan Air Minum', '2015-05-18', '2015-05-20', '0000-00-00', '2015-05-20', '2015-05-23', '0000-00-00', '2', '12', NULL, 0),
-(22, '-', '0000-00-00', '2015-05-28 09:40:09', '0', 1, '7', 1, 'makan', '2015-05-28', '0000-00-00', '0000-00-00', '2015-05-30', '0000-00-00', '0000-00-00', '1', NULL, NULL, 1),
-(23, '-', '0000-00-00', '2015-06-12 00:49:57', '0', 0, '7', 1, 'lllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaa', '2015-05-18', '0000-00-00', '0000-00-00', '2015-05-19', '0000-00-00', '0000-00-00', '8', NULL, NULL, 0);
+(16, '-', '0000-00-00', '2015-05-10 12:56:54', '0', 1, '377', 1, 'maksud', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
+(17, '010/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-10 13:00:28', '5', 0, '378', 1, 'maksud lagi', '2015-05-10', '0000-00-00', '0000-00-00', '2015-05-11', '0000-00-00', '0000-00-00', '2', NULL, NULL, 0),
+(18, '011/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 17:02:09', '5', 0, '380', 1, 'maksud perjalanan 1 untuk studi banding ke denpasar', '2015-05-19', '0000-00-00', '0000-00-00', '2015-05-20', '0000-00-00', '0000-00-00', '2', NULL, NULL, 1),
+(19, '012/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 17:37:59', '5', 0, '216', 2, 'testing perjalanan dinas 2 tujuan', '2015-05-20', '2015-05-21', '0000-00-00', '2015-05-21', '2015-05-22', '0000-00-00', '3', '1', NULL, 1),
+(20, '013/SPPD/SATKER/LP/V/2015', '2015-05-11', '2015-05-11 18:25:53', '5', 0, '277', 3, 'testing dua untuk tiga tujuan perjalanan dinas', '2015-05-19', '2015-05-20', '2015-05-21', '2015-05-20', '2015-05-21', '2015-05-22', '2', '3', '7', 1),
+(21, '014/SPPD/SATKER/LP/V/2015', '2015-05-18', '2015-05-18 17:17:35', '5', 0, '15', 2, 'Survei Lapangan Lokasi Penerapan Teknologi Pengalahan Air Minum', '2015-05-18', '2015-05-20', '0000-00-00', '2015-05-20', '2015-05-23', '0000-00-00', '2', '12', NULL, 0),
+(22, '-', '0000-00-00', '2015-05-28 02:40:09', '1', 0, '7', 1, 'makan', '2015-05-28', '0000-00-00', '0000-00-00', '2015-05-30', '0000-00-00', '0000-00-00', '1', NULL, NULL, 1),
+(23, '-', '0000-00-00', '2015-06-11 17:49:57', '0', 0, '7', 1, 'lllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaa', '2015-05-18', '0000-00-00', '0000-00-00', '2015-05-19', '0000-00-00', '0000-00-00', '8', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -3106,10 +3083,9 @@ INSERT INTO `perjalanan_dinas` (`id`, `no_spt`, `tanggal_approval`, `tanggal_pem
 --
 
 CREATE TABLE IF NOT EXISTS `role` (
-  `id_role` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_role` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id_role`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `id_role` int(11) NOT NULL,
+  `nama_role` varchar(25) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `role`
@@ -3121,7 +3097,8 @@ INSERT INTO `role` (`id_role`, `nama_role`) VALUES
 (3, 'esselon 3'),
 (4, 'asisten satker'),
 (5, 'ppk'),
-(7, 'super admin');
+(7, 'super admin'),
+(8, 'publik');
 
 -- --------------------------------------------------------
 
@@ -3130,16 +3107,10 @@ INSERT INTO `role` (`id_role`, `nama_role`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `temp_akun` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kode_akun` int(11) DEFAULT NULL,
-  `jenis_belanja` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `temp_akun`
---
-
+  `jenis_belanja` varchar(100) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -3148,18 +3119,12 @@ CREATE TABLE IF NOT EXISTS `temp_akun` (
 --
 
 CREATE TABLE IF NOT EXISTS `temp_anggaran` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kode_kegiatan` varchar(25) NOT NULL,
   `kode_akun` varchar(50) NOT NULL,
   `pagu` int(15) NOT NULL,
-  `tahun_anggaran` year(4) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `temp_anggaran`
---
-
+  `tahun_anggaran` year(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -3168,19 +3133,13 @@ CREATE TABLE IF NOT EXISTS `temp_anggaran` (
 --
 
 CREATE TABLE IF NOT EXISTS `temp_kegiatan` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kode_unit` varchar(25) NOT NULL,
   `kode_kegiatan` varchar(50) NOT NULL,
   `nama_kegiatan` varchar(100) NOT NULL,
   `koordinator` varchar(25) DEFAULT NULL,
-  `penanggung_jawab` varchar(25) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `temp_kegiatan`
---
-
+  `penanggung_jawab` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -3189,12 +3148,11 @@ CREATE TABLE IF NOT EXISTS `temp_kegiatan` (
 --
 
 CREATE TABLE IF NOT EXISTS `unit` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `kode_unit` varchar(50) NOT NULL,
   `nama_unit` varchar(50) NOT NULL,
-  `kepala` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `kepala` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `unit`
@@ -3219,16 +3177,10 @@ INSERT INTO `unit` (`id`, `kode_unit`, `nama_unit`, `kepala`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `user_role` (
-  `id_user_role` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user_role` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `id_role` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_user_role`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `user_role`
---
-
+  `id_role` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -3236,10 +3188,11 @@ CREATE TABLE IF NOT EXISTS `user_role` (
 -- Stand-in structure for view `view_realisasi_anggaran`
 --
 CREATE TABLE IF NOT EXISTS `view_realisasi_anggaran` (
-`id_anggaran` varbinary(25)
+`id_anggaran` varchar(25)
 ,`nomor` varchar(50)
 ,`biaya` double
 );
+
 -- --------------------------------------------------------
 
 --
@@ -3248,3 +3201,417 @@ CREATE TABLE IF NOT EXISTS `view_realisasi_anggaran` (
 DROP TABLE IF EXISTS `view_realisasi_anggaran`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_realisasi_anggaran` AS select (select `pb`.`id_anggaran` AS `id_anggaran` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) AS `id_anggaran`,(select `pb`.`nomor_pengajuan` AS `nomor_pengajuan` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) AS `nomor`,sum(((select `b`.`pagu_harga` AS `pagu_harga` from `barang` `b` where (`b`.`id` = `db`.`id_barang`)) * `db`.`jumlah`)) AS `biaya` from `detail_pengajuan_barang` `db` group by (select `pb`.`id_anggaran` AS `id_anggaran` from `pengajuan_barang` `pb` where (`pb`.`id` = `db`.`id_pengajuan_barang`)) union select (select `pd`.`id_anggaran` AS `id_anggaran` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`)) AS `id_anggaran`,(select `pd`.`no_spt` AS `no_spt` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`)) AS `nomor`,sum(`dpd`.`biaya`) AS `biaya` from `detail_perjalanan_dinas` `dpd` group by (select `pd`.`id_anggaran` AS `id_anggaran` from `perjalanan_dinas` `pd` where (`pd`.`id` = `dpd`.`id_header`));
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `akun`
+--
+ALTER TABLE `akun`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `anggaran`
+--
+ALTER TABLE `anggaran`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_akomodasi`
+--
+ALTER TABLE `biaya_akomodasi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_diklat`
+--
+ALTER TABLE `biaya_diklat`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_narasumber`
+--
+ALTER TABLE `biaya_narasumber`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_penginapan`
+--
+ALTER TABLE `biaya_penginapan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_representatif`
+--
+ALTER TABLE `biaya_representatif`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_sewa`
+--
+ALTER TABLE `biaya_sewa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_tiket`
+--
+ALTER TABLE `biaya_tiket`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `biaya_transport_dlm_kota`
+--
+ALTER TABLE `biaya_transport_dlm_kota`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bukti_perjalanan_dinas`
+--
+ALTER TABLE `bukti_perjalanan_dinas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `counter`
+--
+ALTER TABLE `counter`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detail_panjar`
+--
+ALTER TABLE `detail_panjar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detail_pengadaan_barang`
+--
+ALTER TABLE `detail_pengadaan_barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detail_pengajuan_barang`
+--
+ALTER TABLE `detail_pengajuan_barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detail_pengajuan_honorarium`
+--
+ALTER TABLE `detail_pengajuan_honorarium`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `detail_perjalanan_dinas`
+--
+ALTER TABLE `detail_perjalanan_dinas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `komentar`
+--
+ALTER TABLE `komentar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kota_tujuan`
+--
+ALTER TABLE `kota_tujuan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `listcode`
+--
+ALTER TABLE `listcode`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `narasumber`
+--
+ALTER TABLE `narasumber`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `panjar`
+--
+ALTER TABLE `panjar`
+  ADD PRIMARY KEY (`id`,`id_header`), ADD UNIQUE KEY `id_header` (`id_header`);
+
+--
+-- Indexes for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengadaan_barang`
+--
+ALTER TABLE `pengadaan_barang`
+  ADD PRIMARY KEY (`id`,`id_header`), ADD UNIQUE KEY `id_header` (`id_header`);
+
+--
+-- Indexes for table `pengajuan_barang`
+--
+ALTER TABLE `pengajuan_barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengajuan_honorarium`
+--
+ALTER TABLE `pengajuan_honorarium`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengajuan_jasa`
+--
+ALTER TABLE `pengajuan_jasa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id_pengguna`,`username`);
+
+--
+-- Indexes for table `perjalanan_dinas`
+--
+ALTER TABLE `perjalanan_dinas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id_role`);
+
+--
+-- Indexes for table `temp_akun`
+--
+ALTER TABLE `temp_akun`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `temp_anggaran`
+--
+ALTER TABLE `temp_anggaran`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `temp_kegiatan`
+--
+ALTER TABLE `temp_kegiatan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `unit`
+--
+ALTER TABLE `unit`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD PRIMARY KEY (`id_user_role`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `akun`
+--
+ALTER TABLE `akun`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+--
+-- AUTO_INCREMENT for table `anggaran`
+--
+ALTER TABLE `anggaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=468;
+--
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=58;
+--
+-- AUTO_INCREMENT for table `biaya_akomodasi`
+--
+ALTER TABLE `biaya_akomodasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=137;
+--
+-- AUTO_INCREMENT for table `biaya_diklat`
+--
+ALTER TABLE `biaya_diklat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `biaya_narasumber`
+--
+ALTER TABLE `biaya_narasumber`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `biaya_penginapan`
+--
+ALTER TABLE `biaya_penginapan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=273;
+--
+-- AUTO_INCREMENT for table `biaya_representatif`
+--
+ALTER TABLE `biaya_representatif`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `biaya_sewa`
+--
+ALTER TABLE `biaya_sewa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=103;
+--
+-- AUTO_INCREMENT for table `biaya_tiket`
+--
+ALTER TABLE `biaya_tiket`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `bukti_perjalanan_dinas`
+--
+ALTER TABLE `bukti_perjalanan_dinas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=537;
+--
+-- AUTO_INCREMENT for table `counter`
+--
+ALTER TABLE `counter`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `detail_panjar`
+--
+ALTER TABLE `detail_panjar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `detail_pengadaan_barang`
+--
+ALTER TABLE `detail_pengadaan_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `detail_pengajuan_barang`
+--
+ALTER TABLE `detail_pengajuan_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `detail_pengajuan_honorarium`
+--
+ALTER TABLE `detail_pengajuan_honorarium`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+--
+-- AUTO_INCREMENT for table `detail_perjalanan_dinas`
+--
+ALTER TABLE `detail_perjalanan_dinas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=409;
+--
+-- AUTO_INCREMENT for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
+--
+-- AUTO_INCREMENT for table `komentar`
+--
+ALTER TABLE `komentar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `kota_tujuan`
+--
+ALTER TABLE `kota_tujuan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `listcode`
+--
+ALTER TABLE `listcode`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
+--
+-- AUTO_INCREMENT for table `narasumber`
+--
+ALTER TABLE `narasumber`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=194;
+--
+-- AUTO_INCREMENT for table `panjar`
+--
+ALTER TABLE `panjar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=197;
+--
+-- AUTO_INCREMENT for table `pengadaan_barang`
+--
+ALTER TABLE `pengadaan_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `pengajuan_barang`
+--
+ALTER TABLE `pengajuan_barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `pengajuan_honorarium`
+--
+ALTER TABLE `pengajuan_honorarium`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `pengajuan_jasa`
+--
+ALTER TABLE `pengajuan_jasa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `id_pengguna` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `perjalanan_dinas`
+--
+ALTER TABLE `perjalanan_dinas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `temp_akun`
+--
+ALTER TABLE `temp_akun`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `temp_anggaran`
+--
+ALTER TABLE `temp_anggaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `temp_kegiatan`
+--
+ALTER TABLE `temp_kegiatan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `unit`
+--
+ALTER TABLE `unit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `user_role`
+--
+ALTER TABLE `user_role`
+  MODIFY `id_user_role` int(11) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
