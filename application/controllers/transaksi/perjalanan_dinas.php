@@ -69,7 +69,8 @@ class Perjalanan_dinas extends CI_Controller {
         $data['page'] = 'admin/transaksi/perjalanan_dinas/view';
         $data['data'] = $this->perjalanan_dinas_model->select_by_id($id)->row();
         $param = array(
-            'id_header' => $id
+            'id_header' => $id,
+            'tipe_transaksi' => "pd"
             );
         if ($jumlah_tujuan == 3) {
             $data['list_data_detail'] = $this->detail_perjalanan_dinas_model->select_by_field_1($param)->result();
@@ -300,6 +301,7 @@ public function update_status($id_header) {
                 $data['id_header'] = $id_header;
                 $data['username'] = $this->session->userdata('role');
                 $data['komentar'] = $this->input->post('inpKomentar');
+                $data['tipe_transaksi'] = "pd";
                 $this->komentar_model->add($data);
                 redirect('transaksi/perjalanan_dinas');
             }

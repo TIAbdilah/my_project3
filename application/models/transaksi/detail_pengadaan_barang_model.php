@@ -42,6 +42,16 @@ class Detail_pengadaan_barang_model extends CI_Model {
         }
         return $this->db->query($sql);
     }
+	
+	public function select_jumlah($param = array()) {
+        $sql = "select jumlah "
+                . "from detail_pengadaan_barang d "
+                . "where 1 = 1 ";
+        if (!empty($param['id_pengadaan_barang'])) {
+            $sql = $sql . "and d.id_pengadaan_barang = " . $param['id_pengadaan_barang'] . " ";
+        }
+        return $this->db->query($sql);
+    }
 
     public function add($data) {
         $data = array(

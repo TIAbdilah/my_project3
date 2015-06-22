@@ -60,6 +60,7 @@ class Detail_pengadaan_barang extends CI_Controller {
         $data['id_barang'] = $this->input->post('inpIdBarang');
         $data['jumlah'] = $this->input->post('inpJumlah');
 
+		// print_r($data);
         if ($action == 'add') {
             $this->detail_pengadaan_barang_model->add($data);
         } else {
@@ -68,7 +69,7 @@ class Detail_pengadaan_barang extends CI_Controller {
         }
 
         $id = $data['id_pengadaan_barang'];
-        redirect('transaksi/pengadaan_barang/view/' . $id);
+        redirect('transaksi/pengadaan_barang/view/' . $id); 
     }
 
     public function delete($id) {

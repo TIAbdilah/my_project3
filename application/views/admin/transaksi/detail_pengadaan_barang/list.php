@@ -10,8 +10,9 @@
                 <tr>
                     <th width="5%"> No </th>
                     <th> Nama Barang</th>
-                    <th> Jumlah Uang Muka</th>
-                    <th class="td-actions"> </th>
+                    <th> Merk</th>
+                    <th> Spesifikasi</th>
+                   
                 </tr>
             </thead>            
             <tbody>
@@ -20,39 +21,12 @@
                 foreach ($list_detail_pengadaan_barang as $row) {
                     echo "<tr>"
                     . "<td align=\"center\">" . $no . "</td>"
-                    . "<td>" . $row->nama_barang.' - '.$row->merek_barang.' - '.$row->spesifikasi. " </td>"
-                    . "<td align=\"right\">" . number_format($row->jumlah) . "</td>"
-                    . "<td class=\"td-actions\">";
+                    . "<td>" . $row->nama_barang. " </td>"
+                    . "<td>" . $row->merek_barang. " </td>"
+                    . "<td>" .$row->spesifikasi. " </td>";
+                   
                     ?>
-                <a title = "Edit" href = "#addDetail<?php echo $no ?>" class = "btn btn-mini btn-warning" data-toggle = "modal"><i class = "btn-icon-only icon-pencil"></i></a>
-                <div id = "addDetail<?php echo $no ?>" class = "modal hide fade" tabindex = "-1" role = "dialog" aria-labelledby = "myModalLabel" aria-hidden = "true">
-                    <div class = "modal-header">
-                        <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">×</button>
-                        <h3 id = "myModalLabel">Uang Muka untuk <?php echo $row->nama_barang ?></h3>
-                    </div>
-                    <div class = "modal-body">
-                        <?php
-                        if (empty($row->jumlah)) {
-                            $lnk = 'add';
-                        } else {
-                            $lnk = 'edit';
-                        }
-                        ?>
-                        <form class="bs-docs-example form-horizontal" action="<?php echo site_url('transaksi/detail_pengadaan_barang/process/' . $lnk) ?>" method="POST">
-                            <input type="hidden" name="inpIdPengadaanBarang" value="<?php echo $data->id ?>" />
-                            <input type="hidden" name="inpIdBarang" value="<?php echo $row->id_barang ?>" />
-                            <table style="width: 100%">
-                                <tr>
-                                    <td width="25%">Jumlah Uang Muka</td>
-                                    <td><input type="text" id="inpJumlah" name="inpJumlah" value="<?php echo $row->jumlah?>"></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><button type="submit" class="btn">Simpan</button></td>
-                                </tr>
-                            </table>
-                        </form>                        
-                    </div>
-                </div>
+                
                 <?php
                 echo "</td>"
                 . "</tr>";

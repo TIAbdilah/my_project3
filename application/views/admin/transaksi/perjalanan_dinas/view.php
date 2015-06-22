@@ -21,6 +21,7 @@ function format_date($string) {
                 <td width="12%"><strong>Anggaran</strong></td>
                 <td valign="top" width="50%">:&nbsp;<?php echo $data->nama_kegiatan ?> - <?php echo $data->jenis_belanja ?></td>
                 <td valign="top" width="40%" rowspan="6">
+                <?php if ($this->session->userdata('role') != 'publik'){?>
                     <form action="<?php echo site_url('transaksi/perjalanan_dinas/update_status/' . $data->id) ?>" method="POST">            
                         <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
                         <input type="hidden" name="inpStatus" value="<?php echo $data->status ?>" />
@@ -42,6 +43,7 @@ function format_date($string) {
                             <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Ajukan"/>
                         <?php } ?>
                     </form>
+                    <?php } ?>
                     <span class="pull-right">
                         <a href="#viewKomentar" role="button" data-toggle="modal">alasan penolakan</a>
 
@@ -57,6 +59,7 @@ function format_date($string) {
                             </div>
                         </div>
                     </span>
+
                 </td>
             </tr>
             <tr>

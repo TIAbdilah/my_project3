@@ -35,8 +35,10 @@ class Komentar_model extends CI_Model {
         $data = array(
             'id_header' => $data['id_header'],
             'username' => $data['username'],
-            'komentar' => $data['komentar']
+            'komentar' => $data['komentar'],
+            'tipe_transaksi' => $data['tipe_transaksi']
         );
+        // print_r($data);
         $this->db->insert('komentar', $data);
     }
 

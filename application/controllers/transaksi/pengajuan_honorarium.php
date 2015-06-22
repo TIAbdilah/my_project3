@@ -63,7 +63,8 @@ class Pengajuan_honorarium extends CI_Controller {
         $data['page'] = 'admin/transaksi/pengajuan_honorarium/view';
         $data['data'] = $this->pengajuan_honorarium_model->select_by_id($id)->row();
         $param = array(
-            'id_header' => $id
+            'id_header' => $id,
+            'tipe_transaksi' => "j"
         );
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['list_data'] = $this->detail_pengajuan_honorarium_model->select_by_id($id)->result();
@@ -151,6 +152,7 @@ class Pengajuan_honorarium extends CI_Controller {
                 $data['id_header'] = $id_header;
                 $data['username'] = $this->session->userdata('role');
                 $data['komentar'] = $this->input->post('inpKomentar');
+                $data['tipe_transaksi'] = "j";
                 $this->komentar_model->add($data);
                 redirect('transaksi/pengajuan_honorarium');
             }

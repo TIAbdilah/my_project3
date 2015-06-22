@@ -36,11 +36,12 @@ class Pengadaan_barang extends CI_Controller {
         $data['page'] = 'admin/transaksi/pengadaan_barang/view';
         $data['data'] = $this->pengadaan_barang_model->select_by_id($id)->row();
         $data['data_pengajuan_barang'] = $this->pengajuan_barang_model->select_by_id($data['data']->id_header)->row();
-
+		
         $id_param = $data['data']->id;
+		$data['jumlah_pengadaan_barang'] = $this->detail_pengadaan_barang_model->select_jumlah(array('id_pengadaan_barang' => $id_param))->row();
         $data['list_detail_pengadaan_barang'] = $this->detail_pengadaan_barang_model->select_by_field(array('id_pengadaan_barang' => $id_param))->result();
 
-//        print_r($data['list_detail_pengadaan_barang']);
+         // print_r($data['jumlah_pengadaan_barang']);
         $data['format_date'] = new Format_date();
         $this->load->view('admin/index', $data);
     }

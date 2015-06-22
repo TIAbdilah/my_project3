@@ -64,7 +64,8 @@ class Pengajuan_barang extends CI_Controller {
         $data['page'] = 'admin/transaksi/pengajuan_barang/view';
         $data['data'] = $this->pengajuan_barang_model->select_by_id($id)->row();
         $param = array(
-            'id_header' => $id
+            'id_header' => $id,
+            'tipe_transaksi' => "b"
         );
         $data['list_data_komentar'] = $this->komentar_model->select_by_field($param)->result();
         $data['list_data'] = $this->detail_pengajuan_barang_model->select_by_id($id)->result();
@@ -178,6 +179,7 @@ class Pengajuan_barang extends CI_Controller {
                 $data['id_header'] = $id_header;
                 $data['username'] = $this->session->userdata('role');
                 $data['komentar'] = $this->input->post('inpKomentar');
+                $data['tipe_transaksi'] = "b";
                 $this->komentar_model->add($data);
                 redirect('transaksi/pengajuan_barang');
             }
