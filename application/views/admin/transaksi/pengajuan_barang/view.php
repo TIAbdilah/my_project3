@@ -1,6 +1,6 @@
 <div class="widget-content" style="padding: 10px;">
     <ul class="nav nav-tabs" id="myTab">
-        <?php if ($this->session->userdata('role') == 'operator') { ?>     
+        <?php if ($this->session->userdata('role') == 'operator' && $data->status_approval != 5) { ?>     
             <li class="active"><a href="#a">Tambah Data Barang</a></li>
         <?php } ?>
         <li><a href="#b">Detail Header</a></li>
@@ -8,7 +8,7 @@
 
     <div class="tab-content">
         <div class="tab-pane active" id="a">
-            <?php if ($this->session->userdata('role') == 'operator') { ?>     
+            <?php if ($this->session->userdata('role') == 'operator' && $data->status_approval != 5) { ?>     
                 <?php $this->load->view('admin/transaksi/detail_pengajuan_barang/add') ?>
             <?php } ?>
         </div>
@@ -22,26 +22,26 @@
                         <td width="12%"><strong>Nomor Pengajuan</strong></td>
                         <td valign="top" width="50%">:&nbsp;<?php echo $data->nomor_pengajuan ?></td>
                         <td valign="top" width="40%" rowspan="6">
-                            <?php if ($this->session->userdata('role') != 'publik'){?>
-                            <form action="<?php echo site_url('transaksi/pengajuan_barang/update_status/' . $data->id) ?>" method="POST">            
-                                <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
-                                <input type="hidden" name="inpStatus" value="<?php echo $data->status_approval ?>" />
-                                <input type="hidden" name="inTotalDetailBarang" id="inTotalDetailBarang" />
-                                <?php if ($this->session->userdata('role') != 'operator' && $data->status_approval != 5) { ?>
-                                    <?php
-                                    if ($this->session->flashdata('result') != ''):
-                                        echo $this->session->flashdata('result');
-                                    endif;
-                                    ?>
-                                    <textarea style="width: 95%" rows="2" name="inpKomentar" id="inpKomentar" placeholder="Alasan Penolakan"></textarea><br>
-                                    <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Setuju"/>
-                                    <input type="submit" class="btn btn-danger" id="btnKomentar" name="inpAksi" value="Tolak"/>
-                                    <br>
-                                <?php } if ($this->session->userdata('role') == 'operator' && $data->status_approval == 0) { ?>
-                                    <!--<strong>Ajukan</strong><br>-->
-                                    <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Ajukan"/>
-                                <?php } ?>
-                            </form>
+                            <?php if ($this->session->userdata('role') != 'publik') { ?>
+                                <form action="<?php echo site_url('transaksi/pengajuan_barang/update_status/' . $data->id) ?>" method="POST">            
+                                    <input type="hidden" name="inpIdHeader" value="<?php echo $data->id ?>" />
+                                    <input type="hidden" name="inpStatus" value="<?php echo $data->status_approval ?>" />
+                                    <input type="hidden" name="inTotalDetailBarang" id="inTotalDetailBarang" />
+                                    <?php if ($this->session->userdata('role') != 'operator' && $data->status_approval != 5) { ?>
+                                        <?php
+                                        if ($this->session->flashdata('result') != ''):
+                                            echo $this->session->flashdata('result');
+                                        endif;
+                                        ?>
+                                        <textarea style="width: 95%" rows="2" name="inpKomentar" id="inpKomentar" placeholder="Alasan Penolakan"></textarea><br>
+                                        <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Setuju"/>
+                                        <input type="submit" class="btn btn-danger" id="btnKomentar" name="inpAksi" value="Tolak"/>
+                                        <br>
+                                    <?php } if ($this->session->userdata('role') == 'operator' && $data->status_approval == 0) { ?>
+                                        <!--<strong>Ajukan</strong><br>-->
+                                        <input type="submit" class="btn btn-success" id="btnKomentar" name="inpAksi" value="Ajukan"/>
+                                    <?php } ?>
+                                </form>
                             <?php } ?>
                             <span class="pull-right">
                                 <a href="#viewKomentar" role="button" data-toggle="modal">alasan penolakan</a>

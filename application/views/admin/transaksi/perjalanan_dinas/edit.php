@@ -34,6 +34,12 @@ function format_date($string) {
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="inDiklat">Diklat</label>
+                <div class="controls">
+                    <input type="checkbox" name="inDiklat" id="inDiklat" value="Ya" <?php echo set_checkbox('inDiklat', 'Ya', $data->status_diklat == 1)?>/>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="inpJumlahTujuan">Jumlah Kota Tujuan</label>
                 <div class="controls">
                     <label class="radio inline">
