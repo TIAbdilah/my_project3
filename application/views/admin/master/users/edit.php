@@ -55,6 +55,12 @@
                 <div class="controls">
                     <input type="password" id="inpPassword" name="inpPassword" value="<?php echo $row->password ?>">
                 </div>
+            </div>            
+            <div class="control-group">
+                <label class="control-label" for="inpPassword2">Konfirmasi Password</label>
+                <div class="controls">
+                    <input type="password" id="inpPassword2" name="inpPassword2" placeholder="Ketik Lagi Password">
+                </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="inpTelp">Telp</label>
