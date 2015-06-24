@@ -64,12 +64,12 @@ class Temp_anggaran extends CI_Controller {
             $this->temp_anggaran_model->edit($id, $data);
         }
 
-        redirect('common/temp_anggaran');
+        redirect('common/import_anggaran');
     }
 
     public function delete($id) {
         $this->temp_anggaran_model->delete($id);
-        redirect('common/temp_anggaran');
+        redirect('common/import_anggaran');
     }
     
     public function is_logged_in() {

@@ -55,12 +55,12 @@ class Temp_akun extends CI_Controller {
             $this->temp_akun_model->edit($id, $data);
         }
 
-        redirect('common/temp_akun');
+        redirect('common/import_anggaran');
     }
 
     public function delete($id) {
         $this->temp_akun_model->delete($id);
-        redirect('common/temp_akun');
+        redirect('common/import_anggaran');
     }
     
     public function is_logged_in() {

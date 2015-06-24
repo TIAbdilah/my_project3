@@ -64,12 +64,12 @@ class Temp_kegiatan extends CI_Controller {
             $this->temp_kegiatan_model->edit($id, $data);
         }
 
-        redirect('common/temp_kegiatan');
+        redirect('common/import_anggaran');
     }
 
     public function delete($id) {
         $this->temp_kegiatan_model->delete($id);
-        redirect('common/temp_kegiatan');
+        redirect('common/import_anggaran');
     }
     
     public function is_logged_in() {
