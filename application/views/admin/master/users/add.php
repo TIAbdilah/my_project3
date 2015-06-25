@@ -31,7 +31,7 @@
                         <option>Pilih Nama  Pegawai</option>
                         <?php
                         foreach ($SIList_pegawai as $row_1) {
-                            echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama . "</option>";
+                            echo "<option value=\"" . $row_1->id . "\"> (" .$row_1->kode_unit.') '. $row_1->nama . "</option>";
                         }
                         ?>
                     </select>

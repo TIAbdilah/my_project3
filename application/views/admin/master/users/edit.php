@@ -26,7 +26,7 @@
                         <option>Pilih Nama  Pegawai</option>
                         <?php
                         foreach ($SIList_pegawai as $row_2) {
-                            echo "<option value=\"" . $row_2->id . "\"".set_select('inpIdPegawai', $row_2->id, $row_2->id == $row->id_pegawai).">" . $row_2->nama . "</option>";
+                            echo "<option value=\"" . $row_2->id . "\"".set_select('inpIdPegawai', $row_2->id, $row_2->id == $row->id_pegawai).">(" .$row_2->kode_unit.') '.  $row_2->nama . "</option>";
                         }
                         ?>
                     </select>
@@ -53,7 +53,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpPassword">Password</label>
                 <div class="controls">
-                    <input type="password" id="inpPassword" name="inpPassword" value="<?php echo $row->password ?>">
+                    <input type="password" id="inpPassword" name="inpPassword" value="<?php echo md5($row->password) ?>">
                 </div>
             </div>            
             <div class="control-group">

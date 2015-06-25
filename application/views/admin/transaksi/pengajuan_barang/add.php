@@ -21,7 +21,7 @@
                         <?php
                         foreach ($SIList_anggaran as $row_1) {
                             if ($row_1->id_unit == $this->session->userdata('kode_unit')) {
-                                echo "<option value=\"" . $row_1->id . "\">" . $row_1->nama_kegiatan . " - " . $row_1->jenis_belanja . "</option>";
+                                echo "<option value=\"" . $row_1->id . "\">" . $row_1->kode_kegiatan . " - ". $row_1->nama_kegiatan . " - " . $row_1->jenis_belanja . "</option>";
                             }
                         }
                         ?>

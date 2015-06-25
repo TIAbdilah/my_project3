@@ -61,6 +61,7 @@ class Users_model extends CI_Model {
         $this->subquery->end_subquery('nama_role');
         
         $this->db->from('pengguna');
+        $this->db->order_by('username');
         
         return $this->db->get();
     }

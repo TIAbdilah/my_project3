@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 15, 2015 at 12:11 PM
+-- Generation Time: Jun 25, 2015 at 11:47 AM
 -- Server version: 5.1.37
 -- PHP Version: 5.3.0
 
@@ -12,6 +12,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `esatker_1_kosong`
 --
+CREATE DATABASE `esatker_1_kosong` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `esatker_1_kosong`;
 
 -- --------------------------------------------------------
 
@@ -405,6 +407,7 @@ CREATE TABLE IF NOT EXISTS `komentar` (
   `username` varchar(50) NOT NULL,
   `komentar` text NOT NULL,
   `id_pegawai` int(11) DEFAULT NULL,
+  `tipe_transaksi` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -425,12 +428,47 @@ CREATE TABLE IF NOT EXISTS `kota_tujuan` (
   `nama_provinsi` varchar(25) DEFAULT NULL,
   `nama_kota` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `kota_tujuan`
 --
 
+INSERT INTO `kota_tujuan` (`id`, `kode_wilayah`, `nama_provinsi`, `nama_kota`) VALUES
+(1, 11, 'ACEH', 'Banda Aceh'),
+(2, 51, 'BALI', 'Denpasar'),
+(3, 19, 'BANGKA BELITUNG', 'Pangkal Pinang'),
+(4, 36, 'BANTEN', 'Tangerang'),
+(5, 17, 'BENGKULU', 'Bengkulu'),
+(6, 34, 'D.I.  YOGYAKARTA', 'Yogyakarta'),
+(7, 31, 'D.K.I   JAKARTA', 'Jakarta'),
+(8, 75, 'GORONTALO', 'Gorontalo'),
+(9, 15, 'JAMBI', 'Jambi'),
+(10, 32, 'JAWA BARAT', 'Bandung'),
+(11, 33, 'JAWA TENGAH', 'Semarang'),
+(12, 35, 'JAWA TIMUR', 'Surabaya'),
+(13, 61, 'KALIMANTAN BARAT', 'Pontianak'),
+(14, 63, 'KALIMANTAN SELATAN', 'Banjarmasin'),
+(15, 62, 'KALIMANTAN TENGAH', 'Palangkaraya'),
+(16, 64, 'KALIMANTAN TIMUR', 'Samarinda'),
+(17, NULL, 'KALIMANTAN UTARA ', 'Tanjung Selor'),
+(18, 21, 'KEPULAUAN RIAU', 'Tanjung Pinang '),
+(19, 18, 'LAMPUNG', 'Lampung'),
+(20, 81, 'MALUKU', 'Ambon'),
+(21, 82, 'MALUKU UTARA', 'Ternate'),
+(22, 52, 'NUSA TENGGARA BARAT', 'Mataram'),
+(23, 53, 'NUSA TENGGARA TIMUR', 'Kupang'),
+(24, 94, 'PAPUA', 'Jayapura'),
+(25, 91, 'PAPUA BARAT', 'Manokwari'),
+(26, 14, 'RIAU', 'Pekanbaru'),
+(27, 76, 'SULAWESI BARAT', 'Mamuju'),
+(28, 73, 'SULAWESI SELATAN', 'Ujungpandang'),
+(29, 72, 'SULAWESI TENGAH', 'Palu'),
+(30, 74, 'SULAWESI TENGGARA', 'Kendari'),
+(31, 71, 'SULAWESI UTARA', 'Manado'),
+(32, 13, 'SUMATERA BARAT', 'Padang'),
+(33, 16, 'SUMATERA SELATAN', 'Palembang'),
+(34, 12, 'SUMATERA UTARA', 'Medan');
 
 -- --------------------------------------------------------
 
@@ -511,34 +549,6 @@ INSERT INTO `listcode` (`id`, `list_name`, `list_item`) VALUES
 (68, 'Tingkat', 'Esselon III'),
 (69, 'Tingkat', 'Esselon IV'),
 (71, 'Jenis Barang', 'Penyelenggaraan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `narasumber`
---
-
-CREATE TABLE IF NOT EXISTS `narasumber` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nip` varchar(20) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `golongan` varchar(10) NOT NULL,
-  `jabatan` varchar(100) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `kelas_jabatan` varchar(15) NOT NULL,
-  `status` varchar(25) NOT NULL,
-  `kode_unit` varchar(25) NOT NULL,
-  `kriteria_pegawai` varchar(15) NOT NULL,
-  `status_pendidikan` varchar(15) NOT NULL,
-  `institusi` varchar(50) DEFAULT NULL,
-  `kepakaran` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `narasumber`
---
-
 
 -- --------------------------------------------------------
 
@@ -860,27 +870,6 @@ CREATE TABLE IF NOT EXISTS `pengajuan_honorarium` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengajuan_jasa`
---
-
-CREATE TABLE IF NOT EXISTS `pengajuan_jasa` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `no_pengajuan_jasa` varchar(50) DEFAULT NULL,
-  `kegiatan` varchar(100) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  `status_penolakan` int(11) DEFAULT NULL,
-  `id_anggaran` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `pengajuan_jasa`
---
-
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `pengguna`
 --
 
@@ -895,25 +884,44 @@ CREATE TABLE IF NOT EXISTS `pengguna` (
   `telp` varchar(15) NOT NULL,
   `status_aktivasi` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_pengguna`,`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `pengguna`
 --
 
 INSERT INTO `pengguna` (`id_pengguna`, `id_jenis_pengguna`, `id_pegawai`, `alamat`, `email`, `username`, `password`, `telp`, `status_aktivasi`) VALUES
-(9, 1, 10, 'baleendah', 'ti.abdilah@gmail.com', 'opik123', '0cc175b9c0f1b6a831c399e269772661', '098234', 1),
-(10, 1, 49, '-', '-', 'operator', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
-(12, 3, 63, '-', '-', 'esselon 3', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
-(13, 2, 40, '-', '-', 'esselon 4', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
 (14, 4, 17, '-', '-', 'asisten satker', '0cc175b9c0f1b6a831c399e269772661', '1234', 1),
 (15, 5, 72, '-', '-', 'ppk', '0cc175b9c0f1b6a831c399e269772661', '12345', 1),
-(16, 5, 53, 'garut', '1', 'ai123', '0cc175b9c0f1b6a831c399e269772661', '', 0),
-(17, 1, 77, '', '', 'anggi', '0cc175b9c0f1b6a831c399e269772661', '', 1),
-(18, 1, 53, '', '', 'ai', '0cc175b9c0f1b6a831c399e269772661', '', 0),
-(19, 1, 66, '', '', 'ajun', '0cc175b9c0f1b6a831c399e269772661', '', 0),
-(20, 1, 123, '', '', 'arip', '0cc175b9c0f1b6a831c399e269772661', '', 0),
-(21, 7, 184, '', '', 'super admin', '0cc175b9c0f1b6a831c399e269772661', '', 1);
+(21, 7, 0, '', '', 'super admin', '0cc175b9c0f1b6a831c399e269772661', '', 1),
+(22, 1, 10, '', '', 'opr_btu', '0192023a7bbd73250516f069df18b500', '', 1),
+(23, 1, 40, '', '', 'opr_bsdk', '0192023a7bbd73250516f069df18b500', '', 1),
+(24, 1, 64, '', '', 'opr_bsd', '0192023a7bbd73250516f069df18b500', '', 1),
+(25, 1, 85, '', '', 'opr_bpk', '0192023a7bbd73250516f069df18b500', '', 1),
+(26, 1, 109, '', '', 'opr_btb', '0192023a7bbd73250516f069df18b500', '', 1),
+(27, 1, 123, '', '', 'opr_bpl', '0192023a7bbd73250516f069df18b500', '', 1),
+(28, 1, 136, '', '', 'opr_bskb', '0192023a7bbd73250516f069df18b500', '', 1),
+(29, 1, 161, '', '', 'opr_bamp', '0192023a7bbd73250516f069df18b500', '', 1),
+(30, 1, 180, '', '', 'opr_bbb', '0192023a7bbd73250516f069df18b500', '', 1),
+(31, 2, 10, '', '', 'es4_btu', '0192023a7bbd73250516f069df18b500', '', 1),
+(32, 2, 53, '', '', 'es4_bsdk', '0192023a7bbd73250516f069df18b500', '', 1),
+(33, 2, 66, '', '', 'es4_bsd', '0192023a7bbd73250516f069df18b500', '', 1),
+(34, 2, 77, '', '', 'es4_bpk', '0192023a7bbd73250516f069df18b500', '', 1),
+(35, 2, 88, '', '', 'es4_btb', '0192023a7bbd73250516f069df18b500', '', 1),
+(36, 2, 123, '', '', 'es4_bpl', '0192023a7bbd73250516f069df18b500', '', 1),
+(37, 2, 142, '', '', 'es4_bskb', '0192023a7bbd73250516f069df18b500', '', 1),
+(38, 2, 159, '', '', 'es4_bamp', '0192023a7bbd73250516f069df18b500', '', 1),
+(39, 2, 177, '', '', 'es4_bbb', '0192023a7bbd73250516f069df18b500', '', 1),
+(40, 3, 25, '', '', 'es3_btu', '0192023a7bbd73250516f069df18b500', '', 1),
+(41, 3, 53, '', '', 'es3_bsdk', '0192023a7bbd73250516f069df18b500', '', 1),
+(42, 3, 66, '', '', 'es3_bsd', '0192023a7bbd73250516f069df18b500', '', 1),
+(43, 3, 87, '', '', 'es3_bpk', '0192023a7bbd73250516f069df18b500', '', 1),
+(44, 3, 88, '', '', 'es3_btb', '0192023a7bbd73250516f069df18b500', '', 1),
+(45, 3, 133, '', '', 'es3_bpl', '0192023a7bbd73250516f069df18b500', '', 1),
+(46, 3, 144, '', '', 'es3_bskb', '0192023a7bbd73250516f069df18b500', '', 1),
+(47, 3, 159, '', '', 'es3_bamp', '0192023a7bbd73250516f069df18b500', '', 1),
+(48, 3, 182, '', '', 'es3_bbb', '0192023a7bbd73250516f069df18b500', '', 1),
+(49, 8, 0, '', '', 'publik', '52886b0ac370c754beac1e70df4e161d', '', 1);
 
 -- --------------------------------------------------------
 
@@ -959,7 +967,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `id_role` int(11) NOT NULL AUTO_INCREMENT,
   `nama_role` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id_role`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `role`
@@ -971,7 +979,8 @@ INSERT INTO `role` (`id_role`, `nama_role`) VALUES
 (3, 'esselon 3'),
 (4, 'asisten satker'),
 (5, 'ppk'),
-(7, 'super admin');
+(7, 'super admin'),
+(8, 'publik');
 
 -- --------------------------------------------------------
 

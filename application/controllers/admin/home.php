@@ -28,7 +28,7 @@ class Home extends CI_Controller {
         $role = $this->session->userdata('role');
 
         $array_custom = new Array_custom();
-        if ($role == 'ppk' || $role == 'assisten satker' || $role == 'super admin') {
+        if ($role == 'ppk' && $role == 'assisten satker' && $role == 'super admin') {
             $data['page'] = 'admin/master/tasklist/list';
         } else {
             $data['page'] = 'admin/master/tasklist/list_filter';
@@ -41,7 +41,6 @@ class Home extends CI_Controller {
             $data['list_data_honorarium'] = $this->pengajuan_honorarium_model->select_all()->result();                        
         }else{
             // print_r("bukan publik nih");
-            $data['page'] = 'admin/master/tasklist/list';
             $data['list_data'] = $this->perjalanan_dinas_model->select_by_field(array('status' => $array_custom->int_role[$role]))->result();
             $data['list_data_barang'] = $this->pengajuan_barang_model->select_by_field(array('status_approval' => $array_custom->int_role[$role]))->result();
             $data['list_data_honorarium'] = $this->pengajuan_honorarium_model->select_by_field(array('status_approval' => $array_custom->int_role[$role]))->result();

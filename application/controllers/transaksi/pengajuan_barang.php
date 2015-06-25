@@ -98,7 +98,7 @@ class Pengajuan_barang extends CI_Controller {
     public function add() {
         $data['title'] = $this->title_page;
         $data['page'] = 'admin/transaksi/pengajuan_barang/add';
-        $data['SIList_anggaran'] = $this->anggaran_model->select_all()->result();
+        $data['SIList_anggaran'] = $this->anggaran_model->select_by_field(array('kata_kunci' => 'Barang'))->result();
         $data['SIList_kota_tujuan'] = $this->kota_tujuan_model->select_all()->result();
         $data['SIList_jenisBarang'] = $this->listcode_model->select_by_field('list_name', 'Jenis Barang')->result();
         $data['SIList_nama_barang'] = $this->barang_model->select_all()->result();

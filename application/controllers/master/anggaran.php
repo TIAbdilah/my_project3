@@ -21,7 +21,7 @@ class Anggaran extends CI_Controller {
 
     public function index() {
         $data['title'] = "e-satker | Anggaran";
-        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker') {
+        if ($this->session->userdata('role') != 'ppk' && $this->session->userdata('role') != 'asisten satker' && $this->session->userdata('role') != 'super admin') {
             $data['page'] = 'admin/master/anggaran/list_filter';
         } else {
             $data['page'] = 'admin/master/anggaran/list';
