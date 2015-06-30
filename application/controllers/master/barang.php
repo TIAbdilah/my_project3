@@ -91,6 +91,8 @@ class Barang extends CI_Controller {
             $data['kode_barang'] = $prefix . $counter;
             $this->barang_model->add($data);
         } else {
+            $data['kode_barang'] = $this->input->post('inpKodeBarang');
+            // print_r($data);
             $this->barang_model->edit($id, $data);
         }
 

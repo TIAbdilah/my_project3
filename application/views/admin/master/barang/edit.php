@@ -22,7 +22,7 @@
             <div class="control-group">
                 <label class="control-label" for="inpKodeBarang">Kode Barang</label>
                 <div class="controls">
-                    <input type="text" id="inpKodeBarang" name="inpKodeBarang" disabled="disabled" value="<?php echo $row->kode_barang ?>">
+                    <input type="text" id="inpKodeBarang" name="inpKodeBarang"  value="<?php echo $row->kode_barang ?>">
                 </div>
             </div>
             <div class="control-group">
@@ -57,9 +57,12 @@
                         <option>Pilih Satuan</option>
                         <?php
                         foreach ($SIList_satuanBarang as $row_2) {
+                           
                             echo "<option value=\"" . $row_2->list_item . "\"" . set_select('inpSatuan', $row_2->list_item, $row_2->list_item == $row->satuan) . ">" . $row_2->list_item . "</option>";
                         }
+
                         ?>
+
                     </select>
                 </div>
             </div>
