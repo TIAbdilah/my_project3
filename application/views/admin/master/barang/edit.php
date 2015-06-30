@@ -22,7 +22,8 @@
             <div class="control-group">
                 <label class="control-label" for="inpKodeBarang">Kode Barang</label>
                 <div class="controls">
-                    <input type="text" id="inpKodeBarang" name="inpKodeBarang"  value="<?php echo $row->kode_barang ?>">
+                    <label>&nbsp;&nbsp;&nbsp;<?php echo $row->kode_barang ?></label>
+                    <input type="hidden" id="inpKodeBarang" name="inpKodeBarang" value="<?php echo $row->kode_barang ?>">
                 </div>
             </div>
             <div class="control-group">

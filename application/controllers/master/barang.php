@@ -92,7 +92,6 @@ class Barang extends CI_Controller {
             $this->barang_model->add($data);
         } else {
             $data['kode_barang'] = $this->input->post('inpKodeBarang');
-            // print_r($data);
             $this->barang_model->edit($id, $data);
         }
 
