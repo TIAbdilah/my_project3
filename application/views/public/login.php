@@ -12,7 +12,8 @@
     <link href="<?php echo base_url() . '/assets/' ?>css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
 
     <link href="<?php echo base_url() . '/assets/' ?>css/font-awesome.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+    <link href="<?php echo base_url() . '/assets/' ?>css/fonts.css" rel="stylesheet">
+    <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet"> -->
 
     <link href="<?php echo base_url() . '/assets/' ?>css/style.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url() . '/assets/' ?>css/pages/signin.css" rel="stylesheet" type="text/css">
